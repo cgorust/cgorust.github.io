@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/cgorust/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/cgorust/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/cgorust/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+    var host = window.location.hostname;
+		if(host != "localhost")
+		{
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'G-R796EH82K4');
+		}
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/cgorust/index.html">
+<img height="28" src="/cgorust/resource/img/logo.png"/>
+      PLNET
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">operator overloading in c++</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">Operator Overloading is a very essential element to perform the operations on user-defined data types. By operator overloading we can modify the default meaning to the operators like +, -, *, /, &lt;=, etc. 
+```
+#include &lt;iostream&gt;
+using namespace std;
+
+class Complex{
+private:
+    float r, i;
+public:
+    Complex(float r, float i) {
+        this-&gt;r = r;
+        this-&gt;i = i;
+    }
+    void say() {
+        cout &lt;&lt; r &lt;&lt; "+" &lt;&lt; i &lt;&lt; "i";
+    }
+    Complex operator+(Complex&amp; c) {
+        return Complex(r + c.r, i + c.i);
+    }
+};
+
+int main() {
+    Complex a(1,1), b(2,2);
+    a = a+b;
+    a.say();
+    return 0;
+}
+```
+Prefix doesn't take any parameter but postfix does. Why?
+```
+ class Number {
+ public:
+   Number&amp; operator++ ();    // prefix ++
+   Number  operator++ (int); // postfix ++
+ }; 
+```
+Prefix and postfix ++ are different operators. With the standard Foo operator symbol(Foo &amp;) style declaration there was no obvious way to distinguish the two. Rather than come up with some new syntax like Foo symbol operator(Foo &amp;) which would make it into a special case unlike all the other operators and likely a bit of a pain to parse, the language designers wanted some other solution.
+The solution they chose was somewhat bizarre. They noted that all the other 'postfix' operators (i.e. operators that occurred after one of their operands) were actually infix operators that took two arguments. For example, plain old +, / or &gt;. On this basis the language designers decided that having a random dummy argument would be a good way to distinguish between prefix and postfix ++.
+IMHO, it's one of the stranger decisions made as C++ evolved. But there you have it.</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/cgorust/dictionary/Operator_overloading.html">Operator overloading</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/cgorust/dictionary/Oop_in_c++.html">Oop in c++</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/cgorust/index.html" role="button">Home</a> </div></div></main>
+<footer>
+<script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+<div class="text-center text-primary">
+<a href="/cgorust/index.html">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/cgorust/resource/highlight/highlight.pack.js"></script>
+<script src="/cgorust/client/src/app/main.js" type="module"></script>
+</body>
+</html>
