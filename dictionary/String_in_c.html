@@ -30,7 +30,7 @@
 <nav class="navbar bg-light bg-light">
 <a class="navbar-brand" href="/">
 <img height="28" src="/resource/img/logo.png"/>
-      PLNET
+      CGORUST
     </a>
 
 
@@ -39,25 +39,36 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">string in C</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Strings in C are always represented as an array of characters having null character '\0' at the end of the string. This null character denotes the end of the string. Strings in C are enclosed within double quotes, while characters are enclosed within single characters. The size of a string is a number of characters that the string contains.
-The following declaration and initialization create a string consisting of the word "Hello". To hold the null character at the end of the array, the size of the character array containing the string is one more than the number of characters in the word "Hello."
+<pre id="word_content" style="white-space: pre-wrap;">Strings in C are always represented as an array of characters having null character '\0' at the end. This null character denotes the end of the string. 
+Strings in C are enclosed within double quotes, while characters are enclosed within single characters. The size of a string is a number of characters that the string contains.
+The following declaration and initialisation create a string consisting of the word "Hello". To hold the null character at the end of the array, the size of the character array containing the string is one more than the number of characters in the word "Hello".
 ```
 char greeting[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
 ```
-If you follow the rule of array initialization then you can write the above statement as follows −
+If you follow the rule of array initialisation then you can write the above statement as follows:
 ```
 char greeting[] = "Hello";
 ```
-Below are some string functions in C,
-Function | Description
------ | -----
-strcpy(s1, s2); | Copies string s2 into string s1.
-strcat(s1, s2); | Concatenates string s2 onto the end of string s1.
-strlen(s1); | Returns the length of string s1.
-strcmp(s1, s2); | Returns 0 if s1 and s2 are the same; less than 0 if s1&lt;s2; greater than 0 if s1&gt;s2.
-strchr(s1, ch); | Returns a pointer to the first occurrence of character ch in string s1.
-strstr(s1, s2); | Returns a pointer to the first occurrence of string s2 in string s1.
-</pre>
+Example of C strings.
+```
+#include &lt;stdio.h&gt;
+
+int main () 
+{
+  char greeting[6] = { 'H', 'e', 'l', 'l', 'o', '\0' };
+  printf ("Greeting message: %s\n", greeting);
+
+  char greeting2[] = "Hello";
+  printf ("Greeting message 2: %s\n", greeting2);
+
+  return 0;
+}
+```
+Output:
+```
+Greeting message: Hello
+Greeting message 2: Hello
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Composite_data_type_in_c">Composite data type in c</a>, <a href="/dictionary/String">String</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/String_literal_in_c">String literal in c</a></button>
@@ -68,7 +79,7 @@ strstr(s1, s2); | Returns a pointer to the first occurrence of string s2 in stri
         document.getElementById("year").innerHTML = new Date().getFullYear();
     </script>
 <div class="text-center text-primary">
-<a href="/">plnet.com 2018 - 
+<a href="/">cgorust.com 2018 - 
             <script>
                 var CurrentYear = new Date().getFullYear()
                 document.write(CurrentYear)
