@@ -37,71 +37,53 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">integer in Go</span></h1>
+<h1><span class="badge badge-primary">integer in C#</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Type | Storage size | Value range
 --- | --- | --- 
-int8 | 1 byte | -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1
-uint8 | 1 byte | 0 to 2&lt;sup&gt;8&lt;/sup&gt;-1
-byte	| 1 byte | alias for uint8
-int16 | 2 bytes | -2&lt;sup&gt;15&lt;/sup&gt; to 2&lt;sup&gt;15&lt;/sup&gt;-1
-uint16| 2 bytes | 0 to 2&lt;sup&gt;16&lt;/sup&gt;-1
-int32 | 4 bytes | -2&lt;sup&gt;31&lt;/sup&gt; to 2&lt;sup&gt;31&lt;/sup&gt;-1
-rune	| 4 bytes | alias for int32 (represents a Unicode code point)
-uint32 | 4 bytes | 0 to 2&lt;sup&gt;32&lt;/sup&gt;-1
-int | 4 bytes or 8 bytes | -2&lt;sup&gt;31&lt;/sup&gt; to 2&lt;sup&gt;31&lt;/sup&gt;-1 or 2&lt;sup&gt;63&lt;/sup&gt; to 2&lt;sup&gt;63&lt;/sup&gt;-1
-uint | 4 bytes or 8 bytes | 0 to 2&lt;sup&gt;32&lt;/sup&gt;-1 or 0 to 2&lt;sup&gt;64&lt;/sup&gt;-1
-uintptr | 4 bytes or 8 bytes | an unsigned integer large enough to store the uninterpreted bits of a pointer value
-int64 | 8 bytes | -2&lt;sup&gt;63&lt;/sup&gt; to 2&lt;sup&gt;63&lt;/sup&gt;-1
-uint64 | 8 bytes | 0 to 2&lt;sup&gt;64&lt;/sup&gt;-1
+sbyte | 1 byte | -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1
+byte | 1 byte | 0 to 2&lt;sup&gt;8&lt;/sup&gt;-1
+short | 2 bytes | -2&lt;sup&gt;15&lt;/sup&gt; to 2&lt;sup&gt;15&lt;/sup&gt;-1
+ushort | 2 bytes | 0 to 2&lt;sup&gt;16&lt;/sup&gt;-1
+int | 4 bytes | -2&lt;sup&gt;31&lt;/sup&gt; to 2&lt;sup&gt;31&lt;/sup&gt;-1
+uint | 4 bytes | 0 to 2&lt;sup&gt;32&lt;/sup&gt;-1
+nint | 4 bytes or 8 bytes | -2&lt;sup&gt;31&lt;/sup&gt; to 2&lt;sup&gt;31&lt;/sup&gt;-1 or -2&lt;sup&gt;63&lt;/sup&gt; to 2&lt;sup&gt;63&lt;/sup&gt;-1
+nuint | 4 bytes or 8 bytes | 0 to 2&lt;sup&gt;32&lt;/sup&gt;-1 or 0 to 2&lt;sup&gt;64&lt;/sup&gt;-1
+long | 8 bytes | -2&lt;sup&gt;63&lt;/sup&gt; to 2&lt;sup&gt;63&lt;/sup&gt;-1
+ulong | 8 bytes | 0 to 2&lt;sup&gt;64&lt;/sup&gt;-1
+long long | 8 bytes | -2&lt;sup&gt;63&lt;/sup&gt; to 2&lt;sup&gt;63&lt;/sup&gt;-1
+unsigned long long | 8 bytes | 0 to 2&lt;sup&gt;64&lt;/sup&gt;-1
 
-The uintptr is there to bypass the type system and allow Go to write runtime libraries, including the garbage collection system, in Go, and to call C-callable code including system calls using C pointers that are not handled by Go at all. If you're an implementer - e.g., providing access to system calls on a new OS - you'll need uintptr. 
-
+You can use the nint and nuint keywords to define native-sized integers. These are 32-bit integers when running in a 32-bit process, or 64-bit integers when running in a 64-bit process. They can be used to optimise performance in scenarios where integer maths is used extensively.
 ```
-package main
-import "fmt"
-
-func main() {
-    var i8 int8 = -1
-    fmt.Println(i8)
-    var ui8 uint8 = 1
-    fmt.Println(ui8)
-    var b byte = 1
-    fmt.Println(b)
-    var i16 int16 = -1
-    fmt.Println(i16)
-    var ui16 int16 = 1
-    fmt.Println(ui16)
-    var i32 int32 = -1
-    fmt.Println(i32)
-    var r rune = 1
-    fmt.Println(r)
-    var ui32 uint32 = 1
-    fmt.Println(ui32)
-    var i int = -1
-    fmt.Println(i)
-    var ui uint = 1
-    fmt.Println(ui)
-    var uip uintptr = 1
-    fmt.Println(uip)
-    var i64 int64 = -1
-    fmt.Println(i64)
-    var ui64 uint64 = 1
-    fmt.Println(ui64)
+using System;
+ 
+namespace HelloWorld
+{
+    class Hello {         
+        static void Main(string[] args)
+        {
+            sbyte sb = 1; Console.WriteLine(sb);
+            byte b = 1; Console.WriteLine(b);
+            short s = -1; Console.WriteLine(s);
+            ushort us = 1; Console.WriteLine(us);
+            int i = -1; Console.WriteLine(i);
+            uint ui = 1; Console.WriteLine(ui);
+            //nint ni = -1; Console.WriteLine(ni);
+            //nuint nui = 1; Console.WriteLine(nui);
+            long l = -1; Console.WriteLine(l);
+            ulong ul = 1; Console.WriteLine(ul);
+        }
+    }    
 }
 ```
 Outputs:
 ```
--1
 1
 1
 -1
 1
 -1
-1
-1
--1
-1
 1
 -1
 1
@@ -109,7 +91,7 @@ Outputs:
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_go">Data type in go</a>, <a href="/dictionary/Integer">Integer</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Integer">Integer</a>, <a href="/dictionary/Number_in_c%23">Number in c#</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

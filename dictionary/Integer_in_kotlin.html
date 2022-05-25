@@ -41,17 +41,35 @@
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Type | Storage size | Value range
 --- | --- | --- 
-Byte | 1  byte | -128 to 127
-Short | 2  bytes | -32768 to 32767
-Int | 4  bytes | -2147483648 to 2147483647
-Long | 8  bytes | -huge to (huge - 1)
+Byte | 1 byte | -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1
+Short | 2 bytes | -2&lt;sup&gt;15&lt;/sup&gt; to 2&lt;sup&gt;15&lt;/sup&gt;-1
+Char | 1 byte | 2&lt;sup&gt;16&lt;/sup&gt;-1
+Int | 4 bytes | -2&lt;sup&gt;31&lt;/sup&gt; to 2&lt;sup&gt;31&lt;/sup&gt;-1
+Long | 8 bytes | -2&lt;sup&gt;63&lt;/sup&gt; to 2&lt;sup&gt;63&lt;/sup&gt;-1
 
-* Assign a binary number by prefixing the number with 0b. x = 0b10
-* Assign a hexadecimal number by prefixing the number with 0x. y = 0xAB
-* Octal numbers aren’t supported.</pre>
+Kotlin does not support unsigned data types. The byte, short, int, and long are all signed data types. For a signed data type, half of the range of values stores positive number and half for negative numbers, as one bit is used to store the sign of the value.
+Char is Unicode character range from '\u0000' (or 0) to '\uffff' (or 2&lt;sup&gt;16&lt;/sup&gt;-1 inclusive)
+```
+fun main() {
+    var b:Byte = -1; println(b); 
+    var c:Char = 1.toChar(); println(c.toInt());
+    var s:Short = -1; println(s);
+    var i:Int = -1; println(i);
+    var l:Long = -1; println(l);
+}
+```
+Outputs:
+```
+-1
+1
+-1
+-1
+-1
+```
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Integer">Integer</a>, <a href="/dictionary/Number_in_kotlin">Number in kotlin</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_kotlin">Data type in kotlin</a>, <a href="/dictionary/Integer">Integer</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

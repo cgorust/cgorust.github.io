@@ -39,16 +39,39 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">integer in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">|name|meaning|value range|default value|
-|---|---|---|---|
-|byte | 8-bit integer | -128 to 127 (inclusive) | 0 |
-|short | 16-bit signed integer | -32,768 to 32,767 (inclusive)| 0 |
-|int | 32-bit integer | -2^31 to 2^31-1 for signed; 0 to 2^32-1 for unsigned| 0 | 
-|long | 64-bit integer | -2^63 to 2^63-1 for signed; 0 to 2^64-1 for unsigned| 0l/L |
-|char | 16-bit Unicode character | \u0000' (or 0) to '\uffff' (or 65,535 inclusive)| '\u0000' |</pre>
+<pre id="word_content" style="white-space: pre-wrap;">Type | Storage size | Value range
+--- | --- | --- 
+byte | 1 byte | -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1
+char | 2 bytes | 0 to 2&lt;sup&gt;16&lt;/sup&gt;-1
+short | 2 bytes | -2&lt;sup&gt;15&lt;/sup&gt; to 2&lt;sup&gt;15&lt;/sup&gt;-1
+int | 4 bytes | -2&lt;sup&gt;31&lt;/sup&gt; to 2&lt;sup&gt;31&lt;/sup&gt;-1
+long | 8 bytes | -2&lt;sup&gt;63&lt;/sup&gt; to 2&lt;sup&gt;63&lt;/sup&gt;-1
+
+Java does not support unsigned data types. The byte, short, int, and long are all signed data types. For a signed data type, half of the range of values stores positive number and half for negative numbers, as one bit is used to store the sign of the value.
+Char is Unicode character range from '\u0000' (or 0) to '\uffff' (or 2&lt;sup&gt;16&lt;/sup&gt;-1 inclusive)
+```
+class Main {
+    public static void main(String[] args) {
+        byte b = -1; System.out.println(b); 
+        char c = 1; System.out.println((int)c);
+        short s = -1; System.out.println(s);
+        int i = -1; System.out.println(i);
+        long l = -1; System.out.println(l);
+    }
+}
+```
+Outputs:
+```
+-1
+1
+-1
+-1
+-1
+```
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Number_in_java">Number in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_java">Data type in java</a>, <a href="/dictionary/Integer">Integer</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

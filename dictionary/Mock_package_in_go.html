@@ -37,45 +37,8 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">mock package in Go</span></h1>
-<div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The mock package provides a mechanism for easily writing mock objects in place of real objects when writing test code.
-
-&lt;pre&gt;&lt;code&gt;package yours
-
-import (
-  "testing"
-  "github.com/stretchr/testify/mock"
-)
-
-type MyMockedObject struct{
-  mock.Mock
-}
-
-func (m *MyMockedObject) DoSomething(number int) (bool, error) {
-  args := m.Called(number)
-  return args.Bool(0), args.Error(1)
-}
-
-func TestSomething(t *testing.T) {
-  // create an instance of our test object
-  testObj := new(MyMockedObject)
-
-  // setup expectations
-  testObj.On("DoSomething", 123).Return(true, nil)
-
-  // call the code we are testing
-  targetFuncThatDoesSomethingWithObj(testObj)
-
-  // assert that the expectations were met
-  testObj.AssertExpectations(t)
-}
-&lt;/code&gt;&lt;/pre&gt;</pre>
-</div>
-<div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Package_in_go">Package in go</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Mokery_in_go">Mokery in go</a></button>
-</div><br/>
-<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+      Can't find! Create <a data-href="/dictionary/Mock_package_in_go" href="placeholder" id="word_create">Mock package in go</a>
+</div></main>
 <footer>
 <script>
         document.getElementById("year").innerHTML = new Date().getFullYear();

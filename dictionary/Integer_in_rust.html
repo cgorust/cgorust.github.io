@@ -39,29 +39,58 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">integer in Rust</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Size | Signed | Unsigned
---- | --- | ---
-8 bit | i8 | u8
-16 bit | i16 | u16
-32 bit | i32 | u32
-64 bit | i64 | u64
-128 bit | i128 | u128
-Arch | isize | usize
+<pre id="word_content" style="white-space: pre-wrap;">Type | Storage size | Value range
+--- | --- | --- 
+u8 | 1 byte | 0 to 2&lt;sup&gt;8&lt;/sup&gt;-1
+i8 | 1 byte | -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1
+u16 | 2 byte | 0 to 2&lt;sup&gt;16&lt;/sup&gt;-1
+i16 | 2 byte | -2&lt;sup&gt;15&lt;/sup&gt; to 2&lt;sup&gt;15&lt;/sup&gt;-1
+u32 | 4 byte | 0 to 2&lt;sup&gt;32&lt;/sup&gt;-1
+i32 | 4 byte | -2&lt;sup&gt;31&lt;/sup&gt; to 2&lt;sup&gt;31&lt;/sup&gt;-1
+u64 | 8 byte | 0 to 2&lt;sup&gt;64&lt;/sup&gt;-1
+i64 | 8 byte | -2&lt;sup&gt;63&lt;/sup&gt; to 2&lt;sup&gt;63&lt;/sup&gt;-1
+u128 | 16 byte | 0 to 2&lt;sup&gt;128&lt;/sup&gt;-1
+i128 | 16 byte | -2&lt;sup&gt;127&lt;/sup&gt; to 2&lt;sup&gt;127&lt;/sup&gt;-1
+usize | Arch | 0 to 2&lt;sup&gt;32&lt;/sup&gt;-1 or 0 to 2&lt;sup&gt;64&lt;/sup&gt;-1
+isize | Arch | -2&lt;sup&gt;31&lt;/sup&gt; to 2&lt;sup&gt;31&lt;/sup&gt;-1 or -2&lt;sup&gt;63&lt;/sup&gt; to 2&lt;sup&gt;63&lt;/sup&gt;-1
 
 The size of an integer can be arch. This means the size of the data type will be derived from the architecture of the machine. An integer the size of which is arch will be 32 bits on an x86 machine and 64 bits on an x64 machine. An arch integer is primarily used when indexing some sort of collection.
-Each signed variant can store numbers from -(2^(n-1) to 2^(n-1) -1, where n is the number of bits that variant uses. For example, i8 can store numbers from -(2^7) to 2^7 -1 − here we replaced n with 8.
-Each unsigned variant can store numbers from 0 to (2^n)-1. For example, u8 can store numbers from 0 to 2^7, which is equal to 0 to 255.
-An integer overflow occurs when the value assigned to an integer variable exceeds the Rust defined range for the data type. On execution, data overflow will return a warning. The overflow values will be truncated. 
 ```
-   let result = 10;    // i32 by default
-   let age:u32 = 20;
-   let sum:i32 = 30;
-   let mark:isize = 10;
-   let count:usize = 30;
+fn main() {
+    let v = -1; println!("{}", v);
+    let vu8:u8 = 1; println!("{}", vu8);
+    let vi8:i8 = -1; println!("{}", vi8);
+    let vu16:u16 = 1; println!("{}", vu16);
+    let vi16:i16 = -1; println!("{}", vi16);
+    let vu32:u32 = 1; println!("{}", vu32);
+    let vi32:i32 = -1; println!("{}", vi32);
+    let vu64:u64 = 1; println!("{}", vu64);
+    let vi64:i64 = -1; println!("{}", vi64);
+    let vu128:u128 = 1; println!("{}", vu128);
+    let vi128:i128 = -1; println!("{}", vi128);
+    let vusize:usize = 1; println!("{}", vusize);
+    let visize:isize = -1; println!("{}", visize);
+}
+```
+Output:
+```
+-1
+1
+-1
+1
+-1
+1
+-1
+1
+-1
+1
+-1
+1
+-1
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Integer">Integer</a>, <a href="/dictionary/Primitive_data_type_in_rust">Primitive data type in rust</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Decimal_separator_in_rust">Decimal separator in rust</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Integer_literal_in_rust">Integer literal in rust</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_rust">Data type in rust</a>, <a href="/dictionary/Integer">Integer</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Decimal_separator_in_rust">Decimal separator in rust</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Integer_literal_in_rust">Integer literal in rust</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
