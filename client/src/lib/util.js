@@ -14,7 +14,7 @@ class Util {
 export { Util };
 
 if (false) {
-	Util.getJSON("/code/client/config/config.json").then(data => { 
+	Util.getJSON("/client/config/config.json").then(data => { 
 		console.log(data);
   });
 }

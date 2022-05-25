@@ -119,6 +119,7 @@ $(document).ready(function() {
     $.post(main.data('href') , 
       {},
       function(returnedData){
+        //console.log(returnedData);
         $("main").html(returnedData);
       }
     );

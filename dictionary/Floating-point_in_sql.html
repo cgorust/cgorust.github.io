@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+Floating-point_in_sqlselect caption, content from dictionary where title = 'Floating-point_in_sql'<!DOCTYPE html>
 
 <html>
 <head>
@@ -37,29 +37,30 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">floating-point in SQL</span></h1>
+<h1><span class="badge badge-primary">floating-point in sql</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Numeric data types are used to store numeric values. It is very important to make sure range of your data is between lower and upper boundaries of numeric data types. 
-Type |Value
------|-----
-TINYINT( ) |-128 to 127 normal &lt;br&gt;0 to 255 UNSIGNED.
-SMALLINT( ) |-32768 to 32767 normal &lt;br&gt;0 to 65535 UNSIGNED.
-MEDIUMINT( ) |-8388608 to 8388607 normal &lt;br&gt;0 to 16777215 UNSIGNED.
-INT( ) |-2147483648 to 2147483647 normal &lt;br&gt;0 to 4294967295 UNSIGNED.
-BIGINT( ) |-9223372036854775808 to 9223372036854775807 normal &lt;br&gt;0 to 18446744073709551615 UNSIGNED.
-FLOAT |A small approximate number with a floating decimal point.
-DOUBLE( , ) |A large number with a floating decimal point.
-DECIMAL( , ) |A DOUBLE stored as a string , allowing for a fixed decimal point. Choice for storing currency values. 
-</pre>
+<pre id="word_content" style="white-space: pre-wrap;">Type | Storage size 
+--- | --- 
+float | 4 byte 
+double | 8 byte 
+
+You can specify explicit precision and scale values in the column definition to indicate the number of significant digits and the number of decimal places to the right of the decimal point. The following definitions specify a single-precision column with a precision of 10 digits and scale of 3 decimals, and a double-precision column with a precision of 20 digits and scale of 7 decimals:
+```
+weight FLOAT(10,3)
+avg_score DOUBLE(20,7)
+```
+If you specify no precision or scale, MySQL represents values stored in FLOAT and DOUBLE columns to the maximum accuracy allowed by the hardware of the MySQL server host. The following definitions include no explicit precision or scale:
+```
+float_col FLOAT
+double_col DOUBLE
+```
+Floating-point values are stored using mantissa/exponent representation, which means that the precision is defined by the width of the mantissa and the scale varies depending on the exponent value. The result of these factors is that stored values are approximate.</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_sql">Data type in sql</a>, <a href="/dictionary/Floating-point">Floating-point</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
-<script>
-        document.getElementById("year").innerHTML = new Date().getFullYear();
-    </script>
 <div class="text-center text-primary">
 <a href="/">cgorust.com 2018 - 
             <script>
