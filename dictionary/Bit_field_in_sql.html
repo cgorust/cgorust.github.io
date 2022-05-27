@@ -37,12 +37,18 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">Data structure in c++</span></h1>
+<h1><span class="badge badge-primary">bit field in SQL</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">The BIT data type represents bit-field values. BIT column specifications take a width indicating the number of bits per value, from 1 to 64 bits. The following columns store 4 and 20 bits per value, respectively:
+```
+bit_col1 BIT(4)
+bit_col2 BIT(20)
+```
+For a BIT(n) column, the range of values is 0 to 2 n – 1, and the storage requirement is approximately INT((n+7)/8) bytes per value.
+BIT columns can be assigned values using numeric expressions. To write literal bit values in binary format, the literal-value notation b’val’ can be used, where val indicates a value consisting of the binary digits 0 and 1. For example, b’1111’ equals 15 and b’1000000’ equals 64.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure">Data structure</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/C++">C++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Bit_array_in_c++">Bit array in c++</a>, <a href="/dictionary/Dictionary_in_c++">Dictionary in c++</a>, <a href="/dictionary/List_in_c++">List in c++</a>, <a href="/dictionary/Tuple_in_c++">Tuple in c++</a>, <a href="/dictionary/Vector_in_c++">Vector in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Bit_field">Bit field</a>, <a href="/dictionary/Data_type_in_sql">Data type in sql</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

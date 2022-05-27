@@ -46,35 +46,33 @@ using namespace std;
 
 class Person { 
 public:
-    Person(int x)  { cout &lt;&lt; "Person::Person(int ) called" &lt;&lt; endl;   }
+    Person()  { cout &lt;&lt; "Person::Person()" &lt;&lt; endl;   }
 };
-  
 class Faculty : public Person {
 public:
-    Faculty(int x):Person(x)   { cout&lt;&lt;"Faculty::Faculty(int ) called"&lt;&lt; endl;}
+    Faculty():Person()  { cout&lt;&lt;"Faculty::Faculty()"&lt;&lt; endl;}
 };
-  
 class Student : public Person {
 public:
-    Student(int x):Person(x) { cout&lt;&lt;"Student::Student(int ) called"&lt;&lt; endl;}
+    Student():Person() { cout&lt;&lt;"Student::Student()"&lt;&lt; endl;}
 };
-  
 class TA : public Faculty, public Student  {
 public:
-    TA(int x):Student(x), Faculty(x)   { cout&lt;&lt;"TA::TA(int ) called"&lt;&lt; endl;}
+    TA():Student(), Faculty()   { cout&lt;&lt;"TA::TA()"&lt;&lt; endl;}
 };
-  
+
 int main()  {
-    TA ta(30);
+    TA ta;
+    return 0;
 }
 ```
 Output is,
 ```
-Person::Person(int ) called
-Faculty::Faculty(int ) called
-Person::Person(int ) called
-Student::Student(int ) called
-TA::TA(int ) called
+Person::Person()
+Faculty::Faculty()
+Person::Person()
+Student::Student()
+TA::TA()
 ```
 In the above program, constructor of ‘Person’ is called two times. Destructor of ‘Person’ will also be called two times when object ‘ta’ is destructed. So object ‘ta’ has two copies of all members of ‘Person’, this causes ambiguities. The solution to this problem is ‘virtual’ keyword. We make the classes ‘Faculty’ and ‘Student’ as virtual base classes to avoid two copies of ‘Person’ in ‘TA’ class. For example, consider the following program.
 ```
@@ -83,32 +81,70 @@ using namespace std;
 
 class Person { 
 public:
-   Person(int x)  { cout &lt;&lt; "Person::Person(int ) called" &lt;&lt; endl;   }
+    Person()  { cout &lt;&lt; "Person::Person()" &lt;&lt; endl;   }
 };
-  
 class Faculty : virtual public Person {
 public:
-    Faculty(int x):Person(x)   { cout&lt;&lt;"Faculty::Faculty(int ) called"&lt;&lt; endl;}
+    Faculty():Person()  { cout&lt;&lt;"Faculty::Faculty()"&lt;&lt; endl;}
 };
-  
 class Student : virtual public Person {
 public:
-    Student(int x):Person(x) { cout&lt;&lt;"Student::Student(int ) called"&lt;&lt; endl;}
+    Student():Person() { cout&lt;&lt;"Student::Student()"&lt;&lt; endl;}
 };
-  
 class TA : public Faculty, public Student  {
 public:
-    TA(int x):Student(x), Faculty(x), Person(x)   { cout&lt;&lt;"TA::TA(int ) called"&lt;&lt; endl;}
+    TA():Student(), Faculty()   { cout&lt;&lt;"TA::TA()"&lt;&lt; endl;}
 };
-  
+
 int main()  {
-    TA ta(30);
+    TA ta;
+    return 0;
 }
+```
+Output:
+```
+Person::Person()
+Faculty::Faculty()
+Student::Student()
+TA::TA()
+```
+In Python, the diamond problem is not a issue cause constructors are overwrited.
+```
+class A:
+    def __init__(self):
+        print("A")
+ 
+ 
+class B(A):
+    def __init__(self):
+        super().__init__()
+        print("B")
+ 
+ 
+class C(A):
+    def __init__(self):
+        super().__init__()
+        print("C")
+ 
+ 
+class D(B, C):
+    def __init__(self):
+        super().__init__()
+        print("D")
+        
+o = D()
+```
+Output:
+```
+A
+C
+B
+D
 ```
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Multiple_inheritance">Multiple inheritance</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Multiple_inheritance">Multiple inheritance</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Virtual_inheritance">Virtual inheritance</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

@@ -39,29 +39,30 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">goroutine</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A goroutine is a piece of code scheduled by Go, not the OS. Code in a goroutine can run concurrently with other code. Goroutine runs in a M:N threading model, that is, we have M goroutines running on N OS threads.
+<pre id="word_content" style="white-space: pre-wrap;">A goroutine is a piece of code scheduled by Go, not the OS. Code in a goroutine can run concurrently with other code. Goroutine runs in a M:N threading model, that is, we have M goroutines running on N OS threads.The Go runtime multiplexes a potentially large number of goroutines onto a smaller number of OS threads, and goroutines blocked on I/O are handled efficiently using epoll or similar facilities. Goroutines have tiny stacks that grow as needed, so it is practical to have hundreds of thousands of goroutines in your program. This allows the programmer to use concurrency to structure their program without being overly concerned with thread overhead.
 To start a goroutine, we use the &lt;b&gt;go&lt;/b&gt; keyword followed by the function we want to execute. 
-
-&lt;pre&gt;&lt;code&gt;package main
-
+```
+package main
 import (
-	"fmt"
-	"time"
+    "fmt"
+    "time"
 )
 
-func main() {
-	go process()
+func main (){
+    go process ()
+    time.Sleep(2 * time.Second); // let goroutine has time to print
 }
 
-func process() {
-	fmt.Println("processing")
-}&lt;/code&gt;&lt;/pre&gt;
-
+func process () {
+    fmt.Println ("processing")
+}
+```
 Anonymous function can also be used with goroutine.
-&lt;pre&gt;&lt;code&gt;go func() {
+```
+go func() {
 	fmt.Println("processing")
 }()
-&lt;/code&gt;&lt;/pre&gt;</pre>
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Concurrency_in_go">Concurrency in go</a></button>

@@ -44,32 +44,42 @@
 package main
 
 import (
-	"fmt"
-	"math/rand"
-	"time"
+    "fmt"
+    "math/rand"
+    "time"
 )
 
 func main() {
-	c := make(chan int)
+    c := make(chan int)
 
-	for i := 0; i &lt; 5; i++ {
-		worker := &amp;Worker{ id: i}
-		go worker.process(c)
-	}
-	time.Sleep(time.Millisecond * 50)
-	for i := 0; i &lt; 20; i++ {
-		c &lt;- rand.Int()
-	}
+    for i := 0; i &lt; 5; i++ {
+        worker := &amp;Worker{ id: i}
+        go worker.process(c)
+    }
+
+    time.Sleep(time.Millisecond * 50)
+    for i := 0; i &lt; 10; i++ {
+        c &lt;- rand.Int()
+    }
 }
 
 type Worker struct{ id int }
 
 func (w *Worker) process(c chan int) {
-	for {
-		data := &lt;-c
-		fmt.Printf("worker%d got%d\n", w.id, data)
-	}
+    for {
+        data := &lt;-c
+        fmt.Printf("worker %d got %d\n", w.id, data)
+    }
 }
+```
+Output:
+```
+worker 1 got 8674665223082153551
+worker 1 got 6334824724549167320
+worker 4 got 3916589616287113937
+worker 4 got 1443635317331776148
+worker 2 got 6129484611666145821
+worker 1 got 605394647632969758
 ```
 One thing to understand here is that when reading from the channel, we block till we get a message. The sender and receiver, both have to be ready. That is, we can’t send till there is a corresponding receive for that channel. One might wonder how channels can be made unblocking. This is accomplished using buffered channels. Buffered channels are channels which are initialized with a buffer
 ```

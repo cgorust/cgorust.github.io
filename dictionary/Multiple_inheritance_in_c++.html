@@ -46,21 +46,27 @@ using namespace std;
 
 class A {
 public:
-  A()  { cout &lt;&lt; "A's constructor called" &lt;&lt; endl; }
+  A()  { cout &lt;&lt; "A: constructor" &lt;&lt; endl; }
 };
 class B {
 public:
-  B()  { cout &lt;&lt; "B's constructor called" &lt;&lt; endl; }
+  B()  { cout &lt;&lt; "B: constructor" &lt;&lt; endl; }
 };
-class C: public B, public A {
+class C: public A, public B {
 public:
-  C()  { cout &lt;&lt; "C's constructor called" &lt;&lt; endl; }
+  C()  { cout &lt;&lt; "C: constructor" &lt;&lt; endl; }
 };
 
 int main() {
     C c;
     return 0;
 }
+```
+Output:
+```
+A: constructor
+B: constructor
+C: constructor
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
