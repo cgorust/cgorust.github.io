@@ -39,7 +39,38 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">deadlock</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"> A set of processes is deadlocked if each process in the set is waiting for an event that only another process in the set can cause.</pre>
+<pre id="word_content" style="white-space: pre-wrap;"> A set of processes is deadlocked if each process in the set is waiting for an event that only another process in the set can cause.
+```
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    c1 := make(chan int)
+    c2 := make(chan int)
+
+    go func() {
+        fmt.Println("push c2")
+        c2 &lt;- 10 
+        time.Sleep(time.Second * 1)
+        g := &lt;- c1 
+        fmt.Println("get g", g)
+    }()
+
+    go func() {
+        fmt.Println("push c1")
+        c1 &lt;- 10 
+        time.Sleep(time.Second * 1)
+        g := &lt;- c2 
+        fmt.Println("get g", g)
+    }()
+
+    time.Sleep(time.Second * 5)
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Process">Process</a></button>
