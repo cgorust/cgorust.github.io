@@ -81,7 +81,9 @@ worker 4 got 1443635317331776148
 worker 2 got 6129484611666145821
 worker 1 got 605394647632969758
 ```
-One thing to understand here is that when reading from the channel, we block till we get a message. The sender and receiver, both have to be ready. That is, we can’t send till there is a corresponding receive for that channel. One might wonder how channels can be made unblocking. This is accomplished using buffered channels. Buffered channels are channels which are initialized with a buffer
+One thing to understand here is that when reading from the channel, we block till we get a message. The sender and receiver, both have to be ready. That is, we can’t send till there is a corresponding receive for that channel. 
+When we send data into the channel using a goroutine, it will be blocked until the data is consumed by another goroutine. When we receive data from channel using a goroutine, it will be blocked until the data is available in the channel.
+One might wonder how channels can be made unblocking. This is accomplished using buffered channels. Buffered channels are channels which are initialized with a buffer:
 ```
 chan := make(chan int, 10)
 ```
