@@ -44,32 +44,67 @@
 package main
 
 import (
-    "fmt"
-    "time"
+	"fmt"
+	"sync"
+	"time"
 )
 
 func main() {
-    c1 := make(chan int)
-    c2 := make(chan int)
+	c1 := make(chan int)
+	c2 := make(chan int)
 
-    go func() {
-        fmt.Println("push c2")
-        c2 &lt;- 10 
-        time.Sleep(time.Second * 1)
-        g := &lt;- c1 
-        fmt.Println("get g", g)
-    }()
+	var wg sync.WaitGroup
 
-    go func() {
-        fmt.Println("push c1")
-        c1 &lt;- 10 
-        time.Sleep(time.Second * 1)
-        g := &lt;- c2 
-        fmt.Println("get g", g)
-    }()
+	wg.Add(1)
+	go func() {
+		fmt.Println("push c2")
+		c2 &lt;- 10
+		time.Sleep(time.Second * 1)
+		g := &lt;-c1
+		fmt.Println("get g", g)
+	}()
 
-    time.Sleep(time.Second * 5)
+	wg.Add(1)
+	go func() {
+		fmt.Println("push c1")
+		c1 &lt;- 10
+		time.Sleep(time.Second * 1)
+		g := &lt;-c2
+		fmt.Println("get g", g)
+	}()
+
+	wg.Wait()
 }
+```
+Output:
+```
+push c1
+push c2
+fatal error: all goroutines are asleep - deadlock!
+
+goroutine 1 [semacquire]:
+sync.runtime_Semacquire(0xc000016098)
+        /usr/local/go/src/runtime/sema.go:56 +0x39
+sync.(*WaitGroup).Wait(0xc000016090)
+        /usr/local/go/src/sync/waitgroup.go:130 +0x65
+main.main()
+        /home/main.go:33 +0x110
+
+goroutine 5 [chan send]:
+main.main.func1(0xc0000660c0, 0xc000066060)
+        /home/main.go:18 +0xa4
+created by main.main
+        /home/main.go:16 +0xbf
+
+goroutine 6 [chan send]:
+main.main.func2(0xc000066060, 0xc0000660c0)
+        /home/main.go:27 +0xa4
+created by main.main
+        /home/main.go:25 +0x102
+
+
+...Program finished with exit code 0
+Press ENTER to exit console.
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
