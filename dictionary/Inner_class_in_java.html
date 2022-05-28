@@ -39,47 +39,46 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">inner class in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">An inner class instance shares with an instance of the outer class. An inner class instance has access to all members of the outer class, even those marked private.
-To instantiate an inner class form within the outer class.
-&lt;pre&gt;&lt;code&gt;
-class Outer {
-  private int i = 1;
-  private class Inner {
-    private void say() {
-      System.out.println(i);
-    }
-  }
-  private void create() {
-    Inner inner = new Inner();
-    inner.say();
-  }
+<pre id="word_content" style="white-space: pre-wrap;">A inner class is defined at the member level of a class (the same level as the methods, instance variables, and constructors). 
+Inner classes have the following properties:
+* Can be declared public, protected, private, or use default access
+* Can extend any class and implement any number of interfaces
+* Can be abstract 
+* Can be final
+* Can access instance members of enclosing class including private members
+* Can not access local variables of enclosing class
+* Can not declare static fields or methods
 
-  public static void main(String[] args) {
-    Outer outer = new Outer();
-    outer.create();
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-To create an inner class object from outside the outer class instance code.
-&lt;pre&gt;&lt;code&gt;
-class Outer {
-  private int i = 1;
-  private class Inner {
-    private void say() {
-      System.out.println(i);
-    }
-  }
+```
+public class Main {
+    private int x = 10;
 
-  public static void main(String[] args) {
-    Outer outer = new Outer();
-    Outer.Inner inner = outer.new Inner();
-    inner.say();
-  }
+    class B {
+        private int x = 20;
+
+        class C {
+            private int x = 30;
+
+            public void allTheX() {
+                System.out.println(x); //30
+                System.out.println(this.x); //30
+                System.out.println(B.this.x); //20
+                System.out.println(Main.this.x); //10
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Main a = new Main();
+        Main.B b = a.new B();
+        Main.B.C c = b.new C();
+        c.allTheX();
+    }
 }
-&lt;/code&gt;&lt;/pre&gt;</pre>
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Inner_class">Inner class</a>, <a href="/dictionary/Nested_class_in_java">Nested class in java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Anonymous_inner_class_in_java">Anonymous inner class in java</a>, <a href="/dictionary/Member_inner_class_in_java">Member inner class in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Anonymous_class_in_java">Anonymous class in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Inner_class">Inner class</a>, <a href="/dictionary/Nested_class_in_java">Nested class in java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Anonymous_inner_class_in_java">Anonymous inner class in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

@@ -48,9 +48,17 @@
 * Can not access local variables of a method     
 * Can declare static fields or methods.  
 ```
-class BigOuter {
-  static class Nested { }
-}
+class Main{  
+  private static int data = 30;  
+  public static class Inner{  
+   void msg() { System.out.println("data is " + data); }  
+  }
+  
+  public static void main(String args[]){  
+    Main.Inner obj = new Main.Inner();  
+    obj.msg();  
+  }  
+}  
 ```
 Importing a static nested class is interesting. You can import it using a regular import:
 ```
