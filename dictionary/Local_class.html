@@ -39,14 +39,12 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">local class</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Local classes are classes that are defined in a block. You typically find local classes defined in the body of a method.
-Local classes cannot define or declare any static members. Local classes are non-static because they have access to instance members of the enclosing block. Consequently, they cannot contain most kinds of static declarations.
-You cannot declare an interface inside a block; interfaces are inherently static. 
-You cannot declare static initializers or member interfaces in a local class.
-Local class can have static members provided that they are constant variables.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">A local class is defined within a block of statement, like a method/function. It is different than inner/nested classes in the aspect that inner classes are defined within the scope of the enclosing class, whereas, local classes operate within the scope of the enclosing method. Hence, local classes can access local variables defined in the container method, apart from accessing all members of the enclosing class.
+Classes are created to abstract out responsibilities and encapsulate logic away from the code that is using the object. Local classes have a similar functionality but restricted only to the scope of a method.
+In case you need a group of variables or a named type within a scope of a function, local classes are the way to go. </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Nested_class">Nested class</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Local_class_in_c++">Local class in c++</a>, <a href="/dictionary/Local_class_in_java">Local class in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class">Class</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Local_class_in_c++">Local class in c++</a>, <a href="/dictionary/Local_inner_class_in_java">Local inner class in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
