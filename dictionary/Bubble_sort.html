@@ -39,10 +39,20 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">bubble sort</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. The algorithm, which is a comparison sort, is named for the way smaller or larger elements "bubble" to the top of the list. </pre>
+<pre id="word_content" style="white-space: pre-wrap;">Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. The algorithm, which is a comparison sort, is named for the way smaller or larger elements "bubble" to the top of the list. 
+Bubble sort consists of n rounds. On each round, the algorithm iterates through the elements of the array. Whenever two consecutive elements are found that are not in correct order, the algorithm swaps them. The algorithm can be implemented as follows:
+```
+for (int i = 0; i &lt; n; i++) {
+  for (int j = 0; j &lt; n-1; j++) {
+    if (array[j] &gt; array[j+1]) {
+      swap(array[j],array[j+1]);
+    }
+  }
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Sorting_algorithm">Sorting algorithm</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Sorting_algorithm">Sorting algorithm</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Bubble_sort_in_go">Bubble sort in go</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
