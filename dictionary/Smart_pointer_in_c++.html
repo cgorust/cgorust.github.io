@@ -65,9 +65,12 @@ void weakPtr() {
     {
         auto p = make_shared&lt;int&gt;(6);
         wp = p;
-        if (shared_ptr&lt;int&gt; sp = wp.lock()) {
-            cout &lt;&lt;"Weak pointer is valid.";        
+        if (auto sp = wp.lock()) {
+            cout &lt;&lt;"Weak pointer is valid." &lt;&lt;endl;        
         }
+    }
+    if (auto sp = wp.lock() == NULL) {
+        cout &lt;&lt;"Weak pointer is not valid." &lt;&lt; endl;        
     }
 }
 
