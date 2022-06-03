@@ -37,20 +37,25 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">comparison operator</span></h1>
+<h1><span class="badge badge-primary">comparison operator chaining</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">There are below comparison operator,
-| Operator |  Name |  Example  
-| --- | --- | ---
-| == |  Equal to | x == y 	
-| != or &lt;\&gt; |  Not equal | x != y, x &lt;&gt; y
-| &gt; |  Greater than | x &gt; y 	
-| &lt; |  Less than | x &lt; y 	
-| &gt;= | Greater than or equal to | x &gt;= y 	
-| &lt;= | Less than or equal to | x &lt;= y</pre>
+<pre id="word_content" style="white-space: pre-wrap;">Checking more than two conditions is very common in Programming Languages. Let’s say we want to check the below condition:
+```
+a &lt; b &lt; c
+```
+The most common syntax to do it is as follows:
+```
+if a &lt; b and b &lt; c :
+   {...}
+```
+In Python, there is a better way to write this using comparison operator chaining. The chaining of operators can be written as follows:
+```
+if a &lt; b &lt; c :
+    {.....}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Operator">Operator</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Comparison_operator_chaining">Comparison operator chaining</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Comparison_operator">Comparison operator</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
