@@ -37,12 +37,25 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-      Can't find! Create <a data-href="/dictionary/Type_coercion" href="placeholder" id="word_create">Type coercion</a>
-</div></main>
+<h1><span class="badge badge-primary">type coercion</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">Type Coercion refers to the process of automatic or implicit conversion of values from one data type to another. This includes conversion from Number to String, String to Number, Boolean to Number etc. when different types of operators are applied to the values.
+JavaScript’s equality operator (==) coerces its arguments, leading to unexpected behaviour:
+```
+if ("" == 0) {
+  console.log("Unexpected behavior")
+}
+x = 100
+if (1 &lt; x &lt; 3) { //1 &lt; x &lt; 3 actually is doing this: (1 &lt; x) &lt; 3, where (1 &lt; x) is 0 or 1, which is less than 3
+  console.log("Unexpected behavior")
+}
+```</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Type_conversion">Type conversion</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
-<script>
-        document.getElementById("year").innerHTML = new Date().getFullYear();
-    </script>
 <div class="text-center text-primary">
 <a href="/">cgorust.com 2018 - 
             <script>
