@@ -37,12 +37,63 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">JavaScript</span></h1>
+<h1><span class="badge badge-primary">namespace in JavaScript</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">Namespacing is the act of wrapping a set of entities, variables, functions, objects under a single umbrella term. JavaScript has various ways to do that, and seeing the examples will make the concept easier to understand.
+The simplest way to create a namespace is by creating an object literal:
+```
+const car = {
+  start: () =&gt; {
+    console.log('start')
+  },
+  stop: () =&gt; {
+    console.log('stop')
+  }
+}
+```
+In this way, start and stop are namespaced under car: car.start() and car.stop().They are not polluting the global object.
+The way works also by assigning a variable to an object after it’s created:
+```
+const car = {}
+
+car.start = () =&gt; {
+  console.log('start')
+}
+
+car.stop = () =&gt; {
+  console.log('stop')
+}
+```
+But they are still accessible from the outside, thanks to the car object reference.
+The best way to completely hide code from the outside is to wrap it into a block, which is a part of code wrapped in curly brackets, like an if or for block, but also an independent block formed like this:
+```
+{
+  const start = () =&gt; {
+    console.log('start')
+  }
+
+  const stop = () =&gt; {
+    console.log('stop')
+  }
+}
+```
+Those 2 functions are now inaccessible outside of the block. But you need to pay attention at always using let or const, which are block scoped. Using var instead would “leak” it outside of the block.
+To workaround that you can use functions, which is the “old”, pre-let/const way:
+```
+(function() {
+  var start = () =&gt; {
+    console.log('start')
+  }
+
+  const stop = () =&gt; {
+    console.log('stop')
+  }
+})()
+```
+Now start and stop are both inaccessible from the outside, even if start is assigned to a variable defined with var.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Programming_language">Programming language</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Concurrency_in_javascript">Concurrency in javascript</a>, <a href="/dictionary/Data_structure_in_javascript">Data structure in javascript</a>, <a href="/dictionary/Data_type_in_javascript">Data type in javascript</a>, <a href="/dictionary/Namespace_in_javascript">Namespace in javascript</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Namespace">Namespace</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Javascript">Javascript</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
