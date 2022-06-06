@@ -37,12 +37,71 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">composite</span></h1>
+<h1><span class="badge badge-primary">composite in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The Composite pattern lets you run a behaviour recursively over all components of an object tree. The greatest benefit of this approach is that you don't need to care about the concrete classes of objects that compose the tree. You don't need to know whether an object is a simple product or a sophisticated box.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;vector&gt;
+#include &lt;iostream&gt; 
+#include &lt;algorithm&gt; 
+#include &lt;functional&gt; 
+using namespace std;
+ 
+class Graphic {
+public:
+  virtual void draw() const = 0;
+  virtual void add(Graphic *g) {}
+  virtual void getChild(int) {}
+};
+ 
+class Line : public Graphic {
+public:
+  void draw() const {
+    cout &lt;&lt; "Line draw()\n";
+  }
+};
+
+class Rectangle : public Graphic {
+public:
+  void draw() const {
+    cout &lt;&lt; "Rectangle draw() \n";
+  }
+};
+
+// Composite
+class Picture : public Graphic {
+public:
+  void draw() const {
+    for_each(gList.begin(), gList.end(), mem_fun(&amp;Graphic::draw));
+  }
+ 
+  void add(Graphic *graphic) {
+    gList.push_back(graphic);
+  }
+ 
+private:
+  vector&lt;Graphic*&gt; gList;
+};
+ 
+int main()
+{
+  Line line;
+  line.draw();
+  
+  Rectangle rect;
+  rect.draw();
+
+  Picture pic;
+  pic.add(&amp;line);
+  pic.add(&amp;rect);
+  pic.add(&amp;rect);
+  pic.draw();
+
+  return 0;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Composite_in_c++">Composite in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Composite">Composite</a>, <a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
