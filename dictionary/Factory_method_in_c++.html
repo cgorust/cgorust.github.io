@@ -37,12 +37,53 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">design pattern</span></h1>
+<h1><span class="badge badge-primary">factory method in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Design patterns are reusable solutions that can be applied to recurring software design problems. </pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+class Shape {
+public:
+   virtual void Draw() = 0;
+   static Shape* ShapeFactory(string type);
+};
+
+class Circle : public Shape {
+public:
+   void Draw() { cout &lt;&lt; "I am circle" &lt;&lt; endl; }
+   friend class Shape;
+};
+
+class Square : public Shape {
+public:
+   void Draw() { cout &lt;&lt; "I am square" &lt;&lt; endl; }
+   friend class Shape;
+};
+
+Shape* Shape::ShapeFactory(string type) {
+    if ( type == "circle" ) return new Circle();
+    if ( type == "square" ) return new Square();
+    return NULL;
+}
+
+int main(){
+   Shape* obj1 = Shape::ShapeFactory("circle");
+   Shape* obj2 = Shape::ShapeFactory("square");
+   obj1-&gt;Draw();
+   obj2-&gt;Draw();
+}
+
+/*
+I am circle
+I am square
+*/
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Computer_science">Computer science</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Abstract_factory">Abstract factory</a>, <a href="/dictionary/Bridge">Bridge</a>, <a href="/dictionary/Builder">Builder</a>, <a href="/dictionary/Chain_of_responsibility">Chain of responsibility</a>, <a href="/dictionary/Decorator">Decorator</a>, <a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Factory_method">Factory method</a>, <a href="/dictionary/Singleton">Singleton</a>, <a href="/dictionary/Template_method">Template method</a>, <a href="/dictionary/Visitor">Visitor</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Delegation">Delegation</a>, <a href="/dictionary/Design_pattern_in_python">Design pattern in python</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Factory_method">Factory method</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
