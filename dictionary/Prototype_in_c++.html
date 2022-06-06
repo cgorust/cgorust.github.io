@@ -37,12 +37,78 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">design pattern</span></h1>
+<h1><span class="badge badge-primary">prototype in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Design patterns are reusable solutions that can be applied to recurring software design problems. </pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;string&gt;
+#include &lt;list&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+class IPerson {
+public:
+    virtual IPerson* Clone() = 0;
+    IPerson(const string&amp; sName, int id):m_sName(sName),m_ID(id) { }
+    void Show() { cout&lt;&lt;m_sName&lt;&lt;","&lt;&lt;m_ID&lt;&lt;endl; }
+private:
+    string m_sName;
+    int m_ID;
+};
+ 
+class Student: public IPerson {
+public:
+    Student(const string&amp; sName, int id):IPerson(sName, id) { }
+    IPerson* Clone() { return new Student(*this); }
+};
+
+class Teacher: public IPerson {
+public:
+    Teacher(const string&amp; sName, int id):IPerson(sName, id) {  }
+    IPerson* Clone() { return new Teacher(*this); }
+};
+ 
+class University {
+public:
+    University() {  }
+    University(const University&amp; univ){
+        for (auto it = univ.m_Members.begin(); it != univ.m_Members.end(); it++)
+            m_Members.push_back((*it)-&gt;Clone());
+    }
+    void Show(){
+        for (auto it = m_Members.begin(); it != m_Members.end(); it++)
+            (*it)-&gt;Show();
+    }
+    void AddMember( IPerson* ptr) { m_Members.push_back(ptr); }
+private:
+    list&lt;IPerson*&gt; m_Members;
+};
+
+int main() {
+    University* pUniversity = new University();
+    IPerson* ptr1 = new Student("Messi",1);
+    IPerson* ptr2 = new Student("Ronaldo",2);
+    IPerson* ptr3 = new Teacher("Scolari",3);
+    pUniversity-&gt;AddMember(ptr1);
+    pUniversity-&gt;AddMember(ptr2);
+    pUniversity-&gt;AddMember(ptr3);
+    pUniversity-&gt;Show();
+
+    University* pUniversity2 = new University(*pUniversity);
+    pUniversity2-&gt;Show();
+}
+
+/*
+Messi,1
+Ronaldo,2
+Scolari,3
+Messi,1
+Ronaldo,2
+Scolari,3
+*/
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Computer_science">Computer science</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Abstract_factory">Abstract factory</a>, <a href="/dictionary/Bridge">Bridge</a>, <a href="/dictionary/Builder">Builder</a>, <a href="/dictionary/Chain_of_responsibility">Chain of responsibility</a>, <a href="/dictionary/Decorator">Decorator</a>, <a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Factory_method">Factory method</a>, <a href="/dictionary/Prototype">Prototype</a>, <a href="/dictionary/Singleton">Singleton</a>, <a href="/dictionary/Template_method">Template method</a>, <a href="/dictionary/Visitor">Visitor</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Delegation">Delegation</a>, <a href="/dictionary/Design_pattern_in_python">Design pattern in python</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Prototype">Prototype</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
