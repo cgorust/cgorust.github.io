@@ -37,12 +37,108 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">design pattern</span></h1>
+<h1><span class="badge badge-primary">builder in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Design patterns are reusable solutions that can be applied to recurring software design problems. </pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+// Forward declaring the builder
+class EmailBuilder;
+
+class Email
+{
+  public:
+    friend class EmailBuilder;  // the builder can access Email's privates
+    
+    static EmailBuilder make();
+    
+    string to_string() const {
+        stringstream stream;
+        stream &lt;&lt; "from: " &lt;&lt; m_from
+               &lt;&lt; "\nto: " &lt;&lt; m_to
+               &lt;&lt; "\nsubject: " &lt;&lt; m_subject
+               &lt;&lt; "\nbody: " &lt;&lt; m_body;
+        return stream.str();
+    }
+    
+  private:
+    Email() = default; // restrict construction to builder
+    
+    string m_from;
+    string m_to;
+    string m_subject;
+    string m_body;
+};
+
+class EmailBuilder
+{
+  public:
+    EmailBuilder&amp; from(const string &amp;from) {
+        m_email.m_from = from;
+        return *this;
+    }
+    
+    EmailBuilder&amp; to(const string &amp;to) {
+        m_email.m_to = to;
+        return *this;
+    }
+    
+    EmailBuilder&amp; subject(const string &amp;subject) {
+        m_email.m_subject = subject;
+        return *this;
+    }
+    
+    EmailBuilder&amp; body(const string &amp;body) {
+        m_email.m_body = body;
+        return *this;
+    }
+    
+    operator Email&amp;&amp;() {
+        return std::move(m_email); // notice the move
+    }
+    
+  private:
+    Email m_email;
+};
+
+EmailBuilder Email::make()
+{
+    return EmailBuilder();
+}
+
+// Bonus example!
+std::ostream&amp; operator &lt;&lt;(std::ostream&amp; stream, const Email&amp; email)
+{
+    stream &lt;&lt; email.to_string();
+    return stream;
+}
+
+
+int main()
+{
+    Email mail = Email::make().from("me@mail.com")
+                              .to("you@mail.com")
+                              .subject("C++ builders")
+                              .body("I like this API, don't you?");
+                              
+    cout &lt;&lt; mail &lt;&lt; endl;
+}
+
+/* output
+
+from: me@mail.com
+to: you@mail.com
+subject: C++ builders
+body: I like this API, don't you?
+*/
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Computer_science">Computer science</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Builder">Builder</a>, <a href="/dictionary/Chain_of_responsibility">Chain of responsibility</a>, <a href="/dictionary/Decorator">Decorator</a>, <a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Singleton">Singleton</a>, <a href="/dictionary/Visitor">Visitor</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Delegation">Delegation</a>, <a href="/dictionary/Design_pattern_in_python">Design pattern in python</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Builder">Builder</a>, <a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
