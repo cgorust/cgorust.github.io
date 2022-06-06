@@ -55,15 +55,13 @@ class Apple : public Stock {
     void accept(Visitor *);
 };
   
-class Google : public Stock
-{
+class Google : public Stock {
   public:
     void buy() { cout &lt;&lt; "Google::buy\n"; }
     void sell() { cout &lt;&lt; "Google::sell\n"; }
     void accept(Visitor *);
 };
 
-  
 class Visitor {
 public:
     virtual void visit(Apple *) = 0;
@@ -96,8 +94,7 @@ class BuyVisitor : public Visitor {
     }
 };
   
-class SellVisitor : public Visitor
-{
+class SellVisitor : public Visitor {
   public:
     void visit(Apple *a) {
         --m_num_apple;
@@ -108,19 +105,18 @@ class SellVisitor : public Visitor
         g-&gt;sell();
     }
 };
-  
-  
+   
 int main() {
     Stock *set[] = { new Apple, new Google, new Google,
                      new Apple, new Apple, 0};
   
     BuyVisitor buy_operation;
-    SellVisitor sell_operation;
     for (int i = 0; set[i]; i++) {
         set[i]-&gt;accept(&amp;buy_operation);
     }
     buy_operation.total_stocks();
   
+    SellVisitor sell_operation;
     for (int i = 0; set[i]; i++) {
         set[i]-&gt;accept(&amp;sell_operation);
     }
