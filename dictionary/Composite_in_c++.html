@@ -71,7 +71,7 @@ public:
 class Picture : public Graphic {
 public:
   void draw() const {
-    for_each(gList.begin(), gList.end(), mem_fun(&amp;Graphic::draw));
+    for_each(gList.begin(), gList.end(), mem_fn(&amp;Graphic::draw));
   }
  
   void add(Graphic *graphic) {
