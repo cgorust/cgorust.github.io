@@ -37,12 +37,97 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">design pattern in C++</span></h1>
+<h1><span class="badge badge-primary">chain of responsibility in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+class Handler {
+public:
+  virtual Handler *SetNext(Handler *handler) = 0;
+  virtual string Handle(std::string request) = 0;
+};
+
+class AbstractHandler : public Handler {
+ private:
+  Handler *next_handler_;
+
+ public:
+  AbstractHandler() : next_handler_(nullptr) { }
+  Handler *SetNext(Handler *handler) override {
+    this-&gt;next_handler_ = handler;
+    return handler;
+  }
+  std::string Handle(std::string request) override {
+    if (this-&gt;next_handler_) {
+      return this-&gt;next_handler_-&gt;Handle(request);
+    }
+    return {};
+  }
+};
+
+class MonkeyHandler : public AbstractHandler {
+ public:
+  std::string Handle(std::string request) override {
+    if (request == "Banana") {
+      return "Monkey: I'll eat the " + request + ".\n";
+    } else {
+      return AbstractHandler::Handle(request);
+    }
+  }
+};
+
+class SquirrelHandler : public AbstractHandler {
+ public:
+  std::string Handle(std::string request) override {
+    if (request == "Nut") {
+      return "Squirrel: I'll eat the " + request + ".\n";
+    } else {
+      return AbstractHandler::Handle(request);
+    }
+  }
+};
+
+void ClientCode(Handler &amp;handler) {
+  std::vector&lt;std::string&gt; food = {"Nut", "Banana", "Cup of coffee"};
+  for (const std::string &amp;f : food) {
+    cout &lt;&lt; "Client: Who wants a " &lt;&lt; f &lt;&lt; "?\n";
+    const std::string result = handler.Handle(f);
+    if (!result.empty()) {
+      cout &lt;&lt; "  " &lt;&lt; result;
+    } else {
+      cout &lt;&lt; "  " &lt;&lt; f &lt;&lt; " was left untouched.\n";
+    }
+  }
+}
+
+int main() {
+  MonkeyHandler *monkey = new MonkeyHandler;
+  SquirrelHandler *squirrel = new SquirrelHandler;
+  monkey-&gt;SetNext(squirrel);
+
+  ClientCode(*monkey);
+
+  delete monkey;
+  delete squirrel;
+ 
+  return 0;
+}
+
+/* Output:
+  Squirrel: I'll eat the Nut.
+Client: Who wants a Banana?
+  Monkey: I'll eat the Banana.
+Client: Who wants a Cup of coffee?
+  Cup of coffee was left untouched.
+*/  
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/C++">C++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Chain_of_responsibility_in_c++">Chain of responsibility in c++</a>, <a href="/dictionary/Visitor_in_c++">Visitor in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Chain_of_responsibility">Chain of responsibility</a>, <a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

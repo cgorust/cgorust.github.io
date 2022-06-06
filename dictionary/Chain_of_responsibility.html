@@ -37,12 +37,20 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">design pattern in C++</span></h1>
+<h1><span class="badge badge-primary">chain of responsibility</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">Chain of responsibility is used to achieve loose coupling where a request from the client is passed to a chain of objects to process them. Later, the object in the chain will decide by themselves who will be processing the request and whether the request is required to be sent to the next object in the chain or not.
+Where and When Chain of Responsibility pattern is applicable : 
+* When you want to decouple a request’s sender and receiver
+* Multiple objects, determined at runtime, are candidates to handle a request
+* When you don’t want to specify handlers explicitly in your code
+* When you want to issue a request to one of several objects without specifying the receiver explicitly.
+
+This pattern is recommended when multiple objects can handle a request and the handler doesn’t have to be a specific object. Also, the handler is determined at runtime. Please note that a request not handled at all by any handler is a valid use case.
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/C++">C++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Chain_of_responsibility_in_c++">Chain of responsibility in c++</a>, <a href="/dictionary/Visitor_in_c++">Visitor in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Chain_of_responsibility_in_c++">Chain of responsibility in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
