@@ -37,12 +37,60 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">design pattern</span></h1>
+<h1><span class="badge badge-primary">template method in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Design patterns are reusable solutions that can be applied to recurring software design problems. </pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+using namespace std;
+
+class Base
+{
+    void a() {  cout &lt;&lt; "a  ";  }
+    void c() {  cout &lt;&lt; "c  ";  }
+    void e() {  cout &lt;&lt; "e  ";  }
+
+    virtual void ph1() = 0;
+    virtual void ph2() = 0;
+  public:
+    void execute() {
+        a();
+        ph1();
+        c();
+        ph2();
+        e();
+    }
+};
+
+class One: public Base {
+    void ph1() {  cout &lt;&lt; "b  ";  }
+    void ph2() {  cout &lt;&lt; "d  ";  }
+};
+
+class Two: public Base {
+    void ph1() {  cout &lt;&lt; "2  ";  }
+    void ph2() {  cout &lt;&lt; "4  ";  }
+};
+
+int main() {
+    Base *b = new One();
+    b-&gt;execute();
+    cout &lt;&lt; endl;
+    delete b;
+    
+    b = new Two();
+    b-&gt;execute();
+    cout &lt;&lt; endl;
+    delete b;
+}
+
+/*
+a  b  c  d  e  
+a  2  c  4  e 
+*/''
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Computer_science">Computer science</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Builder">Builder</a>, <a href="/dictionary/Chain_of_responsibility">Chain of responsibility</a>, <a href="/dictionary/Decorator">Decorator</a>, <a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Singleton">Singleton</a>, <a href="/dictionary/Template_method">Template method</a>, <a href="/dictionary/Visitor">Visitor</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Delegation">Delegation</a>, <a href="/dictionary/Design_pattern_in_python">Design pattern in python</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Template_method">Template method</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

@@ -37,12 +37,15 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">design pattern</span></h1>
+<h1><span class="badge badge-primary">template method</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Design patterns are reusable solutions that can be applied to recurring software design problems. </pre>
+<pre id="word_content" style="white-space: pre-wrap;">Template method design pattern is to define an algorithm as a skeleton of operations and leave the details to be implemented by the child classes. The overall structure and sequence of the algorithm are preserved by the parent class. This behavioural design pattern is one of the easiest to understand and implement. This design pattern is used popularly in framework development. This helps to avoid code duplication also.
+What the template method is saying is that sometimes, you need to do some common logic, with some sub-class specific logic interleaved with it. So the specific logic that you want to leave for each sub-class is defined as an abstract / virtual method that is left for the concrete class to implement, while the common business logic goes around it.
+If you want to make sure that the common logic is not overridden you can also mark the template method not to be overridden (with the final keyword in Java for example), so you ensure that the common code you want to be always executed is always enforced, while allowing the sub-class to override the bits you want it to.
+Think of it like a document template. The headings, footer and common elements will be there fixed and always the same, and then the specific details of what the specific document is being used for fill the blanks in between.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Computer_science">Computer science</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Builder">Builder</a>, <a href="/dictionary/Chain_of_responsibility">Chain of responsibility</a>, <a href="/dictionary/Decorator">Decorator</a>, <a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Singleton">Singleton</a>, <a href="/dictionary/Template_method">Template method</a>, <a href="/dictionary/Visitor">Visitor</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Delegation">Delegation</a>, <a href="/dictionary/Design_pattern_in_python">Design pattern in python</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Template_method_in_c++">Template method in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
