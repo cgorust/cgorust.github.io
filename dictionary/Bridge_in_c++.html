@@ -37,12 +37,81 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">design pattern in C++</span></h1>
+<h1><span class="badge badge-primary">bridge in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include&lt;cstdlib&gt;
+
+using namespace std;
+
+class IColor {
+public:
+    virtual string Color() = 0;
+};
+
+class RedColor: public IColor {
+public:
+    string Color() {
+        return "of Red Color";
+    }
+};
+
+class BlueColor: public IColor {
+public:
+    string Color() {
+        return "of Blue Color";
+    }
+};
+
+
+class IShape {
+public:
+    virtual string Draw() = 0;
+};
+
+class Circle: public IShape {
+    IColor* impl;
+public:
+    Circle(IColor *obj):impl(obj){}
+    string Draw(){
+        return "Drawn a Circle "+ impl-&gt;Color();
+    }
+};
+
+class Square: public IShape {
+    IColor* impl;
+public:
+    Square(IColor *obj):impl(obj){}
+    string Draw() {
+        return "Drawn a Square "+ impl-&gt;Color();;
+    }
+};
+
+int main() {
+    IColor* red = new RedColor();
+    IColor* blue = new BlueColor();
+
+    IShape* sq = new Square(red);
+    IShape* cr = new Circle(blue);
+
+    cout&lt;&lt;"\n"&lt;&lt;sq-&gt;Draw();
+    cout&lt;&lt;"\n"&lt;&lt;cr-&gt;Draw();
+
+    delete red;
+    delete blue;
+    return 1;
+}
+
+/* Output:
+Drawn a Square of Red Color
+Drawn a Circle of Blue Color
+*/
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/C++">C++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Bridge_in_c++">Bridge in c++</a>, <a href="/dictionary/Builder_in_c++">Builder in c++</a>, <a href="/dictionary/Chain_of_responsibility_in_c++">Chain of responsibility in c++</a>, <a href="/dictionary/Template_method_in_c++">Template method in c++</a>, <a href="/dictionary/Visitor_in_c++">Visitor in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Bridge">Bridge</a>, <a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
