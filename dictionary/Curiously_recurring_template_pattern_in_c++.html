@@ -37,15 +37,41 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">vtable</span></h1>
+<h1><span class="badge badge-primary">curiously recurring template pattern in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">vTable:
-Every class that has one or more virtual member functions in it has a vTable associated with it. vTable is a kind of function pointer array that contains the addresses all virtual functions of this class. Compiler builds this vTable at compile time.
-vPointer:
-Now for every object of a class that has a vTable associated with it, contains a vPointer in first 4 bytes. This vPointer points to the vTable of that class. This vPointer will be used to find the actual function address from vTable at run rime.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+using namespace std;
+
+template&lt;typename specific_animal&gt;
+struct animal {
+    void who() { static_cast&lt;specific_animal*&gt;(this)-&gt;who(); }
+};
+
+struct dog : animal&lt;dog&gt; {
+    void who() { cout &lt;&lt; "dog" &lt;&lt; endl; }
+};
+
+struct cat : animal&lt;cat&gt; {
+    void who() { cout &lt;&lt; "cat" &lt;&lt; endl; }
+};
+
+template&lt;typename specific_animal&gt;
+void who_am_i(animal&lt;specific_animal&gt; any) {
+    any.who();
+}
+
+int main() {
+    cat c;
+    who_am_i(c); // prints `cat`
+
+    dog d;
+    who_am_i(d); // prints `dog`
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Virtual_function">Virtual function</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Curiously_recurring_template_pattern">Curiously recurring template pattern</a>, <a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
