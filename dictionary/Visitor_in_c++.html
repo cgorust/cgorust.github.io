@@ -74,14 +74,14 @@ void Google::accept(Visitor *v) { v-&gt;visit(this); }
 
 class BuyVisitor : public Visitor {
   public:
-    void visit(Apple *r) {
+    void visit(Apple *a) {
         cout&lt;&lt;"[";
-        r-&gt;buy();
+        a-&gt;buy();
         cout &lt;&lt;"]"&lt;&lt;endl;
     }
-    void visit(Google *b) {
+    void visit(Google *g) {
         cout&lt;&lt;"[";
-        b-&gt;buy();
+        g-&gt;buy();
         cout &lt;&lt;"]"&lt;&lt;endl;
     }
 };
@@ -105,17 +105,29 @@ int main() {
     Stock *set[] = { new Apple, new Google, new Google,
                      new Apple, new Apple, 0};
   
-    BuyVisitor buy_operation;
+    BuyVisitor buy;
     for (int i = 0; set[i]; i++) {
-        set[i]-&gt;accept(&amp;buy_operation);
+        set[i]-&gt;accept(&amp;buy);
     }
 
-    SellVisitor sell_operation;
+    SellVisitor sell;
     for (int i = 0; set[i]; i++) {
-        set[i]-&gt;accept(&amp;sell_operation);
+        set[i]-&gt;accept(&amp;sell);
     }
 }
-
+```
+Output,
+```
+[Apple::buy]
+[Google::buy]
+[Google::buy]
+[Apple::buy]
+[Apple::buy]
+[Apple::sell]
+[Google::sell]
+[Google::sell]
+[Apple::sell]
+[Apple::sell]
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
