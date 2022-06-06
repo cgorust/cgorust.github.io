@@ -37,12 +37,62 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">design pattern in C++</span></h1>
+<h1><span class="badge badge-primary">flyweight pattern in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+using namespace std;
+
+class Gazillion
+{
+public:
+    Gazillion(int value_one) {
+        m_value_one = value_one;
+    }
+    ~Gazillion() { }
+    void report(int value_two) {
+        cout &lt;&lt; m_value_one &lt;&lt; value_two &lt;&lt; ' ';
+    }
+private:
+    int m_value_one;
+};
+
+class Factory
+{
+public:
+    static Gazillion *get_fly(int i) {
+        if (!s_pool[i])
+            s_pool[i] = new Gazillion(i);
+        return s_pool[i];
+    }
+    static void clean_up() {
+        for (int i = 0; i &lt; X; ++i)
+            if (s_pool[i])
+                delete s_pool[i];
+    }
+    static int X, Y;
+private:
+    static Gazillion *s_pool[];
+};
+
+int Factory::X = 6, Factory::Y = 10;
+Gazillion *Factory::s_pool[] = {
+  0, 0, 0, 0, 0, 0
+};
+
+int main()
+{
+  for (int i = 0; i &lt; Factory::X; ++i) {
+    for (int j = 0; j &lt; Factory::Y; ++j)
+      Factory::get_fly(i)-&gt;report(j);
+    cout &lt;&lt; '\n';
+  }
+  Factory::clean_up();
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/C++">C++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Abstract_factory_in_c++">Abstract factory in c++</a>, <a href="/dictionary/Adapter_pattern_in_c++">Adapter pattern in c++</a>, <a href="/dictionary/Bridge_pattern_in_c++">Bridge pattern in c++</a>, <a href="/dictionary/Builder_pattern_in_c++">Builder pattern in c++</a>, <a href="/dictionary/Chain_of_responsibility_in_c++">Chain of responsibility in c++</a>, <a href="/dictionary/Composite_pattern_in_c++">Composite pattern in c++</a>, <a href="/dictionary/Facade_pattern_in_c++">Facade pattern in c++</a>, <a href="/dictionary/Factory_method_in_c++">Factory method in c++</a>, <a href="/dictionary/Flyweight_pattern_in_c++">Flyweight pattern in c++</a>, <a href="/dictionary/Prototype_pattern_in_c++">Prototype pattern in c++</a>, <a href="/dictionary/Proxy_pattern_in_c++">Proxy pattern in c++</a>, <a href="/dictionary/Template_method_in_c++">Template method in c++</a>, <a href="/dictionary/Visitor_pattern_in_c++">Visitor pattern in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Flyweight_pattern">Flyweight pattern</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
