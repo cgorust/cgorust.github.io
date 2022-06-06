@@ -37,12 +37,99 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">design pattern</span></h1>
+<h1><span class="badge badge-primary">visitor in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Design patterns are reusable solutions that can be applied to recurring software design problems. </pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+using namespace std;
+
+class Stock {
+public:
+    virtual void accept(class Visitor *) = 0;
+};
+  
+class Apple : public Stock {
+  public:
+    void buy() { cout &lt;&lt; "Apple::buy\n"; }
+    void sell() { cout &lt;&lt; "Apple::sell\n"; }
+    void accept(Visitor *);
+};
+  
+class Google : public Stock
+{
+  public:
+    void buy() { cout &lt;&lt; "Google::buy\n"; }
+    void sell() { cout &lt;&lt; "Google::sell\n"; }
+    void accept(Visitor *);
+};
+
+  
+class Visitor {
+public:
+    virtual void visit(Apple *) = 0;
+    virtual void visit(Google *) = 0;
+
+    void total_stocks() {
+        cout &lt;&lt; "m_num_apple " &lt;&lt; m_num_apple 
+             &lt;&lt; ", m_num_google " &lt;&lt; m_num_google &lt;&lt; '\n';
+    }
+protected:
+    static int m_num_apple, m_num_google;
+};
+int Visitor::m_num_apple = 0;
+int Visitor::m_num_google = 0;
+
+void Apple::accept(Visitor *v) { v-&gt;visit(this); }
+  
+void Google::accept(Visitor *v) { v-&gt;visit(this); }
+
+class BuyVisitor : public Visitor {
+  public:
+    BuyVisitor() { m_num_apple = m_num_google = 0; }
+    void visit(Apple *r) {
+        ++m_num_apple;
+        r-&gt;buy();
+    }
+    void visit(Google *b) {
+        ++m_num_google;
+        b-&gt;buy();
+    }
+};
+  
+class SellVisitor : public Visitor
+{
+  public:
+    void visit(Apple *a) {
+        --m_num_apple;
+        a-&gt;sell();
+    }
+    void visit(Google *g) {
+        --m_num_google;
+        g-&gt;sell();
+    }
+};
+  
+  
+int main() {
+    Stock *set[] = { new Apple, new Google, new Google,
+                     new Apple, new Apple, 0};
+  
+    BuyVisitor buy_operation;
+    SellVisitor sell_operation;
+    for (int i = 0; set[i]; i++) {
+        set[i]-&gt;accept(&amp;buy_operation);
+    }
+    buy_operation.total_stocks();
+  
+    for (int i = 0; set[i]; i++) {
+        set[i]-&gt;accept(&amp;sell_operation);
+    }
+    sell_operation.total_stocks();
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Computer_science">Computer science</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Decorator">Decorator</a>, <a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Singleton">Singleton</a>, <a href="/dictionary/Visitor">Visitor</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Delegation">Delegation</a>, <a href="/dictionary/Design_pattern_in_python">Design pattern in python</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Visitor">Visitor</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
