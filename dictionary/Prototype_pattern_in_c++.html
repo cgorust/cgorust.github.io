@@ -37,12 +37,78 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">design pattern in C++</span></h1>
+<h1><span class="badge badge-primary">prototype pattern in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;string&gt;
+#include &lt;list&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+class IPerson {
+public:
+    virtual IPerson* Clone() = 0;
+    IPerson(const string&amp; sName, int id):m_sName(sName),m_ID(id) { }
+    void Show() { cout&lt;&lt;m_sName&lt;&lt;","&lt;&lt;m_ID&lt;&lt;endl; }
+private:
+    string m_sName;
+    int m_ID;
+};
+ 
+class Student: public IPerson {
+public:
+    Student(const string&amp; sName, int id):IPerson(sName, id) { }
+    IPerson* Clone() { return new Student(*this); }
+};
+
+class Teacher: public IPerson {
+public:
+    Teacher(const string&amp; sName, int id):IPerson(sName, id) {  }
+    IPerson* Clone() { return new Teacher(*this); }
+};
+ 
+class University {
+public:
+    University() {  }
+    University(const University&amp; univ){
+        for (auto it = univ.m_Members.begin(); it != univ.m_Members.end(); it++)
+            m_Members.push_back((*it)-&gt;Clone());
+    }
+    void Show(){
+        for (auto it = m_Members.begin(); it != m_Members.end(); it++)
+            (*it)-&gt;Show();
+    }
+    void AddMember( IPerson* ptr) { m_Members.push_back(ptr); }
+private:
+    list&lt;IPerson*&gt; m_Members;
+};
+
+int main() {
+    University* pUniversity = new University();
+    IPerson* ptr1 = new Student("Messi",1);
+    IPerson* ptr2 = new Student("Ronaldo",2);
+    IPerson* ptr3 = new Teacher("Scolari",3);
+    pUniversity-&gt;AddMember(ptr1);
+    pUniversity-&gt;AddMember(ptr2);
+    pUniversity-&gt;AddMember(ptr3);
+    pUniversity-&gt;Show();
+
+    University* pUniversity2 = new University(*pUniversity);
+    pUniversity2-&gt;Show();
+}
+
+/*
+Messi,1
+Ronaldo,2
+Scolari,3
+Messi,1
+Ronaldo,2
+Scolari,3
+*/
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/C++">C++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Abstract_factory_in_c++">Abstract factory in c++</a>, <a href="/dictionary/Adapter_pattern_in_c++">Adapter pattern in c++</a>, <a href="/dictionary/Bridge_pattern_in_c++">Bridge pattern in c++</a>, <a href="/dictionary/Builder_pattern_in_c++">Builder pattern in c++</a>, <a href="/dictionary/Chain_of_responsibility_in_c++">Chain of responsibility in c++</a>, <a href="/dictionary/Composite_pattern_in_c++">Composite pattern in c++</a>, <a href="/dictionary/Factory_method_in_c++">Factory method in c++</a>, <a href="/dictionary/Prototype_pattern_in_c++">Prototype pattern in c++</a>, <a href="/dictionary/Proxy_pattern_in_c++">Proxy pattern in c++</a>, <a href="/dictionary/Template_method_in_c++">Template method in c++</a>, <a href="/dictionary/Visitor_pattern_in_c++">Visitor pattern in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Prototype_pattern">Prototype pattern</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

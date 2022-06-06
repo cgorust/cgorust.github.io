@@ -37,12 +37,58 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">design pattern in C++</span></h1>
+<h1><span class="badge badge-primary">adapter pattern in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+
+class RectangleInterface 
+{
+  public:
+    virtual void draw() = 0;
+};
+
+class Rectangle 
+{
+  public:
+    Rectangle(int x1, int y1, int x2, int y2):x1_(x1), y1_(y1), x2_(x2), y2_(y2) {}
+    void oldDraw() {
+        std::cout &lt;&lt; "Rectangle:  oldDraw(). \n";
+    }
+  private:
+    int x1_, y1_, x2_, y2_;
+};
+
+// Adapter wrapper
+class RectangleAdapter: public RectangleInterface, private Rectangle 
+{
+  public:
+    RectangleAdapter(int x, int y, int w, int h):
+      Rectangle(x, y, x + w, y + h) { }
+    
+    void draw() {
+        std::cout &lt;&lt; "RectangleAdapter: draw().\n"; 
+        oldDraw();
+    }
+};
+
+int main()
+{
+  int x = 20, y = 50, w = 300, h = 200;
+  RectangleInterface *r = new RectangleAdapter(x,y,w,h);
+  r-&gt;draw();
+}
+
+
+/*
+RectangleAdapter: draw().
+Rectangle:  oldDraw(). 
+*/
+
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/C++">C++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Abstract_factory_in_c++">Abstract factory in c++</a>, <a href="/dictionary/Adapter_pattern_in_c++">Adapter pattern in c++</a>, <a href="/dictionary/Bridge_pattern_in_c++">Bridge pattern in c++</a>, <a href="/dictionary/Builder_pattern_in_c++">Builder pattern in c++</a>, <a href="/dictionary/Chain_of_responsibility_in_c++">Chain of responsibility in c++</a>, <a href="/dictionary/Composite_pattern_in_c++">Composite pattern in c++</a>, <a href="/dictionary/Factory_method_in_c++">Factory method in c++</a>, <a href="/dictionary/Prototype_pattern_in_c++">Prototype pattern in c++</a>, <a href="/dictionary/Proxy_pattern_in_c++">Proxy pattern in c++</a>, <a href="/dictionary/Template_method_in_c++">Template method in c++</a>, <a href="/dictionary/Visitor_pattern_in_c++">Visitor pattern in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Adapter_pattern">Adapter pattern</a>, <a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

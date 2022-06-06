@@ -37,12 +37,101 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">design pattern in C++</span></h1>
+<h1><span class="badge badge-primary">visitor pattern in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+using namespace std;
+
+class Stock {
+public:
+    virtual void accept(class Visitor *) = 0;
+};
+  
+class Apple : public Stock {
+  public:
+    void buy() { cout &lt;&lt; "Apple::buy"; }
+    void sell() { cout &lt;&lt; "Apple::sell"; }
+    void accept(Visitor *);
+};
+  
+class Google : public Stock {
+  public:
+    void buy() { cout &lt;&lt; "Google::buy"; }
+    void sell() { cout &lt;&lt; "Google::sell"; }
+    void accept(Visitor *);
+};
+
+class Visitor {
+public:
+    virtual void visit(Apple *) = 0;
+    virtual void visit(Google *) = 0;
+};
+
+void Apple::accept(Visitor *v) { v-&gt;visit(this); }
+  
+void Google::accept(Visitor *v) { v-&gt;visit(this); }
+
+class BuyVisitor : public Visitor {
+  public:
+    void visit(Apple *a) {
+        cout&lt;&lt;"[";
+        a-&gt;buy();
+        cout &lt;&lt;"]"&lt;&lt;endl;
+    }
+    void visit(Google *g) {
+        cout&lt;&lt;"[";
+        g-&gt;buy();
+        cout &lt;&lt;"]"&lt;&lt;endl;
+    }
+};
+  
+class SellVisitor : public Visitor {
+  public:
+    void visit(Apple *a) {
+        cout&lt;&lt;"[";
+        a-&gt;sell();
+        cout &lt;&lt;"]"&lt;&lt;endl;
+    }
+    void visit(Google *g) {
+        cout&lt;&lt;"[";
+        g-&gt;sell();
+        cout &lt;&lt;"]"&lt;&lt;endl;
+    }
+};
+  
+  
+int main() {
+    Stock *set[] = { new Apple, new Google, new Google,
+                     new Apple, new Apple, 0};
+  
+    BuyVisitor buy;
+    for (int i = 0; set[i]; i++) {
+        set[i]-&gt;accept(&amp;buy);
+    }
+
+    SellVisitor sell;
+    for (int i = 0; set[i]; i++) {
+        set[i]-&gt;accept(&amp;sell);
+    }
+}
+```
+Output,
+```
+[Apple::buy]
+[Google::buy]
+[Google::buy]
+[Apple::buy]
+[Apple::buy]
+[Apple::sell]
+[Google::sell]
+[Google::sell]
+[Apple::sell]
+[Apple::sell]
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/C++">C++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Abstract_factory_in_c++">Abstract factory in c++</a>, <a href="/dictionary/Adapter_pattern_in_c++">Adapter pattern in c++</a>, <a href="/dictionary/Bridge_pattern_in_c++">Bridge pattern in c++</a>, <a href="/dictionary/Builder_pattern_in_c++">Builder pattern in c++</a>, <a href="/dictionary/Chain_of_responsibility_in_c++">Chain of responsibility in c++</a>, <a href="/dictionary/Composite_pattern_in_c++">Composite pattern in c++</a>, <a href="/dictionary/Factory_method_in_c++">Factory method in c++</a>, <a href="/dictionary/Prototype_pattern_in_c++">Prototype pattern in c++</a>, <a href="/dictionary/Proxy_pattern_in_c++">Proxy pattern in c++</a>, <a href="/dictionary/Template_method_in_c++">Template method in c++</a>, <a href="/dictionary/Visitor_pattern_in_c++">Visitor pattern in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Visitor_pattern">Visitor pattern</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

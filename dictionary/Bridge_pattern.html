@@ -37,12 +37,14 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">design pattern in C++</span></h1>
+<h1><span class="badge badge-primary">bridge pattern</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">The Bridge pattern is an application of the old advice, "prefer composition over inheritance". It becomes handy when you must subclass different times in ways that are orthogonal with one another. Say you must implement a hierarchy of coloured shapes. You wouldn't subclass Shape with Rectangle and Circle and then subclass Rectangle with RedRectangle, BlueRectangle and GreenRectangle and the same for Circle, would you? You would prefer to say that each Shape has a Color and to implement a hierarchy of colours, and that is the Bridge Pattern. Well, I wouldn't implement a "hierarchy of colours", but you get the idea.
+Bridge is a quite often recurring pattern, because it's the solution whenever there are two orthogonal dimensions in the domain. E.g. shapes and drawing methods, behaviours and platforms, file formats and serializers and so forth.
+And an advice: always think of design patterns from the conceptual perspective, not from the implementation perspective. From the right point of view, Bridge cannot be confused with Adapter, because they solve a different problem, and composition is superior to inheritance not because of the sake of itself, but because it allows to handle orthogonal concerns separately.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/C++">C++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Abstract_factory_in_c++">Abstract factory in c++</a>, <a href="/dictionary/Adapter_pattern_in_c++">Adapter pattern in c++</a>, <a href="/dictionary/Bridge_pattern_in_c++">Bridge pattern in c++</a>, <a href="/dictionary/Builder_pattern_in_c++">Builder pattern in c++</a>, <a href="/dictionary/Chain_of_responsibility_in_c++">Chain of responsibility in c++</a>, <a href="/dictionary/Composite_pattern_in_c++">Composite pattern in c++</a>, <a href="/dictionary/Factory_method_in_c++">Factory method in c++</a>, <a href="/dictionary/Prototype_pattern_in_c++">Prototype pattern in c++</a>, <a href="/dictionary/Proxy_pattern_in_c++">Proxy pattern in c++</a>, <a href="/dictionary/Template_method_in_c++">Template method in c++</a>, <a href="/dictionary/Visitor_pattern_in_c++">Visitor pattern in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
