@@ -37,14 +37,106 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">Python</span></h1>
+<h1><span class="badge badge-primary">iterator pattern in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Python is an interpreted, high-level and general-purpose programming language. Python's design philosophy emphasizes code readability with its notable use of significant whitespace. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.
-Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented, and functional programming. Python is often described as a "batteries included" language due to its comprehensive standard library.
-Python was created in the late 1980s, and first released in 1991, by Guido van Rossum as a successor to the ABC programming language. </pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+using namespace std;
+
+class StackIter;
+
+class Stack
+{
+    int items[10];
+    int sp;
+public:
+    Stack() {
+        sp =  - 1;
+    }
+    void push(int in) {
+        items[++sp] = in;
+    }
+    int pop() {
+        return items[sp--];
+    }
+    bool isEmpty() {
+        return (sp ==  - 1);
+    }
+    friend class StackIter;
+    StackIter *createIterator()const; // 2. Add a createIterator() member
+};
+
+class StackIter
+{
+    const Stack *stk;
+    int index;
+  public:
+    StackIter(const Stack *s) {
+        stk = s;
+    }
+    void first() {
+        index = 0;
+    }
+    void next() {
+        index++;
+    }
+    bool isDone() {
+        return index == stk-&gt;sp + 1;
+    }
+    int currentItem() {
+        return stk-&gt;items[index];
+    }
+};
+
+
+StackIter *Stack::createIterator()const
+{
+  return new StackIter(this);
+}
+
+
+bool operator == (const Stack &amp;l, const Stack &amp;r)
+{
+  StackIter *itl = l.createIterator();
+  StackIter *itr = r.createIterator();
+
+  for (itl-&gt;first(), itr-&gt;first(); !itl-&gt;isDone(); itl-&gt;next(), itr-&gt;next())
+    if (itl-&gt;currentItem() != itr-&gt;currentItem())
+      break;
+  bool ans = itl-&gt;isDone() &amp;&amp; itr-&gt;isDone();
+  delete itl;
+  delete itr;
+  return ans;
+}
+
+int main()
+{
+  Stack s1;
+  for (int i = 1; i &lt; 5; i++)
+    s1.push(i);
+  Stack s2(s1), s3(s1), s4(s1), s5(s1);
+  s3.pop();
+  s5.pop();
+  s4.push(2);
+  s5.push(9);
+
+  cout &lt;&lt; "1 == 2 is " &lt;&lt; (s1 == s2) &lt;&lt; endl;
+  cout &lt;&lt; "1 == 3 is " &lt;&lt; (s1 == s3) &lt;&lt; endl;
+  cout &lt;&lt; "1 == 4 is " &lt;&lt; (s1 == s4) &lt;&lt; endl;
+  cout &lt;&lt; "1 == 5 is " &lt;&lt; (s1 == s5) &lt;&lt; endl;
+}
+
+/*
+1 == 2 is 1
+1 == 3 is 0
+1 == 4 is 0
+1 == 5 is 0
+*/
+
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Programming_language">Programming language</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Data_structure_in_python">Data structure in python</a>, <a href="/dictionary/Data_type_in_python">Data type in python</a>, <a href="/dictionary/Function_in_python">Function in python</a>, <a href="/dictionary/Io_in_python">Io in python</a>, <a href="/dictionary/Zen_of_python">Zen of python</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Iterator_pattern">Iterator pattern</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

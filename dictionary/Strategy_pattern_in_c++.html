@@ -37,14 +37,61 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">Python</span></h1>
+<h1><span class="badge badge-primary">strategy pattern in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Python is an interpreted, high-level and general-purpose programming language. Python's design philosophy emphasizes code readability with its notable use of significant whitespace. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.
-Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented, and functional programming. Python is often described as a "batteries included" language due to its comprehensive standard library.
-Python was created in the late 1980s, and first released in 1991, by Guido van Rossum as a successor to the ABC programming language. </pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+using namespace std;
+ 
+class SortBehavior {
+public:
+    virtual void sort() const = 0;
+};
+ 
+class Merge: public SortBehavior {
+public:
+    void sort() const {
+        cout &lt;&lt; "Merge sort()\n";
+    }
+};
+ 
+class Quick: public SortBehavior {
+public:
+    void sort() const {
+        cout &lt;&lt; "Quick sort()\n";
+    }
+};
+
+// Context
+class Collection 
+{
+private:
+    SortBehavior* m_sort;
+public:
+    void set_sort(SortBehavior* s){
+        m_sort = s;
+    }
+    void sort() const {
+        m_sort-&gt;sort();
+    }
+};
+ 
+ 
+int main(int argc, char *argv[])
+{
+    Merge merge;
+    Quick quick;
+
+    Collection col;
+    col.set_sort(&amp;merge);
+    col.sort();
+
+    return 0;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Programming_language">Programming language</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Data_structure_in_python">Data structure in python</a>, <a href="/dictionary/Data_type_in_python">Data type in python</a>, <a href="/dictionary/Function_in_python">Function in python</a>, <a href="/dictionary/Io_in_python">Io in python</a>, <a href="/dictionary/Zen_of_python">Zen of python</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a>, <a href="/dictionary/Strategy_pattern">Strategy pattern</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

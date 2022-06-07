@@ -37,81 +37,110 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">bridge pattern in C++</span></h1>
+<h1><span class="badge badge-primary">command pattern in C++</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">```
-#include&lt;iostream&gt;
-#include&lt;string&gt;
-#include&lt;cstdlib&gt;
-
+#include &lt;iostream&gt;
 using namespace std;
 
-class IColor {
+class Command {
 public:
-    virtual string Color() = 0;
+    virtual ~Command() { }
+    virtual void Execute() const = 0;
 };
 
-class RedColor: public IColor {
+class SimpleCommand : public Command {
+private:
+    string pay_load_;
+
 public:
-    string Color() {
-        return "of Red Color";
+    explicit SimpleCommand(std::string pay_load) : pay_load_(pay_load) { }
+    void Execute() const override {
+        cout &lt;&lt; "SimpleCommand: printing (" &lt;&lt; this-&gt;pay_load_ &lt;&lt; ")\n";
     }
 };
 
-class BlueColor: public IColor {
-public:
-    string Color() {
-        return "of Blue Color";
-    }
+class Receiver {
+ public:
+  void DoSomething(const std::string &amp;a) {
+    cout &lt;&lt; "Receiver: Working on (" &lt;&lt; a &lt;&lt; ".)\n";
+  }
+  void DoSomethingElse(const std::string &amp;b) {
+    cout &lt;&lt; "Receiver: Also working on (" &lt;&lt; b &lt;&lt; ".)\n";
+  }
 };
 
-
-class IShape {
+class ComplexCommand : public Command {
+private:
+  Receiver *receiver_;
+  std::string a_;
+  std::string b_;
 public:
-    virtual string Draw() = 0;
+  ComplexCommand(Receiver *receiver, std::string a, std::string b) : receiver_(receiver), a_(a), b_(b) {}
+  void Execute() const override {
+    cout &lt;&lt; "ComplexCommand: Complex stuff should be done by a receiver object.\n";
+    this-&gt;receiver_-&gt;DoSomething(this-&gt;a_);
+    this-&gt;receiver_-&gt;DoSomethingElse(this-&gt;b_);
+  }
 };
 
-class Circle: public IShape {
-    IColor* impl;
-public:
-    Circle(IColor *obj):impl(obj){}
-    string Draw(){
-        return "Drawn a Circle "+ impl-&gt;Color();
-    }
-};
+class Invoker {
+private:
+  Command *on_start_;
+  Command *on_finish_;
 
-class Square: public IShape {
-    IColor* impl;
 public:
-    Square(IColor *obj):impl(obj){}
-    string Draw() {
-        return "Drawn a Square "+ impl-&gt;Color();;
+  ~Invoker() {
+    delete on_start_;
+    delete on_finish_;
+  }
+
+  void SetOnStart(Command *command) {
+    this-&gt;on_start_ = command;
+  }
+  void SetOnFinish(Command *command) {
+    this-&gt;on_finish_ = command;
+  }
+  void DoSomethingImportant() {
+    std::cout &lt;&lt; "Invoker: Does anybody want something done before I begin?\n";
+    if (this-&gt;on_start_) {
+      this-&gt;on_start_-&gt;Execute();
     }
+    cout &lt;&lt; "Invoker: ...doing something really important...\n";
+    cout &lt;&lt; "Invoker: Does anybody want something done after I finish?\n";
+    if (this-&gt;on_finish_) {
+      this-&gt;on_finish_-&gt;Execute();
+    }
+  }
 };
 
 int main() {
-    IColor* red = new RedColor();
-    IColor* blue = new BlueColor();
+  Invoker *invoker = new Invoker;
+  invoker-&gt;SetOnStart(new SimpleCommand("Say Hi!"));
 
-    IShape* sq = new Square(red);
-    IShape* cr = new Circle(blue);
+  Receiver *receiver = new Receiver;
+  invoker-&gt;SetOnFinish(new ComplexCommand(receiver, "Send email", "Save report"));
+  invoker-&gt;DoSomethingImportant();
 
-    cout&lt;&lt;"\n"&lt;&lt;sq-&gt;Draw();
-    cout&lt;&lt;"\n"&lt;&lt;cr-&gt;Draw();
+  delete invoker;
+  delete receiver;
 
-    delete red;
-    delete blue;
-    return 1;
+  return 0;
 }
 
-/* Output:
-Drawn a Square of Red Color
-Drawn a Circle of Blue Color
+/*
+Invoker: Does anybody want something done before I begin?
+SimpleCommand: printing (Say Hi!)
+Invoker: ...doing something really important...
+Invoker: Does anybody want something done after I finish?
+ComplexCommand: Complex stuff should be done by a receiver object.
+Receiver: Working on (Send email.)
+Receiver: Also working on (Save report.)
 */
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Bridge_pattern">Bridge pattern</a>, <a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Command_pattern">Command pattern</a>, <a href="/dictionary/Design_pattern_in_c++">Design pattern in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
