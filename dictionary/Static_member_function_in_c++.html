@@ -41,6 +41,11 @@
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">In C++, static method is called static member function. 
 A static member function can be called even if no objects of the class exist and the static function are accessed using only the class name and the scope resolution operator ::.
+* A static member function does not have this pointer. 
+* A static member function cannot be virtual
+* If a member function declaration has the same name and the same parameter-type-list as the static function,  it cannot be overloaded
+* A static member function can not be declared const, volatile, or const volatile
+
 ```
 #include &lt;iostream&gt;
 using namespace std;
@@ -86,7 +91,7 @@ int main() {
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Static_method">Static method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Function_in_c++">Function in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Method_in_c++">Method in c++</a>, <a href="/dictionary/Static_method">Static method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Static_keyword_in_c++">Static keyword in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
