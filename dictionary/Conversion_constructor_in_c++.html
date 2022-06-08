@@ -37,11 +37,48 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">blackhole</span></h1>
+<h1><span class="badge badge-primary">conversion constructor in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"> </pre>
+<pre id="word_content" style="white-space: pre-wrap;">In C++, if a class has a constructor which can be called with a single argument, then this constructor becomes conversion constructor because such a constructor allows automatic conversion to the class being constructed.
+```
+#include &lt;iostream&gt;
+using namespace std;
+
+class Y {
+  int a, b;
+public:
+  Y(int i) { };
+  Y(const char* n, int j = 0) { };
+};
+
+void add(Y) { };
+
+int main() {
+  // equivalent to obj1 = Y(2)
+  Y obj1 = 2;
+
+  // equivalent to obj2 = Y("somestring",0)
+  Y obj2 = "somestring";
+
+  // equivalent to obj1 = Y(10)
+  obj1 = 10;
+
+  // equivalent to add(Y(5))
+  add(5);
+}
+```
+We can avoid such implicit conversions as these may lead to unexpected results. We can make the constructor explicit with the help of an explicit keyword. 
+```
+class Y {
+  int a, b;
+public:
+  explicit Y(int i) { };
+  explicit Y(const char* n, int j = 0) { };
+};
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Constructor_in_c++">Constructor in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
