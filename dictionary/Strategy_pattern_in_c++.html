@@ -42,49 +42,47 @@
 <pre id="word_content" style="white-space: pre-wrap;">```
 #include &lt;iostream&gt;
 using namespace std;
- 
-class SortBehavior {
+
+class Sort {
 public:
     virtual void sort() const = 0;
 };
- 
-class Merge: public SortBehavior {
+
+class MergeSort: public Sort {
 public:
     void sort() const {
-        cout &lt;&lt; "Merge sort()\n";
-    }
-};
- 
-class Quick: public SortBehavior {
-public:
-    void sort() const {
-        cout &lt;&lt; "Quick sort()\n";
+        cout &lt;&lt; "MergeSort()\n";
     }
 };
 
-// Context
-class Collection 
-{
-private:
-    SortBehavior* m_sort;
+class QuickSort: public Sort {
 public:
-    void set_sort(SortBehavior* s){
+    void sort() const {
+        cout &lt;&lt; "QuickSort()\n";
+    }
+};
+
+class Context 
+{
+    Sort* m_sort;
+public:
+    void setSort(Sort* s){
         m_sort = s;
     }
     void sort() const {
         m_sort-&gt;sort();
     }
 };
- 
- 
+
+
 int main(int argc, char *argv[])
 {
-    Merge merge;
-    Quick quick;
+    MergeSort mergeSort;
+    QuickSort quickSort;
 
-    Collection col;
-    col.set_sort(&amp;merge);
-    col.sort();
+    Context context;
+    context.setSort(&amp;mergeSort);
+    context.sort();
 
     return 0;
 }
