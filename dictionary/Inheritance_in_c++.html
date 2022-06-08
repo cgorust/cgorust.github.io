@@ -39,7 +39,31 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">inheritance in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+using namespace std;
+
+// Base class
+class Food_Item{
+public:
+  void taste() { 
+    cout &lt;&lt; "The taste of every food item is different. \n";
+  }
+};
+ 
+// Derived class
+class Chips: public Food_Item{
+public:
+  void taste() {
+    cout &lt;&lt; "The taste of chips is salty \n";   
+  }
+};
+
+int main() {
+    Chips chips;
+    chips.taste();
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Inheritance">Inheritance</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Oop_in_c++">Oop in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Multiple_inheritance_in_c++">Multiple inheritance in c++</a></button>
