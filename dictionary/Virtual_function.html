@@ -39,7 +39,35 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">virtual function</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A virtual function is a member function that helps to redefine the implementation in the derived class. When two functions of the same name are present in the base and derived class, the base class function will be declared with the keyword virtual. Hence both classes can have the same function name with a different implementation. During runtime, it determines which function to call based on the object pointer it points to.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">A virtual function is a member function that helps to redefine the implementation in the derived class. When two functions of the same name are present in the base and derived class, the base class function will be declared with the keyword virtual. Hence both classes can have the same function name with a different implementation. During runtime, it determines which function to call based on the object pointer it points to.
+```
+#include &lt;iostream&gt;
+using namespace std;
+
+class Base {
+public:
+    virtual void func() { cout &lt;&lt; "Base:func()" &lt;&lt; endl; }
+    Base() { func(); }  // Base:func()
+    void call() { func(); }
+};
+
+class Sub : public Base {
+public:
+    void func() { cout &lt;&lt; "Sub:func()" &lt;&lt; endl; }
+    Sub() { func(); } // Sub:func()
+    void call() { func(); }
+};
+
+int main() {
+    Base * b = new Sub();
+    
+    b-&gt;Base::call(); // Sub:func()
+    b-&gt;call();  //  Sub:func()
+    delete b;
+    
+    return 0;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Method">Method</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Pure_virtual_function">Pure virtual function</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Vtable">Vtable</a></button>
