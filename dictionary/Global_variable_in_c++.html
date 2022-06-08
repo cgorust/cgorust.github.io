@@ -37,13 +37,24 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">global variable</span></h1>
+<h1><span class="badge badge-primary">global variable in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Global variables are defined outside of all the functions and classes, usually on top of the program. The global variables will hold their value throughout the lifetime of your program. A global variable can be accessed by any function or any class.
-</pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+using namespace std;
+
+float g = 20;
+
+int main () {
+    g++;
+    std::cout &lt;&lt; "Global variable g is " &lt;&lt;g &lt;&lt;endl;
+    
+    return 0;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Variable">Variable</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Global_variable_in_c">Global variable in c</a>, <a href="/dictionary/Global_variable_in_c++">Global variable in c++</a>, <a href="/dictionary/Static_global_variable">Static global variable</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Global_variable">Global variable</a>, <a href="/dictionary/Variable_in_c++">Variable in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Static_global_variable_in_c++">Static global variable in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

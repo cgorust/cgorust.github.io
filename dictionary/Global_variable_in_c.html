@@ -39,14 +39,15 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">global variable in C</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A variable that is declared outside the function or block is called a global variable. Any function can change the value of the global variable. It is available to all the functions.
-It must be declared at the start of the block.
-&lt;pre&gt;&lt;code&gt;
+<pre id="word_content" style="white-space: pre-wrap;">You should not define global variables in header files. You should define them in .c source file.
+* If global variable is to be visible within only one .c file, you should declare it static.
+* If global variable is to be used across multiple .c files, you should not declare it static. Instead you should declare it extern in header file included by all .c files that need it.
+```
 int value = 20; //global variable  
 void function1() {
   int x = 10; //local variable  
 }
-&lt;/code&gt;&lt;/pre&gt;</pre>
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Global_variable">Global variable</a>, <a href="/dictionary/Variable_in_c">Variable in c</a></button>

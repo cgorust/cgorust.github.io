@@ -39,56 +39,46 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">static keyword in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">* Static variables in a Function: When a variable is declared as static, space for it gets allocated for the lifetime of the program. Even if the function is called multiple times, space for the static variable is allocated only once and the value of variable in the previous call gets carried through the next function call. 
-* Static variables in a class: As the variables declared as static are initialised only once as they are allocated space in separate static storage so, the static variables in a class are shared by the objects. There can not be multiple copies of same static variables for different objects. Also because of this reason static variables can not be initialised using constructors.
-* Class objects as static: Just like variables, objects also when declared as static have a scope till the lifetime of program.
-* Static member functions in a class: Static member functions also does not depend on object of class. We are allowed to invoke a static member function using the object and the ‘.’ operator but it is recommended to invoke the static members using the class name and the scope resolution operator. Static member functions are allowed to access only the static data members or other static member functions, they can not access the non-static data members or member functions of the class.
-```
+<pre id="word_content" style="white-space: pre-wrap;">```
 #include &lt;iostream&gt;
-#include &lt;string&gt;
 using namespace std;
-  
-void staticVariable()
-{ 
-    static int count = 0;
-    cout &lt;&lt; count &lt;&lt; " ";
-    count++;
+
+static int sgv = 1;
+
+static void sf() { 
+    static int slv = 2;
+    cout &lt;&lt; ++slv &lt;&lt;",";
 }
-  
-class StaticMemberVariable {
+
+class C {
 public:
-    static int i;
-    StaticMemberVariable() { }
-    ~StaticMemberVariable() {
-        cout &lt;&lt; "Inside desturctor" &lt;&lt; endl;
-    }
+    static int smv;
     static void print() {
-        cout &lt;&lt; i &lt;&lt; endl;
+        cout &lt;&lt; smv &lt;&lt; endl;
     }
-    
 };  
-  
-int StaticMemberVariable::i = 1;
+int C::smv = 1;
 
 int main()
 {
+    cout &lt;&lt; sgv &lt;&lt; endl;
     for (int i = 0; i &lt; 5; i++)    
-        staticVariable();
+        sf();
     cout &lt;&lt; endl;
-    
+
     {
-        StaticMemberVariable obj1, obj2;
-        cout &lt;&lt; obj1.i &lt;&lt; ", " &lt;&lt; obj2.i &lt;&lt; endl;
-        static StaticMemberVariable obj3;
+        C c1, c2;
+        cout &lt;&lt; c1.smv &lt;&lt; ", " &lt;&lt; c2.smv &lt;&lt; endl;
+        static C c3;
+        c3.print();
     }
-    cout &lt;&lt; "end of block" &lt;&lt; endl;
-    StaticMemberVariable::print();
+    C::print();
     return 0;
 }
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Keyword_in_c++">Keyword in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Keyword_in_c++">Keyword in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Static_function_in_c++">Static function in c++</a>, <a href="/dictionary/Static_global_variable_in_c++">Static global variable in c++</a>, <a href="/dictionary/Static_local_variable_in_c++">Static local variable in c++</a>, <a href="/dictionary/Static_member_variable_in_c++">Static member variable in c++</a>, <a href="/dictionary/Static_method_in_c++">Static method in c++</a>, <a href="/dictionary/Static_object_in_c++">Static object in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
