@@ -40,8 +40,16 @@
 <h1><span class="badge badge-primary">rule of five</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">The full name of the rule is the rule of 3/5/0.
-It doesn't say "always provide all five". It says that you have to either provide the three, the five, or none of them.
+* destructor
+* copy constructor
+* copy assignment operator
+* move constructor
+* move assignment operator
+
+It doesn't say "always provide all five". It says that you have to either provide the three, the five, or none of them. 
 Indeed, more often than not the smartest move is to not provide any of the five. But you can't do that if you're writing your own container, smart pointer, or a RAII wrapper around some resource.
+* We can explicitly ask the compiler to generate the synthesized versions of the copy-control members by defining them as = default
+* Under the new standard, we can prevent copies by defining the copy constructor and copy-assignment operator as deleted functions.
 ```
 #include &lt;iostream&gt;
 #include &lt;cstring&gt;
@@ -88,7 +96,7 @@ int main() {
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Raii">Raii</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class_in_c++">Class in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
