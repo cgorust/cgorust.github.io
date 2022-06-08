@@ -60,6 +60,29 @@ int main() {
     a.say2();
     return 0;
 }
+#include &lt;iostream&gt;
+using namespace std;
+
+class A {
+private:
+    static int val;
+public:
+    static void say() { cout &lt;&lt; val &lt;&lt; endl; }
+    void say2() { cout &lt;&lt; val &lt;&lt; endl; }
+};
+int A::val{1};
+
+int main() {
+    A::say();
+    A a;
+    a.say2();
+    return 0;
+}
+
+/*
+1 
+1 
+*/
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
