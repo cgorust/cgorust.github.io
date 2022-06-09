@@ -42,7 +42,8 @@
 <pre id="word_content" style="white-space: pre-wrap;">C++ has three smart pointers, 
 * std::unique_ptr: A unique_ptr does not share its pointer. It cannot be copied or passed by value to a function. A unique_ptr can only be moved, which means that the ownership of the memory resource is transferred to another unique_ptr and the original unique_ptr no longer owns it. 
 * std::shared_ptr: The shared_ptr uses reference counting to manage resources. A resource can be owned by more than one shared_ptr object. A shared_ptr stops owning a resource when it's reassigned or reset. When the last shared_ptr object that owns a particular resource is destroyed, the resource is freed. 
-* std::weak_ptr. std::weak_ptr is a way to solve the dangling pointer problem. By just using raw pointers it is impossible to know if the referenced data has been deallocated or not. Instead, by letting a std::shared_ptr manage the data, and supplying std::weak_ptr to users of the data, the users can check validity.
+* std::weak_ptr: The weak_ptr is a way to solve the dangling pointer problem. By just using raw pointers it is impossible to know if the referenced data has been deallocated or not. Instead, by letting a shared_ptr manage the data, and supplying weak_ptr to users of the data, the users can check validity.
+* std::auto_ptr: deprecated.
 ```
 #include &lt;memory&gt;
 #include &lt;iostream&gt;
@@ -85,7 +86,7 @@ int main()
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Smart_pointer">Smart pointer</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Pointer_in_c++">Pointer in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Smart_pointer">Smart pointer</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Pointer_in_c++">Pointer in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Auto__ptr">Auto_ptr</a>, <a href="/dictionary/Shared__ptr">Shared_ptr</a>, <a href="/dictionary/Unique__ptr">Unique_ptr</a>, <a href="/dictionary/Weak__ptr">Weak_ptr</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

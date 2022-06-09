@@ -37,31 +37,17 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">array in C++</span></h1>
+<h1><span class="badge badge-primary">auto_ptr</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Arrays in C++ are used to store a collection of values of the same type. The size of an array is specified when it is declared and cannot change afterward.
-A multidimensional array is an “array of arrays” and is declared by adding extra sets of indices to the array name.
-```
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-int main() {
-    int v[5] = {1, 2, 3, 4, 5};
-    int vs[2][2] = {
-        {1, 2},
-        {3, 4}
-    };
-    int * vp = new int[5];
-    cout &lt;&lt; v[2] &lt;&lt; " " &lt;&lt; vs[1][1] &lt;&lt; " " &lt;&lt; vp[2] &lt;&lt; endl;
-    
-    delete[] vp;
-    return 0;
-}
-```</pre>
+<pre id="word_content" style="white-space: pre-wrap;">This class template is deprecated as of C++11. unique_ptr is a new facility with a similar functionality, but with improved security.
+auto_ptr is a smart pointer that manages an object obtained via new expression and deletes that object when auto_ptr itself is destroyed.
+An object when described using auto_ptr class it stores a pointer to a single allocated object which ensures that when it goes out of scope, the object it points to must get automatically destroyed. It is based on exclusive ownership model, i.e. two pointers of the same type can’t point to the same resource at the same time. 
+&lt;b&gt;Why is auto_ptr deprecated?&lt;/b&gt;
+It takes ownership of the pointer in a way that no two pointers should contain the same object. Assignment transfers ownership and resets the rvalue auto pointer to a null pointer. Thus, they can’t be used within STL containers due to the aforementioned inability to be copied.
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array">Array</a>, <a href="/dictionary/Data_structure_in_c++">Data structure in c++</a>, <a href="/dictionary/Data_type_in_c++">Data type in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Smart_pointer_in_c++">Smart pointer in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

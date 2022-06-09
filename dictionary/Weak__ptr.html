@@ -37,31 +37,63 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">array in C++</span></h1>
+<h1><span class="badge badge-primary">weak_ptr</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Arrays in C++ are used to store a collection of values of the same type. The size of an array is specified when it is declared and cannot change afterward.
-A multidimensional array is an “array of arrays” and is declared by adding extra sets of indices to the array name.
+<pre id="word_content" style="white-space: pre-wrap;">A weak_ptr is created as a copy of shared_ptr. It provides access to an object that is owned by one or more shared_ptr instances but does not participate in reference counting. The existence or destruction of weak_ptr has no effect on the shared_ptr or its other copies. It is required in some cases to break circular references between shared_ptr instances.
 ```
 #include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
+#include &lt;memory&gt;
 
-int main() {
-    int v[5] = {1, 2, 3, 4, 5};
-    int vs[2][2] = {
-        {1, 2},
-        {3, 4}
-    };
-    int * vp = new int[5];
-    cout &lt;&lt; v[2] &lt;&lt; " " &lt;&lt; vs[1][1] &lt;&lt; " " &lt;&lt; vp[2] &lt;&lt; endl;
+int main()
+{
+    // OLD, problem with dangling pointer PROBLEM: ref will point to undefined data!
+
+    int* ptr = new int(10);
+    int* ref = ptr;
+    delete ptr;
+
+    // NEW SOLUTION: check expired() or lock() to determine if pointer is valid
+
+    // empty definition
+    std::shared_ptr&lt;int&gt; sptr;
+
+    // takes ownership of pointer
+    sptr.reset(new int);
+    *sptr = 10;
+
+    // get pointer to data without taking ownership
+    std::weak_ptr&lt;int&gt; weak1 = sptr;
+
+    // deletes managed object, acquires new pointer
+    sptr.reset(new int);
+    *sptr = 5;
+
+    // get pointer to new data without taking ownership
+    std::weak_ptr&lt;int&gt; weak2 = sptr;
+
+    // weak1 is expired!
+    if(auto tmp = weak1.lock())
+        std::cout &lt;&lt; "weak1 value is " &lt;&lt; *tmp &lt;&lt; '\n';
+    else
+        std::cout &lt;&lt; "weak1 is expired\n";
     
-    delete[] vp;
-    return 0;
+    // weak2 points to new data (5)
+    if(auto tmp = weak2.lock())
+        std::cout &lt;&lt; "weak2 value is " &lt;&lt; *tmp &lt;&lt; '\n';
+    else
+        std::cout &lt;&lt; "weak2 is expired\n";
 }
-```</pre>
+
+/*
+weak1 is expired
+weak2 value is 5
+*/
+```
+
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array">Array</a>, <a href="/dictionary/Data_structure_in_c++">Data structure in c++</a>, <a href="/dictionary/Data_type_in_c++">Data type in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Smart_pointer_in_c++">Smart pointer in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

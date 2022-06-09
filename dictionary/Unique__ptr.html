@@ -37,31 +37,48 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">array in C++</span></h1>
+<h1><span class="badge badge-primary">unique_ptr</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Arrays in C++ are used to store a collection of values of the same type. The size of an array is specified when it is declared and cannot change afterward.
-A multidimensional array is an “array of arrays” and is declared by adding extra sets of indices to the array name.
+<pre id="word_content" style="white-space: pre-wrap;">The std::unique_ptr is developed in C++11 as a replacement for std::auto_ptr.
+Compared with auto_ptr, unique_ptr is a new facility with similar functionality, but with improved security (no fake copy assignments), added features (deleters) and support for arrays. It is a container for raw pointers. It explicitly prevents copying of its contained pointer as would happen with normal assignment, i.e. it allows exactly one owner of the underlying pointer.
+So, when using unique_ptr there can only be at most one unique_ptr at any one resource and when that unique_ptr is destroyed, the resource is automatically claimed. Also, since there can only be one unique_ptr to any resource, so any attempt to make a copy of unique_ptr will cause a compile-time error.
 ```
+#include &lt;memory&gt;
 #include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-int main() {
-    int v[5] = {1, 2, 3, 4, 5};
-    int vs[2][2] = {
-        {1, 2},
-        {3, 4}
-    };
-    int * vp = new int[5];
-    cout &lt;&lt; v[2] &lt;&lt; " " &lt;&lt; vs[1][1] &lt;&lt; " " &lt;&lt; vp[2] &lt;&lt; endl;
+using std::cout, std::endl;
+ 
+int main()
+{
+    std::unique_ptr&lt;int&gt; p1(new int);
+    *p1 = 10;
+    cout&lt;&lt;*p1&lt;&lt;endl;
+    auto p11 = std::move(p1);
+    cout&lt;&lt;p1.get()&lt;&lt;endl;
+    cout&lt;&lt;*p11&lt;&lt;endl;
+   
+   
+    auto p2 = std::make_unique&lt;int[]&gt;(10);
+    p2.get()[2] = 20;
+    cout&lt;&lt;p2.get()[2]&lt;&lt;endl;
+    auto p21 = std::move(p2);
+    cout&lt;&lt;p2.get()&lt;&lt;endl;
+    cout&lt;&lt;p21.get()[2]&lt;&lt;endl;
     
-    delete[] vp;
     return 0;
 }
+
+/* Output
+10
+0
+10
+20
+0
+20
+*/
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array">Array</a>, <a href="/dictionary/Data_structure_in_c++">Data structure in c++</a>, <a href="/dictionary/Data_type_in_c++">Data type in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Smart_pointer_in_c++">Smart pointer in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
