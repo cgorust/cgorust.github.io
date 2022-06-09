@@ -41,100 +41,108 @@
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">```
 #include &lt;iostream&gt;
-#include &lt;sstream&gt;
-#include &lt;string&gt;
+#include &lt;memory&gt;
 
-using namespace std;
-
-// Forward declaring the builder
-class EmailBuilder;
-
-class Email
-{
-  public:
-    friend class EmailBuilder;  // the builder can access Email's privates
-    
-    static EmailBuilder make();
-    
-    string to_string() const {
-        stringstream stream;
-        stream &lt;&lt; "from: " &lt;&lt; m_from
-               &lt;&lt; "\nto: " &lt;&lt; m_to
-               &lt;&lt; "\nsubject: " &lt;&lt; m_subject
-               &lt;&lt; "\nbody: " &lt;&lt; m_body;
-        return stream.str();
+class Pizza{
+public:
+    void setDough(const std::string&amp; dough){
+        m_dough = dough;
     }
-    
-  private:
-    Email() = default; // restrict construction to builder
-    
-    string m_from;
-    string m_to;
-    string m_subject;
-    string m_body;
+    void setSauce(const std::string&amp; sauce){
+        m_sauce = sauce;
+    }
+    void setTopping(const std::string&amp; topping){
+        m_topping = topping;
+    }
+    void open() const {
+        std::cout&lt;&lt;"The Pizza have "&lt;&lt;
+            m_dough&lt;&lt;" dough, "&lt;&lt;
+            m_sauce&lt;&lt;" sauce, "&lt;&lt;
+            m_topping&lt;&lt;" topping."&lt;&lt;
+            std::endl;
+    }
+private:
+    std::string m_dough;
+    std::string m_sauce;
+    std::string m_topping;
 };
 
-class EmailBuilder
-{
-  public:
-    EmailBuilder&amp; from(const string &amp;from) {
-        m_email.m_from = from;
-        return *this;
+class PizzaBuilder{
+public:
+    virtual ~PizzaBuilder() = default;
+    void createNewPizza(){
+        m_pizza = std::make_unique&lt;Pizza&gt;();
     }
-    
-    EmailBuilder&amp; to(const string &amp;to) {
-        m_email.m_to = to;
-        return *this;
+    Pizza* getPizza() {
+        return m_pizza.release();
     }
-    
-    EmailBuilder&amp; subject(const string &amp;subject) {
-        m_email.m_subject = subject;
-        return *this;
-    }
-    
-    EmailBuilder&amp; body(const string &amp;body) {
-        m_email.m_body = body;
-        return *this;
-    }
-    
-    operator Email&amp;&amp;() {
-        return std::move(m_email); // notice the move
-    }
-    
-  private:
-    Email m_email;
+    virtual void buildDough() = 0;
+    virtual void buildSauce() = 0;
+    virtual void buildTopping() = 0;
+protected:
+    std::unique_ptr&lt;Pizza&gt; m_pizza;
 };
 
-EmailBuilder Email::make()
-{
-    return EmailBuilder();
+class HawaiianPizzaBuilder:public PizzaBuilder{
+public:
+    ~HawaiianPizzaBuilder() override = default;
+    void buildDough() override {
+        m_pizza-&gt;setDough("Hawaiian");
+    }
+    void buildSauce() override {
+        m_pizza-&gt;setSauce("Hawaiian");
+    }
+    void buildTopping() override {
+        m_pizza-&gt;setTopping("Hawaiian");
+    }
+};
+
+class SpicyPizzaBuilder:public PizzaBuilder{
+public:
+    ~SpicyPizzaBuilder() override = default;
+    void buildDough() override {
+        m_pizza-&gt;setDough("Spicy");
+    }
+    void buildSauce() override {
+        m_pizza-&gt;setSauce("Spicy");
+    }
+    void buildTopping() override {
+        m_pizza-&gt;setTopping("Spicy");
+    }
+};
+
+class Cook{
+public:
+    void openPizza() const {
+        m_pizzaBuilder-&gt;getPizza()-&gt;open();
+    }
+    void createPizza(PizzaBuilder* pizzaBuilder){
+        m_pizzaBuilder = pizzaBuilder;
+        m_pizzaBuilder-&gt;createNewPizza();
+        m_pizzaBuilder-&gt;buildDough();
+        m_pizzaBuilder-&gt;buildSauce();
+        m_pizzaBuilder-&gt;buildTopping();
+    }
+private:
+    PizzaBuilder* m_pizzaBuilder;
+};
+
+int main(){
+    Cook cook{};
+    HawaiianPizzaBuilder hawaiianPizzaBuilder;
+    cook.createPizza(&amp;hawaiianPizzaBuilder);
+    cook.openPizza();
+
+    SpicyPizzaBuilder spicyPizzaBuilder;
+    cook.createPizza(&amp;spicyPizzaBuilder);
+    cook.openPizza();
 }
 
-// Bonus example!
-std::ostream&amp; operator &lt;&lt;(std::ostream&amp; stream, const Email&amp; email)
-{
-    stream &lt;&lt; email.to_string();
-    return stream;
-}
-
-
-int main()
-{
-    Email mail = Email::make().from("me@mail.com")
-                              .to("you@mail.com")
-                              .subject("C++ builders")
-                              .body("I like this API, don't you?");
-                              
-    cout &lt;&lt; mail &lt;&lt; endl;
-}
-
-/* output
-
-from: me@mail.com
-to: you@mail.com
-subject: C++ builders
-body: I like this API, don't you?
+/* Output
+The Pizza have Hawaiian dough, Hawaiian sauce, Hawaiian topping.
+The Pizza have Spicy dough, Spicy sauce, Spicy topping.
 */
+
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
