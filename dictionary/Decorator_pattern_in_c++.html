@@ -44,14 +44,10 @@
 #include &lt;string&gt;
 
 struct Shape {
-  virtual ~Shape() = default;
-
   virtual std::string GetName() const = 0;
 };
 
 struct Circle : Shape {
-  void Resize(float factor) { radius *= factor; }
-
   std::string GetName() const override {
     return std::string("A circle of radius ") + std::to_string(radius);
   }
@@ -62,7 +58,6 @@ struct Circle : Shape {
 struct ColoredShape : Shape {
   ColoredShape(const std::string&amp; color, Shape* shape)
       : color(color), shape(shape) {}
-
   std::string GetName() const override {
     return shape-&gt;GetName() + " which is colored " + color;
   }
@@ -75,7 +70,7 @@ int main() {
   Circle circle;
   ColoredShape colored_shape("red", &amp;circle);
   std::cout &lt;&lt; colored_shape.GetName() &lt;&lt; std::endl;
-
+  return 0;
 }
 ```</pre>
 </div>

@@ -39,10 +39,13 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">strategy pattern</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The Strategy design pattern defines a family of algorithms, encapsulate each one, and make them interchangeable. This pattern lets the algorithm vary independently from clients that use it.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">The strategy pattern is a design pattern that enables selecting an algorithm at runtime. Instead of implementing a single algorithm directly, code receives run-time instructions as to which in a family of algorithms to use.
+Strategy lets the algorithm vary independently from clients that use it.
+In OOP languages this generally involves separate classes for each strategy which they all implement a common interface, then another class makes use of the strategy interface without actually knowing which strategy implementation has been selected at runtime, with this we separate the concerns of selecting the algorithm and the differences in implementation between strategies while having the possibility of selecting one or the other during runtime.
+In FP, the Strategy Pattern becomes just as simple as passing a function as a parameter. There is much less code involve because we don't have to depend on classes or inheritance to achieve the same functionality.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Strategy_pattern_in_c++">Strategy pattern in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Strategy_pattern_in_c++">Strategy pattern in c++</a>, <a href="/dictionary/Strategy_pattern_in_javascript">Strategy pattern in javascript</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

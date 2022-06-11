@@ -37,24 +37,29 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">slice in Rust</span></h1>
+<h1><span class="badge badge-primary">decorator pattern in JavaScript</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Slices are pointers to the actual data. They are passed by reference to functions, which is also known as borrowing.
-For example, slices can be used to fetch a portion of a string value. A sliced string is a pointer to the actual string object. Therefore, we need to specify the starting and ending index of a String. Index starts from 0 just like arrays.
-```
-fn main() {
-   let n1 = "Tutorials".to_string();
-   println!("length of string is {}",n1.len());
-   let c1 = &amp;n1[4..9]; 
-   
-   // fetches characters at 4,5,6,7, and 8 indexes
-   println!("{}",c1);
+<pre id="word_content" style="white-space: pre-wrap;">```
+const compose = (...funcs) =&gt; initialArg =&gt; funcs.reduceRight ((acc, f) =&gt; f(acc), initialArg);
+
+function isBiggerThanThree(value) {
+  return value &gt; 3
 }
-```
-The &amp;mut keyword can be used to mark a slice as mutable.</pre>
+
+function mapBoolToHumanOutput(value) {
+  return value ? "yes": "no"
+}
+
+const biggerThanThreeAndMapOutput = compose(
+  mapBoolToHumanOutput,
+  isBiggerThanThree
+)
+
+console.log(biggerThanThreeAndMapOutput(3));
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array_in_rust">Array in rust</a>, <a href="/dictionary/Data_structure_in_rust">Data structure in rust</a>, <a href="/dictionary/Slice">Slice</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Decorator_pattern">Decorator pattern</a>, <a href="/dictionary/Design_pattern_in_javascript">Design pattern in javascript</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

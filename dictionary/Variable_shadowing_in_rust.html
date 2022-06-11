@@ -44,9 +44,17 @@
 fn main() {
     let x = 5;
     let x = x + 1;
-    let x = x * 2;
+    {
+        let x = x * 2;
+        println!("The value of x in the inner scope is: {}", x);
+    }
+
     println!("The value of x is: {}", x);
 }
+/* Output
+The value of x in the inner scope is: 12
+The value of x is: 6
+*/
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
