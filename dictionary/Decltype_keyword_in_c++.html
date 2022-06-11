@@ -37,12 +37,36 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">integer literal in Java</span></h1>
+<h1><span class="badge badge-primary">decltype keyword in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">There are three ways to represent integer numbers in Java: decimal (base 10), binary (base 2), octal (base 8), and hexadecimal (base 16). </pre>
+<pre id="word_content" style="white-space: pre-wrap;">The decltype Keyword inspects the declared type of an entity or the type of an expression. ‘auto’ lets you declare a variable with a particular type whereas decltype lets you extract the type from the variable so decltype is sort of an operator that evaluates the type of passed expression. 
+```
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+ 
+int fun1() { return 10; }
+char fun2() { return 'g'; }
+ 
+int main()
+{
+    // Data type of x is same as return type of fun1()
+    // and type of y is same as return type of fun2()
+    decltype(fun1()) x;
+    decltype(fun2()) y;
+ 
+    cout &lt;&lt; typeid(x).name() &lt;&lt; endl;
+    cout &lt;&lt; typeid(y).name() &lt;&lt; endl;
+ 
+    return 0;
+}
+/*
+i
+c
+*/
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Integer_literal">Integer literal</a>, <a href="/dictionary/Literal_in_java">Literal in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Keyword_in_c++">Keyword in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

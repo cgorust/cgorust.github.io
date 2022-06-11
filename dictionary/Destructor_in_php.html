@@ -37,12 +37,30 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">integer literal in Java</span></h1>
+<h1><span class="badge badge-primary">destructor in PHP</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">There are three ways to represent integer numbers in Java: decimal (base 10), binary (base 2), octal (base 8), and hexadecimal (base 16). </pre>
+<pre id="word_content" style="white-space: pre-wrap;">A destructor is called when the object is destructed or the script is stopped or exited.
+If you create a \__destruct() function, PHP will automatically call this function at the end of the script. Notice that the destruct function starts with two underscores (__)!
+```
+&lt;?php
+class Fruit {
+  public $name;
+
+  function __construct($name) {
+    $this-&gt;name = $name;
+  }
+  function __destruct() {
+    echo "The fruit is {$this-&gt;name}.";
+  }
+}
+
+$apple = new Fruit("Apple");
+?&gt;
+```
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Integer_literal">Integer literal</a>, <a href="/dictionary/Literal_in_java">Literal in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Destructor">Destructor</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class_in_php">Class in php</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

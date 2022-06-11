@@ -37,12 +37,26 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">integer literal in Java</span></h1>
+<h1><span class="badge badge-primary">destructor in Python</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">There are three ways to represent integer numbers in Java: decimal (base 10), binary (base 2), octal (base 8), and hexadecimal (base 16). </pre>
+<pre id="word_content" style="white-space: pre-wrap;">In Python, destructors are not needed as much as in C++ because Python has a garbage collector that handles memory management automatically. 
+The __del__() method is a known as a destructor method in Python. It is called when all references to the object have been deleted i.e when an object is garbage collected. 
+```
+class Employee:
+    # Initializing
+    def __init__(self):
+        print('Employee created.')
+ 
+    # Deleting (Calling destructor)
+    def __del__(self):
+        print('Destructor called, Employee deleted.')
+ 
+obj = Employee()
+del obj
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Integer_literal">Integer literal</a>, <a href="/dictionary/Literal_in_java">Literal in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Destructor">Destructor</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class_in_python">Class in python</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

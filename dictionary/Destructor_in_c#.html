@@ -37,12 +37,47 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">integer literal in Java</span></h1>
+<h1><span class="badge badge-primary">destructor in C#</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">There are three ways to represent integer numbers in Java: decimal (base 10), binary (base 2), octal (base 8), and hexadecimal (base 16). </pre>
+<pre id="word_content" style="white-space: pre-wrap;">Destructors in C# are methods inside the class used to destroy instances of that class when they are no longer needed. The Destructor is called implicitly by the .NET Framework’s Garbage collector and therefore programmer has no control as when to invoke the destructor. An instance variable or an object is eligible for destruction when it is no longer reachable.
+Important Points:
+* A Destructor is unique to its class i.e. there cannot be more than one destructor in a class.
+* A Destructor has no return type and has exactly the same name as the class name (Including the same case).
+* It is distinguished apart from a constructor because of the Tilde symbol (~) prefixed to its name.
+* A Destructor does not accept any parameters and modifiers.
+* It cannot be defined in Structures. It is only used with classes.
+* It cannot be overloaded or inherited.
+* It is called when the program exits.
+
+Internally, Destructor called the Finalize method on the base class of object.
+```
+using System;  
+namespace CsharpDestructor {
+  
+  class Person {
+
+    public Person() {
+      Console.WriteLine("Constructor called.");
+    }
+    
+    void show() { }
+    // destructor
+    ~Person() {
+      Console.WriteLine("Destructor called.");
+    }
+
+    public static void Main(string [] args) {
+
+      //creates object of Person
+      Person p1 = new Person();
+      p1.show();
+```   
+
+
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Integer_literal">Integer literal</a>, <a href="/dictionary/Literal_in_java">Literal in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Destructor">Destructor</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class_in_c%23">Class in c#</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

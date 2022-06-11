@@ -39,12 +39,51 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">destructor in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">* Destructor overloading is not possible. Destructors take no arguments, so there’s only one way to destroy an object. That’s the reason destructor overloading is not possible.
-* In C++, you must never throw an exception from a destructor that is being called during the "stack unwinding" process of another exception. ... The easy way to prevent this is never throw an exception from a destructor.
+<pre id="word_content" style="white-space: pre-wrap;">Destructor is an instance member function which is invoked automatically whenever an object is going to be destroyed. Meaning, a destructor is the last function that is going to be called before an object is destroyed.
+The thing is to be noted here, if the object is created by using new or the constructor uses new to allocate memory which resides in the heap memory or the free store, the destructor should use delete to free the memory.   
+Properties of Destructor:
+Destructor function is automatically invoked when the objects are destroyed.
+* It cannot be declared static or const.
+* There can only one destructor in a class with classname preceded by ~, no parameters and no return type.
+* An object of a class with a Destructor cannot become a member of the union.
+* A destructor should be declared in the public section of the class.
+* The programmer cannot access the address of destructor.
+* it is always a good idea to make destructors virtual in base class when we have a virtual function.
+
+```
+#include &lt;string.h&gt;
+#include &lt;iostream&gt;
+
+class String {
+private:
+    char* s;
+    int size;
+public:
+    String(char*); // constructor
+    ~String(); // destructor
+};
+ 
+String::String(char* c)
+{
+    size = strlen(c);
+    s = new char[size + 1];
+    strcpy(s, c);
+}
+String::~String() { 
+    std::cout &lt;&lt; "desturctor called" &lt;&lt; std::endl;
+    delete[] s; 
+}
+
+int main() {
+    char s[] = "Hello world";
+    String str(s);
+}
+```
+
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Destructor">Destructor</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Destructor">Destructor</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class_in_c++">Class in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Virtual_destructor_in_c++">Virtual destructor in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

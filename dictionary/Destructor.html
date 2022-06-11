@@ -39,13 +39,11 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">destructor</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">In C++, when an object is destroyed a function called destructor automatically gets called. A destructor has the same name as the constructor (which is the same as the class name) but is preceded by a tilde. 
-You can have only one destructor for a class. It never takes any parameters, and it never returns anything. You can't pass parameters to the destructor anyway, since you never explicitly call a destructor (well, almost never).
-Remember that there is no concept of destructor in Java. In place of the destructor, Java provides the garbage collector that works the same as the destructor. The garbage collector is a program (thread) that runs on the JVM.
-</pre>
+<pre id="word_content" style="white-space: pre-wrap;">A destructor is a method which is invoked just before the memory of the object is released. Use of destructors is for Resource Acquisition Is Initialisation (RAII).
+Because Java is a garbage collected language you cannot predict when (or even if) an object will be destroyed. Hence there is no direct equivalent of a destructor. There is an inherited method called finalize, but this is called entirely at the discretion of the garbage collector. So for classes that need to explicitly tidy up, the convention is to define a close method and use finalize only for sanity checking (i.e. if close has not been called do it now and log an error).</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class">Class</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Destructor_in_c++">Destructor in c++</a>, <a href="/dictionary/Virtual_destructor">Virtual destructor</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class">Class</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Destructor_in_c%23">Destructor in c#</a>, <a href="/dictionary/Destructor_in_c++">Destructor in c++</a>, <a href="/dictionary/Destructor_in_php">Destructor in php</a>, <a href="/dictionary/Destructor_in_python">Destructor in python</a>, <a href="/dictionary/Destructor_in_rust">Destructor in rust</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

@@ -39,10 +39,26 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">literal in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">In Java SE 7 and later, any number of underscore characters ( _ ) can appear anywhere between digits in a numerical literal. This feature enables you, for example, to separate groups of digits in numeric literals, which can improve the readability of your code.
+You cannot place underscores in the following places:
+* At the beginning or end of a number
+* Adjacent to a decimal point in a floating point literal
+* Prior to an F or L suffix
+* In positions where a string of digits is expected
+```
+public class Main {
+    public static void main(String[] args) {
+        int _0 = 1___000;
+        int _1 = _100; // compilation error
+        int _2 = 100_; // compilation error
+        float _3 = 1._2f; // compilation error
+        double _4 = 1.2_f; // compilation error
+    }
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_java">Data type in java</a>, <a href="/dictionary/Literal">Literal</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Numerical_literal_in_java">Numerical literal in java</a>, <a href="/dictionary/String_literal_in_java">String literal in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Literal">Literal</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Data_type_in_java">Data type in java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Floating-point_literal_in_java">Floating-point literal in java</a>, <a href="/dictionary/Integer_literal_in_java">Integer literal in java</a>, <a href="/dictionary/String_literal_in_java">String literal in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
