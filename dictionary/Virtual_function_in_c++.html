@@ -39,51 +39,45 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">virtual function in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">You can make a class virtual if it is a base class that has been passed to more than one derived class, as might happen with multiple inheritance.
+<pre id="word_content" style="white-space: pre-wrap;">A virtual function is a member function that helps to redefine the implementation in the derived class. When two functions of the same name are present in the base and sub class, the base class function will be declared with the keyword virtual. Hence both classes can have the same function name with a different implementation. During runtime, it determines which function to call based on the object pointer it points to.
 ```
 #include &lt;iostream&gt;
 using namespace std;
 
-class Machine {
+class Base {
 public:
-    virtual void run() {}
-    class Parts {
-    public:
-        virtual int get_wheels() = 0;
-        virtual string get_fule_type() = 0;
-    };
+    virtual void func() { cout &lt;&lt; "Base:func()" &lt;&lt; endl; }
+    Base() { func(); }  // Base:func()
+    void call() { func(); }
 };
 
-class Car: public Machine {
+class Sub : public Base {
 public:
-    void run() {
-        cout &lt;&lt; "The car is running." &lt;&lt; endl;
-    }
-    class Parts: public Machine::Parts {
-    public:
-        int get_wheels() override {
-            cout &lt;&lt; "A car has 4 wheels." &lt;&lt; endl;
-            return 4;
-        }
-        string get_fule_type() override {
-            cout &lt;&lt; "A car uses gasolinle for fuel." &lt;&lt; endl;
-            return "gasoline";
-        }
-    };
-    
+    void func() { cout &lt;&lt; "Sub:func()" &lt;&lt; endl; }
+    Sub() { func(); } // Sub:func()
+    void call() { func(); }
 };
+
 int main() {
-    Machine* machine = new Car();
-    Machine::Parts* parts = new Car::Parts();
-    machine-&gt;run();
-    parts-&gt;get_wheels();
-    parts-&gt;get_fule_type();
-    return 0;    
+    Base * b = new Sub();
+
+    b-&gt;Base::call(); // Sub:func()
+    b-&gt;call();  //  Sub:func()
+    delete b;
+
+    return 0;
 }
+
+/*
+Base:func()
+Sub:func()
+Sub:func()
+Sub:func()
+*/
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Function_in_c++">Function in c++</a>, <a href="/dictionary/Method">Method</a>, <a href="/dictionary/Virtual_method">Virtual method</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Method_in_c++">Method in c++</a>, <a href="/dictionary/Virtual_method">Virtual method</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Pure_virtual_function_in_c++">Pure virtual function in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Abstract_class_in_c++">Abstract class in c++</a>, <a href="/dictionary/Dynamic_binding">Dynamic binding</a>, <a href="/dictionary/Vtable">Vtable</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
