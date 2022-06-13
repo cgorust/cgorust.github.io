@@ -39,7 +39,31 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">member variable in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">
+
+
+The initialisation order of member variables is determined by their order of declaration, not their order in the initialisation list.
+```
+#include &lt;iostream&gt;
+struct A {
+  A() { std::cout &lt;&lt; "A"; }
+};
+struct B {
+  B() { std::cout &lt;&lt; "B"; }
+};
+
+class C {
+public:
+  C() : a(), b() {}
+private:
+  B b;
+  A a;
+};
+
+int main() {
+    C();
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Member_variable">Member variable</a>, <a href="/dictionary/Variable_in_c++">Variable in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Static_member_variable_in_c++">Static member variable in c++</a></button>

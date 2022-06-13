@@ -39,7 +39,22 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">function in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The evaluation order of function argument expressions is unspecified, all we know is that they will all happen before ("be sequenced before") the contents of the called function. In particular, in the expression g(f1(), f2()), we don't know whether f1 or f2 will be sequenced first, we only know that they will both be sequenced before the body of g.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">The evaluation order of function argument expressions is unspecified, all we know is that they will all happen before ("be sequenced before") the contents of the called function. In particular, in the expression g(f1(), f2()), we don't know whether f1 or f2 will be sequenced first, we only know that they will both be sequenced before the body of g.
+```
+#include &lt;iostream&gt;
+
+void print(int x, int y)
+{
+    std::cout &lt;&lt; x &lt;&lt; y;
+}
+
+int main() {
+    int i = 0;
+    print(++i, ++i);
+    return 0;
+}
+```
+In which order are the two ++i expressions evaluated to initialise the parameters, and when do the increments of i take effect? The evaluation order of the two ++i expressions is unspecified. </pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Function">Function</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/C++">C++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Friend_function_in_c++">Friend function in c++</a>, <a href="/dictionary/Static_function_in_c++">Static function in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Default_argument_in_c++">Default argument in c++</a>, <a href="/dictionary/Inline_function_in_c++">Inline function in c++</a>, <a href="/dictionary/Lambda_expression_in_c++">Lambda expression in c++</a></button>
