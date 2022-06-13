@@ -41,6 +41,7 @@
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Arrays in C++ are used to store a collection of values of the same type. The size of an array is specified when it is declared and cannot change afterward.
 A multidimensional array is an “array of arrays” and is declared by adding extra sets of indices to the array name.
+There is no index out of bounds checking in C/C++, os, some programs compile fine but may produce unexpected output when run.
 ```
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
@@ -58,10 +59,39 @@ int main() {
     delete[] vp;
     return 0;
 }
+```
+Arrays are always passed pointers in functions, so to keep array information, we need to pass in a reference.
+```
+#include &lt;iostream&gt;
+using namespace std;
+ 
+template &lt;class T, size_t n&gt;
+void findSize(T (&amp;arr)[n])
+{
+    cout &lt;&lt; sizeof(T) * n &lt;&lt; endl;
+}
+ 
+int main()
+{
+    int a[10];
+    findSize(a);
+ 
+    float f[20];
+    findSize(f);
+    return 0;
+}
+```
+In C++, expression E1[E2] is identical (by definition) to *((E1)+(E2)),
+```
+#include &lt;iostream&gt;
+int main() {
+  int a[10] = {1, 2, 3};
+  std::cout &lt;&lt; 2[a];
+}
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array">Array</a>, <a href="/dictionary/Data_structure_in_c++">Data structure in c++</a>, <a href="/dictionary/Data_type_in_c++">Data type in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array">Array</a>, <a href="/dictionary/Data_structure_in_c++">Data structure in c++</a>, <a href="/dictionary/Data_type_in_c++">Data type in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Array_literal_in_c++">Array literal in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

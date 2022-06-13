@@ -74,7 +74,31 @@ Sub:func()
 Sub:func()
 Sub:func()
 */
-```</pre>
+```
+A virtual function call uses the default arguments in the declaration of the virtual function determined by the static type of the pointer or reference denoting the object. An overriding function in a derived class does not acquire default arguments from the function it overrides.
+```
+#include &lt;iostream&gt;
+
+struct A {
+    virtual void foo (int a = 1) {
+        std::cout &lt;&lt; "A" &lt;&lt; a;
+    }
+};
+
+struct B : A {
+    virtual void foo (int a = 2) {
+        std::cout &lt;&lt; "B" &lt;&lt; a;
+    }
+};
+
+int main () {
+    A *b = new B;
+    b-&gt;foo();
+}
+
+//B1
+```
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Method_in_c++">Method in c++</a>, <a href="/dictionary/Virtual_method">Virtual method</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Pure_virtual_function_in_c++">Pure virtual function in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Dynamic_binding">Dynamic binding</a>, <a href="/dictionary/Vtable">Vtable</a></button>

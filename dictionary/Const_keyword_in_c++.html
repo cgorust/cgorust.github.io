@@ -37,12 +37,46 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">array literal</span></h1>
+<h1><span class="badge badge-primary">const keyword in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">Pointer to constant can be declared in following two ways. We can change the pointer to point to any other integer variable, but cannot change the value of the object (entity) pointed using pointer ptr.
+```
+const int *ptr;
+int const *ptr;
+```
+Constant pointer to an integer variable, means we can change the value of object pointed by pointer, but cannot change the pointer to point another variable. 
+```
+int * const ptr;
+```
+Constant pointer to a constant variable which means we cannot change value pointed by the pointer as well as we cannot point the pointer to other variables. Let us see with an example. 
+```
+int const * const ptr;
+```
+Below is an example, 
+```
+#include &lt;iostream&gt;
+  
+int main(void)
+{
+   int i = 10;
+   int j = 20;
+
+   const int *p1 = &amp;i;   // pointer to const value
+   int const *p2 = &amp;i;   // pointer to const value
+   int *const p3 = &amp;i;   
+  
+   //*p1 = 20; // error, cannot change 
+   //*p2 = 20; // error, cannot change 
+      
+   *p3 = 20; 
+   //p3 = &amp;j;  // error, cannot change
+       
+   return 0;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Array">Array</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Array_literal_in_c++">Array literal in c++</a>, <a href="/dictionary/Array_literal_in_go">Array literal in go</a>, <a href="/dictionary/Array_literal_in_java">Array literal in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Keyword_in_c++">Keyword in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

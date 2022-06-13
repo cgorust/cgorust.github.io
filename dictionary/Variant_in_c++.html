@@ -37,12 +37,25 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">array literal</span></h1>
+<h1><span class="badge badge-primary">variant in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">The class template std::variant represents a type-safe union. An instance of std::variant at any given time either holds a value of one of its alternative types, or in the case of error - no value 
+```
+#include &lt;variant&gt;
+#include &lt;iostream&gt;
+ 
+using namespace std;
+
+int main() {
+   variant&lt;int, double, char&gt; v;
+   v=1.1;
+   cout &lt;&lt; v.index();
+}
+// 1
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Array">Array</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Array_literal_in_c++">Array literal in c++</a>, <a href="/dictionary/Array_literal_in_go">Array literal in go</a>, <a href="/dictionary/Array_literal_in_java">Array literal in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Union_in_c++">Union in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
