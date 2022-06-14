@@ -37,12 +37,32 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">operator in C++</span></h1>
+<h1><span class="badge badge-primary">const_cast</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">You are not allowed to const_cast variables that are actually const. This results in undefined behavior. const_cast is used to remove the const-ness from references and pointers that ultimately refer to something that is not const.
+So, this is allowed:
+```
+int i = 0;
+const int&amp; ref = i;
+const int* ptr = &amp;i;
+
+const_cast&lt;int&amp;&gt;(ref) = 3;
+*const_cast&lt;int*&gt;(ptr) = 3;
+```
+It's allowed because i, the object being assigned to, is not const. 
+The below is not allowed:
+```
+const int i = 0;
+const int&amp; ref = i;
+const int* ptr = &amp;i;
+
+const_cast&lt;int&amp;&gt;(ref) = 3;
+*const_cast&lt;int*&gt;(ptr) = 3;
+```
+because here i is const and you are modifying it by assigning it a new value. The code will compile, but its behaviour is undefined (which can mean anything from "it works just fine" to "the program will crash".)</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Operator">Operator</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Data_type_in_c++">Data type in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Casting_operator_in_c++">Casting operator in c++</a>, <a href="/dictionary/Comma_operator_in_c++">Comma operator in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Casting_operator_in_c++">Casting operator in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
