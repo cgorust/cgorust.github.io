@@ -42,7 +42,7 @@
 <pre id="word_content" style="white-space: pre-wrap;">At any time, the RISC-V processor is operating in exactly one of the following “modes”: 
 * U-Mode (User Mode) Lowest privilege 
 * S-Mode (Supervisor Mode) 
-* M-Mode (Machine Mode) *Highest privilege 
+* M-Mode (Machine Mode) Highest privilege 
 
 Typically, user-level applications will execute in User Mode. Whenever the application wants an OS service, it will make a system call. The OS code that handles this call will execute in Supervisor Mode, i.e., at a higher privilege level. Upon return to the application, the mode will be lowered back to User Mode. 
 Most instructions can be executed in any mode, but some instructions are privileged and can only be executed in a higher mode. 
