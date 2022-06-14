@@ -48,22 +48,23 @@ class Base {
     virtual void print() { cout &lt;&lt; "Base" &lt;&lt; endl; }
 };
   
-class Derived1 : public Base { 
-    void print() { cout &lt;&lt; "Derived1" &lt;&lt; endl; }
+class Derived : public Base { 
+    void print() { cout &lt;&lt; "Derived" &lt;&lt; endl; }
 };
 
 int main()
 {
-    Derived1 d1;
-    Base* bp = dynamic_cast&lt;Base*&gt;(&amp;d1);
-    Derived1* dp2 = dynamic_cast&lt;Derived1*&gt;(bp);
-    if (dp2 == nullptr)
+    Derived d;
+    Base* bp = dynamic_cast&lt;Base*&gt;(&amp;d);
+    Derived* dp = dynamic_cast&lt;Derived*&gt;(bp);
+    if (dp == nullptr)
         cout &lt;&lt; "null" &lt;&lt; endl;
     else
         cout &lt;&lt; "not null" &lt;&lt; endl;
   
     return 0;
 }
+// not null
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
