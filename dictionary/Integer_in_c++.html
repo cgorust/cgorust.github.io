@@ -53,7 +53,9 @@ unsigned long | 8 bytes | 0 to 2&lt;sup&gt;64&lt;/sup&gt;-1
 long long | 8 bytes | -2&lt;sup&gt;63&lt;/sup&gt; to 2&lt;sup&gt;63&lt;/sup&gt;-1
 unsigned long long | 8 bytes | 0 to 2&lt;sup&gt;64&lt;/sup&gt;-1
 
-Plain char, signed char, and unsigned char are three distinct types.  In any particular implementation, a plain char object can take on either the same values as a signed char or an unsigned char.
+Notes:
+* Plain char, signed char, and unsigned char are three distinct types.  In any particular implementation, a plain char object can take on either the same values as a signed char or an unsigned char.
+* Signed integer overflow is undefined behaviour according to the standard.
 
 ```
 #include &lt;iostream&gt;
