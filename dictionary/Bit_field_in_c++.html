@@ -39,8 +39,10 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">bit field in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">In C++, A class can define a (nonstatic) data member as a bit-field. We indicate that a member is a bit-field by following the member name with a colon and a constant expression specifying the number of bits. A bit-field shall not be a static member. 
-Ordinarily it is best to make a bit-field an unsigned type. The behavior of bit-fields stored in a signed type is implementation defined.
+<pre id="word_content" style="white-space: pre-wrap;">In C++, A class can define a (nonstatic) data member as a bit-field. We indicate that a member is a bit-field by following the member name with a colon and a constant expression specifying the number of bits. 
+* A bit-field shall not be a static member. 
+* Ordinarily it is best to make a bit-field an unsigned type. The behavior of bit-fields stored in a signed type is implementation defined.
+* The address-of operator &amp; shall not be applied to a bit-field, so there are no pointers to bit-fields.
 ```
 #include &lt;iostream&gt;
 using namespace std;
