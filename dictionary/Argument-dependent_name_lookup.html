@@ -37,25 +37,27 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">namespace in C++</span></h1>
+<h1><span class="badge badge-primary">argument-dependent name lookup</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Namespaces group named entities that otherwise would have global scope into narrower scopes, giving them namespace scope. This allows organising the elements of programs into different logical scopes referred to by names. Namespace provide the space where we can define or declare identifier i.e. variable,  method, classes.
-A namespace definition begins with the keyword namespace followed by the namespace name as follows:
+<pre id="word_content" style="white-space: pre-wrap;">Argument-dependent name lookup applies to the lookup of an unqualified function name depending on the types of the arguments given to the function call. 
+During argument-dependent lookup, other namespaces not considered during normal lookup may be searched where the set of namespaces to be searched depends on the types of the function arguments. Specifically, the set of declarations discovered during the process, and considered for resolution of the function name, is the union of the declarations found by normal lookup with the declarations found by looking in the set of namespaces associated with the types of the function arguments.
 ```
-namespace namespace_name 
-{
-   int x, y; // code declarations where 
-             // x and y are declared in 
-             // namespace_name's scope
+namespace NS {
+
+class A {};
+void f(A&amp; a) {}
+}  // namespace NS
+
+int main() {
+   NS::A a;
+   f(a);  // Calls NS::f.
 }
 ```
-You can also avoid prepending of namespaces with the using namespace directive. This directive tells the compiler that the subsequent code is making use of names in the specified namespace. Why NOT "using namespace std"? When the compiler encounters using namespace std, it will import every identifier it can find in namespace std into the global scope (since that’s where the using directive has been placed). This introduces 3 key challenges:
-* The chance for a naming collision between a name you’ve picked and something that already exists in the std namespace is massively increased.
-* New versions of the standard library may break your currently working program. These future versions could introduce names that cause new naming collisions, or in the worst case, the behavior of your program might change silently and unexpectedly!
-* The lack of std:: prefixes makes it harder for readers to understand what is a std library name and what is a user-defined name.</pre>
+
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Namespace">Namespace</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/C++">C++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Argument-dependent_name_lookup">Argument-dependent name lookup</a>, <a href="/dictionary/Name_hiding_in_c++">Name hiding in c++</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Namespace_in_c++">Namespace in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
