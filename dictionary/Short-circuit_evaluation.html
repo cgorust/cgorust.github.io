@@ -37,23 +37,24 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">logical operator</span></h1>
+<h1><span class="badge badge-primary">short-circuit evaluation</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">| Operator | Name | Description | Example |
-| ----- | ----- | ----- |
-| all | Logical all | TRUE if all of the values meet the condition | all([True, True, True, True]  (returns true)| 	
-| and or &amp;&amp; | Logical and | Returns true if both statements are true | x &lt; 2 &amp;&amp;  x &gt; 0 | 	
-| any | Logical any | TRUE if any of the values meet the condition | any([False, True, False, False] (returns true) | 	
-| between | Logical between | TRUE if the operand is within the range of comparisons | between 10 and 20 | 	
-| exists | Logical exists | TRUE if the subquery returns one or more records | |
-| in | Logical in | TRUE if the operand is equal to one of a list of expressions | |
-| like | Logical pattern matching |TRUE if the operand matches a pattern | |
-| not or ! | Logical not | Reverse the result, returns false if the result is true | !(x &gt; 5 &amp;&amp; x &lt; 10) |
-| or or \|\| | Logical or | Returns true if one of the statements is true | x &lt; 2 \|\| x &gt; 10 | 	
-| some | Logical some | TRUE if any of the subquery values meet the condition |  | 	</pre>
+<pre id="word_content" style="white-space: pre-wrap;">Short-circuit evaluation is the semantics of some Boolean operators in some programming languages in which the second argument is evaluated only if the first argument does not suffice to determine the value of the expression: when the first argument of the AND function evaluates to false, the overall value must be false; and when the first argument of the OR function evaluates to true, the overall value must be true.
+```
+#include &lt;iostream&gt;
+
+int main() {
+    int I = 1, J = 1, K = 1;
+    ++I || ++J &amp;&amp; ++K;
+    std::cout &lt;&lt; I &lt;&lt; J &lt;&lt; K; //211
+}
+```
+
+
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Operator">Operator</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Short-circuit_evaluation">Short-circuit evaluation</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Logical_operator">Logical operator</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
