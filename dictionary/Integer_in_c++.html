@@ -41,9 +41,6 @@
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Type | Storage size | Value range
 --- | --- | --- 
-char | 1 byte | -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1 or 0 to 2&lt;sup&gt;8&lt;/sup&gt;-1
-unsigned char | 1 byte | 0 to 2&lt;sup&gt;8&lt;/sup&gt;-1
-signed char | 1 byte | -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1
 short | 2 bytes | -2&lt;sup&gt;15&lt;/sup&gt; to 2&lt;sup&gt;15&lt;/sup&gt;-1
 unsigned short | 2 bytes | 0 to 2&lt;sup&gt;16&lt;/sup&gt;-1
 int | 2 bytes or 4 bytes | -2&lt;sup&gt;15&lt;/sup&gt; to 2&lt;sup&gt;15&lt;/sup&gt;-1 or -2&lt;sup&gt;31&lt;/sup&gt; to 2&lt;sup&gt;31&lt;/sup&gt;-1
@@ -54,9 +51,14 @@ long long | 8 bytes | -2&lt;sup&gt;63&lt;/sup&gt; to 2&lt;sup&gt;63&lt;/sup&gt;-
 unsigned long long | 8 bytes | 0 to 2&lt;sup&gt;64&lt;/sup&gt;-1
 
 Notes:
-* Plain char, signed char, and unsigned char are three distinct types.  In any particular implementation, a plain char object can take on either the same values as a signed char or an unsigned char.
-* Signed integer overflow is undefined behaviour according to the standard.
-* Unsigned integers have well defined behaviour when they overflow. When you go one above the largest representable unsigned int, you end up back at zero.
+* Data type modifiers: 
+ * Signed
+ * Unsigned
+ * Short
+ * Long
+* Overflow:
+ * Signed integer overflow is undefined behaviour according to the standard.
+ * Unsigned integer ends up back at zero when overflowed.
 
 ```
 #include &lt;iostream&gt;
@@ -64,9 +66,6 @@ using namespace std;
 
 int main()
 {
-    char c = 1; cout&lt;&lt;(int)c&lt;&lt;endl;
-    unsigned char uc = 1; cout&lt;&lt;(int)uc&lt;&lt;endl;
-    signed char sc = -1; cout&lt;&lt;(int)sc&lt;&lt;endl;
     short s = -1; cout&lt;&lt;s&lt;&lt;endl;
     unsigned short us = 1; cout&lt;&lt;us&lt;&lt;endl;
     int i = -1; cout&lt;&lt;i&lt;&lt;endl;
@@ -80,9 +79,6 @@ int main()
 ```
 Outputs:
 ```
-1
-1
--1
 -1
 1
 -1

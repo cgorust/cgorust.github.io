@@ -39,31 +39,43 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">character in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Char is defined by C++ to always be 1 byte in size. By default, a char may be signed or unsigned (though it's usually signed). If you're using chars to hold ASCII characters, you don't need to specify a sign (since both signed and unsigned chars can hold values between 0 and 127).
+<pre id="word_content" style="white-space: pre-wrap;">Type | Storage size | Value range
+--- | --- | --- 
+char | 1 byte | -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1 or 0 to 2&lt;sup&gt;8&lt;/sup&gt;-1
+unsigned char | 1 byte | 0 to 2&lt;sup&gt;8&lt;/sup&gt;-1
+signed char | 1 byte | -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1
+wchar_t | 2 or 4 bytes | 1 wide character
+
+Notes:
+* Plain char, signed char, and unsigned char are three distinct types. In any particular implementation, a plain char object can take on either the same values as a signed char or an unsigned char.
+
 ```
 #include &lt;iostream&gt;
- 
+using namespace std;
+
 int main()
 {
-    char ch1{ 'a' }; // (preferred)
-    std::cout &lt;&lt; ch1; // cout prints a character
- 
-    char ch2{ 98 }; // code point for 'b' (not preferred)
-    std::cout &lt;&lt; ch2; // cout prints a character ('b')
- 
- 
+    char c = 1; cout&lt;&lt;(int)c&lt;&lt;endl;
+    unsigned char uc = 1; cout&lt;&lt;(int)uc&lt;&lt;endl;
+    signed char sc = -1; cout&lt;&lt;(int)sc&lt;&lt;endl;
+    wchar_t wc = 1; cout&lt;&lt;(int)wc&lt;&lt;endl;
     return 0;
 }
-```</pre>
+```
+Outputs:
+```
+1
+1
+-1
+1
+```
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Character">Character</a>, <a href="/dictionary/Primitive_data_type_in_c++">Primitive data type in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Character">Character</a>, <a href="/dictionary/Data_type_in_c++">Data type in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
-<script>
-        document.getElementById("year").innerHTML = new Date().getFullYear();
-    </script>
 <div class="text-center text-primary">
 <a href="/">cgorust.com 2018 - 
             <script>

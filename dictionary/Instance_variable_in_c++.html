@@ -37,15 +37,34 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">global variable</span></h1>
+<h1><span class="badge badge-primary">instance variable in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Global variables are defined outside of all the functions and classes, usually on top of the program. A global variable can be accessed by any function or any class.
-* Global variables hold their value throughout the lifetime of your program. 
-* Global variables are created before the main functions starts.
-</pre>
+<pre id="word_content" style="white-space: pre-wrap;">
+The initialisation order of instance variables is determined by their order of declaration, not their order in the initialisation list.
+```
+#include &lt;iostream&gt;
+struct A {
+  A() { std::cout &lt;&lt; "A"; }
+};
+struct B {
+  B() { std::cout &lt;&lt; "B"; }
+};
+
+class C {
+public:
+  C() : a(), b() {}
+private:
+  B b;
+  A a;
+};
+
+int main() {
+    C();
+} //BA
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Variable">Variable</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Global_variable_in_c">Global variable in c</a>, <a href="/dictionary/Global_variable_in_c++">Global variable in c++</a>, <a href="/dictionary/Static_global_variable">Static global variable</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Instance_variable">Instance variable</a>, <a href="/dictionary/Variable_in_c++">Variable in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

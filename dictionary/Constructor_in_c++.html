@@ -39,7 +39,18 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">constructor in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">* All members are initialised before the body of the constructor.
+<pre id="word_content" style="white-space: pre-wrap;">* Unlike new, malloc() doesn’t call constructor.
+* All members are initialised before the body of the constructor.
+* Default constructor is the constructor without parameters. If we write any constructor, then compiler doesn’t create the default constructor.
+* A copy constructor initialises an object using another object of the same class. 
+    * Objects must be passed by reference in copy constructors. Compiler checks for this and produces compiler error if not passed by reference.
+    * Compiler creates a copy constructor if we don’t write our own. 
+    * There must be a user defined copy constructor in classes with pointers or dynamic memory allocation to avoid shallow copy.
+    * In C++, a copy constructor may be called for the following cases. It is, however, not guaranteed that a copy constructor will be called in all these cases, because the C++ Standard allows the compiler to optimise the copy away in certain cases, one example being the Return Value Optimisation.
+        * When an object of the class is returned by value. Usually optimised away.
+        * When an object of the class is passed to a function by value as an argument. 
+        *  When an object is constructed based on another object of the same class. 
+        * When the compiler generates a temporary object. 
 
 ```
 #include &lt;iostream&gt;
@@ -65,7 +76,7 @@ int main() {
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Constructor">Constructor</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Conversion_constructor_in_c++">Conversion constructor in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Constructor">Constructor</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class_in_c++">Class in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Conversion_constructor">Conversion constructor</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Initializer_list">Initializer list</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
