@@ -48,7 +48,7 @@
     * Compiler creates a copy constructor if we don’t write our own. 
     * There must be a user defined copy constructor in classes with pointers or dynamic memory allocation to avoid shallow copy.
     * In C++, a copy constructor may be called for the following cases. It is, however, not guaranteed that a copy constructor will be called in all these cases, because the C++ Standard allows the compiler to optimise the copy away in certain cases, one example being the Return Value Optimisation.
-        * When an object of the class is returned by value. Usually optimised away.
+        * When an object of the class is returned by value. Usually optimised away. This is called copy elision.
         * When an object of the class is passed to a function by value as an argument. 
         *  When an object is constructed based on another object of the same class. 
         * When the compiler generates a temporary object. 
@@ -77,7 +77,7 @@ int main() {
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Constructor">Constructor</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class_in_c++">Class in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Conversion_constructor">Conversion constructor</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Initializer_list">Initializer list</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Constructor">Constructor</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class_in_c++">Class in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Conversion_constructor">Conversion constructor</a>, <a href="/dictionary/Copy_elision">Copy elision</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Initializer_list">Initializer list</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
