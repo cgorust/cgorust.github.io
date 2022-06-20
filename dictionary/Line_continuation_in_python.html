@@ -37,19 +37,20 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">pointer in C++</span></h1>
+<h1><span class="badge badge-primary">line continuation in Python</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The valid use cases to use new and delete, raw pointers or c-style arrays with modern C++ are when ownership should not be local.
-As an example, a pointer container may not want ownership over the pointers in it to reside in the pointers themselves. If you try to write a linked list with forward unique ptrs, at destruction time you can easily blow the stack.
-A vector-like container of owning pointers may be better suited to storing delete operation at the container or subcontainer level, and not at the element level.
-In those and similar cases, you wrap ownership like a smart pointer does, but you do it at a higher level. Many data structures (graphs, etc) may have similar issues, where ownership properly resides at a higher point than where the pointers are, and they may not map directly to an existing container concept.
-In some cases it may be easy to factor out the container-ownership from the rest of the data structure. In others it may not.
-Sometimes you have insanely complex non-local non-reference counted lifetimes. There is no sane spot to put the ownership pointer in those cases.
-Determining correctness here is hard, but not impossible. Programs that are correct and have such complex ownership semantics exist.
-Assigning any pointer type to a void pointer without using a cast is allowed in C or C++. But we can not assign a void pointer to a non-void pointer without using a cast to non-void pointer type in C++.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">Some statements may become very long and may force you to scroll the screen left and right frequently. You can fit your code in such a way that you do not have to scroll here and there. Python allows you to write a single statement in multiple lines, also known as line continuation. Line continuation enhances readability as well.
+* Implicit Line Continuation. This is the most straightforward technique in writing a statement that spans multiple lines. Any statement containing opening parentheses (‘(‘), brackets (‘[‘), or curly braces (‘{‘) is presumed to be incomplete until all matching parentheses, square brackets, and curly braces have been encountered. Until then, the statement can be implicitly continued across lines without raising an error.
+* Explicit Line Continuation. Explicit Line joining is used mostly when implicit line joining is not applicable. In this method, you have to use a character that helps the interpreter to understand that the particular statement is spanning more than one lines. Backslash (\) is used to indicate that a statement spans more than one line. The point is to be noted that ” must be the last character in that line, even white-space is not allowed.
+```
+if (2 &gt; 
+    1):
+    print\
+        (2)
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_c++">Data type in c++</a>, <a href="/dictionary/Pointer">Pointer</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Smart_pointer_in_c++">Smart pointer in c++</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Token_in_python">Token in python</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

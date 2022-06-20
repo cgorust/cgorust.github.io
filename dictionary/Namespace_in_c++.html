@@ -49,7 +49,9 @@ namespace namespace_name
              // namespace_name's scope
 }
 ```
-You can also avoid prepending of namespaces with the using namespace directive. This directive tells the compiler that the subsequent code is making use of names in the specified namespace. Why NOT "using namespace std"? When the compiler encounters using namespace std, it will import every identifier it can find in namespace std into the global scope (since that’s where the using directive has been placed). This introduces 3 key challenges:
+You can also avoid prepending of namespaces with the using namespace directive. This directive tells the compiler that the subsequent code is making use of names in the specified namespace. 
+Why NOT "using namespace std"? 
+When the compiler encounters using namespace std, it will import every identifier it can find in namespace std into the global scope (since that’s where the using directive has been placed). This introduces 3 key challenges:
 * The chance for a naming collision between a name you’ve picked and something that already exists in the std namespace is massively increased.
 * New versions of the standard library may break your currently working program. These future versions could introduce names that cause new naming collisions, or in the worst case, the behavior of your program might change silently and unexpectedly!
 * The lack of std:: prefixes makes it harder for readers to understand what is a std library name and what is a user-defined name.</pre>
