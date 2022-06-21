@@ -39,7 +39,10 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">global variable in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">```
+<pre id="word_content" style="white-space: pre-wrap;">Same as in C, in C++, the clean, reliable way to declare and define global variables is to use a header file to contain an extern declaration of the variable.
+The header is included by the one source file that defines the variable and by all the source files that reference the variable. For each program, one source file (and only one source file) defines the variable. Similarly, one header file (and only one header file) should declare the variable. The header file is crucial; it enables cross-checking between independent source files and ensures consistency.
+A global variable will implicitly be initialized to 0.
+```
 #include &lt;iostream&gt;
 using namespace std;
 

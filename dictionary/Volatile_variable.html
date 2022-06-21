@@ -37,12 +37,16 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">If-else</span></h1>
+<h1><span class="badge badge-primary">volatile variable</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">A volatile variable is a variable that is marked or cast with the keyword "volatile" so that the variable can be changed by some outside factor, such as the operating system or other software.
+There is no volatile concept in Python. Python stores all objects on a heap, in main memory. Moreover, due to how the Python interpreter loop uses locking (the GIL), only one thread at a time will be actively running Python code. There is never a chance that different threads are running a Python interpreter loop on a different CPU.
+Javascript also has no volatile because JavaScript run-times are single threaded. This means that there is is nothing to interrupt this code and no other code can change the state while the code runs.
+
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Control_flow">Control flow</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/If-else_in_c++">If-else in c++</a>, <a href="/dictionary/If-else_in_go">If-else in go</a>, <a href="/dictionary/If-else_in_java">If-else in java</a>, <a href="/dictionary/If-else_in_python">If-else in python</a>, <a href="/dictionary/If-else_in_rust">If-else in rust</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Variable">Variable</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Volatile_in_c++">Volatile in c++</a>, <a href="/dictionary/Volatile_in_java">Volatile in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

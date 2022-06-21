@@ -37,12 +37,45 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">If-else</span></h1>
+<h1><span class="badge badge-primary">volatile in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">For Java, “volatile” tells the compiler that the value of a variable must never be cached as its value may change outside of the scope of the program itself.
+
+```
+import java.util.Scanner;
+
+class MyThread extends Thread {
+    private volatile boolean running = true;   // volatile keyword is needed here
+
+    public void run() {
+        while (running) {
+            System.out.println("hello");
+        }
+    }
+
+    public void shutdown() {
+        running = false;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        MyThread obj = new MyThread();
+        obj.start();
+
+        Scanner input = new Scanner(System.in);
+        input.nextLine(); 
+        obj.shutdown();   
+    }    
+}
+```
+Ideally, if without volatile, this program should print hello until the Return key is pressed. But on some machines it may happen that the variable running is cached and you cannot change its value from the shutdown() method which results in infinite printing of the hello text.
+Thus, by using the volatile keyword, it is guaranteed that your variable will not be cached and the code will run fine on all machines.
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Control_flow">Control flow</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/If-else_in_c++">If-else in c++</a>, <a href="/dictionary/If-else_in_go">If-else in go</a>, <a href="/dictionary/If-else_in_java">If-else in java</a>, <a href="/dictionary/If-else_in_python">If-else in python</a>, <a href="/dictionary/If-else_in_rust">If-else in rust</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Keyword_in_java">Keyword in java</a>, <a href="/dictionary/Volatile_variable">Volatile variable</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

@@ -39,13 +39,14 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">global variable in C</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">You should not define global variables in header files. You should define them in .c source file.
+<pre id="word_content" style="white-space: pre-wrap;">You should not define global variables in .h header files. You should define them in .c source file.
 * If global variable is to be visible within only one .c file, you should declare it static.
 * If global variable is to be used across multiple .c files, you should not declare it static. Instead you should declare it extern in header file included by all .c files that need it.
 ```
-int value = 20; //global variable  
-void function1() {
-  int x = 10; //local variable  
+int g = 20; //global variable  
+
+int main() {
+  int l = 10; //local variable  
 }
 ```</pre>
 </div>
