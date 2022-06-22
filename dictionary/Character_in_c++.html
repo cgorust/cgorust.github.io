@@ -41,33 +41,24 @@
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Type | Storage size | Value range
 --- | --- | --- 
-char | 1 byte | -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1 or 0 to 2&lt;sup&gt;8&lt;/sup&gt;-1
-unsigned char | 1 byte | 0 to 2&lt;sup&gt;8&lt;/sup&gt;-1
-signed char | 1 byte | -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1
+char | implementation-defined, usually 1 byte |  -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1 or 0 to 2&lt;sup&gt;8&lt;/sup&gt;-1 
+unsigned char | implementation-defined, usually 1 byte | 0 to 2&lt;sup&gt;8&lt;/sup&gt;-1
+signed char | implementation-defined, usually 1 byte | -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1
 wchar_t | 2 or 4 bytes | 1 wide character
 
 Notes:
-* Plain char, signed char, and unsigned char are three distinct types. In any particular implementation, a plain char object can take on either the same values as a signed char or an unsigned char.
+* Objects declared as characters (char) shall be large enough to store any member of the implementation’s basic character set. A char, a signed char, and an unsigned char occupy the same amount of storage.
+* Plain char, signed char, and unsigned char are three distinct types. It is implementation-defined whether a char object can hold negative values.
 
 ```
 #include &lt;iostream&gt;
-using namespace std;
-
-int main()
-{
-    char c = 1; cout&lt;&lt;(int)c&lt;&lt;endl;
-    unsigned char uc = 1; cout&lt;&lt;(int)uc&lt;&lt;endl;
-    signed char sc = -1; cout&lt;&lt;(int)sc&lt;&lt;endl;
-    wchar_t wc = 1; cout&lt;&lt;(int)wc&lt;&lt;endl;
-    return 0;
+#include &lt;type_traits&gt;
+ 
+int main() {
+    std::cout&lt;&lt;std::is_signed&lt;char&gt;::value; // 0 or 1
+    std::cout&lt;&lt;std::is_same&lt;char, signed char&gt;::value;  //always 0
+    std::cout&lt;&lt;std::is_same&lt;char, unsigned char&gt;::value;  //always 0
 }
-```
-Outputs:
-```
-1
-1
--1
-1
 ```
 </pre>
 </div>

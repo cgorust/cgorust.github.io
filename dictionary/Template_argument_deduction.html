@@ -37,35 +37,32 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">variable in Go</span></h1>
+<h1><span class="badge badge-primary">template argument deduction</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The var statement declares a list of variables. The type is last. 
-A var statement can be at package or function level. 
-A var declaration can include initializers, one per variable. If an initializer is present, the type can be omitted; the variable will take the type of the initializer. 
-Inside a function, the := short assignment statement can be used in place of a var declaration with implicit type. 
+<pre id="word_content" style="white-space: pre-wrap;">When you call a template function, you may omit any template argument that the compiler can determine or deduce by the usage and context of that template function call.
 ```
-package main
+#include &lt;iostream&gt;
+#include &lt;type_traits&gt;
 
-import "fmt"
+using namespace std;
 
-func main() {
-	var a = "initial"
-	var b, c int = 1, 2
-	var d = true
-	var e int
-	f := "apple"
-	fmt.Println(a, b, c, d, e, f)
+template&lt;typename T, typename U&gt;
+void f(T, U) {
+    cout &lt;&lt; is_same_v&lt;T, U&gt;;
 }
-```
-Variables declared without an explicit initial value are given their zero value.
-The zero value is:
-* 0 for numeric types
-* false for the boolean type
-* "" (the empty string) for strings
-</pre>
+
+int main() {
+    int i = 0;
+    double d = 0.0;
+    f(i, d); 
+    f&lt;int&gt;(i, d); 
+    f&lt;double&gt;(i, d); 
+}
+//001
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Variable">Variable</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Data_type_in_go">Data type in go</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Template_in_c++">Template in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

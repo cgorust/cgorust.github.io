@@ -52,25 +52,18 @@ References are less powerful than pointers,
 * A reference must be initialized when declared. There is no such restriction with pointers.
 
 ```
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
- 
-int main()
-{
-    vector&lt;int&gt; vect{ 10, 20, 30, 40 };
- 
-    for (int&amp; x : vect) 
-        x = x + 5;
-    for (int x : vect)
-        x = x + 5;
-    for (int x : vect) 
-        cout &lt;&lt; x &lt;&lt; " ";
-    return 0;
-}
+#include &lt;iostream&gt;
 
-/* Output
-5 25 35 45 
-*/
+using namespace std;
+
+int main() {
+    int a1 = 0;
+    int a2 = 1;
+    int &amp;b = a1;
+    b = a2; // this is not reassign b to a2, but change a1 to a2;
+
+    cout &lt;&lt; a1 &lt;&lt; " " &lt;&lt; a2;
+}
 ```
 </pre>
 </div>

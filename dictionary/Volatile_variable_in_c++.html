@@ -37,35 +37,34 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">variable in Go</span></h1>
+<h1><span class="badge badge-primary">volatile variable in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The var statement declares a list of variables. The type is last. 
-A var statement can be at package or function level. 
-A var declaration can include initializers, one per variable. If an initializer is present, the type can be omitted; the variable will take the type of the initializer. 
-Inside a function, the := short assignment statement can be used in place of a var declaration with implicit type. 
+<pre id="word_content" style="white-space: pre-wrap;">The precise meaning of volatile is inherently machine dependent and can be understood only by reading the compiler documentation. Programs that use volatile usually must be changed when they are moved to new machines or compilers.
+According to the C++11 ISO Standard, the volatile keyword is only meant for use for hardware access; do not use it for inter-thread communication. 
+For inter-thread communication, the standard library provides std::atomic&lt;T&gt; templates.
 ```
-package main
+#include &lt;csignal&gt;
+#include &lt;iostream&gt;
+using namespace std;
 
-import "fmt"
+volatile sig_atomic_t gSignalStatus;
 
-func main() {
-	var a = "initial"
-	var b, c int = 1, 2
-	var d = true
-	var e int
-	f := "apple"
-	fmt.Println(a, b, c, d, e, f)
+void signal_handler(int signal) {
+  gSignalStatus = signal;
 }
-```
-Variables declared without an explicit initial value are given their zero value.
-The zero value is:
-* 0 for numeric types
-* false for the boolean type
-* "" (the empty string) for strings
-</pre>
+
+int main() {
+  signal(SIGINT, signal_handler);
+
+  cout &lt;&lt; "SignalValue: " &lt;&lt; gSignalStatus &lt;&lt; endl;
+  cout &lt;&lt; "Sending signal " &lt;&lt; SIGINT &lt;&lt; endl;
+  raise(SIGINT);
+  cout &lt;&lt; "SignalValue: " &lt;&lt; gSignalStatus &lt;&lt; endl;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Variable">Variable</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Data_type_in_go">Data type in go</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Variable_in_c++">Variable in c++</a>, <a href="/dictionary/Volatile_variable">Volatile variable</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

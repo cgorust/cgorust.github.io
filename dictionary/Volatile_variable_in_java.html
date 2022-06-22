@@ -37,35 +37,45 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">variable in Go</span></h1>
+<h1><span class="badge badge-primary">volatile variable in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The var statement declares a list of variables. The type is last. 
-A var statement can be at package or function level. 
-A var declaration can include initializers, one per variable. If an initializer is present, the type can be omitted; the variable will take the type of the initializer. 
-Inside a function, the := short assignment statement can be used in place of a var declaration with implicit type. 
+<pre id="word_content" style="white-space: pre-wrap;">For Java, “volatile” tells the compiler that the value of a variable must never be cached as its value may change outside of the scope of the program itself.
+
 ```
-package main
+import java.util.Scanner;
 
-import "fmt"
+class MyThread extends Thread {
+    private volatile boolean running = true;   // volatile keyword is needed here
 
-func main() {
-	var a = "initial"
-	var b, c int = 1, 2
-	var d = true
-	var e int
-	f := "apple"
-	fmt.Println(a, b, c, d, e, f)
+    public void run() {
+        while (running) {
+            System.out.println("hello");
+        }
+    }
+
+    public void shutdown() {
+        running = false;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        MyThread obj = new MyThread();
+        obj.start();
+
+        Scanner input = new Scanner(System.in);
+        input.nextLine(); 
+        obj.shutdown();   
+    }    
 }
 ```
-Variables declared without an explicit initial value are given their zero value.
-The zero value is:
-* 0 for numeric types
-* false for the boolean type
-* "" (the empty string) for strings
+Ideally, if without volatile, this program should print hello until the Return key is pressed. But on some machines it may happen that the variable running is cached and you cannot change its value from the shutdown() method which results in infinite printing of the hello text.
+Thus, by using the volatile keyword, it is guaranteed that your variable will not be cached and the code will run fine on all machines.
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Variable">Variable</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Data_type_in_go">Data type in go</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Variable_in_java">Variable in java</a>, <a href="/dictionary/Volatile_variable">Volatile variable</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

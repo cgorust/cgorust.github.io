@@ -37,35 +37,16 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">variable in Go</span></h1>
+<h1><span class="badge badge-primary">alias in SQL</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The var statement declares a list of variables. The type is last. 
-A var statement can be at package or function level. 
-A var declaration can include initializers, one per variable. If an initializer is present, the type can be omitted; the variable will take the type of the initializer. 
-Inside a function, the := short assignment statement can be used in place of a var declaration with implicit type. 
+<pre id="word_content" style="white-space: pre-wrap;"> SQL aliases are used to give a table, or a column in a table, a temporary name.
 ```
-package main
-
-import "fmt"
-
-func main() {
-	var a = "initial"
-	var b, c int = 1, 2
-	var d = true
-	var e int
-	f := "apple"
-	fmt.Println(a, b, c, d, e, f)
-}
+SELECT CustomerID AS ID, CustomerName AS Customer FROM Customers;
 ```
-Variables declared without an explicit initial value are given their zero value.
-The zero value is:
-* 0 for numeric types
-* false for the boolean type
-* "" (the empty string) for strings
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Variable">Variable</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Data_type_in_go">Data type in go</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Alias">Alias</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Data_type_in_sql">Data type in sql</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

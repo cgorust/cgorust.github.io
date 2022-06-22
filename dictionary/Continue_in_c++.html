@@ -39,7 +39,19 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">continue in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+
+int main() {
+    int i=1;
+    do {
+        std::cout &lt;&lt; i;
+        i++;
+        if(i &lt; 3) continue;
+    } while(false);
+    return 0;
+}  //0
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Continue">Continue</a>, <a href="/dictionary/Control_flow_in_c++">Control flow in c++</a></button>

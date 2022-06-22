@@ -47,31 +47,32 @@ A friend function can be given a special grant to access private and protected m
 Following are some important points about friend functions and classes: 
 * Friends should be used only for limited purpose. too many functions or external classes are declared as friends of a class with protected or private data, it lessens the value of encapsulation of separate classes in object-oriented programming.
 * Friendship is not mutual. If class A is a friend of B, then B doesn’t become a friend of A automatically.
-* Friendship is not inherited 
+* Friendship is not inherited.
 * The concept of friends is not there in Java. 
 ```
 #include &lt;iostream&gt;
-using namespace std;
 
-class X;
-void print(X&amp; x);
+class B;
 
-class X {
-  int a, b;
-  friend void print(X&amp; x);
+class A {
 public:
-  X() : a(1), b(2) { }
+  A() { std::cout &lt;&lt; "A"; }
+  B createB();
 };
 
-void print(X&amp; x) {
-  cout &lt;&lt; "a is " &lt;&lt; x.a &lt;&lt; endl;
-  cout &lt;&lt; "b is " &lt;&lt; x.b &lt;&lt; endl;
-}
+class B {
+public:
+  B() { std::cout &lt;&lt; "B"; }
+  friend B A::createB();
+};
+
+B A::createB() { return B(); }
 
 int main() {
-  X x;
-  print(x);
+  A a;
+  B b = a.createB();
 }
+
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">

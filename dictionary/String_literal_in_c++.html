@@ -39,28 +39,15 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">string literal in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">In C++,  '\0' is appended to every string literal so that programs that scan a string can find its end, so sizeof() a string is string length + 1. 
+<pre id="word_content" style="white-space: pre-wrap;">A string literal has type “array of n const char”". An array of n const char converts to a pointer to const char. char* is less cv-qualified than const char *, and the conversion is not allowed.
+In C++,  '\0' is appended to every string literal so that programs that scan a string can find its end, so sizeof() a string is string length + 1. 
 ```
 #include &lt;iostream&gt;
-using namespace std;
- 
-int main()
-{
-    string string1 = "A\nB\nC\n";
-    string string2 = R"(A\nB\nC\n)";
- 
-    cout &lt;&lt; string1 &lt;&lt; endl;
-    cout &lt;&lt; string2 &lt;&lt; endl;
-    return 0;
+     
+int main() {
+    char *str = "X"; // ISO C++ forbids converting a string constant to ‘char*’
+    std::cout &lt;&lt; str;
 }
-
-/*
-A
-B
-C
-
-A\nB\nC\n
-*/
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
