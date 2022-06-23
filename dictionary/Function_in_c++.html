@@ -41,6 +41,7 @@
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">* The return type, the parameter-type-list, the ref-qualifier, the cv-qualifier-seq, and the exception specification, but not the default arguments, are part of the function type.
 * The evaluation order of function argument expressions is unspecified, all we know is that they will all happen before ("be sequenced before") the contents of the called function. In particular, in the expression g(f1(), f2()), we don't know whether f1 or f2 will be sequenced first, we only know that they will both be sequenced before the body of g.
+* Every value computation and side effect associated with any argument expression, is sequenced before the function is entered. 
 ```
 #include &lt;iostream&gt;
 
