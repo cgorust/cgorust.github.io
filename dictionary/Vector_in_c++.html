@@ -51,14 +51,16 @@ int main() {
     v.insert(v.begin(), 0);
     v.pop_back();
     v.erase(v.begin()+1);
-    for(auto i = 0; i &lt; v.size(); i++) {
-        cout &lt;&lt; v[i] &lt;&lt; endl;
-    }
+    for(auto &amp;i:v) {
+        cout &lt;&lt; i &lt;&lt; ",";
+    } 
+    cout &lt;&lt; endl;  // 0,2,3
+    
     vector&lt;int&gt; v2(10, 1);
     for(auto i = 0; i &lt; v2.size(); i++) {
-        cout &lt;&lt; v2[i] &lt;&lt; " ";
+        cout &lt;&lt; v2[i] &lt;&lt; ",";
     }
-    
+    cout &lt;&lt; endl; // 1,1,1,1,1,1,1,1,1,1,
     return 0;
 }
 ```</pre>
