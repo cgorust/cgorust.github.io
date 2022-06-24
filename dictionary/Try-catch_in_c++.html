@@ -37,21 +37,38 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">delegation event model</span></h1>
+<h1><span class="badge badge-primary">try-catch in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The delegation event model defines standard and consistent mechanisms to generate and process events. The main idea behind the delegation event model is that event handling is delegated to different objects and methods rather than having your GUI handle all the events.
-* Each different event type uses a separate Event class.
-* The events are processed by event listeners, which are separate objects that handle specific types of events. 
-* Each different kind of listener also uses a separate class.
-* The listener registers and specifies which events are of interest (for instance mouse events). Only those events that are being listened for will be processed.
-* The source generates events and sends notifications of these events to one or more listeners (in fact, to all those listeners who have registered to receive them).
-* When a listener receives notification of an event, the listener then processes (or "handles") the event and returns.
+<pre id="word_content" style="white-space: pre-wrap;">The handlers for a try block are tried in order of appearance. Note: This makes it possible to write handlers that can never be executed, for example by placing a handler for a final derived class after a handler for a corresponding unambiguous public base class.
+```
+#include &lt;iostream&gt;
+using namespace std;
 
+double division(int a, int b) {
+   if( b == 0 ) {
+      throw "Division by zero condition!";
+   }
+   return (a/b);
+}
 
-</pre>
+int main () {
+   int x = 50;
+   int y = 0;
+   double z = 0;
+ 
+   try {
+      z = division(x, y);
+      cout &lt;&lt; z &lt;&lt; endl;
+   } catch (const char* msg) {
+     cerr &lt;&lt; msg &lt;&lt; endl;
+   }
+
+   return 0;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Event">Event</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Delegation_event_model_in_javascript">Delegation event model in javascript</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Control_flow_in_c++">Control flow in c++</a>, <a href="/dictionary/Exception_handling_in_c++">Exception handling in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

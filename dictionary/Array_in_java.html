@@ -39,7 +39,7 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">array in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">An array is an area of memory on the heap with space for a designated number of elements.
+<pre id="word_content" style="white-space: pre-wrap;">An array is an area of memory on the heap with space for a fixed number of elements.
 You can type the [] before or after the name, but the behaviour is not the same when declare multiple arrays in one declaration.
 ```
 public class Main {
@@ -53,7 +53,7 @@ public class Main {
 The java.util.Arrays class contains various static methods for sorting and searching arrays, comparing arrays, and filling array elements. These methods are overloaded for all primitive types.
 Method | Description
 ----- | -----
-public static &lt;T&gt; List&lt;T&gt; asList(T... a) | It takes an array and creates a wrapper that implements List&lt;Integer&gt;, which makes the original array available as a list. Nothing is copied, only a single wrapper object is created. Operations on the list wrapper are propagated to the original array. Some List operations aren't allowed on the wrapper, like adding or removing elements from the list, you can only read or overwrite the elements. 
+public static \&lt;T&gt; List\&lt;T&gt; asList(T... a) | It takes an array and creates a wrapper that implements List\&lt;Integer&gt;, which makes the original array available as a list. Nothing is copied, only a single wrapper object is created. Operations on the list wrapper are propagated to the original array. Some List operations aren't allowed on the wrapper, like adding or removing elements from the list, you can only read or overwrite the elements. 
 public static int binarySearch(Object[] a, Object key) | Searches the specified array of Object (Byte, Int, double, etc.) for the specified value using the binary search algorithm. The array must be sorted prior to making this call, otherwise, the result is not predictable. This returns index of the search key, if it is contained in the list; otherwise, it returns ( – (insertion point + 1)), where insertion point is place to be inserted to preserver sorted order.
  copyOf(int[] original, int newLength)  | It copies the specified array, truncating or padding with false (if necessary) so the copy has the specified length.
 public static boolean equals(long[] a, long[] a2) | Returns true if the two specified arrays of longs are equal to one another. Two arrays are considered equal if both arrays contain the same number of elements, and all corresponding pairs of elements in the two arrays are equal. This returns true if the two arrays are equal. Same method could be used by all other primitive data types (Byte, short, Int, etc.)

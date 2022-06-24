@@ -43,7 +43,25 @@
 ```
 var x = [];
 var y = [1, 2, 3, 4, 5];
-```</pre>
+```
+In JavaScript, accessing a non-existent array index does not throw an error - the value "accessed" will simply be undefined
+```
+var x = [];
+var y = [1, 2];
+y[5] = 6;
+for (var i=0; i&lt;y.length; i++) { 
+    print(y[i]); 
+}
+/*
+1
+2
+undefined
+undefined
+undefined
+6
+*/
+```
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array">Array</a>, <a href="/dictionary/Data_structure_in_javascript">Data structure in javascript</a>, <a href="/dictionary/Data_type_in_javascript">Data type in javascript</a></button>

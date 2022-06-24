@@ -39,7 +39,7 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">reference in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">When a variable is declared as a reference, it becomes an alternative name for an existing variable. A variable can be declared as a reference by putting ‘&amp;’ in the declaration.
+<pre id="word_content" style="white-space: pre-wrap;">A reference, like a pointer, stores the address of an object that is located elsewhere in memory. Unlike a pointer, a reference after it is initialized cannot be made to refer to a different object or set to null. There are two kinds of references: lvalue references which refer to a named variable and rvalue references which refer to a temporary object. The &amp; operator signifies an lvalue reference and the &amp;&amp; operator signifies either an rvalue reference, or a universal reference (either rvalue or lvalue) depending on the context.
 There are the following differences between references and pointers.
 * A pointer can be declared as void but a reference can never be void.
 * The pointer variable has n-levels/multiple levels of indirection i.e. single-pointer, double-pointer, triple-pointer. Whereas, the reference variable has only one/single level of indirection.
@@ -68,7 +68,7 @@ int main() {
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_c++">Data type in c++</a>, <a href="/dictionary/Reference">Reference</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Const_reference_in_c++">Const reference in c++</a>, <a href="/dictionary/Rvalue_reference">Rvalue reference</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_c++">Data type in c++</a>, <a href="/dictionary/Reference">Reference</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Const_reference_in_c++">Const reference in c++</a>, <a href="/dictionary/Lvalue_reference">Lvalue reference</a>, <a href="/dictionary/Rvalue_reference">Rvalue reference</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

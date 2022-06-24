@@ -39,38 +39,34 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">thread in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">In Java, "thread" means two different things:
-* An instance of class java.lang.Thread
-* A thread of execution
-
-An instance of Thread is just an object. Like any other object in Java, it has variables and methods, and lives and dies on the heap. 
-But a thread of execution is an individual process (a "lightweight" process) that has its own call stack. In Java, there is one thread per call stack—or, to think of it in reverse, one call stack per thread. Even if you don't create any new threads in your program, threads are back there running. But as soon as you create a new thread, a new stack materializes and methods called from that thread run in a call stack that's separate from the main() call stack.
-Java thread can be created by extending the Thread class and overriding its run() method. Another way to create a thread is to implement the Runnable interface: If the class extends the Thread class, the thread can be run by creating an instance of the class and call its start() method. If the class implements the Runnable interface, the thread can be run by passing an instance of the class to a Thread object's constructor and then calling the thread's start() method:
+<pre id="word_content" style="white-space: pre-wrap;">Java thread can be created by 
+* Extend the Thread class and override its run() method. The thread can be run by creating an instance of the class and then calling its start() method. 
+* Implement the Runnable interface  and override its run() method. The thread can be run by passing an instance of the class to a Thread object's constructor and then calling the its start() method.
 ```
 class T1 extends Thread {
-  public void run() {
-    System.out.println("Thread running 1 ");
-  }
+    public void run() {
+        System.out.println("T1");
+    }
 }
 
 class T2 implements Runnable {
-  public void run() {
-    System.out.println("Thread running 2");
-  }
+    public void run() {
+        System.out.println("T2");
+    }
 }
 
-public class Main {
-  public static void main(String[] args) {
-    T1 t1 = new T1();
-    t1.start();
-    Thread t2 = new Thread(new T2());
-    t2.start();
-  }
+class Main {
+    public static void main(String[] args) {
+        T1 t1 = new T1();
+        t1.start();
+        Thread t2 = new Thread(new T2());
+        t2.start();
+    }
 }
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Concurrency_in_java">Concurrency in java</a>, <a href="/dictionary/Thread">Thread</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/System_thread_in_java">System thread in java</a>, <a href="/dictionary/User-defined_thread_in_java">User-defined thread in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Thread_priority_in_java">Thread priority in java</a>, <a href="/dictionary/Thread_state_in_java">Thread state in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Thread">Thread</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Concurrency_in_java">Concurrency in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Thread_priority_in_java">Thread priority in java</a>, <a href="/dictionary/Thread_state_in_java">Thread state in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

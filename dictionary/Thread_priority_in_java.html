@@ -47,7 +47,7 @@ Thread.MIN_PRIORITY | 1
 Thread.NORM_PRIORITY | 5
 Thread.MAX_PRIORITY | 10
 
-The scheduler in most JVMs uses pre-emptive, priority-based scheduling. In most JVMs, the scheduler does use thread priorities in one important way: If a thread enters the runnable state, and it has a higher priority than any of the threads in the pool and a higher priority than the currently running thread, the lower-priority running thread usually will be bumped back to runnable and the highest-priority thread will be chosen to run.
+The scheduler in most JVMs uses preemptive, priority-based scheduling. In most JVMs, the scheduler does use thread priorities in one important way: If a thread enters the runnable state, and it has a higher priority than any of the threads in the pool and a higher priority than the currently running thread, the lower-priority running thread usually will be bumped back to runnable and the highest-priority thread will be chosen to run.
 * The yield( ) Method: What yield() is supposed to do is make the currently running thread head back to runnable to allow other threads of the same priority to get their turn.
 * The join( ) Method: The non- static join() method of class Thread lets one thread "join onto the end" of another thread.</pre>
 </div>

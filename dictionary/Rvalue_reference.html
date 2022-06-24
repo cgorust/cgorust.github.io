@@ -62,10 +62,24 @@ In C++11, however, there's a new kind of reference, an "rvalue reference", that 
 const string&amp;&amp; name = getName(); // ok
 string&amp;&amp; name = getName(); // also ok - praise be!
 ```
+R-values references cannot be initialized with l-values.
+Rvalue reference | modifiable l-values | non-modifiable l-values | R-values
+--- | ---
+can be initialized with | No | No | Yes
+can modify | No | No | Yes
+
+Rvalue reference to const| modifiable l-values | non-modifiable l-values | R-values
+--- | ---
+can be initialized with | No | No | Yes
+can modify | No | No | No
+
+R-value references have two properties that are useful. First, r-value references extend the lifespan of the object they are initialized with to the lifespan of the r-value reference (l-value references to const objects can do this too). Second, non-const r-value references allow you to modify the r-value!
+R-value references are more often used as function parameters. This is most useful for function overloads when you want to have different behavior for l-value and r-value arguments.
+You should almost never return an r-value reference, for the same reason you should almost never return an l-value reference. In most cases, you’ll end up returning a hanging reference when the referenced object goes out of scope at the end of the function.
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Reference_in_c++">Reference in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Forwarding_reference">Forwarding reference</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Reference_in_c++">Reference in c++</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/R-value">R-value</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Forwarding_reference">Forwarding reference</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

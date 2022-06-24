@@ -39,9 +39,11 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">array in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Arrays in C++ are used to store a collection of values of the same type. The size of an array is specified when it is declared and cannot change afterward.
+<pre id="word_content" style="white-space: pre-wrap;">Arrays in C++ are used to store a collection of values of the same type. 
 A multidimensional array is an “array of arrays” and is declared by adding extra sets of indices to the array name.
-There is no index out of bounds checking in C/C++, os, some programs compile fine but may produce unexpected output when run.
+* The size of an array is specified when it is declared and cannot change afterward.
+* There is no index out of bounds checking in C/C++, os, some programs compile fine but may produce unexpected output when run.
+The std::array is a type of STL container which is used to create fixed sized arrays, with size known at compilation time. It’s size cannot be modified once declared.  A std::array should have same runtime performance as a c-style array.
 ```
 #include &lt;iostream&gt;
 #include &lt;vector&gt;

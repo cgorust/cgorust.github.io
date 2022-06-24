@@ -39,16 +39,58 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">CyclicBarrier in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A CyclicBarrier is a synchronizer that allows a set of threads to wait for each other to reach a common execution point, also called a barrier. CyclicBarriers are used in programs in which we have a fixed number of threads that must wait for each other to reach a common point before continuing execution.
-The constructor for a CyclicBarrier is simple. It takes a single integer that denotes the number of threads that need to call the await() method on the barrier instance to signify reaching the common execution point.
+<pre id="word_content" style="white-space: pre-wrap;">CyclicBarrier is used to make threads wait for each other. It is used when different threads process a part of computation and when all threads have completed the execution, the result needs to be combined in the parent thread. In other words, a CyclicBarrier is used when multiple thread carry out different sub tasks and the output of these sub tasks need to be combined to form the final output. After completing its execution, threads call await() method and wait for other threads to reach the barrier. Once all the threads have reached, the barriers then give the way for threads to proceed.
 ```
-public CyclicBarrier(int parties)
-```
-The threads that need to synchronize their execution are also called parties and calling the await() method is how we can register that a certain thread has reached the barrier point.
-This call is synchronous and the thread calling this method suspends execution till a specified number of threads have called the same method on the barrier. This situation where the required number of threads have called await(), is called tripping the barrier.
-Optionally, we can pass the second argument to the constructor, which is a Runnable instance. This has logic that would be run by the last thread that trips the barrier:
-```
-public CyclicBarrier(int parties, Runnable barrierAction)
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
+  
+class Computation1 implements Runnable
+{
+    public static int product = 0;
+    public void run() {
+        product = 2 * 3;
+        try {
+            Main.newBarrier.await();
+        } catch (InterruptedException | BrokenBarrierException e) {
+            e.printStackTrace();
+        }
+    }
+}
+  
+class Computation2 implements Runnable
+{
+    public static int sum = 0;
+    public void run() {
+        sum = 10 + 20;
+        try {
+            Main.newBarrier.await();
+        } catch (InterruptedException | BrokenBarrierException e) {
+            e.printStackTrace();
+        }
+    }
+}
+  
+  
+public class Main implements Runnable
+{
+    public static CyclicBarrier newBarrier = new CyclicBarrier(3);
+      
+    public static void main(String[] args) {
+        new Thread(new Main()).start();
+    }
+    
+    public void run() {
+        new Thread(new Computation1()).start();
+        new Thread(new Computation2()).start();
+
+        try {
+            Main.newBarrier.await();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("Result:" + (Computation1.product + Computation2.sum));
+    }
+}
 ```
 
 </pre>

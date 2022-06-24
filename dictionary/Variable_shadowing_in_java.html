@@ -41,6 +41,16 @@
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Variable shadowing happens when we define a variable in a closure scope with a variable name that is the same as one for a variable we've already defined in an outer scope.
 Java does not allow local variables to shadow other local variables. A local variable can shadow a member variable however.
+```
+class X {  
+    public static void main(String args[])     {
+        int a = 2;
+        {
+            int a = 3; // not work
+        }       
+    }
+}
+```
 The reason Java does not allow this is simply that it generally leads to hard to read code because something with the same name points to something else.
 ```
 class C {
