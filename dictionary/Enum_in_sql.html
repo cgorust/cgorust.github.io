@@ -39,10 +39,16 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">enum in SQL</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Enum is to store text value chosen from a list of predefined text values.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">Enum is to store text value chosen from a list of predefined text values.
+```
+CREATE TABLE Student_grade(
+  id INT PRIMARY KEY AUTO_INCREMENT, Grade VARCHAR(250) NOT NULL,
+  priority ENUM('Low', 'Medium', 'High') NOT NULL
+);
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_sql">Data type in sql</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_sql">Data type in sql</a>, <a href="/dictionary/Enum">Enum</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
