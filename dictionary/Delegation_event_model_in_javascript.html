@@ -40,7 +40,7 @@
 <h1><span class="badge badge-primary">delegation event model in JavaScript</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Let's say that we have a parent UL element with several child elements:
-&lt;pre&gt;&lt;code&gt;
+```
 &lt;ul id="parent-list"&gt;
 	&lt;li id="post-1"&gt;Item 1&lt;/li&gt;
 	&lt;li id="post-2"&gt;Item 2&lt;/li&gt;
@@ -49,9 +49,9 @@
 	&lt;li id="post-5"&gt;Item 5&lt;/li&gt;
 	&lt;li id="post-6"&gt;Item 6&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/code&gt;&lt;/pre&gt;
+```
 To listen when each child element is clicked,  we could add a separate event listener to each individual LI element, but a better solution is to add an event listener to the parent UL element.  When the event bubbles up to the UL element, you check the event object's target property to gain a reference to the actual clicked node.  
-&lt;pre&gt;&lt;code&gt;
+```
 / Get the element, add a click listener...
 document.getElementById("parent-list").addEventListener("click", function(e) {
 	// e.target is the clicked element!
@@ -60,7 +60,7 @@ document.getElementById("parent-list").addEventListener("click", function(e) {
 		console.log("List item ", e.target.id.replace("post-", ""), " was clicked!");
 	}
 });
-&lt;/code&gt;&lt;/pre&gt;
+```
 
 </pre>
 </div>
