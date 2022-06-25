@@ -39,19 +39,17 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">string in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The String data type is used to store a sequence of characters (text). 
+<pre id="word_content" style="white-space: pre-wrap;">The String is used to store a sequence of characters. 
 ```
 String greeting = "Hello World";
 ```
-Class and instance string, the default value is null. Local string requires assignment before referencing it. 
+The default value of String is null. Local string requires assignment before referencing it. 
 Once a String object is created, it is not allowed to change. It cannot be made larger or smaller, and you cannot change one of the characters inside it. 
-The string pool, also known as the intern pool, is a location in the Java virtual machine (JVM) that collects all these strings. The string pool contains literal values that appear in your program. 
+The string pool, also known as the intern pool, is a location in the JVM that collects all these strings. The string pool contains all literal values. 
 The + operator can be used in two ways for string concatenation. 
 * If both operands are numeric, + means numeric addition.
 * If either operand is a String, + means concatenation.
 * The expression is evaluated left to right.
-
-
 
 Comparing String, StringBuilder, and StringBuffer
 Characteristic | String | StringBuilder | StringBuffer
@@ -68,9 +66,10 @@ class Main{
         StringBuilder sb = new StringBuilder("Hello ");  
         sb.append("Java"); 
         System.out.println(sb); 
-        StringBuffer sbf = new StringBuffer("Hello ");  
-        sbf.append("Java"); 
-        System.out.println(sbf); 
+
+        StringBuffer sf = new StringBuffer("Hello ");  
+        sf.append("Java"); 
+        System.out.println(sf); 
     }  
 } 
 ```</pre>

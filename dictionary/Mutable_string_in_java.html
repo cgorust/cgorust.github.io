@@ -39,7 +39,7 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">mutable string in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The StringBuilder is a mutable sequence of characters. 
+<pre id="word_content" style="white-space: pre-wrap;">The StringBuilder is a mutable string in Java. 
 ```
 public class Main {
     public static void main(String[] args) {
@@ -51,11 +51,12 @@ public class Main {
     }
 }
 ```
-The function of StringBuilder is similar to the StringBuffer class. However the StringBuilder class differs from the StringBuffer class on the basis of synchronization. The StringBuilder class provides no guarantee of synchronization whereas the StringBuffer class does. Instances of StringBuilder are not safe for use by multiple threads. If such synchronization is required then it is recommended that StringBuffer be used.
+The function of StringBuilder is similar to the StringBuffer class. However the StringBuilder class provides no guarantee of synchronization whereas the StringBuffer class does. Instances of StringBuilder are not safe for use by multiple threads. If such synchronization is required then it is recommended that StringBuffer be used.
 Some stringBuild method,
 Name | Meaning
 ----- | -----
 StringBuilder append(String str) | Adds the parameter to the StringBuilder and returns a ref-erence to the current StringBuilder.
+int capacity() | The logic behind the capacity function: &lt;br&gt;If you don't initialize stringbuilder with any content, default capacity will be taken as 16 characters capacity. &lt;br&gt;If you initialize stringbuilder with any content, then capacity will be content length+16. &lt;br&gt;When you add new content to stringbuilder object, if current capacity is not sufficient to take new value, then it will grow by (previous array capacity+1)*2.
 char charAt(int index) | Returns the character at the specified index.
 StringBuilder delete(int start, int end) | Removes characters from the sequence and returns a reference to the current StringBuilder
 StringBuilder deleteCharAt(int index) | Delete only one character.
