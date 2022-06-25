@@ -39,10 +39,20 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">static block in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">Unlike C++, Java supports a special block, called a static block that can be used for static initialization of a class. This code inside the static block is executed only once: the first time the class is loaded into memory. 
+```
+class Main {
+    static{}
+
+    public static void main(String[] args) {
+        Main c = new Main();
+        new Main();
+    }
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Block_in_java">Block in java</a>, <a href="/dictionary/Static_block">Static block</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Block_in_java">Block in java</a>, <a href="/dictionary/Static_block">Static block</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Static_keyword_in_java">Static keyword in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

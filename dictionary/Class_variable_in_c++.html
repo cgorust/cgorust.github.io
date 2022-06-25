@@ -39,7 +39,27 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">class variable in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Static variables are initialised to 0. It is initialised only once. Throughout the program, only one copy of the static member variable is created for the entire class hence static member variables are also called class variables. </pre>
+<pre id="word_content" style="white-space: pre-wrap;">A static variable inside a class should be initialized explicitly using the class name and scope resolution operator outside the class.
+```
+#include&lt;iostream&gt;
+using namespace std;
+  
+class C {
+public:
+    static int i;
+};
+int C::i = 0; 
+
+int main()
+{
+  C obj1;
+  C obj2;
+  obj1.i = 2;
+  obj2.i = 3;
+    
+  cout &lt;&lt; obj1.i&lt;&lt;" "&lt;&lt;obj2.i;   // 3 3
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class_variable">Class variable</a>, <a href="/dictionary/Static_variable_in_c++">Static variable in c++</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Static_keyword_in_c++">Static keyword in c++</a></button>

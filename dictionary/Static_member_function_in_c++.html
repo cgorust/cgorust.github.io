@@ -41,10 +41,11 @@
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">In C++, static method is called static member function. 
 A static member function can be called even if no objects of the class exist and the static function are accessed using only the class name and the scope resolution operator ::.
+Static member functions are allowed to access only the static data members or other static member functions, they can not access the non-static data members or member functions of the class.
 * A static member function does not have this pointer. 
-* A static member function cannot be virtual
-* If a member function declaration has the same name and the same parameter-type-list as the static function,  it cannot be overloaded
-* A static member function can not be declared const, volatile, or const volatile
+* A static member function cannot be virtual.
+* If a member function declaration has the same name and the same parameter-type-list as the static function, it cannot be overloaded.
+* A static member function can not be declared const, volatile, or const volatile. It doesn't make sense to write const there, because the function is static and therefore there is no class instance on which to imbue a const context. Thus it is treated as an error.
 
 ```
 #include &lt;iostream&gt;
@@ -65,25 +66,6 @@ int main() {
     a.say2();
     return 0;
 }
-#include &lt;iostream&gt;
-using namespace std;
-
-class A {
-private:
-    static int val;
-public:
-    static void say() { cout &lt;&lt; val &lt;&lt; endl; }
-    void say2() { cout &lt;&lt; val &lt;&lt; endl; }
-};
-int A::val{1};
-
-int main() {
-    A::say();
-    A a;
-    a.say2();
-    return 0;
-}
-
 /*
 1 
 1 

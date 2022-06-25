@@ -39,7 +39,9 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">static local variable</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A static local variable is a variable, whose lifetime doesn't stop with a function call where it is declared. It extends until the lifetime of a complete program. All function calls share the same copy of static local variables. These variables are used to count the number of times a function is called.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">A static local variable is a variable, whose lifetime doesn't stop with a function call where it is declared. It extends until the lifetime of a complete program. All function calls share the same copy of static local variables. These variables are used to count the number of times a function is called.
+In Java, a static variable is a class variable (for whole class). So if we have static local variable (a variable with scope limited to function), it violates the purpose of static. Hence compiler does not allow static local variable.
+C# also does not have static local variable.</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Local_variable">Local variable</a>, <a href="/dictionary/Static_variable">Static variable</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Static_local_variable_in_c++">Static local variable in c++</a></button>

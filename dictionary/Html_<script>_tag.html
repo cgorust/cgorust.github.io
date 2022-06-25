@@ -37,48 +37,36 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">conversion constructor</span></h1>
+<h1><span class="badge badge-primary">HTML &lt;script&gt; tag</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">In C++, if a class has a constructor which can be called with a single argument, then this constructor becomes conversion constructor because such a constructor allows automatic conversion to the class being constructed.
+<pre id="word_content" style="white-space: pre-wrap;">The \&lt;script&gt; element is used to define client-side script, such as JavaScript in HTML documents.
+* JavaScript in body or head: Scripts can be placed inside the body or the head section of an HTML page or inside both head and body.
+* External JavaScript: JavaScript can also be used as external files. JavaScript files have file extension .js . To use an external script put the name of the script file in the src attribute of a script tag. External scripts cannot contain script tags.
+Advantages of External JavaScript:
+    * It separates the HTML and JavaScript code
+    * It makes JavaScript and HTML easier to read and maintain
+    * It focuses on code reusability that is one JavaScript Code can run in various HTML files.
+    * Cached JavaScript files can speed up page loading
+
 ```
-#include &lt;iostream&gt;
-using namespace std;
-
-class Y {
-  int a, b;
-public:
-  Y(int i) { };
-  Y(const char* n, int j = 0) { };
-};
-
-void add(Y) { };
-
-int main() {
-  // equivalent to obj1 = Y(2)
-  Y obj1 = 2;
-
-  // equivalent to obj2 = Y("somestring",0)
-  Y obj2 = "somestring";
-
-  // equivalent to obj1 = Y(10)
-  obj1 = 10;
-
-  // equivalent to add(Y(5))
-  add(5);
-}
-```
-We can avoid such implicit conversions as these may lead to unexpected results. We can make the constructor explicit with the help of an explicit keyword. 
-```
-class Y {
-  int a, b;
-public:
-  explicit Y(int i) { };
-  explicit Y(const char* n, int j = 0) { };
-};
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;script&gt;
+         function f() {  }
+      &lt;/script&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+      &lt;script&gt;
+         function f() {  }
+      &lt;/script&gt;
+      &lt;script src="script.js"&gt;&lt;/script&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Constructor_in_c++">Constructor in c++</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Explicit_keyword_in_c++">Explicit keyword in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Html_tag">Html tag</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
