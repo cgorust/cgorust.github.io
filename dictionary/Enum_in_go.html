@@ -40,16 +40,25 @@
 <h1><span class="badge badge-primary">enum in Go</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">In Golang, enums are implemented quite differently than most other programming languages. We use a predeclared identifier, ​iota, and the enums are not strictly typed.
-&lt;pre&gt;&lt;code&gt;
+```
+package main
+import ( 
+    "fmt"
+)
+
 type Direction int
- 
 const (
     North Direction = iota
     South
     East
     West
 )
-&lt;/code&gt;&lt;/pre&gt;</pre>
+ 
+ func main() {
+    fmt.Println(North) // 0
+    fmt.Println(South) // 1
+ }
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_go">Data type in go</a>, <a href="/dictionary/Enum">Enum</a></button>

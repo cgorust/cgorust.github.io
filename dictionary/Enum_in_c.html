@@ -53,11 +53,12 @@ enum day{
 };
 
 int main() {
-   printf("The default value of enum day: %d\t%d\t%d\t%d\t%d\t%d\t%d", Mon, Tue, Wed, Thur, Fri, Sat, Sun);
-   return 0;
+    printf("Enum day: %d %d %d %d %d %d %d", Mon, Tue, Wed, Thur, Fri, Sat, Sun);
+    // Enum day: 0 1 2 3 18 11 12    
+    return 0;
 }
 ```
-Anonymous enum is a enum trick for declaring a compile-time integer constant. It's advantage is it guarantees that no variable is instantiated and therefore there's no runtime overhead. Most compilers introduce no overhead with integer constants anyway.
+Anonymous enum is a enum trick for declaring a compile-time integer constant. It guarantees that no variable is instantiated and therefore there's no runtime overhead. 
 ```
 enum { color = 1 };
 ```</pre>

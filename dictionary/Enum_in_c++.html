@@ -43,11 +43,13 @@
 ```
 #include &lt;iostream&gt;
 using namespace std;
+
 enum colors{red=5, black};
 enum suit{heart, diamond=8, spade=3, club};
+
 int main() {
-   cout &lt;&lt;"The value of enum color : "&lt;&lt;red&lt;&lt;","&lt;&lt;black;
-   cout &lt;&lt;"\nThe default value of enum suit : "&lt;&lt;heart&lt;&lt;","&lt;&lt;diamond&lt;&lt;","&lt;&lt;spade&lt;&lt;","&lt;&lt;club;
+   cout &lt;&lt;"Color:"&lt;&lt;red&lt;&lt;","&lt;&lt;black&lt;&lt;endl; // Color:5,6
+   cout &lt;&lt;"Suit:"&lt;&lt;heart&lt;&lt;","&lt;&lt;diamond&lt;&lt;","&lt;&lt;spade&lt;&lt;","&lt;&lt;club&lt;&lt;endl; // Suit:0,8,3,4
    return 0;
 }
 ```</pre>
