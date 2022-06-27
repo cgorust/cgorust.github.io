@@ -39,17 +39,20 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">static nested class in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A static nested class is a static class defined at the member level. It can be instantiated without an object of the enclosing class, so it can’t access the instance variables without an explicit object of the enclosing class. 
+<pre id="word_content" style="white-space: pre-wrap;">A static nested class is a static class defined at the member level. 
+A static nested class interacts with the instance members of its outer class and other classes just like any other top-level class. In effect, a static nested class is behaviorally a opt-level class that has been nested in another opt-level class for packaging convenience.
+It can be instantiated without an object of the enclosing class, so it can’t access the instance variables without an explicit object of the enclosing class. 
+
 ```
 class Main{  
-  private static int data = 30;  
+  private int data = 30;  
   public static class Inner{  
-   void msg() { System.out.println("data is " + data); }  
+   void msg(Main m) { System.out.println("data is " + m.data); }  
   }
   
   public static void main(String args[]){  
     Main.Inner obj = new Main.Inner();  
-    obj.msg();  
+    obj.msg(new Main());  
   }  
 }  
 ```

@@ -47,6 +47,14 @@
 * Default values are same as instance variables. For numbers, the default value is 0; for Booleans, it is false; and for object references, it is null. Values can be assigned during the declaration or within the constructor. Additionally, values can be assigned in special static initializer blocks.
 * Static variables can be accessed by calling with the class name ClassName.VariableName.
 
+```
+public class Main {
+    public static Integer I;
+    public static void main(String args[]) {
+        System.out.println(1/Main.I); //java.lang.NullPointerException
+    }
+}
+```
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
