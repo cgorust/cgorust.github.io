@@ -50,13 +50,13 @@ class Main {
         Main m1 = new Main(); // m1-&gt;object
         Main m2 = new Main();
         
-        m2.join(m1); //m1-&gt;object, m-&gt;object
+        m2.set(m1); //m1-&gt;object, m-&gt;object
         m1 = new Main(); //m-&gt;object
         m1 = null;
-        m2.join(m1); //m-&gt;null
+        m2.set(m1); //m-&gt;null
     }
     
-    public void join(Main x) {
+    public void set(Main x) {
         m = x;
     }
 }
