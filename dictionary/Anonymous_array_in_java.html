@@ -37,84 +37,25 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">array in C++</span></h1>
+<h1><span class="badge badge-primary">anonymous array in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Raw arrays in C++ are used to store a collection of values of the same type. 
-* The size of an array is specified when it is declared and cannot change afterward.
-* There is no index out of bounds checking in C/C++ raw array, so, some programs compile fine but may produce unexpected output when run.
-
-A multidimensional array is an “array of arrays” and is declared by adding extra sets of indices to the array name.
-```
-#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-    int a[5] = {1, 2, 3, 4, 5};
-    int as[2][2] = {{1, 2}, {3, 4}};
-    int * ap = new int[5];
-    
-    cout &lt;&lt; a[2] &lt;&lt; " " &lt;&lt; as[1][1] &lt;&lt; " " &lt;&lt; ap[2] &lt;&lt; endl;
-    
-    delete[] ap;
-    return 0;
-}
-```
-Arrays are always passed by pointers in functions, so to keep array information, we need to pass in a reference.
-```
-#include &lt;iostream&gt;
-using namespace std;
- 
-template &lt;class T, size_t n&gt;
-void findSize(T (&amp;)[n])
-{
-    cout &lt;&lt; sizeof(T) * n &lt;&lt; endl;
-}
- 
-int main()
-{
-    int a[10];
-    findSize(a);
- 
-    float f[20];
-    findSize(f);
-    return 0;
-}
-```
-In C++, expression E1[E2], and E2[E1] are identical (by definition) to *((E1)+(E2)),
-```
-#include &lt;iostream&gt;
-int main() {
-  int a[10] = {1, 2, 3};
-  std::cout &lt;&lt; 2[a];
-}
-```
-The std::array is a type of STL container which is used to create fixed sized arrays, with size is known at compilation time. It’s size cannot be modified once declared. A std::array should have same runtime performance as a c-style array.
-```
-#include &lt;array&gt;
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-
-using namespace std;
-
-int main() {
-    array&lt;int, 5&gt; a{{5,2,1,4,3}};
-    
-    cout&lt;&lt;a.size()&lt;&lt;endl;
-    
-    sort(a.begin(), a.end()); 
-    for(auto &amp;i:a)
-        cout&lt;&lt;i&lt;&lt;",";
-    cout&lt;&lt;endl;
-    
-    a[2]=11;
-    cout&lt;&lt;a[2]&lt;&lt;endl;    
-    cout&lt;&lt;a.at(2)&lt;&lt;endl;
-    return 0;
+<pre id="word_content" style="white-space: pre-wrap;">```
+class Main {
+    public static void main(String[] args) {
+        System.out.println("The sum is: " + sum(new int[]{ 1, 2, 3 }));
+    }
+   
+    public static int sum(int[] a) {
+        int total = 0;
+        for (int i : a)
+            total = total + i;
+        return total;    
+    }
 }
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array">Array</a>, <a href="/dictionary/Data_structure_in_c++">Data structure in c++</a>, <a href="/dictionary/Data_type_in_c++">Data type in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Anonymous_array_in_c++">Anonymous array in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Array_literal_in_c++">Array literal in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Anonymous_array">Anonymous array</a>, <a href="/dictionary/Array_in_java">Array in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
