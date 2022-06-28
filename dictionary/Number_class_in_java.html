@@ -37,24 +37,13 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">interface in Java</span></h1>
+<h1><span class="badge badge-primary">number class in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">An interface is a 100-percent abstract class. But while an abstract class can define both abstract and non-abstract methods, an interface can have only abstract methods. Another way interfaces differ from abstract classes is that interfaces have very little flexibility in how the methods and variables defined in the interface are declared.
-* All interface methods are implicitly public and abstract. In other words, you do not need to actually type the public or abstract modifiers in the method declaration, but the method is still always public and abstract.
-* All variables defined in an interface must be public, static, and final — in other words, interfaces can declare only constants, not instance variables. Because interface constants are defined in an interface, they don't have to be declared as public, static, or final. They must be public, static, and final, but you don't have to actually declare them that way.
-* Because interface methods are abstract, they cannot be marked final, strictfp, or native.
-* An interface can extend one or more other interfaces.
-* An interface cannot extend anything but another interface.
-* An interface cannot implement another interface or class.
-* Interface types can be used polymorphically.
-* Since Java8 you can have static methods in an interface (with body). You need to call them using the name of the interface, just like static methods of a class. 
-    * we can invoke static content like methods using an interface name directly
-* Since Java8 you can have default methods in an interface (with body). Like regular interface methods, default methods are implicitly public — there's no need to specify the public modifier. Unlike regular interface methods, they are declared with the default keyword at the beginning of the method signature, and they provide an implementation.
-
-</pre>
+<pre id="word_content" style="white-space: pre-wrap;">Java provides wrapper classes for primitive number types. These classes "wrap" the primitive in an object. Often, the wrapping is done by the compiler—if you use a primitive where an object is expected, the compiler boxes the primitive in its wrapper class for you. Similarly, if you use a number object when a primitive is expected, the compiler unboxes the object for you. 
+Not like primitives, none of the wrapper classes will widen from one to another.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class_in_java">Class in java</a>, <a href="/dictionary/Interface">Interface</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Functional_interface_in_java">Functional interface in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Default_method_in_java">Default method in java</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Floating-point_in_java">Floating-point in java</a>, <a href="/dictionary/Integer_in_java">Integer in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Autoboxing">Autoboxing</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

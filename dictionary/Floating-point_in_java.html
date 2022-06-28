@@ -45,10 +45,36 @@ type	name | bytes | bits | range approximate | precision in decimal digits
 float | 4 | 32 | +/- 3.4 * 1038 | 6-7
 double | 8 | 64 | +/- 1.8 * 10308 | 15
 
-The default value of float/double is 0.0.</pre>
+The default value of float/double is 0.0.
+
+Values like INFINITY and NaN are available for floating-point numbers but not for integers. As a result, dividing an integer by zero will result in an exception. However, for a float or double, Java allows the operation.
+* Dividing an integer by zero will result in an ArithmeticException;
+* Dividing a floating-point number by zero will not throw an exception:
+    * Dividing a floating-point zero by zero, the result is NaN (not a number).
+    * Dividing some non-zero values by zero, the result is INFINITY, with the sign depending on the sign of the operands.
+
+Floating-point numbers have values like NaN or INFINITY to be used, while for integers, there is no bit pattern that can be used to store such results. The binary representation of a float is SEEEEEEE EFFFFFFF FFFFFFFF FFFFFFFF with one bit (S) for the sign, 8 bits (E) for the exponent, and the rest (F) for the mantissa. In each of the three values NaN, POSITIVE_INFINITY, and NEGATIVE_INFINITY, all bits in the exponent part are set to 1. INFINITY has the mantissa bits all set to 0, while NaN has a non-zero mantissa.
+```
+class Main {
+    public static void main(String[] args) {
+        try { int result = 12/0; } 
+        catch(ArithmeticException e) { System.out.println("12/0"); }
+        try { int result = 0/0; } 
+        catch(ArithmeticException e) { System.out.println("0/0"); }
+        
+        assert Float.NaN==0f/0;
+        assert Double.NaN==0d/0;
+    
+        assert Float.POSITIVE_INFINITY==12f/0;
+        assert Float.NEGATIVE_INFINITY==-12d/0;
+        assert Float.NEGATIVE_INFINITY==12f/-0f;
+    }
+}
+```
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_java">Data type in java</a>, <a href="/dictionary/Floating-point">Floating-point</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_java">Data type in java</a>, <a href="/dictionary/Floating-point">Floating-point</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Number_class_in_java">Number class in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
