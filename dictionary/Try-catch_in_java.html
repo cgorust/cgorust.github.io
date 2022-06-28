@@ -39,9 +39,9 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">try-catch in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The try statement consists of a mandatory try clause. It can include one or more catch clauses to handle the exceptions that are thrown. It can also include a finally clause, which runs regardless of whether an exception is thrown. This is all still true for both try statements and try-with-resources statements.
-When a catch block specifies multiple exception types, these types must be disjoint. In other words, they must not be in the same inheritance chain.
+<pre id="word_content" style="white-space: pre-wrap;">The try statement consists of a mandatory try clause. It must include at least one or more catch clauses to handle the exceptions that are thrown. It can also include a finally clause, which runs regardless of whether an exception is thrown. This is valid for both try statements and try-with-resources statements.
 There is also a rule that says a try statement is required to have either or both of the catch and finally clauses. This is true for try statements, but is not true for try-with-resources statements.
+When a catch block specifies multiple exception types, these types must be disjoint. In other words, they must not be in the same inheritance chain.
 Java checks the catch blocks in the order in which they appear. It is illegal to declare a subclass exception in a catch block that is lower down in the list than a superclass exception because it will be unreachable code. Unreachable code is a compilation error.
 Java will not allow you to declare a catch block for a checked exception type that cannot potentially be thrown by the try clause body. This is again to avoid unreachable code.   
 Java introduced the ability to catch multiple exceptions in the same catch block, also known as multi-catch. Remember that the exceptions can be listed in any order within the catch clause. However, the variable name must appear only once and at the end. Java intends multi-catch to be used for exceptions that aren’t related, and it prevents you from specifying redundant types in a multi-catch.
