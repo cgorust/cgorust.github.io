@@ -53,9 +53,9 @@ There are two different access issues:
 
 &lt;b&gt;Class:&lt;/b&gt;
 A class can be declared with only public or default access; the other two access control levels don't make sense for a class. If you want the class used only in its package, use default access; otherwise make it public.
-Never use a protected class. Protected class member (method or variable) is just like package-private (default visibility), except that it also can be accessed from subclasses.
-Since there's no such concept as 'subpackage' or 'package-inheritance' in Java, declaring class protected or package-private would be the same thing. You can declare nested and inner classes as protected, though.
-Private classes are allowed, but only as inner or nested classes. If you have a private inner or nested class, then access is restricted to the scope of that outer class. If you have a private class on its own as a top-level class, then you can't get access to it from anywhere. So it does not make sense to have a top level private class.
+A top level class cannot be protected or private. 
+* Protected class member (method or variable) is just like package-private (default visibility), except that it also can be accessed from subclasses. Since there's no such concept as 'subpackage' or 'package-inheritance' in Java, declaring class protected or package-private would be the same thing. You can declare nested and inner classes as protected, though.
+* Private classes are allowed, but only as inner or nested classes. If you have a private inner or nested class, then access is restricted to the scope of that outer class. If you have a private class on its own as a top-level class, then you can't get access to it from anywhere. So it does not make sense to have a top level private class.
 
 &lt;b&gt;Class Members:&lt;/b&gt;
 | Visibility | Public | Protected | Default | Private |
