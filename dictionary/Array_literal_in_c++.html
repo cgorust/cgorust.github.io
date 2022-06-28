@@ -44,10 +44,29 @@ int main() {
     int m1[2][2] = {{1, 2}, {3, 4}};
     return 0;
 }
-```</pre>
+```
+Array literal can only be used in initializers.
+```
+int arr[4];
+arr = {0, 1, 2, 3};
+```
+When you write
+```
+int arr[4];
+```
+from that moment on, every time you use arr in a dynamic context, C considers arr to be &amp;arr[0], namely the decay of an array to a pointer. Therefore:
+```
+arr = (int[]){0, 1, 2, 3};
+```
+is considered to be,
+```
+&amp;arr[0] = (int[]){0, 1, 2, 3};
+```
+ 
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array_literal">Array literal</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Array_in_c++">Array in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array_literal">Array literal</a>, <a href="/dictionary/Literal_in_c++">Literal in c++</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Array_in_c++">Array in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

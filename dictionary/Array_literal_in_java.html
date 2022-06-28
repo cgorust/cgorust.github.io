@@ -39,8 +39,7 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">array literal in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Java array initialization must be used at the declaration time.
-```
+<pre id="word_content" style="white-space: pre-wrap;">```
 class Main {
     public static void main(String[] args) {
         int [][] m1 = {{1, 2}, {3, 4}};
@@ -49,10 +48,18 @@ class Main {
     }
 }
 ```
-</pre>
+Java array initialization must be used at the declaration time.
+```
+class Main {
+    public static void main(String[] args) {
+        int [] m1;
+        m1 = {1, 2}; // illegal start of expression
+    }
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array_literal">Array literal</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Array_in_java">Array in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array_literal">Array literal</a>, <a href="/dictionary/Literal_in_java">Literal in java</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Array_in_java">Array in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
