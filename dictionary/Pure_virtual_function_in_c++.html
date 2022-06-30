@@ -39,30 +39,33 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">pure virtual function in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Pure virtual function is a function which doesn't have an implementation and needs to be implemented by a non-abstract class. A class will become an abstract class if there is at-least a single pure virtual function and thus pure virtual functions are used to create interfaces in c++.
-A function is made as pure virtual function by the using a specific signature, " = 0" appended to the function declaration as given below,
+<pre id="word_content" style="white-space: pre-wrap;">Pure virtual function is a abstract method which doesn't have an implementation and needs to be implemented by a non-abstract subclass. 
+A method becomes a pure virtual function by using a specific signature, "= 0" appended to the function declaration.
+Pure virtual function is used to create abstract class in C++. A class will become an abstract class if there is at least a single pure virtual function. 
 ```
 #include&lt;iostream&gt;  
 using namespace std;  
 
 class Base {  
+protected:
+    int i;
 public:  
+    Base():i(0){ }
     virtual void show()=0;  
 };  
-  
+
 class Derived:public Base {  
 public:  
     void show()  {  
-        cout&lt;&lt;"Drived show";  
+        cout&lt;&lt;i;  
     }  
 };  
 
 int main()  {  
-    Base* b;  
     Derived d;  
 
-    b=&amp;d;  
-    b-&gt;show();  
+    Base &amp;b=d;  
+    b.show();  
     return 0;  
 } 
 ```</pre>
@@ -87,7 +90,6 @@ int main()  {
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://www.google.com/recaptcha/api.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
 <script src="/resource/highlight/highlight.pack.js"></script>

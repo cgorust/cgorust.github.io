@@ -39,8 +39,8 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">virtual function in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A virtual function is a member function that helps to redefine the implementation in the derived class. When two functions of the same name are present in the base and sub class, the base class function will be declared with the keyword virtual. Hence both classes can have the same function name with a different implementation. During runtime, it determines which function to call based on the object pointer it points to.
-In C++, virtual functions can be private and can be overridden by the derived class. 
+<pre id="word_content" style="white-space: pre-wrap;">A virtual function is a member function and redefined in the derived class. When two functions of the same name are present in the base and subclass, the base class function will be declared with the keyword virtual, hence both classes can have the same function name with a different implementation. During runtime, it determines which function to call based on the object pointer it points to.
+In C++, virtual functions can be private and still can be overridden by the derived class. 
 ```
 #include &lt;iostream&gt;
 using namespace std;
@@ -76,7 +76,7 @@ Sub:func()
 Sub:func()
 */
 ```
-A virtual function call uses the default arguments in the declaration of the virtual function determined by the static type of the pointer or reference denoting the object. An overriding function in a derived class does not acquire default arguments from the function it overrides.
+A virtual function call uses the default arguments determined by the static type of the pointer or reference. An overriding function in a derived class does not inherent default arguments from the function it overrides.
 ```
 #include &lt;iostream&gt;
 
@@ -121,7 +121,6 @@ int main () {
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://www.google.com/recaptcha/api.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
 <script src="/resource/highlight/highlight.pack.js"></script>
