@@ -43,7 +43,23 @@
 * Abstract methods may only be defined in abstract classes. You can't have an abstract method in a concrete class. If you want an abstract method, the class must also be abstract. Otherwise users could instantiate the class and try to implement its methods. However, if your class is abstract, it may have some methods that are abstract and others that are concrete.
 * Abstract methods may not be declared private or final.
 * Abstract methods must not provide a method body/implementation in the abstract class for which is it declared.
-* Implementing an abstract method in a subclass follows the same rules for overriding a method. For example, the name and signature must be the same, and the visibility of the method in the subclass must be at least as accessible as the method in the parent class.</pre>
+* Implementing an abstract method in a subclass follows the same rules for overriding a method. For example, the name and signature must be the same, and the visibility of the method in the subclass must be at least as accessible as the method in the parent class.
+```
+abstract class Sum{
+   public abstract int sumOfTwo(int n1, int n2);
+}
+
+class Main extends Sum{
+   public int sumOfTwo(int n1, int n2){
+	return n1+n2;
+   }
+
+   public static void main(String args[]){
+	Sum obj = new Main();
+	System.out.println(obj.sumOfTwo(3, 7));
+   }
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Abstract_method">Abstract method</a>, <a href="/dictionary/Method_in_java">Method in java</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Abstract_class_in_java">Abstract class in java</a></button>

@@ -39,9 +39,33 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">function overloading in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">When there are multiple functions with the same name but different parameters, then the functions are said to be overloaded. Functions can be overloaded by changing the number of arguments or/and changing the type of arguments.
+```
+#include &lt;iostream&gt;
+using namespace std;
+ 
+ 
+void add(int a, int b)
+{
+  cout &lt;&lt; "sum = " &lt;&lt; (a + b);
+}
+ 
+void add(double a, double b)
+{
+    cout &lt;&lt; endl &lt;&lt; "sum = " &lt;&lt; (a + b);
+}
+ 
+int main()
+{
+    add(10, 2);
+    add(5.3, 6.2);
+ 
+    return 0;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Function_in_c++">Function in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

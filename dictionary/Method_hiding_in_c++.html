@@ -46,18 +46,18 @@ using namespace std;
 class Base {
 public:
     int fun()      { cout &lt;&lt; "Base::fun() called"; }
-    int fun(int i) { cout &lt;&lt; "Base::fun(int i) called"; }
+    int fun(int i) { cout &lt;&lt; "Base::fun(int) called"; }
 };
   
 class Derived: public Base {
 public:
-    int fun(char x)   { cout &lt;&lt; "Derived::fun(char ) called"; }
+    int fun(char c)   { cout &lt;&lt; "Derived::fun(char) called"; }
 };
   
 int main() 
 {
     Derived d;
-    d.fun();    // cannot conpile
+    d.fun();    // cannot compile
     return 0;
 }
 ```</pre>

@@ -37,39 +37,40 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">arrayList in Java</span></h1>
+<h1><span class="badge badge-primary">virtual inheritance in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">ArrayList is a implementation of List Interface.  It uses a dynamic array for storing the elements. It is like an array, but there is no size limit. It is found in the java.util package. 
-An ArrayList is an object that contains other objects. An ArrayList cannot contain primitives. 
-The default capacity of ArrayList is 10. But unlike array, an ArrayList is a growable array, it doesn't have a fixed length. It increases the size dynamically whenever we add or remove any element in ArrayList. We can initialize the capacity of ArrayList during the creation of ArrayList.
+<pre id="word_content" style="white-space: pre-wrap;">Virtual inheritance is used in C++. It is mainly useful in Multiple inheritance. It is a technique in which we can create only one copy of the base class object though it is present in more than one classes of the hierarchy. 
+When you have a class (A) which inherits from 2 parents (B and C), both of which share a parent (D). If you don’t use virtual inheritance in this case, you will get two copies of D in A: one from B and one from C. To fix this, you need to change the inheritance of classes C and B to be virtual.
 ```
-import java.util.ArrayList;
+#include &lt;iostream&gt;
+using namespace std;
 
-public class Main {
-    public static void main(String args[]) {
-        ArrayList l1 = new ArrayList();
-        ArrayList l2 = new ArrayList(10);
-        ArrayList l3 = new ArrayList(l2);
-    }
+class A {
+public:    
+    A() { cout &lt;&lt; "A" &lt;&lt; endl; }
+};
+class B : virtual public A {
+public:    
+    B() { cout &lt;&lt; "B" &lt;&lt; endl; }
+};
+class C : virtual public A {
+public:    
+    C() { cout &lt;&lt; "C" &lt;&lt; endl; }
+};
+class D : public B, C {
+public:
+    D() { cout &lt;&lt; "D" &lt;&lt; endl; }
+};
+
+int main() {
+    D d;
+    return 0;
 }
 ```
-Some of the methods in ArrayList are listed below,
-Method | Description
------ | ----
-boolean add(E e) | It is used to append the specified element at the end of a list.
-void add(int index, E element) | It is used to insert the specified element at the specified position in a list.
-boolean remove(Object o) | It is used to remove the first occurrence of the specified element.
-E remove(int index) | It is used to remove the element present at the specified position in the list.
-E set(int index, E element) | It is used to replace the specified element in the list, present at the specified position. The return value is the removed element.
-boolean isEmpty() | It returns true if the list is empty, otherwise false.
-int size() | It is used to return the number of elements present in the list.
-void clear() | It is used to remove all of the elements from this list.
-boolean contains(Object o) | It returns true if the list contains the specified element
-boolean equals(Object o) | compares two lists to see if they contain the same elements in the same order.
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/List_in_java">List in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Inheritance_in_c++">Inheritance in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

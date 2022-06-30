@@ -44,7 +44,7 @@
 class MyClass { 
 }
 ```
-Most of the time, each Java class is defined in its own *.java file. It is usually public, which means any code can call it. Interestingly, Java does not require that the class be public. You can even put two classes in the same file. When you do so, at most one of the classes in the file is allowed to be public. If you do have a public class, it needs to match the filename. public class Animal2would not compile in a file named Animal.java. 
+Most of the time, each Java class is defined in its own *.java file. It is usually public, which means any code can call it. Interestingly, Java does not require that the class be public. You can even put two classes in the same file. When you do so, at most one of the classes in the file is allowed to be public. If you do have a public class, it needs to match the filename. public class Animal2 would not compile in a file named Animal.java. 
 &lt;b&gt;Elements of a class&lt;/b&gt;
 Element | Example | Required? | Where does it go?
 ----- | ----- | ----- | ----- 
@@ -52,17 +52,17 @@ Package declaration | package abc; | No | First line in the file
 Import statements | import java.util.*; | No | Immediately after the package
 Class declaration | public class C | Yes | Immediately after the import
 Field declarations | int value; | No | Anywhere inside a class
-Method declarations | void method() | No | Anywhere inside a class
+Method declarations | void method() { } | No | Anywhere inside a class
 
-Order of Initialization
-* If there is a superclass, initialize it first
+Order of Initialization:
+* If there is a superclass, initialize it first.
 * Static variable declarations and static initializers in the order they appear in the file.
 * Instance variable declarations and instance initializers in the order they appear in the file.
 * The constructor.
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class">Class</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Oop_in_java">Oop in java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Abstract_class_in_java">Abstract class in java</a>, <a href="/dictionary/Anonymous_class_in_java">Anonymous class in java</a>, <a href="/dictionary/Final_class_in_java">Final class in java</a>, <a href="/dictionary/Interface_in_java">Interface in java</a>, <a href="/dictionary/Local_inner_class_in_java">Local inner class in java</a>, <a href="/dictionary/Nested_class_in_java">Nested class in java</a>, <a href="/dictionary/Object_in_java">Object in java</a>, <a href="/dictionary/Primitive_wrapper_class_in_java">Primitive wrapper class in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Access_modifier_in_java">Access modifier in java</a>, <a href="/dictionary/Anotation_in_java">Anotation in java</a>, <a href="/dictionary/Constructor_in_java">Constructor in java</a>, <a href="/dictionary/Field_in_java">Field in java</a>, <a href="/dictionary/Fully-qualified_name">Fully-qualified name</a>, <a href="/dictionary/Initializer_in_java">Initializer in java</a>, <a href="/dictionary/Javabean">Javabean</a>, <a href="/dictionary/Method_in_java">Method in java</a>, <a href="/dictionary/Servlet">Servlet</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class">Class</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Oop_in_java">Oop in java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Abstract_class_in_java">Abstract class in java</a>, <a href="/dictionary/Anonymous_class_in_java">Anonymous class in java</a>, <a href="/dictionary/Final_class_in_java">Final class in java</a>, <a href="/dictionary/Interface_in_java">Interface in java</a>, <a href="/dictionary/Local_inner_class_in_java">Local inner class in java</a>, <a href="/dictionary/Nested_class_in_java">Nested class in java</a>, <a href="/dictionary/Object_in_java">Object in java</a>, <a href="/dictionary/Primitive_wrapper_class_in_java">Primitive wrapper class in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Access_modifier_in_java">Access modifier in java</a>, <a href="/dictionary/Anotation_in_java">Anotation in java</a>, <a href="/dictionary/Constructor_in_java">Constructor in java</a>, <a href="/dictionary/Field_in_java">Field in java</a>, <a href="/dictionary/Initializer_in_java">Initializer in java</a>, <a href="/dictionary/Javabean">Javabean</a>, <a href="/dictionary/Method_in_java">Method in java</a>, <a href="/dictionary/Non-access_modifier_in_java">Non-access modifier in java</a>, <a href="/dictionary/Servlet">Servlet</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

@@ -67,7 +67,7 @@ Output:
 ```
 &lt;b&gt;Format&lt;/b&gt;
 * &lt;b&gt;MMMM&lt;/b&gt; M represents the month. The more M s you have, the more verbose the Java output. For example, M outputs 1, MM outputs 01, MMM outputs Jan, and MMMM outputs January.
-* &lt;b&gt;dd&lt;/b&gt; d represents the day in the month. As with month , the more d s you have, the more verbose the Java output. dd means to include the leading zero for a single-digit day.
+* &lt;b&gt;dd&lt;/b&gt; d represents the day in the month. As with month, the more d s you have, the more verbose the Java output. dd means to include the leading zero for a single-digit day. d means there is no leading zero.
 * &lt;b&gt;,&lt;/b&gt; Use , if you want to output a comma (this also appears after the year).
 * &lt;b&gt;yyyy&lt;/b&gt; y represents the year. yy outputs a two-digit year and yyyy outputs a four-digit year.
 * &lt;b&gt;hh&lt;/b&gt; h represents the hour. Use hh to include the leading zero if you’re outputting a single-digit hour.
@@ -87,7 +87,7 @@ Methods in LocalDate, LocalTime, and LocalDateTime
 |plusNanos/minusNanos | No | Yes | Yes
 
 
-Note any changes made to an instance will create a new object instead of modifying the existing one.
+Note any changes made to an instance will create a new object instead of modifying the existing one, cause they are immutable.
 ```
 import java.time.LocalTime;
 import java.time.temporal.ChronoField;

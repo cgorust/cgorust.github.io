@@ -43,25 +43,24 @@
 * public inheritance makes public members of the base class public in the derived class, and the protected members of the base class remain protected in the derived class.
 * protected inheritance makes the public and protected members of the base class protected in the derived class.
 * private inheritance makes the public and protected members of the base class private in the derived class. Private inheritance is a syntactic variant of composition (AKA aggregation and/or has-a).
-* In the absence of an access-specifier for a base class, public is assumed when the derived class is defined with the class-key struct and private is assumed when the class is defined with the class-key class.
+* In the absence of an access-specifier for a base class, public is assumed when the derived class is defined as struct and private is assumed when the class is defined as class.
 
+The private members in the base class cannot be directly accessed in the derived class, while protected members can be directly accessed. 
 ```
 #include &lt;iostream&gt;
 using namespace std;
 
-// Base class
-class Food_Item{
+class Food {
 public:
   void taste() { 
-    cout &lt;&lt; "The taste of every food item is different. \n";
+    cout &lt;&lt; "The taste of every food is different.\n";
   }
 };
- 
-// Derived class
-class Chips: public Food_Item{
+
+class Chips: public Food {
 public:
   void taste() {
-    cout &lt;&lt; "The taste of chips is salty \n";   
+    cout &lt;&lt; "The taste of chips is salty.\n";   
   }
 };
 
@@ -72,7 +71,7 @@ int main() {
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Inheritance">Inheritance</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Oop_in_c++">Oop in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Virtual_inheritance">Virtual inheritance</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Multiple_inheritance_in_c++">Multiple inheritance in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Inheritance">Inheritance</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Oop_in_c++">Oop in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Multiple_inheritance_in_c++">Multiple inheritance in c++</a>, <a href="/dictionary/Virtual_inheritance_in_c++">Virtual inheritance in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

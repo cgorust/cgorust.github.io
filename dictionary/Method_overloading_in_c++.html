@@ -37,39 +37,36 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">arrayList in Java</span></h1>
+<h1><span class="badge badge-primary">method overloading in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">ArrayList is a implementation of List Interface.  It uses a dynamic array for storing the elements. It is like an array, but there is no size limit. It is found in the java.util package. 
-An ArrayList is an object that contains other objects. An ArrayList cannot contain primitives. 
-The default capacity of ArrayList is 10. But unlike array, an ArrayList is a growable array, it doesn't have a fixed length. It increases the size dynamically whenever we add or remove any element in ArrayList. We can initialize the capacity of ArrayList during the creation of ArrayList.
-```
-import java.util.ArrayList;
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+using namespace std;
 
-public class Main {
-    public static void main(String args[]) {
-        ArrayList l1 = new ArrayList();
-        ArrayList l2 = new ArrayList(10);
-        ArrayList l3 = new ArrayList(l2);
+class Addition
+{
+    public:
+    int sum(int a,int b) 
+    {
+        return a+b;
     }
+    int sum(int a,int b, int c) 
+    {
+       return a+b+c;
+    }
+};
+ 
+int main(void)
+{
+    Addition obj;
+    cout&lt;&lt;obj.sum(20, 15)&lt;&lt;endl;
+    cout&lt;&lt;obj.sum(81, 100, 10);
+    return 0;
 }
-```
-Some of the methods in ArrayList are listed below,
-Method | Description
------ | ----
-boolean add(E e) | It is used to append the specified element at the end of a list.
-void add(int index, E element) | It is used to insert the specified element at the specified position in a list.
-boolean remove(Object o) | It is used to remove the first occurrence of the specified element.
-E remove(int index) | It is used to remove the element present at the specified position in the list.
-E set(int index, E element) | It is used to replace the specified element in the list, present at the specified position. The return value is the removed element.
-boolean isEmpty() | It returns true if the list is empty, otherwise false.
-int size() | It is used to return the number of elements present in the list.
-void clear() | It is used to remove all of the elements from this list.
-boolean contains(Object o) | It returns true if the list contains the specified element
-boolean equals(Object o) | compares two lists to see if they contain the same elements in the same order.
-</pre>
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/List_in_java">List in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Method_overloading">Method overloading</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
