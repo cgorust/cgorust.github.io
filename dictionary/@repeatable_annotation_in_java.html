@@ -37,16 +37,28 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">abstract class in C++</span></h1>
+<h1><span class="badge badge-primary">@repeatable annotation in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A class contains at least one pure virtual function is an abstract class, and cannot be instantiated directly. 
-* A subclass of an abstract class can only be instantiated directly if all inherited pure virtual methods have been implemented. 
-* We can have pointers and references of abstract class type, but since abstract class cannot be instantiated, they will point or referenced to subclasses.
-* An abstract class can have constructors. 
-</pre>
+<pre id="word_content" style="white-space: pre-wrap;">Step 1: Declare a Repeatable Annotation Type. The annotation type must be marked with the @Repeatable meta-annotation. 
+```
+import java.lang.annotation.Repeatable;
+
+@Repeatable(Schedules.class)
+public @interface Schedule {
+  String dayOfMonth() default "first";
+  String dayOfWeek() default "Mon";
+  int hour() default 12;
+}
+```
+Step 2: Declare the Containing Annotation Type. The containing annotation type must have a value element with an array type. The component type of the array type must be the repeatable annotation type. 
+```
+public @interface Schedules {
+    Schedule[] value();
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Abstract_class">Abstract class</a>, <a href="/dictionary/Class_in_c++">Class in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Pure_virtual_function_in_c++">Pure virtual function in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Annotation_in_java">Annotation in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

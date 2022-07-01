@@ -39,33 +39,48 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">function overloading in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">When there are multiple functions with the same name but different parameters, then the functions are said to be overloaded. Functions can be overloaded by changing the number of arguments or/and changing the type of arguments.
+<pre id="word_content" style="white-space: pre-wrap;">The rules:
+* Overloaded functions MUST change the argument list. Arguments should be different type, number, or sequence.
+    * Parameter declarations that differ only in a pointer * versus an array [] are equivalent. That is, the array declaration is adjusted to become a pointer declaration. Only the second and subsequent array dimensions are significant in parameter types.
+    * Parameter declarations that differ only in that one is a function type and the other is a pointer to the same function type are equivalent. void h(int ()); is the same as void h(int (*)()); 
+    * Parameter declarations that differ only in the presence or absence of const and/or volatile are equivalent. That is, the const and volatile type-specifiers for each parameter type are ignored when determining which function is being declared, defined, or called.
+    * Only the const and volatile type-specifiers at the outermost level of the parameter type specification are ignored in this fashion; const and volatile type-specifiers buried within a parameter type specification are significant and can be used to distinguish overloaded function declarations. In particular, for any type T, “pointer to T,” “pointer to const T,” and “pointer to volatile T” are considered distinct parameter types, as are “reference to T,” “reference to const T,” and “reference to volatile T.”
+* Overloaded functions CAN change the return type.
+* Overloaded member functions CAN change the access modifier.
+* A member function CANNOT be overloaded in a subclass. Member function in superclass will be hidden, but can be accessed using scope operator.
+* You can overload functions across namespaces. 
+* C++ allows methods to be overloaded on the basis of const type. Overloading on the basis of const type can be useful when a function returns a reference or pointer. We can make one function const, that returns a const reference or const pointer, and another non-const function, that returns a non-const reference or pointer.
+* C++ allows methods to be overloaded on the basis of volatile type. 
 ```
 #include &lt;iostream&gt;
 using namespace std;
- 
- 
-void add(int a, int b)
-{
-  cout &lt;&lt; "sum = " &lt;&lt; (a + b);
-}
- 
-void add(double a, double b)
-{
-    cout &lt;&lt; endl &lt;&lt; "sum = " &lt;&lt; (a + b);
-}
- 
+
+class B {
+public:
+    void add(int a, int b) {
+      cout &lt;&lt; "B::sum = " &lt;&lt; (a + b) &lt;&lt; endl;
+    }
+};
+
+class D: public B {
+public:
+    void add(float a, float b) {
+        cout &lt;&lt; "D::sum = " &lt;&lt; (a + b) &lt;&lt; endl;
+    }
+};
+
 int main()
 {
-    add(10, 2);
-    add(5.3, 6.2);
- 
+    D d;
+    d.add(10, 2); // D::sum = 12
+    d.B::add(10, 2); // B::sum = 12
+    
     return 0;
 }
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Function_in_c++">Function in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Function_overloading">Function overloading</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Function_in_c++">Function in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

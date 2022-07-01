@@ -39,25 +39,25 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">method overloading in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Overloaded methods let you reuse the same method name in a class, but with different arguments (and optionally, a different return type). Overloading a method often means you're being a little nicer to those who call your methods, because your code takes on the burden of coping with different argument types rather than forcing the caller to do conversions prior to invoking your method. 
-The rules are simple:
+<pre id="word_content" style="white-space: pre-wrap;">Method overloading let us reuse the same method name in a class, but with different arguments (and optionally, a different return type). 
+The rules are simple,
 * Overloaded methods MUST change the argument list.
 * Overloaded methods CAN change the return type.
 * Overloaded methods CAN change the access modifier.
 * Overloaded methods CAN declare new or broader checked exceptions.
 * A method can be overloaded in the same class or in a subclass.
 
-Order Java uses to choose the right overloaded method
-Rule | Example of what will be chosen for glide(1,2)
+The order that Java uses to choose the right overloaded method,
+Rule | Example of what will be chosen for f(1,2)
 ----- | -----
-Exact match by type | public String glide(int i, int j) {} 
-Larger primitive type | public String glide(long i, long j) {} 
-Autoboxed type | public String glide(Integer i, Integer j) {} 
-Varargs | public String glide(int... nums) {} 
+Exact match by type | public String f(int i, int j) {} 
+Larger primitive type | public String f(long i, long j) {} 
+Autoboxed type | public String f(Integer i, Integer j) {} 
+Varargs | public String f(int... nums) {} 
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Method_overloading">Method overloading</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Polymorphism_in_java">Polymorphism in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Function_overloading">Function overloading</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Polymorphism_in_java">Polymorphism in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

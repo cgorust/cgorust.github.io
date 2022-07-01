@@ -39,7 +39,7 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">annotation in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">* @Deprecated @Deprecated annotation indicates that the marked element is deprecated and should no longer be used. The compiler generates a warning whenever a program uses a method, class, or field with the @Deprecated annotation. When an element is deprecated, it should also be documented using the Javadoc @deprecated tag, as shown in the following example. The use of the at sign (@) in both Javadoc comments and in annotations is not coincidental: they are related conceptually. Also, note that the Javadoc tag starts with a lowercase d and the annotation starts with an uppercase D.
+<pre id="word_content" style="white-space: pre-wrap;">* @Deprecated: @Deprecated annotation indicates that the marked element is deprecated and should no longer be used. The compiler generates a warning whenever a program uses a method, class, or field with the @Deprecated annotation. When an element is deprecated, it should also be documented using the Javadoc @deprecated tag, as shown in the following example. The use of the at sign (@) in both Javadoc comments and in annotations is not coincidental: they are related conceptually. Also, note that the Javadoc tag starts with a lowercase d and the annotation starts with an uppercase D.
 ```
    // Javadoc comment follows
     /**
@@ -50,16 +50,14 @@
     static void deprecatedMethod() { }
 }
 ```
-* @Override @Override annotation informs the compiler that the element is meant to override an element declared in a superclass. Overriding methods will be discussed in Interfaces and Inheritance.
+* @Override: @Override annotation informs the compiler that the element is meant to override an element declared in a superclass. Overriding methods will be discussed in Interfaces and Inheritance.
 ```
    // mark method as a superclass method
    // that has been overridden
    @Override 
    int overriddenMethod() { }
 ```
-
-
-* @SuppressWarnings @SuppressWarnings annotation tells the compiler to suppress specific warnings that it would otherwise generate. In the following example, a deprecated method is used, and the compiler usually generates a warning. In this case, however, the annotation causes the warning to be suppressed.
+* @SuppressWarnings: @SuppressWarnings annotation tells the compiler to suppress specific warnings that it would otherwise generate. In the following example, a deprecated method is used, and the compiler usually generates a warning. In this case, however, the annotation causes the warning to be suppressed.
 ```
    // use a deprecated method and tell 
    // compiler not to generate a warning
@@ -70,16 +68,21 @@
         objectOne.deprecatedMethod();
     }
 ```
-  Every compiler warning belongs to a category. The Java Language Specification lists two categories: deprecation and unchecked. The unchecked warning can occur when interfacing with legacy code written before the advent of generics. To suppress multiple categories of warnings, use the following syntax:
+Every compiler warning belongs to a category. The Java Language Specification lists two categories: deprecation and unchecked. The unchecked warning can occur when interfacing with legacy code written before the advent of generics. To suppress multiple categories of warnings, use the following syntax:
 ```
  @SuppressWarnings({"unchecked", "deprecation"})
 ```
-* @SafeVarargs @SafeVarargs annotation, when applied to a method or constructor, asserts that the code does not perform potentially unsafe operations on its varargs parameter. When this annotation type is used, unchecked warnings relating to varargs usage are suppressed.
-
-* @FunctionalInterface @FunctionalInterface annotation, introduced in Java SE 8, indicates that the type declaration is intended to be a functional interface, as defined by the Java Language Specification.</pre>
+* @SafeVarargs: @SafeVarargs annotation, when applied to a method or constructor, asserts that the code does not perform potentially unsafe operations on its varargs parameter. When this annotation type is used, unchecked warnings relating to varargs usage are suppressed.
+* @FunctionalInterface: @FunctionalInterface annotation, introduced in Java SE 8, indicates that the type declaration is intended to be a functional interface, as defined by the Java Language Specification.
+* @Repeatable: There are some situations where you want to apply the same annotation to a declaration or type use. As of the Java SE 8 release, repeating annotations enable you to do this. 
+```
+@Schedule(dayOfMonth="last")
+@Schedule(dayOfWeek="Fri", hour="23")
+public void doPeriodicCleanup() { ... }
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Token_in_java">Token in java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/@functionalinterface_annotation_in_java">@functionalinterface annotation in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Token_in_java">Token in java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/@functionalinterface_annotation_in_java">@functionalinterface annotation in java</a>, <a href="/dictionary/@repeatable_annotation_in_java">@repeatable annotation in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

@@ -37,16 +37,46 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">abstract class in C++</span></h1>
+<h1><span class="badge badge-primary">method overriding in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A class contains at least one pure virtual function is an abstract class, and cannot be instantiated directly. 
-* A subclass of an abstract class can only be instantiated directly if all inherited pure virtual methods have been implemented. 
-* We can have pointers and references of abstract class type, but since abstract class cannot be instantiated, they will point or referenced to subclasses.
-* An abstract class can have constructors. 
-</pre>
+<pre id="word_content" style="white-space: pre-wrap;">Method overriding occurs when a subclass has a definition of one of the member functions of the superclass. That base function is said to be overridden. 
+* The superclass method can be invoked followed by the scope resolution operator.
+* A virtual method that is declared final in the superclass cannot be overridden.
+* A method can be declared override to make the compiler check that it overrides a method in the superclass.
+```
+#include &lt;iostream&gt;
+using namespace std;
+ 
+class Super 
+{
+public:
+    virtual void print() { cout&lt;&lt;"Super::print"&lt;&lt;endl; }
+    void show() { cout&lt;&lt;"Super::show"&lt;&lt;endl; }
+    virtual void run() final { cout&lt;&lt;"Super::run"&lt;&lt;endl; }
+};
+  
+class Sub:public Super
+{
+public:
+    void print() override { cout&lt;&lt;"Sub::print"&lt;&lt;endl; }
+    void show()  { cout&lt;&lt;"Sub::show"&lt;&lt;endl; }
+};
+ 
+int main()
+{
+    Sub sub;
+    Super *super = &amp;sub;
+    
+    super-&gt;Super::print(); // Super::print
+    super-&gt;print(); // Sub::print
+    super-&gt;show(); // Super::show
+ 
+    return 0;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Abstract_class">Abstract class</a>, <a href="/dictionary/Class_in_c++">Class in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Pure_virtual_function_in_c++">Pure virtual function in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Method_overriding">Method overriding</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

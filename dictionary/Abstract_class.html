@@ -39,29 +39,9 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">abstract class</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">An abstract class is a class that is declared abstract — it may or may not include abstract methods. Abstract classes cannot be instantiated, but they can be subclassed. An abstract class may have static fields and static methods.
-```
-#include &lt;iostream&gt;
-using namespace std;
-
-class Base {
-public:
-    virtual bool Get(int i) = 0;
-};
-
-class Derived1 : public Base {
-public:
-    bool Get(int i) { return i;}
-};
-
-int main()
-{
-    int k=5;
-    Base * base = new Derived1();
-    cout&lt;&lt;"temp is "&lt;&lt;base-&gt;Get(k)&lt;&lt;endl;
-    return 0;
-}
-```</pre>
+<pre id="word_content" style="white-space: pre-wrap;">An abstract class is a class that cannot be instantiated, but can be subclassed. 
+Abstract class may have abstract methods. The derived classes must implement all abstract methods when inheriting from an abstract class.
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class">Class</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Abstraction">Abstraction</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Abstract_class_in_c++">Abstract class in c++</a>, <a href="/dictionary/Abstract_class_in_java">Abstract class in java</a>, <a href="/dictionary/Abstract_class_in_kotlin">Abstract class in kotlin</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Abstract_method">Abstract method</a></button>

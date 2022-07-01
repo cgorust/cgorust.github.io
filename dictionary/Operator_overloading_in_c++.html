@@ -67,17 +67,23 @@ int main() {
     return 0;
 }
 ```
-Prefix doesn't take any parameter but postfix does. Why?
+Prefix doesn't take any parameter but postfix does. Why? The operator symbol for both prefix(++i) and postfix(i++) are the same. Hence, we need two different function definitions to distinguish between them. This is achieved by passing a dummy int parameter in the postfix version.
 ```
  class Number {
  public:
    Number&amp; operator++ ();    // prefix ++
-   Number  operator++ (int); // postfix ++
+   Number&amp;  operator++ (int); // postfix ++
  }; 
 ```
-Prefix and postfix ++ are different operators. With the standard Foo operator symbol(Foo &amp;) style declaration there was no obvious way to distinguish the two. Rather than come up with some new syntax like Foo symbol operator(Foo &amp;) which would make it into a special case unlike all the other operators and likely a bit of a pain to parse, the language designers wanted some other solution.
-The solution they chose was somewhat bizarre. They noted that all the other 'postfix' operators (i.e. operators that occurred after one of their operands) were actually infix operators that took two arguments. For example, plain old +, / or &gt;. On this basis the language designers decided that having a random dummy argument would be a good way to distinguish between prefix and postfix ++.
-IMHO, it's one of the stranger decisions made as C++ evolved. But there you have it.</pre>
+C++ operators cannot be overloaded?
+* There is no fundamental reason to disallow overloading of ?:. So far the committee just hasn’t seen the need to introduce the special case of overloading a ternary operator. 
+* sizeof cannot be overloaded because built-in operations, such as incrementing a pointer into an array implicitly depends on it. Thus, sizeof(X) could not be given a new and different meaning by the programmer without violating basic language rules.
+* In N::m neither N nor m are expressions with values; N and m are names known to the compiler and :: performs a (compile time) scope resolution rather than an expression evaluation. One could imagine allowing overloading of x::y where x is an object rather than a namespace or a class, but that would – contrary to first appearances – involve introducing new syntax (to allow expr::expr). It is not obvious what benefits such a complication would bring.
+* operator. (dot) could in principle be overloaded using the same technique as used for -&gt;. However, doing so can lead to questions about whether an operation is meant for the object overloading . or an object referred to by .
+
+
+
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Operator_overloading">Operator overloading</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Oop_in_c++">Oop in c++</a></button>

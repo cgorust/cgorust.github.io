@@ -91,7 +91,24 @@ s.forEach(System.out::println); | No | Yes
 System.out.println(s.collect(Collectors.toList())); | No | Yes
 s.peek(System.out::println).count(); | No | No
 s.limit(5).forEach(System.out::println); | Yes | Yes
-</pre>
+
+&lt;b&gt;Different ways to create a stream&lt;/b&gt;
+```
+import java.util.*;
+import java.util.stream.Stream;
+  
+class Main {
+    public static void main(String[] args)
+    {
+        Stream&lt;String&gt; stream1 = Stream.empty();
+        Stream&lt;String&gt; stream2 = Stream.&lt;String&gt;builder().add("a").add("b").build();
+        Stream&lt;String&gt; stream3 = Stream.of("Java", "C++");
+        Stream&lt;String&gt; stream4 = Arrays.asList("Java", "C++").stream();
+        Stream&lt;String&gt; stream5 = Stream.generate(()-&gt;"a").limit(3);
+        Stream&lt;String&gt; stream6 = Stream.iterate("a", n -&gt; n + "a").limit(5);    
+    }
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Monad">Monad</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Function_in_java">Function in java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Parallel_stream_in_java">Parallel stream in java</a>, <a href="/dictionary/Primitive_steam_in_java">Primitive steam in java</a></button>

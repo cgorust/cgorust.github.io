@@ -39,22 +39,29 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">virtual function in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A virtual function is a member function and redefined in the derived class. When two functions of the same name are present in the base and subclass, the base class function will be declared with the keyword virtual, hence both classes can have the same function name with a different implementation. During runtime, it determines which function to call based on the object pointer it points to.
-In C++, virtual functions can be private and still can be overridden by the derived class. 
+<pre id="word_content" style="white-space: pre-wrap;">A virtual function in C++ is a member function and redefined in the subclass. When two functions of the same name are present in the superclass and subclass, the superclass function will be declared with the keyword virtual, hence both classes can have the same function name with a different implementation. During runtime, it determines which function to call based on the object pointer it points to.
+* Virtual functions cannot be static.
+* A virtual function can be a friend function of another class.
+* Virtual functions should be accessed using pointer or reference of base class type to achieve runtime polymorphism.
+* The prototype of virtual functions should be the same in the base as well as derived class.
+* They are always defined in the base class and overridden in a derived class. It is not mandatory for the derived class to override (or re-define the virtual function), in that case, the base class version of the function is used.
+* A class may have virtual destructor but it cannot have a virtual constructor.
+* Virtual functions can be private and still can be overridden by the derived class. 
+* A virtual function call uses the default arguments determined by the static type of the pointer or reference. An overriding function in a derived class does not inherent default arguments from the function it overrides.
 ```
 #include &lt;iostream&gt;
 using namespace std;
 
 class Base {
 public:
-    virtual void func() { cout &lt;&lt; "Base:func()" &lt;&lt; endl; }
+    virtual void func(int a=1) { cout &lt;&lt; "Base:func() " &lt;&lt; a &lt;&lt; endl; }
     Base() { func(); }  // Base:func()
     void call() { func(); }
 };
 
 class Sub : public Base {
 public:
-    void func() { cout &lt;&lt; "Sub:func()" &lt;&lt; endl; }
+    void func(int a=2) { cout &lt;&lt; "Sub:func() " &lt;&lt; a &lt;&lt; endl; }
     Sub() { func(); } // Sub:func()
     void call() { func(); }
 };
@@ -69,40 +76,18 @@ int main() {
     return 0;
 }
 
+
 /*
-Base:func()
-Sub:func()
-Sub:func()
-Sub:func()
+Base:func() 1
+Sub:func() 2
+Sub:func() 1
+Sub:func() 1
 */
-```
-A virtual function call uses the default arguments determined by the static type of the pointer or reference. An overriding function in a derived class does not inherent default arguments from the function it overrides.
-```
-#include &lt;iostream&gt;
-
-struct A {
-    virtual void foo (int a = 1) {
-        std::cout &lt;&lt; "A" &lt;&lt; a;
-    }
-};
-
-struct B : A {
-    virtual void foo (int a = 2) {
-        std::cout &lt;&lt; "B" &lt;&lt; a;
-    }
-};
-
-int main () {
-    A *b = new B;
-    b-&gt;foo();
-}
-
-//B1
 ```
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Member_function_in_c++">Member function in c++</a>, <a href="/dictionary/Virtual_method">Virtual method</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Pure_virtual_function_in_c++">Pure virtual function in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Dynamic_binding">Dynamic binding</a>, <a href="/dictionary/Vtable">Vtable</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Member_function_in_c++">Member function in c++</a>, <a href="/dictionary/Virtual_method">Virtual method</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Pure_virtual_function_in_c++">Pure virtual function in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Vtable">Vtable</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

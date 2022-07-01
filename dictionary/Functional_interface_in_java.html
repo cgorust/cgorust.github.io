@@ -42,7 +42,7 @@
 <pre id="word_content" style="white-space: pre-wrap;">Java defines a functional interface as an interface that contains a single abstract method (default methods or static methods do not count). If an interface declares an abstract method overriding one of the public methods of java.lang.Object, such as equals() or toString(), that also does not count toward the interface's abstract method count since any implementation of the interface will have an implementation from java.lang.Object or elsewhere. 
 Functional interfaces are used as the basis for lambda expressions in functional programming.
 ```
-interface Calcu {
+interface Calcuable {
     int change(int i);
     default int change(short i) {
         return i * 3;
@@ -51,8 +51,8 @@ interface Calcu {
 
 class Main {
     public static void main(String[] args) {
-        Calcu calcu = i -&gt; i * 2;
-        System.out.println(calcu.change(10)); // 20
+        Calcuable calcuable = i -&gt; i * 2;
+        System.out.println(calcuable.change(10)); // 20
     }
 }
 ```

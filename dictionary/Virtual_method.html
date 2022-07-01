@@ -39,11 +39,12 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">virtual method</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The concept of the virtual method solves the following problem: When a derived class inherits from a base class, an object of the derived class may be referred to via a pointer or reference of the base class type instead of the derived class type. If there are base class methods overridden by the derived class, the method actually called by such a reference or pointer can be bound either 'early' (by the compiler), according to the declared type of the pointer or reference, or 'late' (by the runtime system of the language), according to the actual type of the object is referred to.
+<pre id="word_content" style="white-space: pre-wrap;">A virtual method is a method that is declared in the base class and is overridden in the derived class. It tells the compiler to perform late binding during runtime. Virtual method allows us to create a list of base class pointers and call methods of any of the derived classes without even knowing the kind of derived class object. 
+Virtual method solves the following problem: When a derived class inherits from a base class, an object of the derived class may be referred to via a pointer or reference of the base class type instead of the derived class type. If there are base class methods overridden by the derived class, the method actually called by such a reference or pointer can be bound either 'early' (by the compiler), according to the declared type of the pointer or reference, or 'late' (by the runtime system of the language), according to the actual type of the object is referred to.
 Most programming languages, such as Java, JavaScript and Python, treat all methods as virtual by default and do not provide a modifier to change this behaviour.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Method">Method</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Virtual_function_in_c++">Virtual function in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Method">Method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Polymorphism">Polymorphism</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Virtual_function_in_c++">Virtual function in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

@@ -40,7 +40,7 @@
 <h1><span class="badge badge-primary">lambda expression in Java</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">A lambda expression in Java is, essentially, an anonymous method. However, this method is not executed on its own. Instead, it is need to implement a method defined by a functional interface. Thus, a lambda expression results in a form of anonymous class. 
-Below grammars are valid lambda expression in Java. Note the body of a lambda expression must be an expression or a statement block. It cannot be a statement.
+Below grammars are valid lambda expression in Java. Note the body of a lambda expression must be an expression or a statement block. It cannot be a statement. So both ()-&gt;true and ()-&gt;{ return true; } works, but ()-&gt;return true not work.
 * parameter -&gt; expression;
 * (parameter1, parameter2) -&gt; expression;
 * (parameter1, parameter2) -&gt; { code block };
