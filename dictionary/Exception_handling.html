@@ -40,6 +40,10 @@
 <h1><span class="badge badge-primary">exception handling</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Exception handling is the process of responding to the occurrence of exceptions.
+The following are the main advantages of exception handling:
+* Separation of error handling code from normal code: In traditional error handling codes, there are always if-else conditions to handle errors. These conditions and the code to handle errors get mixed up with the normal flow. This makes the code less readable and maintainable. With try/catch blocks, the code for error handling becomes separate from the normal flow.
+* Functions/Methods can handle only the exceptions they choose: A function can throw many exceptions, but may choose to handle some of them. The other exceptions, which are thrown but not caught, can be handled by the caller. If the caller chooses not to catch them, then the exceptions are handled by the caller of the caller. 
+* Grouping of Error Types: Both basic types and objects can be thrown as exceptions. We can create a hierarchy of exception objects, group exceptions in namespaces or classes and categorize them according to their types.
 </pre>
 </div>
 <div class="btn-group-vertical text-left">

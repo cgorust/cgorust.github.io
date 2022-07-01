@@ -47,9 +47,11 @@
 * move assignment operator
 
 It doesn't say "always provide all five". It says that you have to either provide the three, the five, or none of them. 
+The default constructors and assignment operators do shallow copy and we create our own constructor and assignment operators when we need to perform a deep copy.
+Not implementing move semantics is not usually considered an error. If move semantics are missing, the compiler would normally use the less efficient copy operations wherever possible. If a class does not require move operations, we can easily skip those. But, implementing them results in increased efficiency.
 Indeed, more often than not the smartest move is to not provide any of the five. But you can't do that if you're writing your own container, smart pointer, or a RAII wrapper around some resource.
-* We can explicitly ask the compiler to generate the synthesized versions of the copy-control members by defining them as = default
-* Under the new standard, we can prevent copies by defining the copy constructor and copy-assignment operator as deleted functions.
+* We can explicitly ask the compiler to generate the synthesized versions of the copy-control members by defining them as = default.
+* Under the new standard, we can prevent copies by defining the copy constructor and copy-assignment by =deleted.
 ```
 #include &lt;iostream&gt;
 #include &lt;cstring&gt;
