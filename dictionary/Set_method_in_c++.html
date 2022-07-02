@@ -37,12 +37,58 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">queue</span></h1>
+<h1><span class="badge badge-primary">set method in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Queue operates in a First-In-First-Out context (FIFO), where elements are inserted into one end of the queue and extracted from the other end.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">* create
+    * constructor
+```
+#include &lt;iostream&gt;
+#include &lt;set&gt;
+using namespace std;
+
+struct classComp {
+  bool operator()(int l, int r) { return l&lt;r; }
+};
+bool funComp(int l, int r) { return l&lt;r; }
+
+int main () {
+    set&lt;int&gt; s1;  // default constructor
+    set&lt;int&gt; s2(s1);  // copy constructor
+
+    int a[]= {1,2,3,4,5};
+    set&lt;int&gt; s3(a, a+5);  // range of pointer
+  
+    set&lt;int&gt; s4(s3.begin(), s3.end());  // iterator
+
+    std::set&lt;int, classComp&gt; s5;    // with class comparator
+  
+    std::set&lt;int, decltype(&amp;funComp)&gt; s6(&amp;funComp);  // with function compartor
+}
+```
+* iterator
+* add
+    * insert: Insert a new element.
+* change
+    * swap: Swap the contents of one vector with another vector of same type. Sizes may differ.
+* query
+    * value
+        * find: Get element.
+        * count: Count elements with a specific value.
+        * lower_bound: Return lower bound.
+        * upper_bould: Return upper bound.
+        * equal_range: Get range of equal elements.
+    * set
+        * empty: Return whether the container is empty.
+        * size: Return the number of elements in the container.
+        * max_size: Returns the maximum number of elements that the container can hold.
+* delete 
+    * erase: Remove a element from a container.
+    * clear: Remove all the elements of the container.
+
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure">Data structure</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Queue_in_c++">Queue in c++</a>, <a href="/dictionary/Queue_in_java">Queue in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Queue_method">Queue method</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Set_method">Set method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Set_in_c++">Set in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

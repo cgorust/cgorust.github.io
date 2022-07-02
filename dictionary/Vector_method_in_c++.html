@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+    var host = window.location.hostname;
+		if(host != "localhost")
+		{
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'G-R796EH82K4');
+		}
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/">
+<img height="28" src="/resource/img/logo.png"/>
+      CGORUST
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">vector method in C++</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">* create
+    * create: vector\&lt;type&gt; v{}
+```
+#include &lt;vector&gt;
+
+int main() {
+    vector&lt;int&gt; v{1,2,3,4,5};
+}
+```
+* add
+    * push_back: push_back()
+    * insert: 
+        * insert(): Insert takes (a reference to) an object.
+        * emplace(): Emplace takes the arguments necessary to construct an object in place
+```
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+struct Foo
+{
+    Foo(int n, double x) {}
+};
+
+int main() {
+    vector&lt;int&gt; v{1,2,3,4,5};
+    v.push_back(1);
+    v.insert(v.begin()+2,4);
+    
+    for(auto &amp;i:v) 
+        cout&lt;&lt;i&lt;&lt;",";
+    cout&lt;&lt;endl;
+
+    std::vector&lt;Foo&gt; f;
+    f.emplace(f.begin(), 42, 3.1416);
+    f.insert(f.begin(), Foo(42, 3.1416));
+}
+```
+* change
+    * swap: swap()
+    * assign: assign()
+    * capacity: resize(), shrink_to_fit(), reserve()
+```
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    vector&lt;int&gt; v{};
+    vector&lt;int&gt; w{1,2,3,4,5};
+
+    v.assign(10, 11);
+    v.swap(w);
+    for(auto &amp;i: v)
+        cout&lt;&lt;i&lt;&lt;",";
+    cout&lt;&lt;endl;
+    
+    cout&lt;&lt;v.size()&lt;&lt;",";
+    v.resize(100);
+    cout&lt;&lt;v.size()&lt;&lt;",";
+    v.shrink_to_fit();
+    cout&lt;&lt;v.size()&lt;&lt;",";
+    v.reserve(6);
+    cout&lt;&lt;v.size()&lt;&lt;",";
+}
+```
+* query
+    * at: operator[], at(), data()
+    * front: front()
+    * back: back()
+    * size: size()
+    * max_size: max_size()
+    * capacity: capacity()
+    * empty: empty()
+```
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    vector&lt;int&gt; v{1,2,3,4,5};
+
+    cout&lt;&lt;v[1]&lt;&lt;","&lt;&lt;v.at(1)&lt;&lt;","&lt;&lt;*v.data()+1&lt;&lt;endl;
+    cout&lt;&lt;v.front()&lt;&lt;","&lt;&lt;v.back()&lt;&lt;","&lt;&lt;v.size()&lt;&lt;","
+        &lt;&lt;v.max_size()&lt;&lt;","&lt;&lt;v.capacity()&lt;&lt;","&lt;&lt;v.empty()&lt;&lt;endl;
+}
+```
+* delete
+    * pop_back: pop_back()
+    * erase: erase()
+    * clear: clear()
+```
+#include &lt;vector&gt;
+using namespace std;
+
+int main() {
+    vector&lt;int&gt; v{1,2,3,4,5};
+
+    v.pop_back();
+    v.erase(v.begin()+2);
+    v.clear();
+}
+```
+* iterator
+    * begin(), end(); rbegin(), rend(); cbegin(), cend(); crbegin(), crend();
+```
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+ 
+int main() {
+    vector&lt;int&gt; v{1,2,3,4,5};
+ 
+    for (auto i = v.begin(); i != v.end(); ++i)
+        cout &lt;&lt; *i &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+    for (auto i = v.cbegin(); i != v.cend(); ++i)
+        cout &lt;&lt; *i &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+    for (auto i = v.rbegin(); i != v.rend(); ++i)
+        cout &lt;&lt; *i &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+    for (auto i = v.crbegin(); i != v.crend(); ++i)
+        cout &lt;&lt; *i &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+}
+```
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Vector_method">Vector method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Vector_in_c++">Vector in c++</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

@@ -37,12 +37,45 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">queue</span></h1>
+<h1><span class="badge badge-primary">array method in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Queue operates in a First-In-First-Out context (FIFO), where elements are inserted into one end of the queue and extracted from the other end.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">* create
+    * create: array\&lt;Type,Size&gt; a{};
+* add (N/A)
+* change
+    * swap: swap()
+    * fill: fill()
+* query
+    * at: at(), get(), operator[]
+    * front: front()
+    * back: back()
+    * size: size(), max_size()
+    * empty: empty()
+* delete (N/A)
+* iterator
+```
+#include &lt;iostream&gt;
+#include &lt;array&gt;
+using namespace std;
+
+int main() {
+    array&lt;int, 10&gt; a{};
+    array&lt;int, 10&gt; b{};
+    
+    b.fill(1);
+    a.swap(b);
+    
+    cout&lt;&lt;a[2]&lt;&lt;","&lt;&lt;get&lt;2&gt;(a)&lt;&lt;","&lt;&lt;a[2]&lt;&lt;endl;
+    cout&lt;&lt;a.front()&lt;&lt;","&lt;&lt;a.back()&lt;&lt;","&lt;&lt;a.size()&lt;&lt;","&lt;&lt;a.max_size()
+        &lt;&lt;","&lt;&lt;a.empty()&lt;&lt;endl;    
+ 
+   for(auto &amp;i: a) 
+        cout&lt;&lt;i&lt;&lt;",";
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure">Data structure</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Queue_in_c++">Queue in c++</a>, <a href="/dictionary/Queue_in_java">Queue in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Queue_method">Queue method</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array_method">Array method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Array_in_c++">Array in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

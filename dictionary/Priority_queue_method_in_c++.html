@@ -37,12 +37,38 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">queue</span></h1>
+<h1><span class="badge badge-primary">priority queue method in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Queue operates in a First-In-First-Out context (FIFO), where elements are inserted into one end of the queue and extracted from the other end.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">* create
+    * create: priority_queue\&lt;Type&gt; s{}
+* add
+    * push: push()
+* change (N/A)
+* query
+    * empty: empty()
+    * size: size()
+    * top: top()
+* delete 
+    * pop: pop()
+```
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    auto compare = [](int a, int b) { return a&gt;b; };
+    priority_queue&lt;int, vector&lt;int&gt;, decltype(compare)&gt; s(compare);
+    s.push(2);
+    s.push(1);
+    cout&lt;&lt;s.top()&lt;&lt;endl;
+    s.pop();
+    cout&lt;&lt;s.empty()&lt;&lt;","&lt;&lt;s.size()&lt;&lt;endl;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure">Data structure</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Queue_in_c++">Queue in c++</a>, <a href="/dictionary/Queue_in_java">Queue in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Queue_method">Queue method</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Priority_queue_method">Priority queue method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Priority_queue_in_c++">Priority queue in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

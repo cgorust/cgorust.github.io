@@ -37,12 +37,37 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">queue</span></h1>
+<h1><span class="badge badge-primary">queue method in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Queue operates in a First-In-First-Out context (FIFO), where elements are inserted into one end of the queue and extracted from the other end.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">* create
+    * create: queue\&lt;Type&gt; q{}
+* add
+    * push: push()
+* change (N/A)
+* query
+    * empty: empty()
+    * size: size()
+    * front: front()
+    * back: back()
+* delete 
+    * pop: pop()
+```
+#include &lt;queue&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    queue&lt;int&gt; q;
+    q.push(1);
+    q.push(2);
+    cout&lt;&lt;q.front()&lt;&lt;","&lt;&lt;q.back()&lt;&lt;endl;
+    q.pop();
+    cout&lt;&lt;q.empty()&lt;&lt;","&lt;&lt;q.size()&lt;&lt;endl;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure">Data structure</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Queue_in_c++">Queue in c++</a>, <a href="/dictionary/Queue_in_java">Queue in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Queue_method">Queue method</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Queue_method">Queue method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Queue_in_c++">Queue in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

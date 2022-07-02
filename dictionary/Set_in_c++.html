@@ -39,9 +39,7 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">set in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A set is a data structure that contains a collection of unique elements. Elements of a set are index by their own values, or keys.
-A set cannot contain duplicate elements. Once an element has been added to a set, that element cannot be modified.
-```
+<pre id="word_content" style="white-space: pre-wrap;">```
 #include &lt;iostream&gt;
 #include &lt;set&gt;
 using namespace std;
@@ -53,15 +51,13 @@ int main() {
     s.insert(0);
     s.insert(2);
     s.erase(2);
-    for(auto it = s.begin(); it != s.end(); it++) {
-        cout &lt;&lt; *it &lt;&lt; endl;
-    }
-    return 0;
+    for(auto &amp;i:s) 
+        cout &lt;&lt; i &lt;&lt; ",";
 }
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Set">Set</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Set">Set</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Set_method_in_c++">Set method in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
