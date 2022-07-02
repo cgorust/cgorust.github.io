@@ -40,7 +40,7 @@
 <h1><span class="badge badge-primary">set method in C++</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">* create
-    * constructor
+    * constructor, copy constructor, copy assignment operator
 ```
 #include &lt;iostream&gt;
 #include &lt;set&gt;
@@ -54,22 +54,98 @@ bool funComp(int l, int r) { return l&lt;r; }
 int main () {
     set&lt;int&gt; s1;  // default constructor
     set&lt;int&gt; s2(s1);  // copy constructor
+    s2=s1;  // assignment operator
 
     int a[]= {1,2,3,4,5};
     set&lt;int&gt; s3(a, a+5);  // range of pointer
-  
+
     set&lt;int&gt; s4(s3.begin(), s3.end());  // iterator
 
     std::set&lt;int, classComp&gt; s5;    // with class comparator
-  
+
     std::set&lt;int, decltype(&amp;funComp)&gt; s6(&amp;funComp);  // with function compartor
 }
 ```
-* iterator
+* iterator: An iterator for a set is bidirectional, so it does not support +(int). The only supported move operations are ++ and --.
+    * begin: Return iterator to beginning
+    * end: Return iterator to end (public member functio
+    * rbegin: Return reverse iterator to reverse beginning
+    * rend: Return reverse iterator to reverse end (public 
+    * cbegin: Return const_iterator to beginning
+    * cend: Return const_iterator to end
+    * crbegin: Return const_reverse_iterator to reverse beginning
+    * crend: Return const_reverse_iterator to reverse end
+```
+#include &lt;iostream&gt;
+#include &lt;set&gt;
+using namespace std;
+
+int main (){
+  set&lt;int&gt; s{1,2,3,4,5};
+
+  for (auto it=s.begin(); it!=s.end(); ++it)
+    cout&lt;&lt;*it&lt;&lt;",";
+  cout&lt;&lt;endl;
+  for (auto it=s.cbegin(); it!=s.cend(); ++it)
+    cout&lt;&lt;*it&lt;&lt;",";
+  cout&lt;&lt;endl;
+  for (auto it=s.rbegin(); it!=s.rend(); ++it)
+    cout&lt;&lt;*it&lt;&lt;",";
+  cout&lt;&lt;endl;
+  for (auto it=s.crbegin(); it!=s.crend(); ++it)
+    cout&lt;&lt;*it&lt;&lt;",";
+  cout&lt;&lt;endl;
+}
+```
 * add
     * insert: Insert a new element.
+```
+#include &lt;iostream&gt;
+#include &lt;set&gt;
+#include &lt;array&gt;
+using namespace std;
+
+int main () {
+    set&lt;int&gt; s{1,2,3,44,55};
+
+    s.insert(10);
+
+    array&lt;int, 3&gt;a{31,32,33}; 
+    s.insert(a.begin(), a.end());
+
+    for(auto&amp;i:s)
+        cout&lt;&lt;i&lt;&lt;",";
+}
+
+// 1,2,3,10,31,32,33,44,55,
+```
 * change
     * swap: Swap the contents of one vector with another vector of same type. Sizes may differ.
+```
+#include &lt;iostream&gt;
+#include &lt;set&gt;
+using namespace std;
+
+int main() {
+    int a[]={1,2,3,4,5,6};
+    set&lt;int&gt; s1(a,a+3);
+    set&lt;int&gt; s2(a+3,a+6);
+
+    s1.swap(s2);
+
+    for(auto &amp;i:s1)
+        cout&lt;&lt;i&lt;&lt;",";
+    cout&lt;&lt;endl;
+    
+    for(auto &amp;i:s2)
+        cout&lt;&lt;i&lt;&lt;",";
+    cout&lt;&lt;endl;
+}
+/*
+4,5,6,
+1,2,3,
+*/
+```
 * query
     * value
         * find: Get element.
@@ -81,10 +157,69 @@ int main () {
         * empty: Return whether the container is empty.
         * size: Return the number of elements in the container.
         * max_size: Returns the maximum number of elements that the container can hold.
+```
+int main() {
+    set&lt;int&gt; s{1,2,3,4,5,6};
+
+    auto it=s.find(2);
+    if(it!=s.end()) cout&lt;&lt;"found"&lt;&lt;endl;
+    cout&lt;&lt;s.count(2)&lt;&lt;endl;
+    
+    auto itl = s.lower_bound(3);
+    it=s.begin();
+    while(it!=itl){
+        cout&lt;&lt;*it++&lt;&lt;",";
+    }
+    cout&lt;&lt;endl;
+
+    it=s.upper_bound(3);
+    while(it!=s.end()) {
+        cout&lt;&lt;*it++&lt;&lt;",";
+    } 
+    cout&lt;&lt;endl;
+
+    auto r=s.equal_range(3);
+    for(auto it=r.first; it!=r.second; it++)
+        cout&lt;&lt;*it&lt;&lt;",";
+    cout&lt;&lt;endl;
+    
+    cout&lt;&lt;s.empty()&lt;&lt;endl;
+    cout&lt;&lt;s.size()&lt;&lt;endl;
+    cout&lt;&lt;s.max_size()&lt;&lt;endl;
+}
+/*
+1
+1,2,
+4,5,6,
+3,
+0
+6
+230584300921369395
+*/
+```
 * delete 
     * erase: Remove a element from a container.
     * clear: Remove all the elements of the container.
+```
+#include &lt;iostream&gt;
+#include &lt;set&gt;
+using namespace std;
 
+int main ()
+{
+    set&lt;int&gt; s{1,2,3,4,5};
+
+    auto it = s.begin();
+    s.erase(it);
+
+    s.erase(4);
+
+    for(auto &amp;i:s)
+        cout&lt;&lt;i&lt;&lt;",";
+    cout&lt;&lt;endl;
+}
+//2,3,5
+```
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
