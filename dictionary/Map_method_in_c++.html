@@ -37,33 +37,29 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">set method in C++</span></h1>
+<h1><span class="badge badge-primary">map method in C++</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">* create
     * constructor, copy constructor, copy assignment operator
 ```
 #include &lt;iostream&gt;
-#include &lt;set&gt;
+#include &lt;map&gt;
 using namespace std;
 
 struct classComp {
-  bool operator()(int l, int r) { return l&lt;r; }
+  bool operator() (int l, int r) { return l&lt;r; }
 };
 bool funComp(int l, int r) { return l&lt;r; }
 
 int main () {
-    set&lt;int&gt; s1;  // default constructor
-    set&lt;int&gt; s2(s1);  // copy constructor
-    s2=s1;  // assignment operator
+  map&lt;int,int&gt; m1{{1, 1}, {2, 1}, {3, 2}};
+  cout&lt;&lt;m1[3]&lt;&lt;endl;
 
-    int a[]= {1,2,3,4,5};
-    set&lt;int&gt; s3(a, a+5);  // range of pointer
+  map&lt;int,int&gt; m2(m1.begin(), m1.end());
+  map&lt;int,int&gt; m3(m2);
 
-    set&lt;int&gt; s4(s3.begin(), s3.end());  // iterator
-
-    set&lt;int, classComp&gt; s5;    // with class comparator
-
-    set&lt;int, decltype(&amp;funComp)&gt; s6(&amp;funComp);  // with function comparator
+  map&lt;int,int,classComp&gt; m4;
+  map&lt;int,int,decltype(&amp;funComp)&gt; m5(&amp;funComp); 
 }
 ```
 * iterator: An iterator for a set is bidirectional, so it does not support +(int). The only supported move operations are ++ and --.
@@ -77,77 +73,72 @@ int main () {
     * crend(): Return const_reverse_iterator to reverse end
 ```
 #include &lt;iostream&gt;
-#include &lt;set&gt;
+#include &lt;map&gt;
+using namespace std;
+ 
+int main() {
+    map&lt;int,int&gt; m{{1,1},{2,1},{3,2},{1,4},{5,1}};
+ 
+    for (auto i = m.begin(); i != m.end(); ++i)
+        cout &lt;&lt; i-&gt;first &lt;&lt; "=&gt;" &lt;&lt; i-&gt;second &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+    for (auto i = m.cbegin(); i != m.cend(); ++i)
+        cout &lt;&lt; i-&gt;first &lt;&lt; "=&gt;" &lt;&lt; i-&gt;second &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+    for (auto i = m.rbegin(); i != m.rend(); ++i)
+        cout &lt;&lt; i-&gt;first &lt;&lt; "=&gt;" &lt;&lt; i-&gt;second &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+    for (auto i = m.crbegin(); i != m.crend(); ++i)
+        cout &lt;&lt; i-&gt;first &lt;&lt; "=&gt;" &lt;&lt; i-&gt;second &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+}
+/*
+1=&gt;1 2=&gt;1 3=&gt;2 5=&gt;1 
+1=&gt;1 2=&gt;1 3=&gt;2 5=&gt;1 
+5=&gt;1 3=&gt;2 2=&gt;1 1=&gt;1 
+5=&gt;1 3=&gt;2 2=&gt;1 1=&gt;1 
+*/
+```
+* add
+    * insert: insert() 
+```
+#include &lt;iostream&gt;
+#include &lt;map&gt;
 using namespace std;
 
 int main (){
-  set&lt;int&gt; s{1,2,3,4,5};
+    map&lt;int,int&gt; m;
 
-  for (auto it=s.begin(); it!=s.end(); ++it)
-    cout&lt;&lt;*it&lt;&lt;",";
-  cout&lt;&lt;endl;
-  for (auto it=s.cbegin(); it!=s.cend(); ++it)
-    cout&lt;&lt;*it&lt;&lt;",";
-  cout&lt;&lt;endl;
-  for (auto it=s.rbegin(); it!=s.rend(); ++it)
-    cout&lt;&lt;*it&lt;&lt;",";
-  cout&lt;&lt;endl;
-  for (auto it=s.crbegin(); it!=s.crend(); ++it)
-    cout&lt;&lt;*it&lt;&lt;",";
-  cout&lt;&lt;endl;
+    m.insert(pair&lt;int,int&gt;(1,1));
+    m.insert(pair&lt;int,int&gt;(2,2));
+
+    cout&lt;&lt;m[1]&lt;&lt;endl;
 }
 ```
-* add
-    * insert: insert()
+* change
+    * operator[]: operator[]
+    * swap: Swap the contents of one container with another container of same type. Sizes may differ.
 ```
 #include &lt;iostream&gt;
-#include &lt;set&gt;
-#include &lt;array&gt;
+#include &lt;map&gt;
 using namespace std;
 
 int main () {
-    set&lt;int&gt; s{1,2,3,44,55};
+    map&lt;int,int&gt; m = {{ 1, 0 }, { 2, 0 }, { 3, 1 }};
+    map&lt;int,int&gt; m2 = {{ 1, 0 }, { 2, 0 }, { 3, 1 }};
 
-    s.insert(10);
-
-    array&lt;int, 3&gt;a{31,32,33}; 
-    s.insert(a.begin(), a.end());
-
-    for(auto&amp;i:s)
-        cout&lt;&lt;i&lt;&lt;",";
-}
-
-// 1,2,3,10,31,32,33,44,55,
-```
-* change
-    * swap: swap()
-```
-#include &lt;iostream&gt;
-#include &lt;set&gt;
-using namespace std;
-
-int main() {
-    int a[]={1,2,3,4,5,6};
-    set&lt;int&gt; s1(a,a+2);
-    set&lt;int&gt; s2(a+2,a+6);
-
-    s1.swap(s2);
-
-    for(auto &amp;i:s1)
-        cout&lt;&lt;i&lt;&lt;",";
-    cout&lt;&lt;endl;
+    cout&lt;&lt;m[4]&lt;&lt;endl;   // will give 0
+    m[4] = 1; // changed to 1
+    //cout&lt;&lt;m.at(5)&lt;&lt;endl; //std::out_of_range
     
-    for(auto &amp;i:s2)
-        cout&lt;&lt;i&lt;&lt;",";
-    cout&lt;&lt;endl;
+    m.swap(m2);
+    cout&lt;&lt;m[4]&lt;&lt;endl;   // will give 0
 }
-/*
-3,4,5,6,
-1,2,
-*/
+
 ```
 * query
     * value
+        * at: at(), operator[]
         * find: find()
         * count: count()
         * lower_bound: lower_bound()
@@ -159,74 +150,67 @@ int main() {
         * max_size: max_size()
 ```
 #include &lt;iostream&gt;
-#include &lt;set&gt;
+#include &lt;map&gt;
 using namespace std;
 
 int main() {
-    set&lt;int&gt; s{1,2,3,4,5,6};
+    map&lt;int, int&gt; m{{1,1},{2,2},{3,2},{4,2}};
 
-    auto it=s.find(2);
-    if(it!=s.end()) cout&lt;&lt;"found"&lt;&lt;endl;
-    cout&lt;&lt;s.count(2)&lt;&lt;endl;
-    
-    auto itl = s.lower_bound(3);
-    it=s.begin();
+    auto it=m.find(2);
+    if(it!=m.end()) cout&lt;&lt;"found"&lt;&lt;endl;
+    cout&lt;&lt;m.count(2)&lt;&lt;endl;
+
+    auto itl = m.lower_bound(3);
+    it=m.begin();
     while(it!=itl){
-        cout&lt;&lt;*it++&lt;&lt;",";
+        cout&lt;&lt;it-&gt;first&lt;&lt;"=&gt;"&lt;&lt;it-&gt;second&lt;&lt;","; it++;
     }
     cout&lt;&lt;endl;
 
-    it=s.upper_bound(3);
-    while(it!=s.end()) {
-        cout&lt;&lt;*it++&lt;&lt;",";
+    it=m.upper_bound(3);
+    while(it!=m.end()) {
+        cout&lt;&lt;it-&gt;first&lt;&lt;"=&gt;"&lt;&lt;it-&gt;second&lt;&lt;","; it++;
     } 
     cout&lt;&lt;endl;
 
-    auto r=s.equal_range(3);
+    auto r=m.equal_range(3);
     for(auto it=r.first; it!=r.second; it++)
-        cout&lt;&lt;*it&lt;&lt;",";
+        cout&lt;&lt;it-&gt;first&lt;&lt;"=&gt;"&lt;&lt;it-&gt;second&lt;&lt;",";
     cout&lt;&lt;endl;
-    
-    cout&lt;&lt;s.empty()&lt;&lt;endl;
-    cout&lt;&lt;s.size()&lt;&lt;endl;
-    cout&lt;&lt;s.max_size()&lt;&lt;endl;
+
+    cout&lt;&lt;m.empty()&lt;&lt;endl;
+    cout&lt;&lt;m.size()&lt;&lt;endl;
+    cout&lt;&lt;m.max_size()&lt;&lt;endl;
 }
 /*
 found
 1
-1,2,
-4,5,6,
-3,
+1=&gt;1,2=&gt;2,
+4=&gt;2,
+3=&gt;2,
 0
-6
+4
 230584300921369395
 */
 ```
-* delete 
+* delete
     * erase: erase()
     * clear: clear()
 ```
-#include &lt;iostream&gt;
-#include &lt;set&gt;
+#include &lt;map&gt;
 using namespace std;
 
-int main () {
-    set&lt;int&gt; s{1,2,3,4,5};
+int main() {
+    map&lt;int,int&gt; m{{1,1},{2,2},{3,1},{4,1},{5,1}};
 
-    auto it = s.begin();
-    s.erase(it);
-    s.erase(4);
-
-    for(auto &amp;i:s)
-        cout&lt;&lt;i&lt;&lt;",";
-    cout&lt;&lt;endl;
-    s.clear();
+    m.erase(m.begin());
+    m.clear();
 }
-//2,3,5
-```</pre>
+```
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Set_method">Set method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Set_in_c++">Set in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Dictionary_method">Dictionary method</a>, <a href="/dictionary/Map_in_c++">Map in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

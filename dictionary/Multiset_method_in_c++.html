@@ -37,7 +37,7 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">set method in C++</span></h1>
+<h1><span class="badge badge-primary">multiset method in C++</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">* create
     * constructor, copy constructor, copy assignment operator
@@ -52,18 +52,18 @@ struct classComp {
 bool funComp(int l, int r) { return l&lt;r; }
 
 int main () {
-    set&lt;int&gt; s1;  // default constructor
-    set&lt;int&gt; s2(s1);  // copy constructor
+    multiset&lt;int&gt; s1;  // default constructor
+    multiset&lt;int&gt; s2(s1);  // copy constructor
     s2=s1;  // assignment operator
 
-    int a[]= {1,2,3,4,5};
-    set&lt;int&gt; s3(a, a+5);  // range of pointer
+    int a[]= {1,2,3,4,5,1,2,3};
+    multiset&lt;int&gt; s3(a, a+5);  // range of pointer
 
-    set&lt;int&gt; s4(s3.begin(), s3.end());  // iterator
+    multiset&lt;int&gt; s4(s3.begin(), s3.end());  // iterator
 
-    set&lt;int, classComp&gt; s5;    // with class comparator
+    multiset&lt;int, classComp&gt; s5;    // with class comparator
 
-    set&lt;int, decltype(&amp;funComp)&gt; s6(&amp;funComp);  // with function comparator
+    multiset&lt;int, decltype(&amp;funComp)&gt; s6(&amp;funComp);  // with function comparator
 }
 ```
 * iterator: An iterator for a set is bidirectional, so it does not support +(int). The only supported move operations are ++ and --.
@@ -81,7 +81,7 @@ int main () {
 using namespace std;
 
 int main (){
-  set&lt;int&gt; s{1,2,3,4,5};
+  multiset&lt;int&gt; s{1,2,3,4,5,1,2,3};
 
   for (auto it=s.begin(); it!=s.end(); ++it)
     cout&lt;&lt;*it&lt;&lt;",";
@@ -106,7 +106,7 @@ int main (){
 using namespace std;
 
 int main () {
-    set&lt;int&gt; s{1,2,3,44,55};
+    set&lt;int&gt; s{1,2,3,44,55,31,32};
 
     s.insert(10);
 
@@ -127,9 +127,9 @@ int main () {
 using namespace std;
 
 int main() {
-    int a[]={1,2,3,4,5,6};
-    set&lt;int&gt; s1(a,a+2);
-    set&lt;int&gt; s2(a+2,a+6);
+    int a[]={1,2,3,4,5,6,1,2,3};
+    multiset&lt;int&gt; s1(a,a+4);
+    multiset&lt;int&gt; s2(a+4,a+9);
 
     s1.swap(s2);
 
@@ -142,8 +142,8 @@ int main() {
     cout&lt;&lt;endl;
 }
 /*
-3,4,5,6,
-1,2,
+1,2,3,5,6,
+1,2,3,4,
 */
 ```
 * query
@@ -163,7 +163,7 @@ int main() {
 using namespace std;
 
 int main() {
-    set&lt;int&gt; s{1,2,3,4,5,6};
+    multiset&lt;int&gt; s{1,2,3,4,5,6,1,2,3};
 
     auto it=s.find(2);
     if(it!=s.end()) cout&lt;&lt;"found"&lt;&lt;endl;
@@ -193,12 +193,12 @@ int main() {
 }
 /*
 found
-1
-1,2,
+2
+1,1,2,2,
 4,5,6,
-3,
+3,3,
 0
-6
+9
 230584300921369395
 */
 ```
@@ -211,7 +211,7 @@ found
 using namespace std;
 
 int main () {
-    set&lt;int&gt; s{1,2,3,4,5};
+    multiset&lt;int&gt; s{1,2,3,4,5,1,2,3};
 
     auto it = s.begin();
     s.erase(it);
@@ -222,11 +222,11 @@ int main () {
     cout&lt;&lt;endl;
     s.clear();
 }
-//2,3,5
+//1,2,2,3,3,5,
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Set_method">Set method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Set_in_c++">Set in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Multiset_method">Multiset method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Multiset_in_c++">Multiset in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

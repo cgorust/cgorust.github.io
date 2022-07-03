@@ -48,6 +48,30 @@ int main() {
     vector&lt;int&gt; v{1,2,3,4,5};
 }
 ```
+* iterator
+    * begin(), end(); rbegin(), rend(); cbegin(), cend(); crbegin(), crend();
+```
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+ 
+int main() {
+    vector&lt;int&gt; v{1,2,3,4,5};
+ 
+    for (auto i = v.begin(); i != v.end(); ++i)
+        cout &lt;&lt; *i &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+    for (auto i = v.cbegin(); i != v.cend(); ++i)
+        cout &lt;&lt; *i &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+    for (auto i = v.rbegin(); i != v.rend(); ++i)
+        cout &lt;&lt; *i &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+    for (auto i = v.crbegin(); i != v.crend(); ++i)
+        cout &lt;&lt; *i &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+}
+```
 * add
     * push_back: push_back()
     * insert: 
@@ -140,30 +164,6 @@ int main() {
     v.pop_back();
     v.erase(v.begin()+2);
     v.clear();
-}
-```
-* iterator
-    * begin(), end(); rbegin(), rend(); cbegin(), cend(); crbegin(), crend();
-```
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
- 
-int main() {
-    vector&lt;int&gt; v{1,2,3,4,5};
- 
-    for (auto i = v.begin(); i != v.end(); ++i)
-        cout &lt;&lt; *i &lt;&lt; " ";
-    cout&lt;&lt;endl;    
-    for (auto i = v.cbegin(); i != v.cend(); ++i)
-        cout &lt;&lt; *i &lt;&lt; " ";
-    cout&lt;&lt;endl;    
-    for (auto i = v.rbegin(); i != v.rend(); ++i)
-        cout &lt;&lt; *i &lt;&lt; " ";
-    cout&lt;&lt;endl;    
-    for (auto i = v.crbegin(); i != v.crend(); ++i)
-        cout &lt;&lt; *i &lt;&lt; " ";
-    cout&lt;&lt;endl;    
 }
 ```
 </pre>
