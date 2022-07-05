@@ -40,17 +40,46 @@
 <h1><span class="badge badge-primary">queue method in C++</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">* create
-    * create: queue\&lt;Type&gt; q{}
+```
+#include &lt;queue&gt;
+using namespace std;
+
+int main() {
+    queue&lt;int&gt; a;  // default constructor
+    queue&lt;int&gt; b(a);  // copy constructor
+    queue&lt;int&gt; c(move(a));  // move constructor
+    //queue&lt;int&gt; d{1,2,3};  // queue has no initializer list constructor
+    //queue&lt;int&gt; e(3,1);  // queue has no fill constructor
+    //queue&lt;int&gt; f(a.begin(),a.end());  // queue has no range constructor
+
+    queue&lt;int&gt;* g = new queue&lt;int&gt;();  // new operator
+    delete g;
+}
+```
+* iterator (N/A)
 * add
-    * push: push()
+```
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+int main ()
+{
+    queue&lt;int&gt; q;
+
+    q.push(1);
+    q.emplace(3);
+    
+    while(!q.empty()) {
+        cout&lt;&lt;q.front()&lt;&lt;",";
+        q.pop();
+    }
+    cout&lt;&lt;endl;
+}
+// 1,3,
+```
 * change (N/A)
 * query
-    * empty: empty()
-    * size: size()
-    * front: front()
-    * back: back()
-* delete 
-    * pop: pop()
 ```
 #include &lt;queue&gt;
 #include &lt;iostream&gt;
@@ -64,10 +93,23 @@ int main() {
     q.pop();
     cout&lt;&lt;q.empty()&lt;&lt;","&lt;&lt;q.size()&lt;&lt;endl;
 }
+```
+* delete 
+```
+#include &lt;queue&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    queue&lt;int&gt; q;
+    q.push(1);
+    q.pop();
+    cout&lt;&lt;q.empty()&lt;&lt;","&lt;&lt;q.size()&lt;&lt;endl;
+}
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Queue_method">Queue method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Queue_in_c++">Queue in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_method_in_c++">Data structure method in c++</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Queue_in_c++">Queue in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

@@ -40,43 +40,52 @@
 <h1><span class="badge badge-primary">vector method in C++</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">* create
-    * create: vector\&lt;type&gt; v{}
 ```
 #include &lt;vector&gt;
+using namespace std;
 
 int main() {
-    vector&lt;int&gt; v{1,2,3,4,5};
+    vector&lt;int&gt; a;  // default constructor
+    vector&lt;int&gt; b(a);  // copy constructor
+    vector&lt;int&gt; c(move(a));  // move constructor
+    vector&lt;int&gt; d{1,2,3};  // initializer list constructor
+    vector&lt;int&gt; e(3,1);  // fill constructor
+    vector&lt;int&gt; f(a.begin(),a.end());  // range constructor
+
+    vector&lt;int&gt;* g = new vector&lt;int&gt;{1,2,3};  // new operator
+    delete g;
 }
 ```
 * iterator
-    * begin(), end(); rbegin(), rend(); cbegin(), cend(); crbegin(), crend();
 ```
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
 using namespace std;
- 
+
 int main() {
-    vector&lt;int&gt; v{1,2,3,4,5};
- 
-    for (auto i = v.begin(); i != v.end(); ++i)
+    vector&lt;int&gt;c{{1,2,3,4,5,1}};
+
+    for (auto i = c.begin(); i != c.end(); ++i)
         cout &lt;&lt; *i &lt;&lt; " ";
     cout&lt;&lt;endl;    
-    for (auto i = v.cbegin(); i != v.cend(); ++i)
+    for (auto i = c.cbegin(); i != c.cend(); ++i)
         cout &lt;&lt; *i &lt;&lt; " ";
     cout&lt;&lt;endl;    
-    for (auto i = v.rbegin(); i != v.rend(); ++i)
+    for (auto i = c.rbegin(); i != c.rend(); ++i)
         cout &lt;&lt; *i &lt;&lt; " ";
     cout&lt;&lt;endl;    
-    for (auto i = v.crbegin(); i != v.crend(); ++i)
+    for (auto i = c.crbegin(); i != c.crend(); ++i)
         cout &lt;&lt; *i &lt;&lt; " ";
     cout&lt;&lt;endl;    
 }
+/*
+1 2 3 4 5 1 
+1 2 3 4 5 1 
+1 5 4 3 2 1 
+1 5 4 3 2 1 
+*/
 ```
 * add
-    * push_back: push_back()
-    * insert: 
-        * insert(): Insert takes (a reference to) an object.
-        * emplace(): Emplace takes the arguments necessary to construct an object in place
 ```
 #include &lt;vector&gt;
 #include &lt;iostream&gt;
@@ -102,41 +111,30 @@ int main() {
 }
 ```
 * change
-    * swap: swap()
-    * assign: assign()
-    * capacity: resize(), shrink_to_fit(), reserve()
 ```
 #include &lt;vector&gt;
 #include &lt;iostream&gt;
 using namespace std;
 
+void p(vector&lt;int&gt;&amp; a) {
+    for(auto&amp; i:a) cout&lt;&lt;i&lt;&lt;";";
+    cout&lt;&lt;endl;
+}
+
 int main() {
     vector&lt;int&gt; v{};
     vector&lt;int&gt; w{1,2,3,4,5};
 
-    v.assign(10, 11);
+    v.assign(10, 11); 
     v.swap(w);
-    for(auto &amp;i: v)
-        cout&lt;&lt;i&lt;&lt;",";
-    cout&lt;&lt;endl;
-    
-    cout&lt;&lt;v.size()&lt;&lt;",";
-    v.resize(100);
-    cout&lt;&lt;v.size()&lt;&lt;",";
-    v.shrink_to_fit();
-    cout&lt;&lt;v.size()&lt;&lt;",";
-    v.reserve(6);
-    cout&lt;&lt;v.size()&lt;&lt;",";
+
+    v.resize(30);  // size will be 30
+    v.reserve(50);  // capacity will be 50
+    v.shrink_to_fit();  // capacity will be 30
+    cout&lt;&lt;v.capacity();
 }
 ```
 * query
-    * at: operator[], at(), data()
-    * front: front()
-    * back: back()
-    * size: size()
-    * max_size: max_size()
-    * capacity: capacity()
-    * empty: empty()
 ```
 #include &lt;vector&gt;
 #include &lt;iostream&gt;
@@ -151,9 +149,6 @@ int main() {
 }
 ```
 * delete
-    * pop_back: pop_back()
-    * erase: erase()
-    * clear: clear()
 ```
 #include &lt;vector&gt;
 using namespace std;
@@ -169,7 +164,7 @@ int main() {
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Vector_method">Vector method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Vector_in_c++">Vector in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_method_in_c++">Data structure method in c++</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Vector_in_c++">Vector in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

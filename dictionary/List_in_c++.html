@@ -39,42 +39,14 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">list in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">```
-#include &lt;iostream&gt;
-#include &lt;list&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-
-
-int main ()
-{
-    list&lt;int&gt; l;
-    
-    l.push_back(1);
-    l.push_front(2);
-    auto it = l.begin();
-    advance(it, 1);
-    l.insert(it, 3);
-    
-    it = find(l.begin(),l.end(), 1);
-    *it = 10;
-    
-    
-    it = l.begin();
-    advance(it, 1);
-    l.erase(it);
-      
-    for(auto it=l.begin(); it!=l.end(); it++) {
-        cout&lt;&lt;*it&lt;&lt;",";
-    }
-    cout&lt;&lt;endl;
-
-  return 0;
-}
-```</pre>
+<pre id="word_content" style="white-space: pre-wrap;">Lists are sequence containers that allow constant time insert and erase operations anywhere within the sequence, and iteration in both directions.
+Lists are implemented as doubly-linked lists; Doubly linked lists can store elements in different and unrelated locations. The ordering is kept internally by a link to the element preceding it and a link to the element following it.
+They are very similar to forward_list: The main difference being that forward_list objects are single-linked lists, and thus they can only be iterated forwards, in exchange for being somewhat smaller and more efficient.
+Compared to other sequential containers (array, vector and deque), lists perform generally better in inserting, extracting and moving elements in any position for which an iterator has already been obtained, and therefore also in algorithms that make intensive use of these, like sorting algorithms.
+The main drawback of lists and forward_lists compared to these other sequence containers is that they lack direct access to the elements by their position; For example, to access the sixth element in a list, one has to iterate from the beginning or the end to that position, which takes linear time. They also consume some extra memory to keep the linking information associated to each element.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_in_c++">Data structure in c++</a>, <a href="/dictionary/List">List</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_in_c++">Data structure in c++</a>, <a href="/dictionary/List">List</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/List_method_in_c++">List method in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

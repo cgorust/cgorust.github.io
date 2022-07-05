@@ -40,48 +40,38 @@
 <h1><span class="badge badge-primary">set method in C++</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">* create
-    * constructor, copy constructor, copy assignment operator
 ```
-#include &lt;iostream&gt;
 #include &lt;set&gt;
 using namespace std;
 
 struct classComp {
-  bool operator()(int l, int r) { return l&lt;r; }
+  bool operator() (int l, int r) { return l&lt;r; }
 };
 bool funComp(int l, int r) { return l&lt;r; }
 
 int main () {
-    set&lt;int&gt; s1;  // default constructor
-    set&lt;int&gt; s2(s1);  // copy constructor
-    s2=s1;  // assignment operator
+    set&lt;int&gt; a;  // default constructor
+    set&lt;int&gt; b(a);  // copy constructor
+    set&lt;int&gt; c(move(a));  // move constructor
+    set&lt;int&gt; d{1,2,3};  // initializer list constructor
+    // set has no fill constructor
+    set&lt;int&gt; f(a.begin(),a.end());  // range constructor
 
-    int a[]= {1,2,3,4,5};
-    set&lt;int&gt; s3(a, a+5);  // range of pointer
+    set&lt;int&gt;* g = new set&lt;int&gt;{1,2,3};  // new operator
+    delete g;
 
-    set&lt;int&gt; s4(s3.begin(), s3.end());  // iterator
-
-    set&lt;int, classComp&gt; s5;    // with class comparator
-
-    set&lt;int, decltype(&amp;funComp)&gt; s6(&amp;funComp);  // with function comparator
+    set&lt;int,classComp&gt; mc;
+    set&lt;int,decltype(&amp;funComp)&gt; mf(&amp;funComp); 
 }
 ```
-* iterator: An iterator for a set is bidirectional, so it does not support +(int). The only supported move operations are ++ and --.
-    * begin(): Return iterator to beginning
-    * end(): Return iterator to end
-    * rbegin(): Return reverse iterator to reverse beginning
-    * rend(): Return reverse iterator to reverse end
-    * cbegin(): Return const_iterator to beginning
-    * cend(): Return const_iterator to end
-    * crbegin(): Return const_reverse_iterator to reverse beginning
-    * crend(): Return const_reverse_iterator to reverse end
+* iterator
 ```
 #include &lt;iostream&gt;
 #include &lt;set&gt;
 using namespace std;
 
 int main (){
-  set&lt;int&gt; s{1,2,3,4,5};
+  set&lt;int&gt; s{1,2,3,4,5,1};
 
   for (auto it=s.begin(); it!=s.end(); ++it)
     cout&lt;&lt;*it&lt;&lt;",";
@@ -96,67 +86,53 @@ int main (){
     cout&lt;&lt;*it&lt;&lt;",";
   cout&lt;&lt;endl;
 }
-```
-* add
-    * insert: insert()
-```
-#include &lt;iostream&gt;
-#include &lt;set&gt;
-#include &lt;array&gt;
-using namespace std;
-
-int main () {
-    set&lt;int&gt; s{1,2,3,44,55};
-
-    s.insert(10);
-
-    array&lt;int, 3&gt;a{31,32,33}; 
-    s.insert(a.begin(), a.end());
-
-    for(auto&amp;i:s)
-        cout&lt;&lt;i&lt;&lt;",";
-}
-
-// 1,2,3,10,31,32,33,44,55,
-```
-* change
-    * swap: swap()
-```
-#include &lt;iostream&gt;
-#include &lt;set&gt;
-using namespace std;
-
-int main() {
-    int a[]={1,2,3,4,5,6};
-    set&lt;int&gt; s1(a,a+2);
-    set&lt;int&gt; s2(a+2,a+6);
-
-    s1.swap(s2);
-
-    for(auto &amp;i:s1)
-        cout&lt;&lt;i&lt;&lt;",";
-    cout&lt;&lt;endl;
-    
-    for(auto &amp;i:s2)
-        cout&lt;&lt;i&lt;&lt;",";
-    cout&lt;&lt;endl;
-}
 /*
-3,4,5,6,
-1,2,
+1,2,3,4,5,
+1,2,3,4,5,
+5,4,3,2,1,
+5,4,3,2,1,
 */
 ```
+* add
+```
+#include &lt;iostream&gt;
+#include &lt;set&gt;
+using namespace std;
+
+int main ()
+{
+    set&lt;int&gt; s;
+
+    s.insert(1);
+    s.emplace(3);
+    
+    for(auto &amp;i:s)
+        cout&lt;&lt;i&lt;&lt;",";
+    cout&lt;&lt;endl;
+}
+// 1,3,
+```
+* change
+```
+#include &lt;iostream&gt;
+#include &lt;set&gt;
+using namespace std;
+
+void p(set&lt;int&gt;&amp; a) {
+    for(auto &amp;i:a) cout&lt;&lt;i&lt;&lt;";";
+    cout&lt;&lt;endl;
+}
+
+int main ()
+{
+    set&lt;int&gt; a{1,2,3,4,5};
+    set&lt;int&gt; a1(a), a2(a);
+
+    a.swap(a1);
+    p(a);
+}
+```
 * query
-    * value
-        * find: find()
-        * count: count()
-        * lower_bound: lower_bound()
-        * upper_bould: upper_bound()
-        * equal_range: equal_range()
-    * container
-        * empty: empty()
-        * size: size()
-        * max_size: max_size()
 ```
 #include &lt;iostream&gt;
 #include &lt;set&gt;
@@ -203,30 +179,21 @@ found
 */
 ```
 * delete 
-    * erase: erase()
-    * clear: clear()
 ```
-#include &lt;iostream&gt;
 #include &lt;set&gt;
 using namespace std;
 
 int main () {
     set&lt;int&gt; s{1,2,3,4,5};
 
-    auto it = s.begin();
-    s.erase(it);
+    s.erase(s.begin());
     s.erase(4);
-
-    for(auto &amp;i:s)
-        cout&lt;&lt;i&lt;&lt;",";
-    cout&lt;&lt;endl;
     s.clear();
 }
-//2,3,5
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Set_method">Set method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Set_in_c++">Set in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_method_in_c++">Data structure method in c++</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Set_in_c++">Set in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

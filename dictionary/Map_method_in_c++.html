@@ -40,9 +40,7 @@
 <h1><span class="badge badge-primary">map method in C++</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">* create
-    * constructor, copy constructor, copy assignment operator
 ```
-#include &lt;iostream&gt;
 #include &lt;map&gt;
 using namespace std;
 
@@ -52,25 +50,22 @@ struct classComp {
 bool funComp(int l, int r) { return l&lt;r; }
 
 int main () {
-  map&lt;int,int&gt; m1{{1, 1}, {2, 1}, {3, 2}};
-  cout&lt;&lt;m1[3]&lt;&lt;endl;
+    map&lt;int,int&gt; a;  // default constructor
+    map&lt;int,int&gt; b(a);  // copy constructor
+    map&lt;int,int&gt; c(move(a));  // move constructor
+    map&lt;int,int&gt; d{{1,1},{2,1},{3,3},{1,1}};  // initializer list constructor
+    // map has no fill constructor
+    map&lt;int,int&gt; f(a.begin(),a.end());  // range constructor
 
-  map&lt;int,int&gt; m2(m1.begin(), m1.end());
-  map&lt;int,int&gt; m3(m2);
-
-  map&lt;int,int,classComp&gt; m4;
-  map&lt;int,int,decltype(&amp;funComp)&gt; m5(&amp;funComp); 
+    map&lt;int,int&gt;* g = new map&lt;int,int&gt;{{1,1},{2,1},{3,3},{1,1}};  // new operator
+    delete g;
+    
+    map&lt;int,int,classComp&gt; cc;
+    map&lt;int,int,decltype(&amp;funComp)&gt; cf(&amp;funComp); 
 }
+
 ```
-* iterator: An iterator for a set is bidirectional, so it does not support +(int). The only supported move operations are ++ and --.
-    * begin(): Return iterator to beginning
-    * end(): Return iterator to end
-    * rbegin(): Return reverse iterator to reverse beginning
-    * rend(): Return reverse iterator to reverse end
-    * cbegin(): Return const_iterator to beginning
-    * cend(): Return const_iterator to end
-    * crbegin(): Return const_reverse_iterator to reverse beginning
-    * crend(): Return const_reverse_iterator to reverse end
+* iterator
 ```
 #include &lt;iostream&gt;
 #include &lt;map&gt;
@@ -100,54 +95,49 @@ int main() {
 */
 ```
 * add
-    * insert: insert() 
 ```
 #include &lt;iostream&gt;
 #include &lt;map&gt;
 using namespace std;
 
-int main (){
+int main ()
+{
     map&lt;int,int&gt; m;
 
-    m.insert(pair&lt;int,int&gt;(1,1));
-    m.insert(pair&lt;int,int&gt;(2,2));
-
-    cout&lt;&lt;m[1]&lt;&lt;endl;
+    m[1]=1;
+    m.insert(make_pair&lt;int, int&gt;(2,1));
+    m.emplace(make_pair&lt;int, int&gt;(3,1));
+    
+    for (auto &amp;i:m)
+        cout&lt;&lt;i.first&lt;&lt;"=&gt;"&lt;&lt;i.second&lt;&lt;";";
+    cout&lt;&lt;endl;
 }
+// 1=&gt;1;2=&gt;1;3=&gt;1;
 ```
 * change
-    * operator[]: operator[]
-    * swap: Swap the contents of one container with another container of same type. Sizes may differ.
 ```
 #include &lt;iostream&gt;
 #include &lt;map&gt;
 using namespace std;
 
-int main () {
-    map&lt;int,int&gt; m = {{ 1, 0 }, { 2, 0 }, { 3, 1 }};
-    map&lt;int,int&gt; m2 = {{ 1, 0 }, { 2, 0 }, { 3, 1 }};
-
-    cout&lt;&lt;m[4]&lt;&lt;endl;   // will give 0
-    m[4] = 1; // changed to 1
-    //cout&lt;&lt;m.at(5)&lt;&lt;endl; //std::out_of_range
-    
-    m.swap(m2);
-    cout&lt;&lt;m[4]&lt;&lt;endl;   // will give 0
+void p(map&lt;int,int&gt;&amp; a) {
+    for(auto &amp;i:a) cout&lt;&lt;i.first&lt;&lt;"=&gt;"&lt;&lt;i.second&lt;&lt;";";
+    cout&lt;&lt;endl;
 }
 
+int main ()
+{
+    map&lt;int,int&gt; a{{1,1},{2,2},{3,3},{4,4},{1,5}};
+    map&lt;int,int&gt; a1(a), a2(a);
+
+    a.begin()-&gt;second=3;
+    a[1]=10;    
+    a.at(2)=8;
+    a.swap(a1);
+    p(a);
+}
 ```
 * query
-    * value
-        * at: at(), operator[]
-        * find: find()
-        * count: count()
-        * lower_bound: lower_bound()
-        * upper_bould: upper_bound()
-        * equal_range: equal_range()
-    * container
-        * empty: empty()
-        * size: size()
-        * max_size: max_size()
 ```
 #include &lt;iostream&gt;
 #include &lt;map&gt;
@@ -156,12 +146,13 @@ using namespace std;
 int main() {
     map&lt;int, int&gt; m{{1,1},{2,2},{3,2},{4,2}};
 
-    auto it=m.find(2);
-    if(it!=m.end()) cout&lt;&lt;"found"&lt;&lt;endl;
+    cout&lt;&lt;m.at(1)&lt;&lt;","&lt;&lt;m[2]&lt;&lt;endl;
+    
+    if(auto it=m.find(2)!=m.end()) cout&lt;&lt;"found"&lt;&lt;endl;
     cout&lt;&lt;m.count(2)&lt;&lt;endl;
 
+    auto it=m.begin();
     auto itl = m.lower_bound(3);
-    it=m.begin();
     while(it!=itl){
         cout&lt;&lt;it-&gt;first&lt;&lt;"=&gt;"&lt;&lt;it-&gt;second&lt;&lt;","; it++;
     }
@@ -183,6 +174,7 @@ int main() {
     cout&lt;&lt;m.max_size()&lt;&lt;endl;
 }
 /*
+1,2
 found
 1
 1=&gt;1,2=&gt;2,
@@ -194,8 +186,6 @@ found
 */
 ```
 * delete
-    * erase: erase()
-    * clear: clear()
 ```
 #include &lt;map&gt;
 using namespace std;
@@ -204,13 +194,14 @@ int main() {
     map&lt;int,int&gt; m{{1,1},{2,2},{3,1},{4,1},{5,1}};
 
     m.erase(m.begin());
+    m.erase(2);
     m.clear();
 }
 ```
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Dictionary_method">Dictionary method</a>, <a href="/dictionary/Map_in_c++">Map in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_method_in_c++">Data structure method in c++</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Map_in_c++">Map in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

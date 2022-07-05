@@ -37,11 +37,11 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">multiset method in C++</span></h1>
+<h1><span class="badge badge-primary">multimap method in C++</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">* create
 ```
-#include &lt;set&gt;
+#include &lt;map&gt;
 using namespace std;
 
 struct classComp {
@@ -50,84 +50,85 @@ struct classComp {
 bool funComp(int l, int r) { return l&lt;r; }
 
 int main () {
-    multiset&lt;int&gt; a;  // default constructor
-    multiset&lt;int&gt; b(a);  // copy constructor
-    multiset&lt;int&gt; c(move(a));  // move constructor
-    multiset&lt;int&gt; d{1,2,3};  // initializer list constructor
-    // multiset has no fill constructor
-    multiset&lt;int&gt; f(a.begin(),a.end());  // range constructor
+    multimap&lt;int,int&gt; a;  // default constructor
+    multimap&lt;int,int&gt; b(a);  // copy constructor
+    multimap&lt;int,int&gt; c(move(a));  // move constructor
+    multimap&lt;int,int&gt; d{{1,1},{2,1},{3,3},{1,1}};  // initializer list constructor
+    // multimap has no fill constructor
+    multimap&lt;int,int&gt; f(a.begin(),a.end());  // range constructor
 
-    multiset&lt;int&gt;* g = new multiset&lt;int&gt;{1,2,3};  // new operator
+    multimap&lt;int,int&gt;* g = new multimap&lt;int,int&gt;{{1,1},{2,1},{3,3},{1,1}};  // new operator
     delete g;
-
-    multiset&lt;int,classComp&gt; mc;
-    multiset&lt;int,decltype(&amp;funComp)&gt; mf(&amp;funComp); 
+    
+    multimap&lt;int,int,classComp&gt; cc;
+    multimap&lt;int,int,decltype(&amp;funComp)&gt; cf(&amp;funComp); 
 }
 ```
 * iterator
 ```
 #include &lt;iostream&gt;
-#include &lt;set&gt;
+#include &lt;map&gt;
 using namespace std;
-
-int main (){
-  multiset&lt;int&gt; s{1,2,3,4,5,1};
-
-  for (auto it=s.begin(); it!=s.end(); ++it)
-    cout&lt;&lt;*it&lt;&lt;",";
-  cout&lt;&lt;endl;
-  for (auto it=s.cbegin(); it!=s.cend(); ++it)
-    cout&lt;&lt;*it&lt;&lt;",";
-  cout&lt;&lt;endl;
-  for (auto it=s.rbegin(); it!=s.rend(); ++it)
-    cout&lt;&lt;*it&lt;&lt;",";
-  cout&lt;&lt;endl;
-  for (auto it=s.crbegin(); it!=s.crend(); ++it)
-    cout&lt;&lt;*it&lt;&lt;",";
-  cout&lt;&lt;endl;
+ 
+int main() {
+    multimap&lt;int,int&gt; m{{1,1},{2,1},{3,2},{1,4},{5,1}};
+ 
+    for (auto i = m.begin(); i != m.end(); ++i)
+        cout &lt;&lt; i-&gt;first &lt;&lt; "=&gt;" &lt;&lt; i-&gt;second &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+    for (auto i = m.cbegin(); i != m.cend(); ++i)
+        cout &lt;&lt; i-&gt;first &lt;&lt; "=&gt;" &lt;&lt; i-&gt;second &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+    for (auto i = m.rbegin(); i != m.rend(); ++i)
+        cout &lt;&lt; i-&gt;first &lt;&lt; "=&gt;" &lt;&lt; i-&gt;second &lt;&lt; " ";
+    cout&lt;&lt;endl;    
+    for (auto i = m.crbegin(); i != m.crend(); ++i)
+        cout &lt;&lt; i-&gt;first &lt;&lt; "=&gt;" &lt;&lt; i-&gt;second &lt;&lt; " ";
+    cout&lt;&lt;endl;    
 }
 /*
-1,1,2,3,4,5,
-1,1,2,3,4,5,
-5,4,3,2,1,1,
-5,4,3,2,1,1,
+1=&gt;1 1=&gt;4 2=&gt;1 3=&gt;2 5=&gt;1 
+1=&gt;1 1=&gt;4 2=&gt;1 3=&gt;2 5=&gt;1 
+5=&gt;1 3=&gt;2 2=&gt;1 1=&gt;4 1=&gt;1 
+5=&gt;1 3=&gt;2 2=&gt;1 1=&gt;4 1=&gt;1 
 */
 ```
 * add
 ```
 #include &lt;iostream&gt;
-#include &lt;set&gt;
+#include &lt;map&gt;
 using namespace std;
 
 int main ()
 {
-    multiset&lt;int&gt; s;
+    multimap&lt;int,int&gt; m;
 
-    s.insert(1);
-    s.emplace(3);
+    m.insert(make_pair&lt;int, int&gt;(2,1));
+    m.emplace(make_pair&lt;int, int&gt;(3,1));
     
-    for (auto &amp;i:s)
-        cout&lt;&lt;i&lt;&lt;",";
+    for (auto &amp;i:m)
+        cout&lt;&lt;i.first&lt;&lt;"=&gt;"&lt;&lt;i.second&lt;&lt;";";
     cout&lt;&lt;endl;
 }
-// 1,3,
+// 2=&gt;1;3=&gt;1;
 ```
 * change
 ```
 #include &lt;iostream&gt;
-#include &lt;set&gt;
+#include &lt;map&gt;
 using namespace std;
 
-void p(multiset&lt;int&gt;&amp; a) {
-    for(auto &amp;i:a) cout&lt;&lt;i&lt;&lt;";";
+void p(multimap&lt;int,int&gt;&amp; a) {
+    for(auto &amp;i:a) cout&lt;&lt;i.first&lt;&lt;"=&gt;"&lt;&lt;i.second&lt;&lt;";";
     cout&lt;&lt;endl;
 }
 
 int main ()
 {
-    multiset&lt;int&gt; a{1,2,3,4,5};
-    multiset&lt;int&gt; a1(a), a2(a);
+    multimap&lt;int,int&gt; a{{1,1},{2,2},{3,3},{4,4},{1,5}};
+    multimap&lt;int,int&gt; a1(a), a2(a);
 
+    a.begin()-&gt;second=3;
     a.swap(a1);
     p(a);
 }
@@ -135,65 +136,64 @@ int main ()
 * query
 ```
 #include &lt;iostream&gt;
-#include &lt;set&gt;
+#include &lt;map&gt;
 using namespace std;
 
 int main() {
-    multiset&lt;int&gt; s{1,2,3,4,5,6,1,2,3};
+    multimap&lt;int, int&gt; m{{1,1},{1,5},{2,2},{3,2},{4,2}};
 
-    auto it=s.find(2);
-    if(it!=s.end()) cout&lt;&lt;"found"&lt;&lt;endl;
-    cout&lt;&lt;s.count(2)&lt;&lt;endl;
+    if(auto it=m.find(2)!=m.end()) cout&lt;&lt;"found"&lt;&lt;endl;
+    cout&lt;&lt;m.count(2)&lt;&lt;endl;
 
-    auto itl = s.lower_bound(3);
-    it=s.begin();
+    auto it=m.begin();
+    auto itl = m.lower_bound(3);
     while(it!=itl){
-        cout&lt;&lt;*it++&lt;&lt;",";
+        cout&lt;&lt;it-&gt;first&lt;&lt;"=&gt;"&lt;&lt;it-&gt;second&lt;&lt;","; it++;
     }
     cout&lt;&lt;endl;
 
-    it=s.upper_bound(3);
-    while(it!=s.end()) {
-        cout&lt;&lt;*it++&lt;&lt;",";
+    it=m.upper_bound(3);
+    while(it!=m.end()) {
+        cout&lt;&lt;it-&gt;first&lt;&lt;"=&gt;"&lt;&lt;it-&gt;second&lt;&lt;","; it++;
     } 
     cout&lt;&lt;endl;
 
-    auto r=s.equal_range(3);
+    auto r=m.equal_range(3);
     for(auto it=r.first; it!=r.second; it++)
-        cout&lt;&lt;*it&lt;&lt;",";
+        cout&lt;&lt;it-&gt;first&lt;&lt;"=&gt;"&lt;&lt;it-&gt;second&lt;&lt;",";
     cout&lt;&lt;endl;
 
-    cout&lt;&lt;s.empty()&lt;&lt;endl;
-    cout&lt;&lt;s.size()&lt;&lt;endl;
-    cout&lt;&lt;s.max_size()&lt;&lt;endl;
+    cout&lt;&lt;m.empty()&lt;&lt;endl;
+    cout&lt;&lt;m.size()&lt;&lt;endl;
+    cout&lt;&lt;m.max_size()&lt;&lt;endl;
 }
 /*
 found
-2
-1,1,2,2,
-4,5,6,
-3,3,
+1
+1=&gt;1,1=&gt;5,2=&gt;2,
+4=&gt;2,
+3=&gt;2,
 0
-9
+5
 230584300921369395
 */
 ```
-* delete 
+* delete
 ```
-#include &lt;set&gt;
+#include &lt;map&gt;
 using namespace std;
 
-int main () {
-    multiset&lt;int&gt; s{1,2,3,4,5,1,2,3};
+int main() {
+    multimap&lt;int,int&gt; m{{1,1},{2,2},{3,1},{4,1},{5,1}};
 
-    s.erase(s.begin());
-    s.erase(4);
-    s.clear();
+    m.erase(m.begin());
+    m.erase(4);
+    m.clear();
 }
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_method_in_c++">Data structure method in c++</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Multiset_in_c++">Multiset in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_method_in_c++">Data structure method in c++</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Multimap_in_c++">Multimap in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

@@ -39,33 +39,11 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">array in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The std::array is a type of STL container which is used to create fixed sized arrays, with size is known at compilation time. It’s size cannot be modified once declared. A std::array should have same runtime performance as a c-style array.
-```
-#include &lt;array&gt;
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-
-using namespace std;
-
-int main() {
-    array&lt;int, 5&gt; a{{5,2,1,4,3}};
-    
-    cout&lt;&lt;a.size()&lt;&lt;endl;
-    
-    sort(a.begin(), a.end()); 
-    for(auto &amp;i:a)
-        cout&lt;&lt;i&lt;&lt;",";
-    cout&lt;&lt;endl;
-    
-    a[2]=11;
-    cout&lt;&lt;a[2]&lt;&lt;endl;    
-    cout&lt;&lt;a.at(2)&lt;&lt;endl;
-    return 0;
-}
-```</pre>
+<pre id="word_content" style="white-space: pre-wrap;">The std::array is a container used to create fixed size arrays, with size is known at compilation time. It’s size cannot be modified once declared. A std::array should have same runtime performance as a c-style array.
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array">Array</a>, <a href="/dictionary/Data_structure_in_c++">Data structure in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Anonymous_array_in_c++">Anonymous array in c++</a>, <a href="/dictionary/Raw_array_in_c++">Raw array in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Array_literal_in_c++">Array literal in c++</a>, <a href="/dictionary/Array_method_in_c++">Array method in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Array">Array</a>, <a href="/dictionary/Data_structure_in_c++">Data structure in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Anonymous_array_in_c++">Anonymous array in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Array_literal_in_c++">Array literal in c++</a>, <a href="/dictionary/Array_method_in_c++">Array method in c++</a>, <a href="/dictionary/Raw_array_in_c++">Raw array in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
