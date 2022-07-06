@@ -37,12 +37,52 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">exception handling in Java</span></h1>
+<h1><span class="badge badge-primary">ExecutorService in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Java uses a try statement to separate the logic that might throw an exception from the logic to handle that exception.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">The Java Callable interface is similar to the Java Runnable interface, in that both of them represents a task that is intended to be executed concurrently by a separate thread.
+A Java Callable is different from a Runnable in that the Runnable interface's run() method does not return a value, and it cannot throw checked exceptions (only RuntimeExceptions).
+Additionally, a Runnable was originally designed for long running concurrent execution, e.g. running a network server concurrently, or watching a directory for new files. The Callable interface is more designed for one-off tasks that return a single result.
+```
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+ 
+public class Main implements Callable&lt;String&gt; {
+    public String call() throws Exception {
+        Thread.sleep(10);
+        return Thread.currentThread().getName();
+    }
+     
+    public static void main(String args[]){
+        ExecutorService executor = Executors.newFixedThreadPool(10);
+        List&lt;Future&lt;String&gt;&gt; list = new ArrayList&lt;&gt;();
+
+        Callable&lt;String&gt; callable = new Main();
+        for(int i=0; i&lt; 3; i++){
+            Future&lt;String&gt; future = executor.submit(callable);
+            list.add(future);
+        }
+        for(Future&lt;String&gt; fut : list){
+            try {
+                System.out.println(new Date()+ "::"+fut.get());
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+        executor.shutdown();
+    }
+}
+```
+
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Control_flow_in_java">Control flow in java</a>, <a href="/dictionary/Exception_handling">Exception handling</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Exception_in_java">Exception in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Try-catch_in_java">Try-catch in java</a>, <a href="/dictionary/Try-with-resources_in_java">Try-with-resources in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Thread_in_java">Thread in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

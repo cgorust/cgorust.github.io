@@ -39,7 +39,11 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">functional interface</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A functional interface is an interface that contains one and only one abstract method. Normally, this method specifies the intended purpose of the interface. Thus, a functional interface typically represents a single action. For example, the standard Java interface Runnable is a functional interface because it defines only one method: run( ). Therefore, run( ) defines the action of Runnable. Furthermore, a functional interface defines the target type of a lambda expression. Here is a key point: a lambda expression can be used only in a context in which its target type is specified. One other thing: a functional interface is sometimes referred to as a SAM type, where SAM stands for Single Abstract Method</pre>
+<pre id="word_content" style="white-space: pre-wrap;">A functional interface is an interface that contains exactly one abstract method. Normally, this method specifies the intended purpose of the interface. Thus, a functional interface typically represents a single action. For example, the standard Java interface Runnable is a functional interface because it defines only one method: run( ). Therefore, run( ) defines the action of Runnable. 
+* Default methods have an implementation; they are not abstract.
+* If an interface declares an abstract method overriding one of the public methods of java.lang.Object, that also does not count toward the interface abstract method count since any implementation of the interface will have an implementation from java.lang.Object or elsewhere.
+
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Interface">Interface</a></button><button class="btn btn-light" type="button"><b>Redirect from: </b><a href="/dictionary/Sam_type">Sam type</a></button>

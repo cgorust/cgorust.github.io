@@ -37,12 +37,48 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">exception handling in Java</span></h1>
+<h1><span class="badge badge-primary">stream pipeline in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Java uses a try statement to separate the logic that might throw an exception from the logic to handle that exception.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">
+A stream pipeline is the operations that run on a stream to produce a result. There are three parts to a stream pipeline:
+* Source: Where the stream comes from.
+* Intermediate operations: Transforms the stream into another one. There can be as few or as many intermediate operations as you’d like. Since streams use lazy evaluation, the intermediate operations do not run until the terminal operation runs. 
+* Terminal operation: Actually produces a result. Since streams can be used only once, the stream is no longer valid after a terminal operation completes.
+
+&lt;b&gt;Intermediate vs. terminal operations&lt;/b&gt;
+Scenario | For Intermediate Operations?  | For Terminal Operations?
+----- | ----- | ----
+Is required part of a useful pipeline?  | No  | Yes
+Can exist multiple times in a pipeline?  | Yes  | No
+Return type is a stream type?  | Yes  | No
+Executed upon method call?  | No  | Yes
+Stream valid after call?  | Yes  | No
+
+&lt;b&gt;Terminal stream operations&lt;/b&gt;
+Method | What Happens for Infinite Streams | Return Value | Reduction
+----- | ----- | ----- | -----
+allMatch()&lt;br&gt;/anyMatch()&lt;br&gt;/noneMatch() | Sometimes terminates | boolean | No
+collect() | Does not terminate | Varies | Yes
+count() | Does not terminate | long | Yes
+findAny()&lt;br&gt;/findFirst() | Terminates | Optional&lt;T&gt; | No
+forEach() | Does not terminate | void | No
+min()/max() | Does not terminate | Optional&lt;T&gt; | Yes
+reduce() | Does not terminate | Varies | Yes
+
+&lt;b&gt;Intermediate stream operations&lt;/b&gt;
+Method | Meaning
+----- | ----- 
+filter()| Returns a Stream with elements that match a given expression
+distinct() | Returns a stream with duplicate values removed (according to methods Object.equals, Object.hashCode) of the input stream.
+limit()&lt;br&gt;skip() | Make a Stream smaller.
+map() | Creates a one-to-one mapping from the elements in the stream to the elements of the next step in the stream.
+flatMap() | Takes each element in the stream and makes any elements it contains top-level elements in a single stream.
+sorted() | Returns a stream with the elements sorted.
+peek() | Allows us to perform a stream operation without actually changing the stream.
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Control_flow_in_java">Control flow in java</a>, <a href="/dictionary/Exception_handling">Exception handling</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Exception_in_java">Exception in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Try-catch_in_java">Try-catch in java</a>, <a href="/dictionary/Try-with-resources_in_java">Try-with-resources in java</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Stream_in_java">Stream in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
