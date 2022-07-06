@@ -40,7 +40,7 @@
 <h1><span class="badge badge-primary">function overloading in C++</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">The rules:
-* Overloaded functions MUST change the argument list. Arguments should be different type, number, or sequence.
+* Overloaded functions MUST change the argument list. Arguments should be different type, different number, or different sequence.
     * Parameter declarations that differ only in a pointer * versus an array [] are equivalent. That is, the array declaration is adjusted to become a pointer declaration. Only the second and subsequent array dimensions are significant in parameter types.
     * Parameter declarations that differ only in that one is a function type and the other is a pointer to the same function type are equivalent. void h(int ()); is the same as void h(int (*)()); 
     * Parameter declarations that differ only in the presence or absence of const and/or volatile are equivalent. That is, the const and volatile type-specifiers for each parameter type are ignored when determining which function is being declared, defined, or called.
@@ -51,6 +51,21 @@
 * You can overload functions across namespaces. 
 * C++ allows methods to be overloaded on the basis of const type. Overloading on the basis of const type can be useful when a function returns a reference or pointer. We can make one function const, that returns a const reference or const pointer, and another non-const function, that returns a non-const reference or pointer.
 * C++ allows methods to be overloaded on the basis of volatile type. 
+How does Function Overloading work?
+* Exact match (function name and parameter)
+* If a not exact match is found
+    * Char, Unsigned char, and short are promoted to an int.
+    * Float is promoted to double
+* If no match is found
+    * C++ tries to find a match through the standard conversion.
+
+How does Function Overloading work?
+* Exact match (function name and parameter)
+* If a not exact match is found:
+    * Char, unsigned char, and short are promoted to an int.
+    * Float is promoted to double
+* If no match is found:
+    * C++ tries to find a match through the standard conversion.
 ```
 #include &lt;iostream&gt;
 using namespace std;
@@ -80,7 +95,7 @@ int main()
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Function_overloading">Function overloading</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Function_in_c++">Function in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Function_overloading">Function overloading</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Function_in_c++">Function in c++</a>, <a href="/dictionary/Polymorphism_in_c++">Polymorphism in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

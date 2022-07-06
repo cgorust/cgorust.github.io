@@ -40,8 +40,8 @@
 <h1><span class="badge badge-primary">vtable</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">The C++ standards do not mandate exactly how runtime polymorphism must be implemented, but compilers generally use minor variations on the same basic model.
-* vTable: Every superclass or subclass that has one or more virtual functions in it has a vTable associated with it. vTable is a static array of function pointers that contains the addresses of all virtual functions of this class. Compiler builds this vTable at compile time.
-* vPointer: Every object of a class that has a vTable associated with it, contains a vPointer in first 4 bytes. The constructor of the object sets the vPointer. The vPointer points to the vTable of that class. The vPointer will be used to find the actual function address at runtime.</pre>
+* vTable: A table of function pointers, maintained per class. Every superclass or subclass that has one or more virtual functions in it has a vTable associated with it. vTable is a static array of function pointers that contains the addresses of all virtual functions of this class. Compiler builds this vTable at compile time.
+* vPointer: A pointer to vtable, maintained per object instance. Every object of a class which has a vTable associated with it, contains a vPointer in first 4 bytes. The constructor of the object sets the vPointer. The vPointer points to the vTable of that class. The vPointer will be used to find the actual function adress at runtime.</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Virtual_function_in_c++">Virtual function in c++</a></button>

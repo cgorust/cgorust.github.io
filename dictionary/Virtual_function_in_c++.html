@@ -39,55 +39,50 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">virtual function in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A virtual function in C++ is a member function and redefined in the subclass. When two functions of the same name are present in the superclass and subclass, the superclass function will be declared with the keyword virtual, hence both classes can have the same function name with a different implementation. During runtime, it determines which function to call based on the object pointer it points to.
-* Virtual functions cannot be static.
-* A virtual function can be a friend function of another class.
-* Virtual functions should be accessed using pointer or reference of base class type to achieve runtime polymorphism.
+<pre id="word_content" style="white-space: pre-wrap;">A virtual function is a member function that is declared in the base class using the keyword virtual and is re-defined (Overridden) in the derived class. It tells the compiler to perform late binding where the compiler matches the object with the right called function and executes it during the runtime. Virtual function is Runtime Polymorphism.
+* A virtual function is always defined in the base class and overridden in a derived class. It is not mandatory for the derived class to override the virtual function, in that case, the base class version of the function is used.
 * The prototype of virtual functions should be the same in the base as well as derived class.
-* They are always defined in the base class and overridden in a derived class. It is not mandatory for the derived class to override (or re-define the virtual function), in that case, the base class version of the function is used.
-* A class may have virtual destructor but it cannot have a virtual constructor.
-* Virtual functions can be private and still can be overridden by the derived class. 
+* Virtual functions should be accessed using pointer or reference of base class type to achieve runtime polymorphism.
+* A virtual function can be private and still can be overridden by the derived class. 
 * A virtual function call uses the default arguments determined by the static type of the pointer or reference. An overriding function in a derived class does not inherent default arguments from the function it overrides.
+* A class may have virtual destructor but it cannot have a virtual constructor.
+* A virtual function can be a friend function of another class.
+* A virtual function cannot be static.
 ```
 #include &lt;iostream&gt;
 using namespace std;
 
 class Base {
 public:
-    virtual void func(int a=1) { cout &lt;&lt; "Base:func() " &lt;&lt; a &lt;&lt; endl; }
-    Base() { func(); }  // Base:func()
+    virtual void func(int a=1) { cout &lt;&lt; "Base::func():" &lt;&lt; a &lt;&lt; endl; }
+    Base() { func(); }  // Base::func():1
     void call() { func(); }
 };
 
 class Sub : public Base {
 public:
-    void func(int a=2) { cout &lt;&lt; "Sub:func() " &lt;&lt; a &lt;&lt; endl; }
-    Sub() { func(); } // Sub:func()
+    void func(int a=2) { cout &lt;&lt; "Sub::func():" &lt;&lt; a &lt;&lt; endl; }
+    Sub() { func(); } // Sub::func():2
     void call() { func(); }
 };
 
 int main() {
     Base * b = new Sub();
 
-    b-&gt;Base::call(); // Sub:func()
-    b-&gt;call();  //  Sub:func()
+    b-&gt;Base::call(); // Sub::func():1
+    b-&gt;call();  //  Sub::func():1
     delete b;
-
-    return 0;
 }
-
-
 /*
-Base:func() 1
-Sub:func() 2
-Sub:func() 1
-Sub:func() 1
+Base:func():1
+Sub:func():2
+Sub:func():1
+Sub:func():1
 */
-```
-</pre>
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Member_function_in_c++">Member function in c++</a>, <a href="/dictionary/Virtual_method">Virtual method</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Pure_virtual_function_in_c++">Pure virtual function in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Vtable">Vtable</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Member_function_in_c++">Member function in c++</a>, <a href="/dictionary/Virtual_method">Virtual method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Polymorphism_in_c++">Polymorphism in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Pure_virtual_function_in_c++">Pure virtual function in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Vtable">Vtable</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

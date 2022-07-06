@@ -40,14 +40,21 @@
 <h1><span class="badge badge-primary">destructor in C++</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Destructor is a member function invoked automatically when an object is destroyed. It is the last function called when an object is destroyed.
-If the object is created by using new or the constructor uses new to allocate memory which resides on the heap, the destructor should use delete to free the memory.   
+If the object is created by using new, the destructor should use delete to free the memory.   
 Properties of Destructor:
-* There is only one destructor in a class with class name preceded by ~, no parameters and no return type.
+* There is only one destructor in a class with class name preceded by a tilde(~), no parameters and no return type.
 * A destructor should be declared in the public section of the class.
 * It cannot be declared static or const/volatile.
+* It has no return type not even void.
 * It is always a good idea to make destructors virtual in base class when we have a virtual function.
 * An object of a class with a destructor cannot become a member of a union.
 * The programmer cannot access the address of destructor.
+
+A destructor function is called automatically when the object goes out of scope: 
+* the function ends 
+* the program ends 
+* a block containing local variables ends 
+* a delete operator is called
 
 ```
 #include &lt;string.h&gt;
