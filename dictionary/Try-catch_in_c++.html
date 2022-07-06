@@ -39,7 +39,15 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">try-catch in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The handlers for a try block are tried in order of appearance. Note: This makes it possible to write handlers that can never be executed, for example by placing a handler for a final derived class after a handler for a corresponding unambiguous public base class.
+<pre id="word_content" style="white-space: pre-wrap;">The catch blocks for a try block are ran in order of appearance. Note: This makes it possible to write handlers that can never be executed, for example by placing a handler for a final derived class after a handler for a corresponding unambiguous public base class.
+* There is a special catch block called the ‘catch all’ block, written as catch(…), that can be used to catch all types of exceptions. 
+* In catch blocks, implicit type conversion doesn’t happen for primitive types. 
+* If an exception is thrown and not caught anywhere, the program terminates abnormally. 
+* A derived class exception should be caught before a base class exception. 
+* the C++ library has a standard exception class which is the base class for all standard exceptions. All objects thrown by the components of the standard library are derived from this class. Therefore, all standard exceptions can be caught by catching this type.
+* In C++, all exceptions are unchecked, i.e., the compiler doesn’t check whether an exception is caught or not. So, it is not necessary to specify all uncaught exceptions in a function declaration. Although it’s a recommended practice to do so. 
+*  In C++, try/catch blocks can be nested. Also, an exception can be re-thrown using “throw; “.
+* When an exception is thrown, all objects created inside the enclosing try block are destroyed before the control is transferred to the catch block.
 ```
 #include &lt;iostream&gt;
 using namespace std;

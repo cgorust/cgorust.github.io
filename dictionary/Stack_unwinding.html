@@ -39,7 +39,8 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">stack unwinding</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Stack unwinding is usually talked about in connection with exception handling. </pre>
+<pre id="word_content" style="white-space: pre-wrap;">Stack Unwinding is the process of removing function entries from function call stack at run time. The local objects are destroyed in reverse order in which they were constructed. 
+Stack Unwinding is generally related to Exception Handling. In C++, when an exception occurs, the function call stack is linearly searched for the exception handler, and all the entries before the function with exception handler are removed from the function call stack. So, exception handling involves stack unwinding if an exception is not handled in the same function (where it is thrown). Basically, Stack unwinding is a process of calling the destructors (whenever an exception is thrown) for all the automatic objects constructed at run time. </pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Exception_handling">Exception handling</a></button>
