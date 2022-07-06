@@ -39,23 +39,7 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">stack in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Stacks are designed to operate in a Last-In-First-Out context (LIFO), where elements are inserted and extracted only from one end of the container.
-```
-#include &lt;stack&gt;
-#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-    stack&lt;int&gt; s;
-    s.push(1);
-    s.push(2);
-    while(!s.empty()) {
-        cout &lt;&lt; s.top() &lt;&lt; endl;
-        s.pop();
-    }
-    return 0;
-}
-```</pre>
+<pre id="word_content" style="white-space: pre-wrap;">The STL stack is a container adaptor. That is, it is not a "first-class" container, but instead simply "adapts" one of the sequential first-class containers (by default, the deque) for its own purposes. So, the deque interface is restricted (i.e., much of it is hidden) so that the required LIFO (Last In, First Out) stack-like behavior is provided.</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_in_c++">Data structure in c++</a>, <a href="/dictionary/Stack">Stack</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Stack_method_in_c++">Stack method in c++</a></button>

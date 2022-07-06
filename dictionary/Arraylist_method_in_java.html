@@ -37,24 +37,105 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">interface in Java</span></h1>
+<h1><span class="badge badge-primary">arrayList method in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">An interface is a 100-percent abstract class. But while an abstract class can define both abstract and non-abstract methods, an interface can have only abstract methods. Another way interfaces differ from abstract classes is that interfaces have very little flexibility in how the methods and variables defined in the interface are declared.
-* All interface methods are implicitly public and abstract. In other words, you do not need to actually type the public or abstract modifiers in the method declaration, but the method is still always public and abstract.
-* All variables defined in an interface must be public, static, and final — in other words, interfaces can declare only constants, not instance variables. Because interface constants are defined in an interface, they don't have to be declared as public, static, or final. They must be public, static, and final, but you don't have to actually declare them that way.
-* Because interface methods are abstract, they cannot be marked final, strictfp, or native.
-* An interface can extend one or more other interfaces.
-* An interface cannot extend anything but another interface.
-* An interface cannot implement another interface or class.
-* Interface types can be used polymorphically.
-* Since Java8 you can have static methods in an interface (with body). You need to call them using the name of the interface, just like static methods of a class. 
-    * we can invoke static content like methods using an interface name directly
-* Since Java8 you can have default methods in an interface (with body). Like regular interface methods, default methods are implicitly public — there's no need to specify the public modifier. Unlike regular interface methods, they are declared with the default keyword at the beginning of the method signature, and they provide an implementation.
+<pre id="word_content" style="white-space: pre-wrap;">* create
+```
+import java.util.ArrayList;
 
+public class Main {
+    public static void main(String args[]) {
+        ArrayList l1 = new ArrayList();
+        ArrayList l2 = new ArrayList(10);
+
+        l2.add(1);
+        ArrayList l3 = new ArrayList(l2);
+        System.out.println(l3);
+    }
+}
+```
+* iterator
+```
+import java.util.*;
+  
+public class Main {
+    public static void main(String args[]){
+        ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;();
+        a.add(10);
+        a.add(5);
+  
+        Iterator&lt;Integer&gt; it = a.iterator();
+        while (it.hasNext()) {
+            System.out.print(it.next() + ",");
+        }
+    }
+}
+```
+* add
+```
+import java.util.*;
+  
+class Main {
+    public static void main(String args[]) {
+        ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;();
+        a.add(10);
+        a.add(0, 2);
+  
+        System.out.println(a);
+    }
+}
+```
+* change
+```
+import java.util.*;
+  
+class Main {
+    public static void main(String args[]) {
+        ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;();
+        a.add(1);
+        a.set(0, 10);
+        System.out.println(a);
+    }
+}
+```
+* query
+```
+import java.util.*;
+  
+class Main {
+    public static void main(String args[]) {
+        ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;();
+        a.add(10);
+        a.add(10);
+        a.add(1);
+
+        for(int i:a)
+            System.out.print(i+",");
+        System.out.println(a.size());
+    }
+}
+```
+* delete
+```
+import java.util.*;
+  
+class Main {
+    public static void main(String args[]) {
+        ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;();
+        a.add(10);
+        a.add(10);
+        a.add(1);
+        a.remove(Integer.valueOf(1));  // remove by value
+        a.remove(1); // remove by index
+        System.out.println(a);
+        a.removeAll(a);
+    }
+}
+```
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class_in_java">Class in java</a>, <a href="/dictionary/Interface">Interface</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Functional_interface_in_java">Functional interface in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Default_method_in_java">Default method in java</a>, <a href="/dictionary/Stream_in_java">Stream in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_method_in_java">Data structure method in java</a>, <a href="/dictionary/Vector_method">Vector method</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Arraylist_in_java">Arraylist in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
