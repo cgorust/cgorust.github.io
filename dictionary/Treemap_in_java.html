@@ -37,12 +37,32 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">unordered set in C++</span></h1>
+<h1><span class="badge badge-primary">TreeMap in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">TreeMap implements SortedMap. SortedMap is an interface extends the Map interface and provides a total ordering of its elements. 
+```
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        TreeMap&lt;Integer, String&gt; tm = new TreeMap&lt;&gt;();
+        tm.put(10, "Geeks");
+        tm.put(15, "4");
+        tm.put(20, "Geeks");
+        tm.put(25, "Welcomes");
+        tm.put(30, "You");
+        System.out.println(tm);
+    }
+}
+```
+The implementation of a TreeMap is not synchronized. This means that if multiple threads access a tree set concurrently, and at least one of the threads modifies the set, it must be synchronized externally. This is typically accomplished by using the Collections.synchronizedSortedMap method. This is best done at the creation time, to prevent accidental unsynchronized access to the set. This can be done as:
+```
+SortedMap m = Collections.synchronizedSortedMap(new TreeMap(...)); 
+```
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_in_c++">Data structure in c++</a>, <a href="/dictionary/Hash_table">Hash table</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Unordered_set_method_in_c++">Unordered set method in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_in_java">Data structure in java</a>, <a href="/dictionary/Dictionary_in_java">Dictionary in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Treemap_method_in_java">Treemap method in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

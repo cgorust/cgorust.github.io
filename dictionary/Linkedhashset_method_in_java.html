@@ -37,34 +37,108 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">LinkedHashSet in Java</span></h1>
+<h1><span class="badge badge-primary">LinkedHashSet method in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The LinkedHashSet is an ordered version of HashSet that maintains a doubly-linked List across all elements. 
-When iterating through a HashSet the order is unpredictable, while a LinkedHashSet lets us iterate through the elements in the order in which they were inserted. 
-* It extends the HashSet class and implements the Set interface.
-* It contains unique elements only like HashSet. 
-* It maintains insertion order.
-
-```Java
+<pre id="word_content" style="white-space: pre-wrap;">* create
+```
 import java.util. * ;
 
 public class Main {
     public static void main(String args[]){
-        LinkedHashSet&lt;String&gt; s = new LinkedHashSet();
-        s.add("a");
-        s.add("c");
-        s.add("b");
-        Iterator&lt;String&gt; itr = s.iterator();
-        while(itr.hasNext()) {
-            System.out.println(itr.next());
+        LinkedHashSet&lt;String&gt; s = new LinkedHashSet(); // create a default LinkedHashSet
+        LinkedHashSet&lt;String&gt; s1 = new LinkedHashSet(s); // init with collection s
+        LinkedHashSet&lt;String&gt; s2 = new LinkedHashSet(500); // int with the capacity
+        LinkedHashSet&lt;String&gt; s3 = new LinkedHashSet(1000, 0.5f); // init with capacity and the load factor. When the number of elements exceeds the capacity multiplied with the load factor then expanding the capacity of the LinkedHashSet.
+
+        s3.add("a");
+        s3.add("c");
+        s3.add("b");
+        Iterator&lt;String&gt; it = s3.iterator();
+        while(it.hasNext()) {
+            System.out.println(it.next());
         }
     }
 }
 ```
+* iterator
+```
+import java.util. * ;
+
+public class Main {
+    public static void main(String args[]){
+        LinkedHashSet&lt;String&gt; s = new LinkedHashSet(); 
+        s.add("a");
+        s.add("c");
+        s.add("b");
+        
+        Iterator&lt;String&gt; it = s.iterator();
+        while(it.hasNext()) {
+            System.out.print(it.next()+",");
+        }
+        System.out.println("");
+        for(String str: s) {
+            System.out.print(str+",");
+        }
+        System.out.println("");
+    }
+}
+```
+* add
+```
+import java.util. * ;
+
+public class Main {
+    public static void main(String args[]){
+        LinkedHashSet&lt;String&gt; s = new LinkedHashSet(); 
+        s.add("a");
+        s.add("c");
+        s.add("b");
+        
+        System.out.println(s);
+    }
+}
+```
+* change (N/A)
+* query
+```
+import java.util. * ;
+
+public class Main {
+    public static void main(String args[]){
+        LinkedHashSet&lt;String&gt; s = new LinkedHashSet(); 
+        s.add("a");
+        s.add("c");
+        s.add("b");
+        
+        System.out.println(s.isEmpty());
+        System.out.println(s.size());
+        System.out.println(s.contains("c"));
+    }
+}
+```
+* delete
+```
+import java.util. * ;
+
+public class Main {
+    public static void main(String args[]){
+        LinkedHashSet&lt;String&gt; s = new LinkedHashSet(); 
+        s.add("a");
+        s.add("c");
+        s.add("b");
+        
+        s.remove("b");
+        s.remove("d");
+        s.clear();
+        System.out.println(s);
+    }
+}
+```
+
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_in_java">Data structure in java</a>, <a href="/dictionary/Hash_table">Hash table</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Linkedhashset_method_in_java">Linkedhashset method in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_method_in_java">Data structure method in java</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Linkedhashset_in_java">Linkedhashset in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

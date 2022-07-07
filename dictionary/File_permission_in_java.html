@@ -37,12 +37,25 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">unordered set in C++</span></h1>
+<h1><span class="badge badge-primary">file permission in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">Java provides a number of method calls to check and change the permission of a file, such as a read-only file can be changed to have permissions to write. File permissions are required to be changed when the user wants to restrict the operations permissible on a file.
+&lt;b&gt;Checking the Current File Permissions&lt;/b&gt;
+Method | Action
+--- | --- 
+canExecute() | Returns true if and only if the abstract pathname exists and the application is allowed to execute the file
+canRead() | Tests whether the application can read the file denoted by this abstract pathname
+canWrite() | Returns true if and only if the file system actually contains a file denoted by this abstract pathname and the application is allowed to write to the file; false otherwise
+
+&lt;b&gt;Changing File Permissions&lt;/b&gt;
+Method | Action
+--- | ---
+setExecutable() | Set the owner’s execute permission for this abstract pathname
+setReadable() | Set the owner’s read permission for this abstract pathname
+setWritable() | Set the owner’s write permission for this abstract pathname</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_in_c++">Data structure in c++</a>, <a href="/dictionary/Hash_table">Hash table</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Unordered_set_method_in_c++">Unordered set method in c++</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/File_in_java">File in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

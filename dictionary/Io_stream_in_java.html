@@ -40,20 +40,7 @@
 <h1><span class="badge badge-primary">IO stream in Java</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">A low-level IO stream connects directly with the source of the data, such as a file, an array, or a String. Low-level streams process the raw data or resource and are accessed in a direct and unfiltered manner. Alternatively, a high-level IO stream is built on top of another stream using wrapping. Wrapping is the process by which an instance is passed to the constructor of another class and operations on the resulting instance are filtered and applied to the original instance. High-level streams can take other high-level streams as input. 
-```
-import java.util.stream.Stream;
 
-public class Main{
-    public static void main(String[] args) {
-        Stream s1 = Stream.empty();
-        Stream s2 = Stream.builder().add("a").build();
-        Stream S3 = Stream.generate(() -&gt; "a");
-        Stream s4 = Stream.of();
-        Stream s5 = Stream.ofNullable("a");
-        Stream s6 = new Stream(); // Error, Stream is interface, not Class.
-    }
-}
-```
 
 Class Name | Low/High Level | Description
 ----- | ----- | -----

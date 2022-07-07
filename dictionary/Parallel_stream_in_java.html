@@ -39,7 +39,10 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">parallel stream in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The Streams API was designed to make creating parallel streams quite easy. 
+<pre id="word_content" style="white-space: pre-wrap;">All streams operations can execute either in serial or in parallel. Whether a stream will execute in serial or parallel can be determined with the isParallel() method, and the orientation of a stream can be modified with the BaseStream.sequential() and BaseStream.parallel() operations. 
+Except for operations identified as explicitly nondeterministic, such as findAny(), whether a stream executes sequentially or in parallel should not change the result of the computation.
+
+The Streams API was designed to make creating parallel streams quite easy. 
 To create a parallel stream，
 * From an existing stream: call parallel() on an existing stream to convert it to one that supports multi-threaded processing,
 * From a Java collection class: The Collection interface includes a method parallelStream() that can be called on any collection and returns a parallel stream.
@@ -59,7 +62,7 @@ class Main {
     }
 }
 ```
-The Stream interface includes a method isParallel() that can be used to test if the instance of a stream supports parallel processing. Some operations on streams preserve the parallel attribute, while others do not. For example, the Stream.concat(Stream s1, Stream s2) is parallel if either s1 or s2 is parallel. On the other hand, flatMap() creates a new stream that is not parallel by default, regardless of whether the underlying elements were parallel.</pre>
+Some operations on streams preserve the parallel attribute, while others do not. For example, the Stream.concat(Stream s1, Stream s2) is parallel if either s1 or s2 is parallel. On the other hand, flatMap() creates a new stream that is not parallel by default, regardless of whether the underlying elements were parallel.</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Stream_in_java">Stream in java</a></button>

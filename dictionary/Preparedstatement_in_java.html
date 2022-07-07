@@ -37,12 +37,47 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">unordered set in C++</span></h1>
+<h1><span class="badge badge-primary">PreparedStatement in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">A PreparedStatement is a pre-compiled SQL statement. It is a subinterface of Statement. Prepared Statement objects have some useful additional features than Statement objects. Instead of hard coding queries, PreparedStatement object provides a feature to execute a parameterized query.
+When PreparedStatement is created, the SQL query is passed as a parameter. This Prepared Statement contains a pre-compiled SQL query, so when the PreparedStatement is executed, DBMS can just run the query instead of first compiling it. We can use the same PreparedStatement and supply with different parameters at the time of execution. An important advantage of PreparedStatements is that they prevent SQL injection attacks.
+Methods of PreparedStatement:
+Method	| Description
+--- | ---
+public void setInt(int paramIndex, int value) | sets the integer value to the given parameter index.
+public void setString(int paramIndex, String value) | sets the String value to the given parameter index.
+public void setFloat(int paramIndex, float value) | sets the float value to the given parameter index.
+public void setDouble(int paramIndex, double value) | sets the double value to the given parameter index.
+public int executeUpdate() | executes the sql. It is used for create, drop, insert, update, delete etc.
+public ResultSet executeQuery() | executes the select query. It returns an instance of ResultSet.
+
+```
+import java.sql.*;
+ 
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Class.forName("oracle.jdbc.driver.OracleDriver");  ;
+        Connection con=DriverManager.
+            getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");  
+ 
+        String query = "Select * from students where age&gt; ? and name = ?";
+        PreparedStatement myStmt = con.prepareStatement(query);
+        myStmt.setInt(1, 20);
+        myStmt.setString(2, "Prateek");
+ 
+        ResultSet myRs = myStmt.executeQuery();
+        while (myRs.next()) {
+            String Name = myRs.getString("name");
+            int age = myRs.getInt("age");
+            System.out.println(Name + "," + age);
+        }
+        con.close();
+    }
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_in_c++">Data structure in c++</a>, <a href="/dictionary/Hash_table">Hash table</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Unordered_set_method_in_c++">Unordered set method in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Statement_in_java">Statement in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

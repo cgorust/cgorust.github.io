@@ -37,12 +37,24 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">unordered set in C++</span></h1>
+<h1><span class="badge badge-primary">bitset in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">In C++, bitset implements a bit array.
+```
+#include &lt;iostream&gt;
+#include &lt;bitset&gt;
+using namespace std;
+
+int main() {
+    bitset&lt;128&gt; bs;
+    bs.set(10, 1);
+    bs.reset(10);
+    cout&lt;&lt;bs.test(10)&lt;&lt;endl;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_in_c++">Data structure in c++</a>, <a href="/dictionary/Hash_table">Hash table</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Unordered_set_method_in_c++">Unordered set method in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Bit_array">Bit array</a>, <a href="/dictionary/Data_structure_in_c++">Data structure in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

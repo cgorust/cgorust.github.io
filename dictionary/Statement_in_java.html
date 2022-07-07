@@ -37,12 +37,50 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">unordered set in C++</span></h1>
+<h1><span class="badge badge-primary">Statement in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">Getting a Statement from a Connection:
+```
+Statement stmt1 = conn.createStatement();
+ResultSet rs =  stmt1.executeQuery("select * from species");
+Statement stmt2 = conn.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+int result = stmt2.executeUpdate("insert into species values(10, 'Deer', 3)");
+```
+This signature of stmt2 takes two parameters. The first is the ResultSet type, and the other is the ResultSet concurrency mode. 
+&lt;b&gt;ResultSet type options&lt;/b&gt; 
+ResultSet  Type | Can Go Backward | See Latest Data from Database Table | Supported by Most Drivers
+------ | ------ | ------ | ------ 
+ResultSet.TYPE_FORWARD_ONLY | No | No | Yes
+ResultSet.TYPE_SCROLL_INSENSITIVE | Yes | No | Yes
+ResultSet.TYPE_SCROLL_SENSITIVE | Yes | Yes | No
+
+If the type you request isn’t available, the driver can “helpfully” downgrade to one that is.
+&lt;b&gt;ResultSet concurrency mode options&lt;/b&gt; 
+ResultSet  Type | Can Read Data | Can Update Data | Supported by All Drivers
+------ | ------ | ------ | ------ 
+ResultSet.CONCUR_READ_ONLY | Yes | Yes | No
+ResultSet.CONCUR_UPDATABLE | Yes | No | Yes
+
+If the mode you request isn’t available, the driver can downgrade you.
+&lt;b&gt;SQL runnable by execute method&lt;/b&gt;
+Method | DELETE | INSERT | SELECT | UPDATE
+------ | ------ | ------ | ------ | ------ 
+stmt.execute() | Yes | Yes | Yes | Yes
+stmt.executeQuery() | No | No | Yes | No
+stmt.executeUpdate() | Yes | Yes | No | Yes
+
+&lt;b&gt;Return types of executes&lt;/b&gt;
+Method | Return Type | What Is Returned for SELECT | What Is Returned for DELETE/INSERT/UPDATE
+------ | ------ | ------ | ------
+stmt.execute() | boolean | true | false
+stmt.executeQuery() | ResultSet | The rows and columns returned | n/a
+stmt.executeUpdate() | int | n/a | Number of rows added/changed/removed
+
+Also in real life, you should not use Statement directly. You should use a subclass called PreparedStatement. This subclass has three advantages: performance, security, and readability.
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_in_c++">Data structure in c++</a>, <a href="/dictionary/Hash_table">Hash table</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Unordered_set_method_in_c++">Unordered set method in c++</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Jdbc">Jdbc</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Preparedstatement_in_java">Preparedstatement in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

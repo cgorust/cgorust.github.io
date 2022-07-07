@@ -54,7 +54,7 @@
 |Can be final|Yes|Yes|N/A—because no class definition|Yes|
 |Can access instance members of enclosing class|Yes|Yes|Yes|No (not directly; requires an instance of the enclosing class)|
 |Can access local variables of enclosing class|No|Yes—if final or effectively final|Yes—if final or effectively final|No|
-|Can declare static methods|No|No|No|No|
+|Can declare static methods|No|No|No|Yes|
 
 A nested class is a member of its enclosing class. Non-static nested classes (inner classes) have access to other members of the enclosing class, even if they are declared private. Static nested classes do not have access to other members of the enclosing class.
 ```

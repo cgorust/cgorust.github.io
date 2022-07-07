@@ -40,6 +40,7 @@
 <h1><span class="badge badge-primary">HashMap in Java</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">A HashMap store items in "key/value" pairs, and you can access them by an index of different type (e.g. a String).
+It is thread-safe and can be shared with many threads. HashMap allows one null key and multiple null values whereas Hashtable doesn't allow any null key or value. HashMap is generally preferred over HashTable if thread synchronization is not needed.
 ```
 import java.util.*;
 public class A {
