@@ -37,20 +37,76 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">data structure in java</span></h1>
+<h1><span class="badge badge-primary">bounded type in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">* ArrayList is not synchronized. Vector is synchronized.
-* All three classes implement the Map interface and offer mostly the same functionality. The most important difference is the order in which iteration through the entries will happen:
-    * HashMap makes absolutely no guarantees about the iteration order. It will even change completely when new elements are added.
-    * TreeMap will iterate according to the "natural ordering" of the keys according to their compareTo() method (or an externally supplied Comparator). Additionally, it implements the SortedMap interface, which contains methods that depend on this sort order.
-    * LinkedHashMap will iterate in the order in which the entries were put into the map
-* In Java, the set has its implementation in various classes such as HashSet, TreeSet and LinkedHashSet.
-    * HashSet stores elements in random order    
-    * LinkedHashSet stores elements according to insertion orde
-    * TreeSet stores according to natural ordering.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">* Bounded Type: \&lt;T extends superClassName&gt;
+```
+class Bound&lt;T extends A&gt; {
+    private T obj;
+     
+    public Bound(T obj){
+        this.obj = obj;
+    }
+     
+    public void doRunTest(){
+        this.obj.displayClass();
+    }
+}
+ 
+class A {
+    public void displayClass() {System.out.println("Class A");}
+}
+class B extends A {
+    public void displayClass() {System.out.println("Class B");}
+}
+class C extends B {
+    public void displayClass() {System.out.println("Class C");}
+}
+ 
+public class Main {
+    public static void main(String a[]) {
+        Bound&lt;C&gt; bec = new Bound&lt;C&gt;(new C());
+        bec.doRunTest();
+        Bound&lt;B&gt; beb = new Bound&lt;B&gt;(new B());
+        beb.doRunTest();
+        Bound&lt;A&gt; bea = new Bound&lt;A&gt;(new A());
+        bea.doRunTest();
+    }
+}
+```
+* Multiple Bounds: \&lt;T extends superClassName &amp; Interface&gt;
+```
+class Bound&lt;T extends A &amp; B&gt; {
+    private T obj;
+    public Bound(T obj){
+        this.obj = obj;
+    }
+     
+    public void doRunTest(){
+        this.obj.displayClass();
+    }
+}
+ 
+interface B {
+    public void displayClass();
+}
+ 
+class A implements B {
+    public void displayClass() {
+        System.out.println("Class A");
+    }
+}
+ 
+public class Main {
+    public static void main(String a[]) {
+        Bound&lt;A&gt; bea = new Bound&lt;A&gt;(new A());
+        bea.doRunTest();
+    }
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure">Data structure</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Java">Java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Arraylist_in_java">Arraylist in java</a>, <a href="/dictionary/Array_in_java">Array in java</a>, <a href="/dictionary/Bitset_in_java">Bitset in java</a>, <a href="/dictionary/Collection_in_java">Collection in java</a>, <a href="/dictionary/Hashmap_in_java">Hashmap in java</a>, <a href="/dictionary/Hashset_in_java">Hashset in java</a>, <a href="/dictionary/Linkedhashmap_in_java">Linkedhashmap in java</a>, <a href="/dictionary/Linkedhashset_in_java">Linkedhashset in java</a>, <a href="/dictionary/List_in_java">List in java</a>, <a href="/dictionary/Queue_in_java">Queue in java</a>, <a href="/dictionary/Record_in_java">Record in java</a>, <a href="/dictionary/Stack_in_java">Stack in java</a>, <a href="/dictionary/Treemap_in_java">Treemap in java</a>, <a href="/dictionary/Treeset_in_java">Treeset in java</a>, <a href="/dictionary/Vector_in_java">Vector in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Data_structure_method_in_java">Data structure method in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Generic_type_in_java">Generic type in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

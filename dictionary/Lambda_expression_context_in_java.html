@@ -37,20 +37,82 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">data structure in java</span></h1>
+<h1><span class="badge badge-primary">lambda expression context in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">* ArrayList is not synchronized. Vector is synchronized.
-* All three classes implement the Map interface and offer mostly the same functionality. The most important difference is the order in which iteration through the entries will happen:
-    * HashMap makes absolutely no guarantees about the iteration order. It will even change completely when new elements are added.
-    * TreeMap will iterate according to the "natural ordering" of the keys according to their compareTo() method (or an externally supplied Comparator). Additionally, it implements the SortedMap interface, which contains methods that depend on this sort order.
-    * LinkedHashMap will iterate in the order in which the entries were put into the map
-* In Java, the set has its implementation in various classes such as HashSet, TreeSet and LinkedHashSet.
-    * HashSet stores elements in random order    
-    * LinkedHashSet stores elements according to insertion orde
-    * TreeSet stores according to natural ordering.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">Lambda expressions can be used only in the following four contexts.
+* Assignment Context: A lambda expression can appear to the right of the assignment operator.
+```
+public class Main {
+  public static void main(String[] argv) {
+    Calculator iCal = (x,y)-&gt; x + y;
+    System.out.println(iCal.calculate(1, 2));
+  }
+}
+
+@FunctionalInterface
+interface Calculator{
+  int calculate(int x, int y);
+}
+```
+* Method Invocation Context: a lambda expression can used as an argument for a method or constructor.
+```
+public class Main {
+  public static void main(String[] argv) {
+    engine((x,y)-&gt; x / y);
+  }
+  
+  private static void engine(Calculator calc){
+    long x = 2, y = 4;
+    long result = calc.calculate(x,y);
+    System.out.println(result);
+  }  
+}
+
+@FunctionalInterface
+interface Calculator{
+  long calculate(long x, long y);
+}
+```
+* Return Context: a lambda expression can used in a return statement, and its target type is declared in the method return type.
+```
+public class Main {
+  public static void main(String[] argv) {
+    System.out.println(create().calculate(2, 2));
+  }
+  
+  private static Calculator create(){
+    return (x,y)-&gt; x / y;
+  }  
+}
+
+@FunctionalInterface
+interface Calculator{
+  long calculate(long x, long y);
+}
+```
+* Cast Context: a lambda expression can preceded by a cast. The type specified in the cast is its target type
+```
+public class Main {
+  public static void main(String[] argv) {
+    engine((Calculator) ((x,y)-&gt; x + y));
+  }
+  
+  private static void engine(Calculator calc){
+    int x = 2, y = 4;
+    int result = calc.calculate(x,y);
+    System.out.println(result);
+  }
+}
+
+@FunctionalInterface
+interface Calculator{
+  int calculate(int x, int y);
+}
+```
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure">Data structure</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Java">Java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Arraylist_in_java">Arraylist in java</a>, <a href="/dictionary/Array_in_java">Array in java</a>, <a href="/dictionary/Bitset_in_java">Bitset in java</a>, <a href="/dictionary/Collection_in_java">Collection in java</a>, <a href="/dictionary/Hashmap_in_java">Hashmap in java</a>, <a href="/dictionary/Hashset_in_java">Hashset in java</a>, <a href="/dictionary/Linkedhashmap_in_java">Linkedhashmap in java</a>, <a href="/dictionary/Linkedhashset_in_java">Linkedhashset in java</a>, <a href="/dictionary/List_in_java">List in java</a>, <a href="/dictionary/Queue_in_java">Queue in java</a>, <a href="/dictionary/Record_in_java">Record in java</a>, <a href="/dictionary/Stack_in_java">Stack in java</a>, <a href="/dictionary/Treemap_in_java">Treemap in java</a>, <a href="/dictionary/Treeset_in_java">Treeset in java</a>, <a href="/dictionary/Vector_in_java">Vector in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Data_structure_method_in_java">Data structure method in java</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Lambda_expression_in_java">Lambda expression in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

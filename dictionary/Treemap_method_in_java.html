@@ -60,25 +60,22 @@ class Main{
         TreeMap&lt;Integer,String&gt; map = new TreeMap&lt;&gt;();    
         map.put(100,"A");    
         map.put(200,"B");
-        
-        Set&lt;Map.Entry&lt;Integer, String&gt; &gt; entries = map.entrySet();
-        
-        Iterator&lt;Map.Entry&lt;Integer, String&gt; &gt; iterator = entries.iterator();
-        Map.Entry&lt;Integer, String&gt; entry = null;
+
+        Iterator&lt;Map.Entry&lt;Integer, String&gt; &gt; iterator = map.entrySet().iterator();
         while (iterator.hasNext()) {
-            entry = iterator.next();
+            Map.Entry&lt;Integer, String&gt; entry = iterator.next();
             System.out.println(entry.getKey() + "-&gt;" + entry.getValue());
         }
-        
-        for (Map.Entry&lt;Integer, String&gt; entry_2 : entries) {
-            System.out.println(entry_2.getKey() + "-&gt;" + entry_2.getValue());
+
+        for (Map.Entry&lt;Integer, String&gt; entry : map.entrySet()) {
+            System.out.println(entry.getKey() + "-&gt;" + entry.getValue());
         }
-        
-        entries.forEach(entry_3 -&gt; {
-            System.out.println(entry_3.getKey() + "-&gt;" + entry_3.getValue());
+
+        map.entrySet().forEach(entry -&gt; {
+            System.out.println(entry.getKey() + "-&gt;" + entry.getValue());
         });
     }  
-}  
+} 
 ```
 * add
 ```
@@ -133,9 +130,37 @@ class Main{
 ```
 * query
 ```
+import java.util.*;  
 
+class Main{  
+    public static void main(String args[]){  
+        TreeMap&lt;Integer,String&gt; map = new TreeMap&lt;&gt;();    
+        map.put(100,"A");    
+        map.put(200,"B");
+
+        System.out.println(map.containsValue("A"));
+        System.out.println(map.containsKey(200));
+        System.out.println(map.isEmpty());
+        System.out.println(map.size());
+    }  
+}
 ```
 * delete
+```
+import java.util.*;  
+
+class Main{  
+    public static void main(String args[]){  
+        TreeMap&lt;Integer,String&gt; map = new TreeMap&lt;&gt;();    
+        map.put(100,"A");    
+        map.put(200,"B");
+
+        map.remove(200);
+        map.clear();
+        System.out.println(map);
+    }  
+}
+```
 
 </pre>
 </div>
