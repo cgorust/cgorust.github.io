@@ -46,6 +46,7 @@
 * Visibility is similar to instance variables. However, most static variables are declared public since they must be available for users of the class.
 * Default values are same as instance variables. For numbers, the default value is 0; for Booleans, it is false; and for object references, it is null. Values can be assigned during the declaration or within the constructor. Additionally, values can be assigned in special static initializer blocks.
 * Static variables can be accessed by calling with the class name ClassName.VariableName.
+* A static variable cannot be serialized. When deserializing a value can be available for static variables. The value comes from the class declaration rather than from the stream.
 
 ```
 public class Main {
@@ -58,7 +59,7 @@ public class Main {
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class_variable">Class variable</a>, <a href="/dictionary/Variable_in_java">Variable in java</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Static_keyword_in_java">Static keyword in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class_variable">Class variable</a>, <a href="/dictionary/Variable_in_java">Variable in java</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Static_keyword_in_java">Static keyword in java</a></button><button class="btn btn-light" type="button"><b>Redirect from: </b><a href="/dictionary/Static_variable_in_java">Static variable in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

@@ -39,32 +39,34 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">annotation in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">* @Deprecated: @Deprecated annotation indicates that the marked element is deprecated and should no longer be used. The compiler generates a warning whenever a program uses a method, class, or field with the @Deprecated annotation. When an element is deprecated, it should also be documented using the Javadoc @deprecated tag, as shown in the following example. The use of the at sign (@) in both Javadoc comments and in annotations is not coincidental: they are related conceptually. Also, note that the Javadoc tag starts with a lowercase d and the annotation starts with an uppercase D.
+<pre id="word_content" style="white-space: pre-wrap;">Annotations are used to provide supplemental information about a program. 
+* Annotations start with ‘@’.
+* Annotations do not change the action of a compiled program.
+* Annotations help to associate metadata to the program elements i.e. instance variables, constructors, methods, classes, etc.
+* Annotations are not pure comments as they can change the way a program is treated by the compiler. 
+* Annotations basically are used to provide additional information, so could be an alternative to XML and Java marker interfaces.
+
+Annotations:
+* \@Deprecated: This annotation indicates that the marked element is deprecated and should no longer be used. The compiler generates a warning whenever a program uses a method, class, or field with the @Deprecated annotation. When an element is deprecated, it should also be documented using the Javadoc @deprecated tag. The use of the at sign (@) in both Javadoc comments and in annotations is not coincidental: they are related conceptually. Also, note that the Javadoc tag starts with a lowercase d and the annotation starts with an uppercase D.
 ```
-   // Javadoc comment follows
     /**
      * @deprecated
-     * explanation of why it was deprecated
+     * why it was deprecated
      */
     @Deprecated
-    static void deprecatedMethod() { }
+    void deprecatedMethod() { }
 }
 ```
-* @Override: @Override annotation informs the compiler that the element is meant to override an element declared in a superclass. Overriding methods will be discussed in Interfaces and Inheritance.
+* \@Override: This annotation informs the compiler that the element is meant to override an element declared in a superclass.
 ```
-   // mark method as a superclass method
-   // that has been overridden
    @Override 
    int overriddenMethod() { }
 ```
-* @SuppressWarnings: @SuppressWarnings annotation tells the compiler to suppress specific warnings that it would otherwise generate. In the following example, a deprecated method is used, and the compiler usually generates a warning. In this case, however, the annotation causes the warning to be suppressed.
+* \@SuppressWarnings: This annotation tells the compiler to suppress specific warnings that it would otherwise generate. 
 ```
-   // use a deprecated method and tell 
-   // compiler not to generate a warning
    @SuppressWarnings("deprecation")
     void useDeprecatedMethod() {
-        // deprecation warning
-        // - suppressed
+        // deprecation warning suppressed
         objectOne.deprecatedMethod();
     }
 ```
@@ -72,9 +74,9 @@ Every compiler warning belongs to a category. The Java Language Specification li
 ```
  @SuppressWarnings({"unchecked", "deprecation"})
 ```
-* @SafeVarargs: @SafeVarargs annotation, when applied to a method or constructor, asserts that the code does not perform potentially unsafe operations on its varargs parameter. When this annotation type is used, unchecked warnings relating to varargs usage are suppressed.
-* @FunctionalInterface: @FunctionalInterface annotation, introduced in Java SE 8, indicates that the type declaration is intended to be a functional interface, as defined by the Java Language Specification.
-* @Repeatable: There are some situations where you want to apply the same annotation to a declaration or type use. As of the Java SE 8 release, repeating annotations enable you to do this. 
+* \@SafeVarargs: This annotation, when applied to a method or constructor, asserts that the code does not perform potentially unsafe operations on its varargs parameter. When this annotation type is used, unchecked warnings relating to varargs usage are suppressed.
+* \@FunctionalInterface: This annotation, introduced in Java SE 8, indicates that the type declaration is intended to be a functional interface, as defined by the Java Language Specification.
+* \@Repeatable: There are some situations where you want to apply the same annotation to a declaration or type use. As of the Java SE 8 release, repeating annotations enable you to do this. 
 ```
 @Schedule(dayOfMonth="last")
 @Schedule(dayOfWeek="Fri", hour="23")

@@ -43,7 +43,7 @@
 ```
 assert boolean_expression ;
 ```
-where Expression1 is a boolean expression. When the system runs the assertion, it evaluates boolean_expression and if it is false throws an AssertionError with no detail message.
+When the system runs the assertion, it evaluates boolean_expression and if it is false throws an AssertionError with no detail message.
 The second form of the assertion statement is:
 ```
 assert boolean_expression : error_message ;
@@ -51,7 +51,7 @@ assert boolean_expression : error_message ;
 where:
 * boolean_expression is a boolean expression.
 *  error_message is an expression that has a value. (It cannot be an invocation of a method that is declared void.)
-Use this version of the assert statement to provide a detail message for the AssertionError. The system passes the value of Expression2 to the appropriate AssertionError constructor, which uses the string representation of the value as the error's detail message.
+Use this version of the assert statement to provide a detail message for the AssertionError. The system passes the value of error_message to the appropriate AssertionError constructor, which uses the string representation of the value as the error's detail message.
 The purpose of the detail message is to capture and communicate the details of the assertion failure. The message should allow you to diagnose and ultimately fix the error that led the assertion to fail. 
 There are many situations where it is good to use assertions, including:
 * Internal Invariants

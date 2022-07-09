@@ -39,7 +39,8 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">@repeatable annotation in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Step 1: Declare a Repeatable Annotation Type. The annotation type must be marked with the @Repeatable meta-annotation. 
+<pre id="word_content" style="white-space: pre-wrap;">The \@Repeatable annotation, introduced in Java SE 8, indicates that the marked annotation can be applied more than once to the same declaration or type use. 
+* Declare a Repeatable Annotation Type. The annotation type must be marked with the \@Repeatable meta-annotation. 
 ```
 import java.lang.annotation.Repeatable;
 
@@ -50,7 +51,7 @@ public @interface Schedule {
   int hour() default 12;
 }
 ```
-Step 2: Declare the Containing Annotation Type. The containing annotation type must have a value element with an array type. The component type of the array type must be the repeatable annotation type. 
+* Declare the Containing Annotation Type. The containing annotation type must have a value element with an array type. The component type of the array type must be the repeatable annotation type. 
 ```
 public @interface Schedules {
     Schedule[] value();

@@ -40,6 +40,8 @@
 <h1><span class="badge badge-primary">stream in Java</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Java streams are Monads. A stream in Java is a sequence of data. 
+* In a sequential stream, each element is processed the whole way from the first to the final operation, then the net element comes in.
+
 Streams differ from collections in several ways:
 *    No storage. A stream is not a data structure that stores elements; instead, it conveys elements from a source such as a data structure, an array, a generator function, or an I/O channel, through a pipeline of computational operations.
 *    Functional in nature. An operation on a stream produces a result, but does not modify its source. For example, filtering a Stream obtained from a collection produces a new Stream without the filtered elements, rather than removing elements from the source collection.
@@ -58,7 +60,7 @@ s.limit(5).forEach(System.out::println); | Yes | Yes
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Monad">Monad</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Interface_in_java">Interface in java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Parallel_stream_in_java">Parallel stream in java</a>, <a href="/dictionary/Primitive_steam_in_java">Primitive steam in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Stream_creation_in_java">Stream creation in java</a>, <a href="/dictionary/Stream_pipeline_in_java">Stream pipeline in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Library_in_java">Library in java</a>, <a href="/dictionary/Monad">Monad</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Parallel_stream_in_java">Parallel stream in java</a>, <a href="/dictionary/Primitive_steam_in_java">Primitive steam in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Stream_creation_in_java">Stream creation in java</a>, <a href="/dictionary/Stream_pipeline_in_java">Stream pipeline in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

@@ -67,13 +67,14 @@ public interface Shippable&lt;T&gt; {
 }
 
 ```
-It is also possible to declare them on the method level. This is often useful for staticmethods since they aren’t part of an instance that can declare the type. However, it is also allowed on non-static methods as well.In this example, the method uses a generic parameter:
+It is also possible to declare them on the method level. This is often useful for static methods since they aren’t part of an instance that can declare the type. However, it is also allowed on non-static methods as well.In this example, the method uses a generic parameter:
 ```
 public static &lt;T&gt; Crate&lt;T&gt; ship(T t) {
     System.out.println("Preparing " + t);   
     return new Crate&lt;T&gt;();
 }
-```</pre>
+```
+A generic class' type parameters cannot be sued in static contexts. Specifically, they cannot be the types of static fields, the types of parameters of static methods, or as the return types of static methods. In fact, this constraint make sense because static members are shared by all instances of the class. If type parameters were allowed there, when the class is instantiated with different type arguments, the compiler couldn't be able to identify the acturall types of those static fields, as well as static methods' parameters and return value.</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Generic_programming">Generic programming</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Generic_type_in_java">Generic type in java</a>, <a href="/dictionary/Type_erasure">Type erasure</a></button>

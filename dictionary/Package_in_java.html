@@ -39,7 +39,12 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">package in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"> A package in Java is used to group related classes. Think of it as a folder in a file directory. We use packages to avoid name conflicts, and to write a better maintainable code. Packages are divided into two categories:
+<pre id="word_content" style="white-space: pre-wrap;">In order from small to big, it goes: Package -&gt; Module -&gt; Library.
+* A package contains many classes (.java files) and is basically a folder in your Java projects.
+* A module contains many packages (folders with .java files). A module is basically a single purpose library.
+* A library contains many modules (a module is usually packaged as a single .jar file). A library can contain many modules, but they are usually all connected by some theme.
+
+A package in Java is used to group related classes. Think of it as a folder in a file directory. We use packages to avoid name conflicts, and to write a better maintainable code. Packages are divided into two categories:
 * Built-in Packages (packages from the Java API)
 * User-defined Packages (create your own packages)
 

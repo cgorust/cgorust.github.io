@@ -37,43 +37,17 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">try-with-resources in Java</span></h1>
+<h1><span class="badge badge-primary">arithmetic operator in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Try-with-resources allows us to declare resources to be used in a try block with the assurance that the resources will be closed when after the execution of that block. Up until Java 8, the try-with-resources statement could only close resources declared inside the statement itself. As of Java 9, this statement can also close predefine resource, provided those resources are reference with parentheses immediately after the try keyword.
-Let's compare the following code samples – first is a typical try-catch-finally block, then the new approach, using an equivalent try-with-resources block:
-```
-Scanner scanner = null;
-try {
-    scanner = new Scanner(new File("test.txt"));
-    while (scanner.hasNext()) {
-        System.out.println(scanner.nextLine());
-    }
-} catch (FileNotFoundException e) {
-    e.printStackTrace();
-} finally {
-    if (scanner != null) {
-        scanner.close();
-    }
-}
-//////////////////////////
-try (Scanner scanner = new Scanner(new File("test.txt"))) {
-    while (scanner.hasNext()) {
-        System.out.println(scanner.nextLine());
-    }
-} catch (FileNotFoundException fnfe) {
-    fnfe.printStackTrace();
-}
-```
-Multiple resources can be declared just fine in a try-with-resources block by separating them with a semicolon.
-To construct a custom resource that will be correctly handled by a try-with-resources block, the class should implement the Closeable or AutoCloseable interfaces, and override the close method.
-Resources are closed in the reverse order from which they were created. That is, resources that were defined/acquired first will be closed last.
-Resources are closed after the try clause ends and before any catch/finally clauses.
-A try-with-resources block can still have the catch and finally blocks – which will work in the same way as with a traditional try block.
-If an exception is thrown from the try block and one or more exceptions are thrown from the try-with-resources statement, then those exceptions thrown from the try-with-resources statement are suppressed
-</pre>
+<pre id="word_content" style="white-space: pre-wrap;">They are used to perform simple arithmetic operations on primitive data types. 
+* * : Multiplication
+* / : Division
+* % : Modulo
+* + : Addition
+* – : Subtraction</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Exception_handling_in_java">Exception handling in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Autoclosable_in_java">Autoclosable in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Arithmetic_operator">Arithmetic operator</a>, <a href="/dictionary/Operator_in_java">Operator in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
