@@ -39,8 +39,9 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">functional interface in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Java defines a functional interface as an interface that contains a single abstract method (default methods or static methods do not count). 
-* If an interface declares an abstract method overriding one of the public methods of java.lang.Object, such as equals() or toString(), that also does not count toward the interface' abstract method count since any implementation of the interface will have an implementation from java.lang.Object or elsewhere. 
+<pre id="word_content" style="white-space: pre-wrap;">Java defines a functional interface as an interface that contains a single abstract method. From Java 8 onwards, lambda expressions can be used to represent the instance of a functional interface.
+* Default methods or static methods do not count.
+* If an interface declares an abstract method overriding one of the public methods of java.lang.Object, such as equals() or toString(), that also does not count toward the interface' abstract method since any implementation of the interface will have an implementation from java.lang.Object or elsewhere. 
 * Functional interfaces are used as the basis for lambda expressions in functional programming. When a lambda expression targets a functional interface, all the parameters must be exactly the same. The only exception is that an array type is interchangeable with a varargs.
 ```
 interface Calculable {
@@ -72,7 +73,7 @@ BinaryOperator&lt;T&gt; | 2 (T, T) | T | apply
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Interface_in_java">Interface in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/@functionalinterface_annotation_in_java">@functionalinterface annotation in java</a>, <a href="/dictionary/Consumer_in_java">Consumer in java</a>, <a href="/dictionary/Function_interface_in_java">Function interface in java</a>, <a href="/dictionary/Lambda_expression_in_java">Lambda expression in java</a>, <a href="/dictionary/Predicate_in_java">Predicate in java</a>, <a href="/dictionary/Supplier_in_java">Supplier in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Interface_in_java">Interface in java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Consumer_interface_in_java">Consumer interface in java</a>, <a href="/dictionary/Function_interface_in_java">Function interface in java</a>, <a href="/dictionary/Operator_interface_in_java">Operator interface in java</a>, <a href="/dictionary/Predicate_interface_in_java">Predicate interface in java</a>, <a href="/dictionary/Supplier_interface_in_java">Supplier interface in java</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/@functionalinterface_annotation_in_java">@functionalinterface annotation in java</a>, <a href="/dictionary/Lambda_expression_in_java">Lambda expression in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

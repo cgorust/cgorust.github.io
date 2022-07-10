@@ -37,28 +37,37 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">function interface in Java</span></h1>
+<h1><span class="badge badge-primary">Supplier interface in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A Function interface is more of a generic one that takes one argument and produces a result. This has a Single Abstract Method (SAM) apply which accepts an argument of a type T and produces a result of type R. 
-There are many versions of Function interfaces because a primitive type can’t imply a general type argument, so we need these versions of function interfaces. Many different versions of the function interfaces are instrumental and are commonly used in primitive types like double, int, long. The different sequences of these primitive types are also used in the argument.
-The BiFunction is substantially related to a Function. Besides, it takes two arguments, whereas Function accepts one argument. 
-One of the common use cases of this interface is Stream.map method. 
+<pre id="word_content" style="white-space: pre-wrap;">A Supplier is a simple interface which indicates that this implementation is a supplier of results. This interface, however, does not enforce any restrictions that supplier implementation needs to return a different result on each invocation.
+The supplier has only one method get() and does not have any other default and static methods.
 ```
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.function.DoubleSupplier;
+import java.util.function.Supplier;
 
 public class Main {
     public static void main(String[] args) {
-        List&lt;String&gt; names = Arrays.asList("a", "ab", "abc", "de", "efg");
-        Function&lt;String, Integer&gt; nameMappingFunction = String::length;
-        List&lt;Integer&gt; nameLength = names.stream().map(nameMappingFunction).collect(Collectors.toList());
-        System.out.println(nameLength); // [1, 2, 3, 2, 3]
+        Supplier&lt;Double&gt; doubleSupplier1 = () -&gt; Math.random();
+        DoubleSupplier doubleSupplier2 = Math::random;
+
+        System.out.println(doubleSupplier1.get());
+        System.out.println(doubleSupplier2.getAsDouble());
     }
 }
 ```
+One of the primary usage of this interface to enable deferred execution. This means delaying the execution until it is needed. For example, Optional class has a method named orElseGet. This method is triggered if optional does not have data. This is demonstrated below:
+```
+import java.util.Optional;
+import java.util.function.Supplier;
 
+public class Main {
+    public static void main(String[] args) {
+        Supplier&lt;Double&gt; doubleSupplier = () -&gt; Math.random();
+        Optional&lt;Double&gt; optionalDouble = Optional.empty();
+        System.out.println(optionalDouble.orElseGet(doubleSupplier));
+    }
+}
+```
 </pre>
 </div>
 <div class="btn-group-vertical text-left">

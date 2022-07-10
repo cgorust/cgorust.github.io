@@ -37,28 +37,47 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">function interface in Java</span></h1>
+<h1><span class="badge badge-primary">Consumer interface in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A Function interface is more of a generic one that takes one argument and produces a result. This has a Single Abstract Method (SAM) apply which accepts an argument of a type T and produces a result of type R. 
-There are many versions of Function interfaces because a primitive type can’t imply a general type argument, so we need these versions of function interfaces. Many different versions of the function interfaces are instrumental and are commonly used in primitive types like double, int, long. The different sequences of these primitive types are also used in the argument.
-The BiFunction is substantially related to a Function. Besides, it takes two arguments, whereas Function accepts one argument. 
-One of the common use cases of this interface is Stream.map method. 
+<pre id="word_content" style="white-space: pre-wrap;">A Consumer is a functional interface that accepts a single input and returns no output. There are also functional variants of the Consumer:  DoubleConsumer, IntConsumer, and LongConsumer. These variants accept primitive values as arguments. 
 ```
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-        List&lt;String&gt; names = Arrays.asList("a", "ab", "abc", "de", "efg");
-        Function&lt;String, Integer&gt; nameMappingFunction = String::length;
-        List&lt;Integer&gt; nameLength = names.stream().map(nameMappingFunction).collect(Collectors.toList());
-        System.out.println(nameLength); // [1, 2, 3, 2, 3]
+        Consumer&lt;String&gt; printer = t -&gt; System.out.println(t);
+        Stream&lt;String&gt; s = Stream.of("a", "b", "c");
+        s.forEach(printer);
     }
 }
 ```
+Consumer interface has two methods:
+Method | Meaning
+----- | -----
+void accept(T t); | the single abstract method (SAM) which accepts a single argument of type T. 
+default Consumer&lt;T&gt; andThen(Consumer&lt;? super T&gt; after); | a default method used for composition.
 
+```
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
+
+public class Main {
+    public static void main(String[] args) {
+        List&lt;String&gt; s = Arrays.asList("a", "b", "c", "d");
+
+        Consumer&lt;List&lt;String&gt;&gt; c1=list-&gt;{
+            for (int i = 0; i &lt; list.size(); i++) {
+                list.set(i, list.get(i).toUpperCase());
+            }
+        };
+        Consumer&lt;List&lt;String&gt;&gt; c2=list-&gt; list.stream().forEach(System.out::println);
+        c1.andThen(c2).accept(s);
+    }
+}
+```
+BiConsumer is the most exciting variant of the Consumer interface. The consumer interface takes only one argument, but on the other side, the BiConsumer interface takes two arguments. Both, Consumer and BiConsumer have no return value. It also returns nothing just like the Consumer interface. It is used in iterating through the entries of the map. 
 </pre>
 </div>
 <div class="btn-group-vertical text-left">

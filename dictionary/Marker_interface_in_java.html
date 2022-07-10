@@ -40,7 +40,70 @@
 <h1><span class="badge badge-primary">marker interface in Java</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">An interface that does not contain any methods, fields, abstract methods, and any constants is called a marker interface. Also, if an interface is empty, then it is known as marker interface.
-The Serializable and the Cloneable interfaces are examples of marker interfaces</pre>
+Marker interface is an empty interface (no field or methods). Examples of marker interface are Serializable, Cloneable and Remote interface. All these interfaces are empty interfaces. 
+* Cloneable interface. Cloneable interface is present in java.lang package. There is a method clone() in Object class. A class that implements the Cloneable interface indicates that it is legal for clone() method to make a field-for-field copy of instances of that class. Invoking Object’s clone method on an instance of the class that does not implement the Cloneable interface results in an exception CloneNotSupportedException being thrown. By convention, classes that implement this interface should override Object.clone() method. 
+```
+import java.lang.Cloneable;
+  
+class C implements Cloneable {
+    int i;
+    String s;
+
+    public C(int i,String s) {
+        this.i = i;
+        this.s = s;
+    }
+  
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+  
+public class Main {
+    public static void main(String[] args) throws CloneNotSupportedException {
+        C c = new C(20, "Twenty");
+        C d = (C)c.clone();
+  
+        System.out.println(c.i);
+        System.out.println(d.s);
+    }
+}
+```
+* Serializable interface. Serializable interface is present in java.io package. It is used to make an object eligible for saving its state into a file. This is called Serialization. Classes that do not implement this interface will not have any of their state serialized or deserialized. All subtypes of a serializable class are themselves serializable.
+```
+import java.io.*;
+  
+class S implements Serializable {
+    int i;
+    String s;
+  
+    public S(int i,String s) {
+        this.i = i;
+        this.s = s;
+    }
+}
+  
+public class Main {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        S s = new S(20,"Twenty");
+  
+        FileOutputStream fos = new FileOutputStream("s.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(s);
+        oos.close();
+  
+        FileInputStream fis = new FileInputStream("s.txt");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        S t = (S)ois.readObject();
+        ois.close();
+  
+        System.out.println(t.i+","+t.s);
+    }
+}
+```
+* Remote interface. Remote interface is present in java.rmi package. A remote object is an object which is stored at one machine and accessed from another machine. So, to make an object a remote object, we need to flag it with Remote interface. Here, Remote interface serves to identify interfaces whose methods may be invoked from a non-local virtual machine. Any object that is a remote object must directly or indirectly implement this interface. RMI (Remote Method Invocation) provides some convenience classes that remote object implementations can extend which facilitate remote object creation.
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Interface_in_java">Interface in java</a></button>

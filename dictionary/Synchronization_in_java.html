@@ -40,6 +40,7 @@
 <h1><span class="badge badge-primary">synchronization in Java</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Java provides a way of creating threads and synchronizing their tasks using synchronized blocks. Synchronized blocks in Java are marked with the synchronized keyword. A synchronized block in Java is synchronized on some object. All synchronized blocks synchronize on the same object can only have one thread executing inside them at a time. All other threads attempting to enter the synchronized block are blocked until the thread inside the synchronized block exits the block.
+* Using the synchronized keyword with a constructor is a syntax error. synchronizing constructors doesn't make sense,  because only the thread that creates an object should have access to it while it is being constructed.
 ```
 import java.io.*;
 import java.util.*;
