@@ -39,13 +39,16 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">enum in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">An enum is a special "class" that represents a group of constants (unchangeable variables, like final variables).
-* An enum can, just like a class, have attributes and methods. The only difference is that enum constants are public, static and final (unchangeable - cannot be overridden). 
-* An enum cannot be used to create objects, and it cannot extend other classes (but it can implement interfaces).
-* Cannot compare an int and enum value directly anyway.
-* Can create an enum from a String. This is helpful when working with older code. The String passed in must match exactly, though.
-* Cannot extend an enum.
-* It is a compile-time error to refer to a static field of an enum type from a constructor, instance initializer, or instance variable initializer of the enum type, unless the field is a constant variable.
+<pre id="word_content" style="white-space: pre-wrap;">Enumerations represent a group of named constants.
+* Enum is internally implemented by using Class. 
+    * All enums implicitly extend java.lang.Enum class. As a class can only extend one parent in Java, so an enum cannot extend anything else; but an enum can implement interfaces.
+    * An enum can have member variables and methods. 
+    * An enum can contain a constructor and it is executed separately for each enum constant at the time of enum class loading. We can’t create enum objects explicitly and hence we can’t invoke enum constructor directly.
+* Every enum constant represents an object of type enum. 
+    * Every enum constant is always implicitly public static final. Since it is static, we can access it by using the enum name. Since it is final, we can’t create child enums.
+    * It is a compile-time error to refer to a static field of an enum type from a constructor, instance initializer, or instance variable initializer of the enum type, unless the field is a constant variable. All enum constants are implicitly public, static and final. This means that they'll be initialized before static non-final fields of the class. So the field will not be initialized when you try to access it from the constructor.
+* Enum type can be passed as an argument to switch statements. 
+* We Cannot compare an int and enum value directly.
 ```
 class Class {
         enum Value {

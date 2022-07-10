@@ -37,43 +37,12 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">LinkedList in Java</span></h1>
+<h1><span class="badge badge-primary">queue interface in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A LinkedList is special because it implements both List and Queue. It has all of the methods of a List. It also has additional methods to facilitate adding or removing from the beginning and/or end of the list.The main benefits of a LinkedList are that you can access, add, and remove from the beginning and end of the list in constant time. The trade-off is that dealing with an arbitrary index takes linear time. This makes a LinkedList a good choice when you’ll be using it as Queue.
-```
-import java.util. * ;
-public class Main {
-    public static void main(String args[]) {
-        LinkedList &lt;String&gt; al = new LinkedList &lt;&gt; (); 
-        al.add("a"); 
-        al.add("c");
-        al.add("b");
-        Iterator &lt;String&gt; itr = al.iterator();
-        while (itr.hasNext()) {
-            System.out.println(itr.next());
-        }
-    }
-}
-```
-Java Linked List class uses two types of linked list to store the elements:
-* Singly Linked List: In a singly Linked list each node in this list stores the data of the node and a pointer or reference to the next node in the list. 
-* Doubly Linked List: In a doubly Linked list, it has two references, one to the next node and another to the previous node. 
-
-Some of the methods in the linked list are listed below:
-Method | Description
------ | -----
- boolean add( Object o) | It is used to append the specified element to the end of the vector.
- boolean contains(Object o) | Returns true if this list contains the specified element. 
- void add(int index, Object element) | Inserts the element at the specified element in the vector.
- void addFirst(Object o) | It is used to insert the given element at the beginning.
- void addLast(Object o) | It is used to append the given element to the end.
- int size() | It is used to return the number of elements in a list
- boolean remove(Object o) | Removes the first occurrence of the specified element from this list.
- int indexOf(Object element) | Returns the index of the first occurrence of the specified element in this list, or -1.
- int lastIndexOf(Object element) | Returns the index of the last occurrence of the specified element in this list, or -1.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">The Queue interface is present in java.util package and extends the Collection interface is used to hold the elements about to be processed in FIFO(First In First Out) order. It is an ordered list of objects with its use limited to inserting elements at the end of the list and deleting elements from the start of the list, (i.e.), it follows the FIFO or the First-In-First-Out principle.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/List_interface_in_java">List interface in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Collection_in_java">Collection in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
