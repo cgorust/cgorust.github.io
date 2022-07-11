@@ -52,6 +52,9 @@
         * When an object of the class is passed to a function by value as an argument. 
         *  When an object is constructed based on another object of the same class. 
         * When the compiler generates a temporary object. 
+* Move constructor
+    * If the definition of a class does not explicitly declare a move constructor, a non-explicit one will be implicitly declared as defaulted if and only if
+the class does not have a user-declared copy constructor.
 
 ```
 #include &lt;iostream&gt;

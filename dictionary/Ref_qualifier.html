@@ -42,43 +42,37 @@
 <pre id="word_content" style="white-space: pre-wrap;">ref-qualifier is a way to help the compiler decide which function to call when the object is an lvalue or an rvalue. Since the object is passed as an implicit pointer type parameter to the function (pointer this) the ref-qualifiers have been also referred as “rvalue reference for *this”. 
 ref-qualifiers are specified with &amp; for lvalues and &amp;&amp; for rvalues at the end of the function signature after the cv-qualifiers.
 ```
-#include &lt;utility&gt;
-#include &lt;string&gt;
 #include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;utility&gt;
+using namespace std;
 
-struct Widget
-{
-   Widget(std::string const &amp; name) : name(name) {};
-   Widget(Widget const &amp; w)   { std::cout &lt;&lt; "copy" &lt;&lt; std::endl; name = w.name; }
-   Widget(Widget&amp;&amp; w)         { std::cout &lt;&lt; "move" &lt;&lt; std::endl; name = std::move(w.name); }
-
-private:
-   std::string name;
-};
-
-struct bar
-{   
-   Widget&amp;        data() &amp;         { return _widget; }
-   Widget const &amp; data() const &amp;   { return _widget; }
-   Widget&amp;&amp;       data() &amp;&amp;        { return std::move(_widget); }
-
-private:
-   Widget _widget{ "bar" };
+struct A {
+  string abc = "abc";
+  string&amp; get() &amp; { cout &lt;&lt; "get() &amp;" &lt;&lt; endl; return abc; }
+  string get() &amp;&amp; { cout &lt;&lt; "get() &amp;&amp;" &lt;&lt; endl; return std::move(abc); }
+  string const&amp; get() const &amp; { cout &lt;&lt; "get() const &amp;" &lt;&lt; endl; return abc; }
+  string get() const &amp;&amp; { cout &lt;&lt; "get() const &amp;&amp;" &lt;&lt; endl; return abc; }
 };
 
 int main() {
-    bar b1;
-    auto w1 = b1.data();    // prints copy
-    
-    bar const b2;
-    auto w2 = b2.data();    // prints copy
-    
-    auto w3 = bar().data(); // prints move
+  A a1;
+  a1.get();
+  std::move(a1).get();
+  const A a2{};
+  a2.get();
+  std::move(a2).get();
 }
+/* 
+get() &amp;
+get() &amp;&amp;
+get() const &amp;
+get() const &amp;&amp;
+*/
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Data_type_in_c++">Data type in c++</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Function_in_c++">Function in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
