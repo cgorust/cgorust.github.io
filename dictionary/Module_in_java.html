@@ -68,10 +68,14 @@ We should remember the following important points about Java 9 Module:
 * It is not allowed to have circular dependencies between modules.
 * The same Java package can only be exported by a single Java module at runtime. In other words, you cannot have two (or more) modules that export the same package in use at the same time. The Java VM will complain at startup if you do. 
 * In Java 9 you can still use the -classpath argument to the Java VM when running an application. On the classpath you can include all your older Java classes, just like you have done before Java 9. All classes found on the classpath will be included in what Java calls the unnamed module. Your own named modules cannot use it, because named modules cannot read classes from the unnamed module. 
-</pre>
+
+&lt;b&gt;Types of Modules&lt;/b&gt; 
+* Type 1: Unnamed Module. An unnamed module is a JAR that is built without module-info.java declaration. An unnamed module will require all other modules and will export all its packages as well.
+* Type 2: Named Module. A named module is a module that is created with a module declaration file module-info.java in its root folder. The module has a name and it depends on some other modules. This means that when compiling and running this module, the required modules have to be present, otherwise compilation error or runtime error may occur.
+* Type 3: Automatic Module. An automatic module is a module that can read all other modules and all other modules can read it also the vice-versa. Even the named modules can read an automatic module.  An automatic module will have a module name that is derived from its jar name.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Package_in_java">Package in java</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Package_in_java">Package in java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Unnamed_module_in_java">Unnamed module in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

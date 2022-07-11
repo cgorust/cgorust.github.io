@@ -40,31 +40,20 @@
 <h1><span class="badge badge-primary">inner class in Java</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">A inner class is defined at the member level of a class (the same level as the methods, instance variables, and constructors). 
-
+* An inner class is associated with an instance; hence, it cannot contain any static members, except for constant variables.
+* The private access modifier on a member of a nested class is private in the sense that the member cannot be access from outside of the utmost class. All access from within that outer class is valid.
 ```
 public class Main {
-    private int x = 10;
-
-    class B {
-        private int x = 20;
-
-        class C {
-            private int x = 30;
-
-            public void allTheX() {
-                System.out.println(x); //30
-                System.out.println(this.x); //30
-                System.out.println(B.this.x); //20
-                System.out.println(Main.this.x); //10
-            }
-        }
+    private class B {
+        private int v = 1;
+        private void f() {}
     }
 
     public static void main(String[] args) {
         Main a = new Main();
         Main.B b = a.new B();
-        Main.B.C c = b.new C();
-        c.allTheX();
+        b.v=2;
+        b.f();
     }
 }
 ```</pre>

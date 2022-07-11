@@ -37,56 +37,29 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">ExecutorService in Java</span></h1>
+<h1><span class="badge badge-primary">custom annotation in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Java provides the Executor framework which is centered around the Executor interface, its sub-interface –ExecutorService and the class-ThreadPoolExecutor, which implements both of these interfaces. By using the executor, one only has to implement the Runnable objects and send them to the executor to execute.
-They allow you to take advantage of threading, but focus on the tasks that you want the thread to perform, instead of thread mechanics.
-To use thread pools, we first create a object of ExecutorService and pass a set of tasks to it. ThreadPoolExecutor class allows to set the core and maximum pool size.
-* The runnables that are run by a particular thread are executed sequentially.
-* After an ExecutorService shuts down, it doesn't accept any more tsks. submitting tasks at this point will lead to a RejectedExecutionexception.
-* If Callable.call() throws an exception, this will be wrapped in an ExecutionException and thrown by Future.get().
+<pre id="word_content" style="white-space: pre-wrap;">Annotations are created by using \@interface. All annotations extends java.lang.annotation.Annotation interface. Annotations cannot include any extends clause.
 
 ```
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
- 
-public class Main implements Callable&lt;String&gt; {
-    public String call() throws Exception {
-        Thread.sleep(10);
-        return Thread.currentThread().getName();
-    }
-     
-    public static void main(String args[]){
-        ExecutorService executor = Executors.newFixedThreadPool(10);
-        List&lt;Future&lt;String&gt;&gt; list = new ArrayList&lt;&gt;();
+import java.lang.annotation.*;
+import java.lang.annotation.ElementType.*;
 
-        Callable&lt;String&gt; callable = new Main();
-        for(int i=0; i&lt; 3; i++){
-            Future&lt;String&gt; future = executor.submit(callable);
-            list.add(future);
-        }
-        for(Future&lt;String&gt; fut : list){
-            try {
-                System.out.println(new Date()+ "::"+fut.get());
-            } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
-            }
-        }
-        executor.shutdown();
+@Target(ElementType.TYPE_PARAMETER)
+@interface My {}
+
+class A {}
+class B&lt;@My A&gt; { }
+
+
+public class Main {
+    public static void main(String args[]) {
     }
 }
-```
-
-</pre>
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Concurrency_in_java">Concurrency in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Annotation_in_java">Annotation in java</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
