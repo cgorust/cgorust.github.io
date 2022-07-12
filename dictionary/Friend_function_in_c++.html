@@ -39,40 +39,36 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">friend function in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A friend function is a non-member function that helps to access private and protected data. This function is not part of the class but must be declared within the class so that it can access the private data. 
-A friend function can be given a special grant to access private and protected members. A friend function can be: 
-* A member of another class 
+<pre id="word_content" style="white-space: pre-wrap;">A friend function is a non-member function that helps to access private and protected data. This function is not part of the class but must be declared within the class so that it can access the private and protected data. 
+A friend function can be: 
+* A member function of another class 
 * A global function 
-
-Following are some important points about friend functions and classes: 
-* Friends should be used only for limited purpose. too many functions or external classes are declared as friends of a class with protected or private data, it lessens the value of encapsulation of separate classes in object-oriented programming.
-* Friendship is not mutual. If class A is a friend of B, then B doesn’t become a friend of A automatically.
-* Friendship is not inherited.
-* The concept of friends is not there in Java. 
 ```
 #include &lt;iostream&gt;
+using namespace std;
 
 class B;
 
 class A {
 public:
-  A() { std::cout &lt;&lt; "A"; }
-  B createB();
+    A() {}
+    B createB();
 };
 
 class B {
 public:
-  B() { std::cout &lt;&lt; "B"; }
-  friend B A::createB();
+    B() {}
+    friend B A::createB();
 };
 
-B A::createB() { return B(); }
-
-int main() {
-  A a;
-  B b = a.createB();
+B A::createB() {
+    cout&lt;&lt;"create B"&lt;&lt;endl;
+    return B();
 }
 
+int main() {
+    B b = A().createB();
+}
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">

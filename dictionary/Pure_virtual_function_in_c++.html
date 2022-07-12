@@ -39,8 +39,8 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">pure virtual function in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A Pure virtual function is a virtual function in C++ for which we can have implementation, but we must override that function in the derived class, otherwise the derived class will also become abstract class. A pure virtual function is declared by assigning 0 in declaration.
-Pure virtual function is used to create abstract class in C++. A class is an abstract class if there is at least a single pure virtual function. 
+<pre id="word_content" style="white-space: pre-wrap;">A pure virtual function is a virtual function declared by assigning 0 to it. Pure virtual function is used to create abstract class in C++. A class is an abstract class if there is at least a single pure virtual function. A pure virtual function must override in the derived class, otherwise the derived class will also become abstract class. 
+* Pure virtual function can has an implementation in base class outside class definition.
 * Abstract methods may not be declared final. It can be private or protected, but cannot used by base pointer or reference.
 * Implementing an abstract method in a subclass follows the same rules for overriding a method. The name and signature must be the same, and the visibility of the method in the subclass must be at least as accessible as the method in the parent class.
 ```
@@ -51,22 +51,22 @@ class Base {
 protected:
     int i;
 public:  
-    Base():i(0){ }
-    virtual void show()=0;  
+    Base():i(1) {}
+    virtual void show()=0;
 };  
 
-void Base::show() { cout&lt;&lt;1&lt;&lt;endl; }  // pure virtual function can still has implementation
+void Base::show() { cout&lt;&lt;i&lt;&lt;endl; }  // pure virtual function can still have its implementation
 
 class Derived:public Base {  
 public:  
-    void show() { cout&lt;&lt;i&lt;&lt;endl; }  
+    void show() { cout&lt;&lt;2*i&lt;&lt;endl; }  
 };  
 
 int main()  {  
     Derived d;  
     Base &amp;b=d;  
 
-    b.show();  // 0
+    b.show();  // 2
     b.Base::show(); // 1
     return 0;  
 } 
