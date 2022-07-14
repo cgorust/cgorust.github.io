@@ -37,16 +37,28 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">comment in Kotlin</span></h1>
+<h1><span class="badge badge-primary">function template</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">In Kotlin, comments are portion of the program intended for programmers to understand the code. They are completely ignored by the Kotlin compiler.
-There are two types of comments in Kotlin,
-*   /\* ... \*/. This is a multiline comment that can span over multiple lines.
-*   // ..... The compiler ignores everything from // to the end of the line. 
-</pre>
+<pre id="word_content" style="white-space: pre-wrap;">A function template is a generic function with type parameters. 
+When the function is called, the compiler will replace every instance of type parameters with the concrete type argument that is either specified by the user or deduced by the compiler. 
+You can name a type parameter anything you like, but by convention single upper case letters are most commonly used. The typename keyword says that parameter is a placeholder for a type. 
+```
+#include &lt;iostream&gt;
+using namespace std;
+
+template &lt;typename T&gt; // type parameter T
+T minv(const T&amp; l, const T&amp; r) {
+    return l &lt; r ? l : r;
+}
+
+int main() {
+    cout&lt;&lt;minv&lt;int&gt;(1,2)&lt;&lt;endl; // type argument specified by user
+    cout&lt;&lt;minv(3,4)&lt;&lt;endl; // type argument deduced by compiler
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Comment">Comment</a>, <a href="/dictionary/Token_in_kotlin">Token in kotlin</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Template">Template</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

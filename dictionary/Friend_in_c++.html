@@ -39,7 +39,8 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">friend in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Here are a few reasons why friend is a bad idea:
+<pre id="word_content" style="white-space: pre-wrap;">In some circumstances, it's useful for a class to grant member-level access to functions that aren't members of the class, or to all members in a separate class. These free functions and classes are known as friends, marked by the friend keyword. Only the class implementer can declare who its friends are. A function or class can't declare itself as a friend of any class.
+Here are a few reasons why friend is a bad idea:
 * friend is not required. It is convenient, but not required.
 * friend supports bad design. If one class requires friend access to another, you're doing it wrong. (see above, convenient, not required).
 * friend breaks encapsulation. Basically, all my privates are belong to me, and that guy over there (my friend).

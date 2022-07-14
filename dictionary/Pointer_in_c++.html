@@ -39,17 +39,27 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">pointer in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The valid use cases to use new and delete, raw pointers or c-style arrays with modern C++ are when ownership should not be local.
+<pre id="word_content" style="white-space: pre-wrap;">Raw pointers are used extensively in both C and C++ for three main purposes:
+* to allocate new objects on the heap,
+* to iterate over elements in arrays or other data structures.
+* to pass functions to other functions
+
+Raw pointer features:
+* A raw pointer is a pointer whose lifetime isn't controlled by an encapsulating object, such as a smart pointer. 
+* A raw pointer can be assigned the address of another non-pointer variable, or it can be assigned a value of nullptr. A pointer that hasn't been assigned a value contains random data.
+* A pointer can also be dereferenced to retrieve the value of the object that it points at. 
+* A pointer to void simply points to a raw memory location. Sometimes it's necessary to use void pointers, for example when passing between C++ code and C functions.
+      * Assigning any pointer type to a void pointer without using a cast is allowed in C or C++. But we can not assign a void pointer to a non-void pointer without using a cast to non-void pointer type in C++.
+
+&lt;b&gt;When should use raw pointers&lt;/b&gt;
+Raw pointers are the source of many serious programming errors. Therefore, their use is strongly discouraged. Modern C++ provides smart pointers for allocating objects, iterators for traversing data structures, and lambda expressions for passing functions.
+Use raw pointer when ownership should not be local.
 As an example, a pointer container may not want ownership over the pointers in it to reside in the pointers themselves. If you try to write a linked list with forward unique ptrs, at destruction time you can easily blow the stack.
 A vector-like container of owning pointers may be better suited to storing delete operation at the container or subcontainer level, and not at the element level.
-In those and similar cases, you wrap ownership like a smart pointer does, but you do it at a higher level. Many data structures (graphs, etc) may have similar issues, where ownership properly resides at a higher point than where the pointers are, and they may not map directly to an existing container concept.
-In some cases it may be easy to factor out the container-ownership from the rest of the data structure. In others it may not.
-Sometimes you have insanely complex non-local non-reference counted lifetimes. There is no sane spot to put the ownership pointer in those cases.
-Determining correctness here is hard, but not impossible. Programs that are correct and have such complex ownership semantics exist.
-Assigning any pointer type to a void pointer without using a cast is allowed in C or C++. But we can not assign a void pointer to a non-void pointer without using a cast to non-void pointer type in C++.</pre>
+In those and similar cases, you wrap ownership like a smart pointer does, but you do it at a higher level. Many data structures (graphs, etc) may have similar issues, where ownership properly resides at a higher point than where the pointers are, and they may not map directly to an existing container concept.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_c++">Data type in c++</a>, <a href="/dictionary/Pointer">Pointer</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Smart_pointer_in_c++">Smart pointer in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_c++">Data type in c++</a>, <a href="/dictionary/Pointer">Pointer</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Function_pointer">Function pointer</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Smart_pointer_in_c++">Smart pointer in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

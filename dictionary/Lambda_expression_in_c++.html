@@ -39,7 +39,8 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">lambda expression in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">C++ 11 introduced lambda expression to allow us write an function not worth naming. 
+<pre id="word_content" style="white-space: pre-wrap;">C++ 11 introduced lambda expression to allow us write a function not worth naming. 
+A lambda can introduce new variables in its body (in C++14), and it can also access, or capture, variables from the surrounding scope. A lambda begins with the capture clause. It specifies which variables are captured, and whether the capture is by value or by reference. Variables that have the ampersand (&amp;) prefix are accessed by reference and variables that don't have it are accessed by value. An empty capture clause, [ ], indicates that the body of the lambda expression accesses no variables in the enclosing scope. You can use a capture-default mode to indicate how to capture any outside variables referenced in the lambda body: [&amp;] means all variables that you refer to are captured by reference, and [=] means they're captured by value. 
 ```
 #include &lt;iostream&gt;
 using namespace std;

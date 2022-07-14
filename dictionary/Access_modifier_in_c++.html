@@ -39,11 +39,27 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">access modifier in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Modifier | Meaning
+<pre id="word_content" style="white-space: pre-wrap;">&lt;b&gt;Member-Access Control&lt;/b&gt;
+The default access is private in a class, and public in a struct or union. 
+Access specifiers in a class can be used any number of times in any order.
+Access control is equally applicable to all names: member functions, member data, nested classes, and enumerators.
+Type of Access | Meaning
 ----- | -----
-public | Class declared as public specifier will be available to everyone. Data members and member functions declared as public can be accessed by other classes and functions too. 
-protected | Protected access modifier is similar to private access modifier in the sense that it can’t be accessed outside of its class unless with the help of friend class, the difference is that the class members declared as protected can be accessed by any subclass of that class as well. 
-private | Private makes the declaration visible to the member functions inside the class. They are not allowed to be accessed directly by any object or function outside the class. Only the member functions or the friend functions are allowed to access the private data members of a class. This is applied by default to class, so it can be omitted.  
+private | Class members declared as private can be used only by member functions and friends (classes or functions) of the class.
+protected | Class members declared as protected can be used by member functions and friends (classes or functions) of the class. Additionally, they can be used by classes derived from the class.
+public | Class members declared as public can be used by any function.
+
+&lt;b&gt;Access Control in Derived Classes&lt;/b&gt;
+Two factors control which members of a base class are accessible in a derived class; these same factors control access to the inherited members in the derived class:
+* Whether the derived class declares the base class using the public access specifier.
+* What the access to the member is in the base class.
+
+| private | protected | public
+| ----- | ----- | -----
+| Always inaccessible with any derivation access | private in derived class if you use private derivation | private in derived class if you use private derivation
+|    | protected in derived class if you use protected derivation | protected in derived class if you use protected derivation
+|    | protected in derived class if you use public derivation | public in derived class if you use public derivation
+
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
