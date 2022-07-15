@@ -55,7 +55,7 @@ class Derived : public Base {
 int main()
 {
     Derived d;
-    Base* bp = dynamic_cast&lt;Base*&gt;(&amp;d);
+    Base* bp = &amp;d;
     Derived* dp = dynamic_cast&lt;Derived*&gt;(bp);
     if (dp == nullptr)
         cout &lt;&lt; "null" &lt;&lt; endl;

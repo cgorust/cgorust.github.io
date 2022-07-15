@@ -37,61 +37,20 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">integer in C++</span></h1>
+<h1><span class="badge badge-primary">usual arithmetic conversion in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Type | Storage size | Value range
---- | --- | --- 
-short | 2 bytes | -2&lt;sup&gt;15&lt;/sup&gt; to 2&lt;sup&gt;15&lt;/sup&gt;-1
-unsigned short | 2 bytes | 0 to 2&lt;sup&gt;16&lt;/sup&gt;-1
-int | 2 bytes or 4 bytes | -2&lt;sup&gt;15&lt;/sup&gt; to 2&lt;sup&gt;15&lt;/sup&gt;-1 or -2&lt;sup&gt;31&lt;/sup&gt; to 2&lt;sup&gt;31&lt;/sup&gt;-1
-unsigned int | 2 bytes or 4 bytes | 0 to 2&lt;sup&gt;16&lt;/sup&gt;-1 or 0 to 2&lt;sup&gt;32&lt;/sup&gt;-1
-long | 8 bytes | -2&lt;sup&gt;63&lt;/sup&gt; to 2&lt;sup&gt;63&lt;/sup&gt;-1
-unsigned long | 8 bytes | 0 to 2&lt;sup&gt;64&lt;/sup&gt;-1
-long long | 8 bytes | -2&lt;sup&gt;63&lt;/sup&gt; to 2&lt;sup&gt;63&lt;/sup&gt;-1
-unsigned long long | 8 bytes | 0 to 2&lt;sup&gt;64&lt;/sup&gt;-1
-
-Notes:
-* Data type modifiers: 
- * Signed
- * Unsigned
- * Short
- * Long
-* Overflow:
- * Signed integer overflow is undefined behaviour according to the standard.
- * Unsigned integer ends up back at zero when overflowed.
-
-```
-#include &lt;iostream&gt;
-using namespace std;
-
-int main()
-{
-    short s = -1; cout&lt;&lt;s&lt;&lt;endl;
-    unsigned short us = 1; cout&lt;&lt;us&lt;&lt;endl;
-    int i = -1; cout&lt;&lt;i&lt;&lt;endl;
-    unsigned int ui = 1; cout&lt;&lt;ui&lt;&lt;endl;
-    long l = -1; cout&lt;&lt;l&lt;&lt;endl;
-    unsigned long ul = 1; cout&lt;&lt;ul&lt;&lt;endl;
-    long long ll = -1; cout&lt;&lt;ll&lt;&lt;endl;
-    unsigned long long ull = 1; cout&lt;&lt;ull&lt;&lt;endl;
-    return 0;
-}
-```
-Outputs:
-```
--1
-1
--1
-1
--1
-1
--1
-1
-```
-</pre>
+<pre id="word_content" style="white-space: pre-wrap;">* Either operand is of type long double: Other operand is converted to type long double.
+* Preceding condition not met and either operand is of type double:	Other operand is converted to type double.
+* Preceding conditions not met and either operand is of type float: Other operand is converted to type float.
+* Preceding conditions not met (none of the operands are of floating types): Operands get integral promotions as follows:
+    * If either operand is of type unsigned long, the other operand is converted to type unsigned long.
+    * If preceding condition not met, and if either operand is of type long and the other of type unsigned int, both operands are converted to type unsigned long.
+    * If the preceding two conditions aren't met, and if either operand is of type long, the other operand is converted to type long.
+    * If the preceding three conditions aren't met, and if either operand is of type unsigned int, the other operand is converted to type unsigned int.
+    * If none of the preceding conditions are met, both operands are converted to type int.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_c++">Data type in c++</a>, <a href="/dictionary/Integer">Integer</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Usual_arithmetic_conversion_in_c++">Usual arithmetic conversion in c++</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Floating-point_in_c++">Floating-point in c++</a>, <a href="/dictionary/Integer_in_c++">Integer in c++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

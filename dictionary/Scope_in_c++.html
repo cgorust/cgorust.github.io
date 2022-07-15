@@ -39,7 +39,15 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">scope in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A variable can be either of global or local scope. A global variable is a variable declared in the main body of the source code, outside all functions, while a local variable is one declared within the body of a function or a block.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">There are six kinds of scope:
+* Global scope: A global name is one that is declared outside of any class, function, or namespace. However, in C++ even these names exist with an implicit global namespace. The scope of global names extends from the point of declaration to the end of the file in which they are declared. For global names, visibility is also governed by the rules of linkage which determine whether the name is visible in other files in the program.
+* Namespace scope: A name that is declared within a namespace, outside of any class or enum definition or function block, is visible from its point of declaration to the end of the namespace. A namespace may be defined in multiple blocks across different files.
+* Local scope: A name declared within a function or lambda, including the parameter names, have local scope. They are often referred to as "locals". They are only visible from their point of declaration to the end of the function or lambda body. Local scope is a kind of block scope, which is discussed later in this article.
+* Class scope: Names of class members have class scope, which extends throughout the class definition regardless of the point of declaration. Class member accessibility is further controlled by the public, private, and protected keywords. Public or protected members can be accessed only by using the member-selection operators (. or -&gt;) or pointer-to-member operators (.* or -&gt;*).
+* Statement scope: Names declared in a for, if, while, or switch statement are visible until the end of the statement block.
+* Function scope: A label has function scope, which means it is visible throughout a function body even before its point of declaration. Function scope makes it possible to write statements like goto cleanup before the cleanup label is declared.
+
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Scope">Scope</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Variable_in_c++">Variable in c++</a></button>
