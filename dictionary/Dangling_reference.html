@@ -39,15 +39,14 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">dangling reference</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Garbage is an object that cannot be reached through a reference. A dangling reference is a reference to an object that no longer exists. A link or pointer to something (instruction, table element, index item, etc.)
+<pre id="word_content" style="white-space: pre-wrap;">A dangling reference is a reference to an object that no longer exists. 
 ```
 #include &lt;iostream&gt;
 using namespace std;
 
-int&amp; bar()
-{
+int&amp; bar() {
     int n = 10;
-    return n;
+    return n;  // warning: reference to local variable ‘n’ returned 
 }
 
 int main() {
