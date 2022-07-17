@@ -61,7 +61,6 @@ using namespace std;
 
 int minOperations(vector&lt;int&gt;&amp; nums, vector&lt;int&gt;&amp; divs) {
     auto f = [](int a, int b){ return gcd(a, b); };
-    sort(divs.begin(), divs.end());       
     int div = reduce(divs.begin(), divs.end(), divs[0], f);
     
     sort(nums.begin(), nums.end());
