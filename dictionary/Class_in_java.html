@@ -39,26 +39,22 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">class in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The following code is a bare-bones class declaration:
+<pre id="word_content" style="white-space: pre-wrap;">Classes are declared by using the class keyword followed by an identifier.
+* The class keyword is preceded by the access modifier. Because public is used in below case, anyone can create instances of this class. 
+* The name of the class follows the class keyword. The name of the class must be a valid identifier. 
+* The remainder is the class body, where the class members are defined, including fields, properties, methods, and events.
 ```
-class MyClass { 
+//[access modifier] - [class] - [identifier]
+public class Main {
+    // Fields, properties, methods and events go here...
+    public static void main(String[] args) {
+        Main m = new Main();   
+        System.out.println(m);
+    }
 }
 ```
-Most of the time, each Java class is defined in its own *.java file. It is usually public, which means any code can call it. Interestingly, Java does not require that the class be public. You can even put two classes in the same file. When you do so, at most one of the classes in the file is allowed to be public. If you do have a public class, it needs to match the filename. public class Animal2 would not compile in a file named Animal.java. 
-&lt;b&gt;Elements of a class&lt;/b&gt;
-Element | Example | Required? | Where does it go?
------ | ----- | ----- | ----- 
-Package declaration | package abc; | No | First line in the file
-Import statements | import java.util.*; | No | Immediately after the package
-Class declaration | public class C | Yes | Immediately after the import
-Field declarations | int value; | No | Anywhere inside a class
-Method declarations | void method() { } | No | Anywhere inside a class
 
-Order of Initialization:
-* If there is a superclass, initialize it first.
-* Static variable declarations and static initializers in the order they appear in the file.
-* Instance variable declarations and instance initializers in the order they appear in the file.
-* The constructor.
+
 </pre>
 </div>
 <div class="btn-group-vertical text-left">

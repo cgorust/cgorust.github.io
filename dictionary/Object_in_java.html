@@ -50,6 +50,11 @@ public class C {
   }
 }
 ```
+Order of Initialization:
+* If there is a superclass, initialize it first.
+* Static variable declarations and static initializers in the order they appear in the file.
+* Instance variable declarations and instance initializers in the order they appear in the file.
+* The constructor.
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
