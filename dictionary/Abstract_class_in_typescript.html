@@ -37,12 +37,47 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">OOP in Python</span></h1>
+<h1><span class="badge badge-primary">abstract class in TypeScript</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">Abstract classes are mainly for inheritance where other classes may derive from them. We cannot create an instance of an abstract class. An abstract class in Typescript is defined by the abstract keyword. 
+An abstract class typically includes one or more abstract methods or property declarations. The class which extends the abstract class must define all the abstract methods.
+
+```
+abstract class Person {
+    name: string;
+    
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    display(): void{
+        console.log(this.name);
+    }
+
+    abstract create(name: string): Person;
+}
+
+class Employee extends Person { 
+    empCode: number;
+    
+    constructor(name: string, code: number) { 
+        super(name); 
+        this.empCode = code;
+    }
+
+    create(name:string): Person { 
+        return new Employee(name, 1);
+    }
+}
+
+let emp: Person = new Employee("James", 100);
+emp.display(); 
+let emp2: Person = emp.create('Steve');
+emp2.display();
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Oop">Oop</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Python">Python</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Abstraction_in_python">Abstraction in python</a>, <a href="/dictionary/Class_in_python">Class in python</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Abstract_class">Abstract class</a>, <a href="/dictionary/Class_in_typescript">Class in typescript</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Abstraction_in_typescript">Abstraction in typescript</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

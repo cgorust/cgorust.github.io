@@ -37,12 +37,39 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">OOP in Python</span></h1>
+<h1><span class="badge badge-primary">pure virtual desturctor</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">It is possible to have a pure virtual destructor. Pure virtual destructors are legal in standard C++ and one of the most important things to remember is that if a class contains a pure virtual destructor, it must provide a function body for the pure virtual destructor. 
+Why a pure virtual function requires a function body?
+The reason is that destructors (unlike other functions) are not actually ‘overridden’, rather they are always called in the reverse order of the class derivation. This means that a derived class destructor will be invoked first, then the base class destructor will be called. If the definition of the pure virtual destructor is not provided, then what function body will be called during object destruction? Therefore the compiler and linker enforce the existence of a function body for pure virtual destructors. 
+```
+#include &lt;iostream&gt;
+using namespace std;
+ 
+class Base {
+public:
+    virtual ~Base() = 0;
+};
+Base::~Base() // Explicit destructor call
+{
+    std::cout &lt;&lt; "Pure virtual destructor is called\n";
+}
+
+class Derived : public Base {
+public:
+    ~Derived() { cout &lt;&lt; "~Derived() is executed\n"; }
+};
+ 
+int main()
+{
+    Base* b = new Derived();
+    delete b;
+    return 0;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Oop">Oop</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Python">Python</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Abstraction_in_python">Abstraction in python</a>, <a href="/dictionary/Class_in_python">Class in python</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Pure_virtual_function">Pure virtual function</a>, <a href="/dictionary/Virtual_destructor">Virtual destructor</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

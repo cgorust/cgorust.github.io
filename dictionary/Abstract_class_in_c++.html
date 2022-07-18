@@ -39,15 +39,34 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">abstract class in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">In C++, a class contains at least one pure virtual function is an abstract class, and cannot be instantiated directly. 
+<pre id="word_content" style="white-space: pre-wrap;">In C++, a class contains at least one pure virtual function is an abstract class, and cannot be instantiated directly. C++ defines a abstract class without an abstract keyword.
 *  We cannot create the instance of abstract class. 
 * We can have pointers and references of abstract class type, but since abstract class cannot be instantiated, they will point or referenced to subclasses.
 * A subclass of an abstract class can only be instantiated directly if all inherited pure virtual methods have been implemented. 
 * An abstract class can have constructors. 
+```
+#include &lt;iostream&gt;
+
+class Shape {
+    virtual int area() = 0;
+};
+
+class Square : Shape {
+    int i = 10;
+public:    
+    int area() { return i*i; }
+};
+
+int main() {
+    Square s;
+    std::cout&lt;&lt;s.area();
+    return 0;
+}
+```
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Abstract_class">Abstract class</a>, <a href="/dictionary/Class_in_c++">Class in c++</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Abstraction_in_c++">Abstraction in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Pure_virtual_function_in_c++">Pure virtual function in c++</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Abstract_class">Abstract class</a>, <a href="/dictionary/Class_in_c++">Class in c++</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Abstraction_in_c++">Abstraction in c++</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Pure_virtual_function">Pure virtual function</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

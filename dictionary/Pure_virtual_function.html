@@ -39,36 +39,42 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">pure virtual function</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Pure virtual function is a function which doesn't have an implementation and the same needs to be implemented by the next immediate non-abstract class. A class will become an abstract class if there is at-least a single pure virtual function and thus pure virtual functions are used to create interfaces in c++.
-A function is made as pure virtual function by the using a specific signature, " = 0" appended to the function declaration as given below,
+<pre id="word_content" style="white-space: pre-wrap;">A pure virtual function is an abstract method in C++.  A pure virtual function is declared by assigning 0 to a virtual function. 
+Pure virtual function is used to create abstract class in C++. A class is an abstract class if there is at least a single pure virtual function. A pure virtual function must override in the derived class, otherwise the derived class will also become abstract class. 
+* Pure virtual function can has an implementation in base class outside class definition.
+* Abstract methods may not be declared final. It can be private or protected, but cannot used by base pointer or reference.
+* Implementing an abstract method in a subclass follows the same rules for overriding a method. The name and signature must be the same, and the visibility of the method in the subclass must be at least as accessible as the method in the parent class.
 ```
 #include&lt;iostream&gt;  
 using namespace std;  
 
-class Base  {  
+class Base {  
+protected:
+    int i;
 public:  
-  virtual void show()=0;  
+    Base():i(1) {}
+    virtual void show()=0;
 };  
-  
-class Derived:public Base  {  
+
+void Base::show() { cout&lt;&lt;i&lt;&lt;endl; }  // pure virtual function can still have its implementation
+
+class Derived:public Base {  
 public:  
-  void show()  {  
-        cout&lt;&lt;"javaTpoint";  
-  }  
+    void show() { cout&lt;&lt;2*i&lt;&lt;endl; }  
 };  
 
 int main()  {  
-    Base* b;  
     Derived d;  
+    Base &amp;b=d;  
 
-    b=&amp;d;  
-    b-&gt;show();  
+    b.show();  // 2
+    b.Base::show(); // 1
     return 0;  
-}  
+} 
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Virtual_function">Virtual function</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Abstract_method">Abstract method</a>, <a href="/dictionary/Virtual_function_in_c++">Virtual function in c++</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Abstraction_in_c++">Abstraction in c++</a>, <a href="/dictionary/Abstract_class_in_c++">Abstract class in c++</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Pure_virtual_desturctor">Pure virtual desturctor</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
@@ -87,7 +93,6 @@ int main()  {
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://www.google.com/recaptcha/api.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
 <script src="/resource/highlight/highlight.pack.js"></script>

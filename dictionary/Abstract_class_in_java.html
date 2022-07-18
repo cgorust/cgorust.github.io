@@ -49,6 +49,24 @@ Abstract Class Definition Rules:
 * The first concrete class that extends an abstract class must provide an implementation for all of the inherited abstract methods.
 
 you can declare abstract class without defining an abstract method in it. Once you declare a class abstract it indicates that the class is incomplete and, you cannot instantiate it. Hence, if you want to prevent instantiation of a class directly you can declare it abstract.
+```
+abstract class Animal {
+  public abstract void sound();
+}
+
+class Pig extends Animal {
+  public void sound() {
+    System.out.println("The pig says: wee wee");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Pig pig = new Pig(); 
+    pig.sound();
+  }
+}
+```
 
 &lt;b&gt;Interface vs Abstract Class&lt;/b&gt;
 Difference | Abstract class | Interface

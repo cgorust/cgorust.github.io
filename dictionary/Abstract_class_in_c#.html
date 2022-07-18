@@ -37,12 +37,23 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">OOP in Python</span></h1>
+<h1><span class="badge badge-primary">abstract class in C#</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">C# uses the abstract keyword in a class declaration to indicate that a class is an abstract class. Abstract class is a class intended only to be a base class of other classes, not instantiated on its own.
+```
+abstract class Shape {}
+
+class Square : Shape {
+    public int i = 10;
+    static void Main() {
+        var s = new Square();
+        System.Console.WriteLine(s.i);
+    }
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Oop">Oop</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Python">Python</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Abstraction_in_python">Abstraction in python</a>, <a href="/dictionary/Class_in_python">Class in python</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Abstract_class">Abstract class</a>, <a href="/dictionary/Class_in_c%23">Class in c#</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Abstraction_in_c%23">Abstraction in c#</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

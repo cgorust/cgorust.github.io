@@ -39,21 +39,45 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">abstract class in Kotlin</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A class and some of its members may be declared abstract. An abstract member does not have an implementation in its class. Note that we do not need to annotate an abstract class or function with open – it goes without saying.
-We can override a non-abstract open member with an abstract one
+<pre id="word_content" style="white-space: pre-wrap;">In Kotlin, abstract class is declared using the abstract keyword in front of class. An abstract class can not instantiated means we can not create object for the abstract class.
+* We can’t create an object for abstract class.
+* An abstract class can contain both abstract and non-abstract members
+* All the variables (properties) and member functions of an abstract class are by default non-abstract. So, if we want to override these members in the child class then we need to use open keyword.
+* If we declare a member function as abstract then we does not need to annotate with open keyword because these are open by default.
+* An abstract member function doesn’t have a body, and it must be implemented in the derived class.
+
 ```
-open class Polygon {
-    open fun draw() {}
+abstract class Employee(val name: String,val experience: Int) {   
+    abstract var salary: Double
+    abstract var date: String
+    abstract fun dateOfBirth(date:String)
+  
+    fun employeeDetails() {
+        println("Name of the employee: $name")
+        println("Experience in years: $experience")
+        println("Annual Salary: $salary")
+        println("Birth date: $date")
+    }
 }
 
-abstract class Rectangle : Polygon() {
-    abstract override fun draw()
+class Engineer(name: String, experience: Int) : Employee(name,experience) {
+    override var salary = 500000.00
+    override var date = ""
+    override fun dateOfBirth(date:String){
+        this.date = date;
+    }
+}
+
+fun main() {
+    val eng = Engineer("Tom",2)
+    eng.dateOfBirth("02 December 1994")
+    eng.employeeDetails()
 }
 ```
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Abstract_class">Abstract class</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Abstract_class">Abstract class</a>, <a href="/dictionary/Class_in_kotlin">Class in kotlin</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Abstraction_in_kotlin">Abstraction in kotlin</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
