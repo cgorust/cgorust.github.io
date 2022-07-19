@@ -37,19 +37,30 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">class</span></h1>
+<h1><span class="badge badge-primary">open class in Kotlin</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A Class is a user defined data-type which has data members and member functions.
-* Data members are the data variables.
-* Member functions are the functions used to manipulate these variables.
+<pre id="word_content" style="white-space: pre-wrap;">Because of a concern about the “fragile base class” problem, Kotlin classes and their functions are final by default.
+* To allow a class to be extended it must be marked open, meaning that it’s “open to be extended”.
+* To allow class functions and fields to be overridden, they must also be marked open.
+* A member marked override is itself open, so it may be overridden in subclasses. If you want to prohibit re-overriding, use final.
 
-Classes in different languages:
-* There are no classes in Go, but Go has struct types. Struct types plus their associated methods serve the same goal of a class, where the struct holds the state, and the methods provide them behavior.
-* JavaScript classes are primarily syntactic sugar over JavaScript’s existing prototype-based inheritance. The class syntax does not introduce a new object-oriented inheritance model to JavaScript.
-* There are no classes in Rust, but we have struct and impl so we can mix them to simulate a class.</pre>
+```
+open class A {
+    open fun foo() = println("foo in A")
+}
+open class B : A() {
+    final override fun foo() = println("foo in B")
+}
+open class C : B() { }
+
+fun main() {
+    var c = C()
+    c.foo()
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type">Data type</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class-based_programming">Class-based programming</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Abstract_class">Abstract class</a>, <a href="/dictionary/Anonymous_class">Anonymous class</a>, <a href="/dictionary/Class_in_c%23">Class in c#</a>, <a href="/dictionary/Class_in_c++">Class in c++</a>, <a href="/dictionary/Class_in_java">Class in java</a>, <a href="/dictionary/Class_in_javascript">Class in javascript</a>, <a href="/dictionary/Class_in_kotlin">Class in kotlin</a>, <a href="/dictionary/Class_in_php">Class in php</a>, <a href="/dictionary/Class_in_python">Class in python</a>, <a href="/dictionary/Class_in_typescript">Class in typescript</a>, <a href="/dictionary/Final_class">Final class</a>, <a href="/dictionary/Local_class">Local class</a>, <a href="/dictionary/Nested_class">Nested class</a>, <a href="/dictionary/Static_class">Static class</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Access_modifier">Access modifier</a>, <a href="/dictionary/Class_variable">Class variable</a>, <a href="/dictionary/Constructor">Constructor</a>, <a href="/dictionary/Destructor">Destructor</a>, <a href="/dictionary/Fragile_base_class">Fragile base class</a>, <a href="/dictionary/Instance_variable">Instance variable</a>, <a href="/dictionary/Interface">Interface</a>, <a href="/dictionary/Method">Method</a>, <a href="/dictionary/Object">Object</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class_in_kotlin">Class in kotlin</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Final_class">Final class</a>, <a href="/dictionary/Fragile_base_class">Fragile base class</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

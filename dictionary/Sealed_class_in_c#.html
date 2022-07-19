@@ -39,7 +39,17 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">sealed class in C#</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A sealed class in C# is a class that cannot be inherited by any class. The design intent of a sealed class is to indicate that the class is specialized and there is no need to extend it to provide any additional functionality through inheritance to override its behavior.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">A sealed class in C# is a class that cannot be inherited by any class. The design intent of a sealed class is to indicate that the class is specialized and there is no need to extend it to provide any additional functionality through inheritance to override its behavior.
+```
+using System;  
+
+sealed class Sealed { } 
+class Sub : Sealed { } // `Sub': cannot derive from sealed type `Sealed'
+
+class ClassMain {  
+    static void Main(string[] args) { }  
+}  
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class_in_c%23">Class in c#</a>, <a href="/dictionary/Final_class">Final class</a></button>
