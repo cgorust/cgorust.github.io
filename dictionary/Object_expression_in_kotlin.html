@@ -37,17 +37,25 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">object in Kotlin</span></h1>
+<h1><span class="badge badge-primary">object expression in Kotlin</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">To create an instance of a class, we call the constructor as if it were a regular function:
+<pre id="word_content" style="white-space: pre-wrap;">Object expression is a structure that creates a single instance of an object:
 ```
-val invoice = Invoice()
-val customer = Customer("Joe Smith")
+val coords = object {
+    var x = 10
+    var y = 10
+}
 ```
-Note that Kotlin does not have a new keyword.</pre>
+It is often used as a substitution to a Java anonymous class:
+```
+window.addMouseListener(object : MouseAdapter() {
+    override fun mouseClicked(e: MouseEvent) { /* ...*/ }
+    override fun mouseEntered(e: MouseEvent) { /* ...*/ } 
+})
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Object">Object</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class_in_kotlin">Class in kotlin</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Object_expression_in_kotlin">Object expression in kotlin</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Anonymous_class">Anonymous class</a>, <a href="/dictionary/Object_in_kotlin">Object in kotlin</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
