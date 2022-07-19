@@ -37,29 +37,25 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">class in PHP</span></h1>
+<h1><span class="badge badge-primary">anonymous class in TypeScript</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Classes are declared by using the class keyword followed by an identifier.
-* PHP class has no class-level access modifier. 
-* The name of the class follows the class keyword. The name of the class must be a valid identifier. 
-* The remainder is the class body, where the class members are defined, including fields and methods.
+<pre id="word_content" style="white-space: pre-wrap;">TypeScript supports anonymous class.
 ```
-&lt;?php
-//[class] - [identifier]
-class Program {
-    // Fields and methods go here...
-	public $v = "Main";
-};
+abstract class Runnable {
+  public abstract run():void;
+}
 
-// Create a new object
-$main = new Program;
-echo $main-&gt;v;
-?&gt;
-```
-</pre>
+const runnable = new class extends Runnable {
+  run() {
+    console.log("run")
+  }
+}();
+
+runnable.run()
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class">Class</a>, <a href="/dictionary/Data_type_in_php">Data type in php</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Oop_in_php">Oop in php</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Abstract_class_in_php">Abstract class in php</a>, <a href="/dictionary/Anonymous_class_in_php">Anonymous class in php</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Destructor_in_php">Destructor in php</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Anonymous_class">Anonymous class</a>, <a href="/dictionary/Class_in_typescript">Class in typescript</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

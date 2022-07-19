@@ -39,18 +39,35 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">anonymous class in Java</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Anonymous class is a class which has no name given to it.
-* Anonymous class cannot access local variables in its enclosing scope that are not declared as final or effectively final.
-```
-interface I {
-    public default int getValue() {
-        return 1;
-    }
-}
+<pre id="word_content" style="white-space: pre-wrap;">Anonymous class in Java is an inner class without a name and for which only a single object is created. An anonymous class is useful when making an instance of an object with certain “extras” such as overriding methods of a class or interface, without having to actually subclass a class.
+Anonymous inner classes are useful in writing implementation classes for listener interfaces in graphics programming. 
+* An anonymous class can implement only one interface at a time.
+* An anonymous class can extend a class or can implement an interface but not both at a time.
+* We can’t write any constructor for anonymous class because the anonymous class does not have any name and while defining constructor class name and constructor name must be same.
 
-public class Main {
-    public static void main(String args[]) {
-        I i = new I() {};
+Like local classes, anonymous classes can capture variables; they have the same access to local variables of the enclosing scope:  
+* An anonymous class has access to the members of its enclosing class.
+* An anonymous class cannot access local variables in its enclosing scope that are not declared as final or effectively final.
+* Like a nested class, a declaration of a type (such as a variable) in anonymous class shadows any other declarations in the enclosing scope that have the same name.
+
+Anonymous classes also have the same restrictions as local classes with respect to their members: 
+* We cannot declare static initializers or member interfaces in an anonymous class.
+* An anonymous class can have static members provided that they are constant variables.
+
+```
+interface Age {
+    int x = 21;
+    void getAge();
+}
+ 
+class Main {
+    public static void main(String[] args) {
+        Age age = new Age() {
+            @Override public void getAge() {
+                System.out.print("Age is " + x);
+            }
+        };
+        age.getAge();
     }
 }
 ```</pre>
