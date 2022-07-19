@@ -41,10 +41,16 @@
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">A nested class is a class that is defined within another class. 
 Nested classes are divided into two categories: static and non-static. Nested classes that are declared static are called static nested classes. Non-static nested classes are called inner classes. 
-Although a nested class is defined in the scope of its enclosing class, it is important to understand that there is no connection between the objects of an enclosing class and objects of its nested class(es). A nested-type object contains only the members defined inside the nested class. Similarly, an object of the enclosing class has only those members that are defined.</pre>
+Although a nested class is defined in the scope of its enclosing class, it is important to understand that there is no connection between the objects of an enclosing class and objects of its nested class(es). A nested-type object contains only the members defined inside the nested class. Similarly, an object of the enclosing class has only those members that are defined.
+In general, nested classes should be used sparingly. There are several reasons for this. Some developers are not fully familiar with the concept. These developers might, for example, have problems with the syntax of declaring variables of nested classes. Nested classes are also very tightly coupled with their enclosing classes, and as such are not suited to be general-purpose classes.
+Nested classes are best suited for modeling implementation details of their enclosing classes. The end user should rarely have to declare variables of a nested class and almost never should have to explicitly instantiate nested classes. 
+Nested class in different programming languages:
+* There is no nested class in JavaScript.
+* There is no nested class in PHP.
+* There is no nested class in TypeScript.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class">Class</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Inner_class">Inner class</a>, <a href="/dictionary/Local_class">Local class</a>, <a href="/dictionary/Nested_class_in_c++">Nested class in c++</a>, <a href="/dictionary/Nested_class_in_java">Nested class in java</a>, <a href="/dictionary/Static_nested_class">Static nested class</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class">Class</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Inner_class">Inner class</a>, <a href="/dictionary/Local_class">Local class</a>, <a href="/dictionary/Nested_class_in_java">Nested class in java</a>, <a href="/dictionary/Static_nested_class">Static nested class</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

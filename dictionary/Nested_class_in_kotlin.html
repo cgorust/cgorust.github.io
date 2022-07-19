@@ -37,16 +37,30 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">fragile base class</span></h1>
+<h1><span class="badge badge-primary">nested class in Kotlin</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The fragile base class problem is a fundamental architectural problem of OOP systems where base classes are considered ‘fragile’ because seemingly safe modifications to a base class, when inherited by the derived classes, may cause the derived classes to malfunction. The programmer cannot determine whether a base class change is safe simply by examining the methods of the base class in isolation.
-This is a problem in Java, where classes and methods are open by default. To fix the problem, developers should “Design and document for inheritance or else prohibit it.”
-Because of this experience in Java, the Kotlin designers decided to make all classes and methods final by default. That way, you can “design for inheritance” by marking classes and functions as open only when you really want them to be open to extension.
-
+<pre id="word_content" style="white-space: pre-wrap;">A class is declared within another class then it is called a nested class. By default nested class is static so we can access the nested class property or variables using dot(.) notation without creating an object of the class.
+```
+class A {
+    var sa = "Outer class"
+    class B {
+        var sb = "Nested class"
+        fun f(str: String): String {
+            var s = sb.plus(str)
+            return s
+        }
+    }
+}
+fun main(args: Array&lt;String&gt;) {
+    val b = A.B()
+    var result = b.f(" member function call successful")
+    println(result)
+}
+```
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Inheritance">Inheritance</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Open_class_in_kotlin">Open class in kotlin</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Class_in_kotlin">Class in kotlin</a>, <a href="/dictionary/Static_nested_class">Static nested class</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
