@@ -37,13 +37,27 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">inner class</span></h1>
+<h1><span class="badge badge-primary">inner class in Kotlin</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A nested class is a class which is declared in another enclosing class. A nested class is a member and as such has the same access rights as any other member. The members of an enclosing class have no special access to members of a nested class; the usual access rules shall be obeyed.
-C++/C#/Python does not support inner class; they only support static nested class. As far as we know, only Java/Kotlin support inner class.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">The nested classes in Kotlin do not have access to the outer class instance.  In order to solve this issue, you need to mark the nested class with inner to create an inner class. Inner classes carry a reference to an outer class, and can access outer class members.
+```
+class Outer {
+    val a = "Outside Nested class."
+    inner class Inner {
+        fun callMe() = a
+    }
+}
+
+fun main(args: Array&lt;String&gt;) {
+    val outer = Outer()
+    println("Using outer object: ${outer.Inner().callMe()}")
+    val inner = Outer().Inner()
+    println("Using inner object: ${inner.callMe()}")
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Nested_class">Nested class</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Inner_class_in_java">Inner class in java</a>, <a href="/dictionary/Inner_class_in_kotlin">Inner class in kotlin</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Inner_class">Inner class</a>, <a href="/dictionary/Nested_class_in_kotlin">Nested class in kotlin</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

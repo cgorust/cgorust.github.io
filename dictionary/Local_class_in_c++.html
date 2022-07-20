@@ -39,7 +39,7 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">local class in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A class declared inside a function becomes local to that function and is called Local Class in C++.
+<pre id="word_content" style="white-space: pre-wrap;">A class declared inside a function becomes local to that function and is called local class in C++. A class declared inside a member function in another class is also a local class in C++.
 * A local class name can only be used locally i.e., inside the function and not outside it.
 * The methods of a local class must be defined inside it only.
 * A local class can have static functions but, not static data members.
@@ -50,21 +50,21 @@
 using namespace std;
 
 
-void foo(int i) {
-    class Bar {
+void f() {
+    class A {
         int val;
     public:    
-        Bar(int val) { this-&gt;val = val; }
-        void fooBar() { cout &lt;&lt; val &lt;&lt; endl; }
+        A(int val) { this-&gt;val = val; }
+        void af() { cout &lt;&lt; val &lt;&lt; endl; }
     };
-    
-    Bar bar(5);
-    bar.fooBar();
+
+    A a(5);
+    a.af();
 }
 
 int main()
 {
-    foo(1);
+    f();
 }
 ```</pre>
 </div>
