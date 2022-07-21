@@ -37,14 +37,42 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">access modifier</span></h1>
+<h1><span class="badge badge-primary">access modifier in Python</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">Access modifiers are used to set the accessibility of classes, methods, variables, and inheritance. 
-Typically an access modifier can be used on a class, a method or a variable in a class, or used when inheriting another class. Note local variable in class method cannot have access modifiers.
-* JavaScript have no privacy, there is no private or public access modifier. We can modify the variables at will.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">All members in a Python class are public by default. 
+Access Modifier | Notation | Meaning
+----- | ----- | -----
+public |  | Public members are accessible from outside the class. 
+protected | add a prefix _ (single underscore) to the member | Protected members of a class are accessible from within the class and are also available to its subclasses.
+private | add a prefix __ (double underscore ) to the member | Private members can only be accessed inside the class
+
+```
+class Cls:
+    #constructor is defined
+    def __init__(self, a, b, c):
+        self.a = a          # public Attribute
+        self._b = b         # protected Attribute 
+        self.__c = c        # private Attribute
+
+    def f(self):            # public method
+        self.__c *=2
+        pass
+    def _f(self):           # protected method
+        self.__f()
+        pass
+    def __f(self):          #private method
+        pass
+    
+cls = Cls(1, 2, 3)
+print(cls.a)
+print(cls._b)
+cls.f()
+cls._f()
+```
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class">Class</a>, <a href="/dictionary/Encapsulation">Encapsulation</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Access_modifier_in_c%23">Access modifier in c#</a>, <a href="/dictionary/Access_modifier_in_c++">Access modifier in c++</a>, <a href="/dictionary/Access_modifier_in_java">Access modifier in java</a>, <a href="/dictionary/Access_modifier_in_kotlin">Access modifier in kotlin</a>, <a href="/dictionary/Access_modifier_in_php">Access modifier in php</a>, <a href="/dictionary/Access_modifier_in_python">Access modifier in python</a>, <a href="/dictionary/Access_modifier_in_typescript">Access modifier in typescript</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Access_modifier">Access modifier</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class_in_python">Class in python</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>

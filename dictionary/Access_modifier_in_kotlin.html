@@ -39,21 +39,14 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">access modifier in Kotlin</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">In Kotlin, code such as classes, variables and functions can be declared directly inside a source file or package. By default, all of this code is publicly visible, and it can be used in any package that imports it. You can change this behaviour, however, by prefixing declarations with one of the following access modifiers:
+<pre id="word_content" style="white-space: pre-wrap;">Classes, objects, traits, constructors, functions, properties and their setters can have visibility modifiers. (Getters always have the same visibility as the property.) There are four visibility modifiers in Kotlin:
 Modifier | Meaning
 ----- | -----
 public | Makes the declaration visible everywhere. This is applied by default, so it can be omitted.
 protected | Is NOT available for declarations at the top level of a source file or package
 private | Makes the declaration visible to code inside its source file, but invisible elsewhere.
 internal | Makes the declaration visible inside the same module, but invisible elsewhere. A module is a set of Kotlin files that are compiled together, such as an IntelliJ IDEA module.
-
-The following visibility modifiers can be applied to the properties, functions and other members that belong to a class or interface:
-Modifier | Meaning
------ | -----
-public | Makes the member visible everywhere that the class is visible. This is applied by default, so it can be omitted.
-private | Makes the member visible inside the class, and invisible elsewhere.
-protected | Makes the member visible inside the class, and any of its subclasses.
-internal | Makes the member visible to anything in the module that can see the class.</pre>
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Access_modifier">Access modifier</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Class_in_kotlin">Class in kotlin</a></button>
