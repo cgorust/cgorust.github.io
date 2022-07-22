@@ -40,22 +40,23 @@
 <h1><span class="badge badge-primary">escape sequence in C++</span></h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">There are three kinds of escape sequences: simple, octal, and hexadecimal. Escape sequences may be any of the following values:
-Value | Escape sequence
------ |  -----
-newline | \n
-backslash | \\\\
-horizontal tab | \t
-question mark | ? or \?
-vertical tab | \v
-single quote | \'
-backspace | \b
-double quote | \"
-carriage return | \r
-the null character | \0
-form feed | \f
-octal | \ooo
-alert (bell) | \a
-hexadecimal | \xhhh</pre>
+Escape Sequence | Meaning
+----- | -----
+\a | Bell (alert)
+\b | Backspace
+\f | Form feed
+\n | New line
+\r | Carriage return
+\t | Horizontal tab
+\v | Vertical tab
+\' | Single quotation mark
+\" | Double quotation mark
+\\\\ | Backslash
+\? | Literal question mark
+\ooo | ASCII character in octal notation
+\xhh | ASCII character in hexadecimal notation
+\xhhhh | Unicode character in hexadecimal notation if this escape sequence is used in a wide-character constant or a Unicode string literal.
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Character_literal_in_c++">Character literal in c++</a>, <a href="/dictionary/Escape_sequence">Escape sequence</a></button>
