@@ -43,21 +43,18 @@
 ```
 #include&lt;iostream&gt;
 using namespace std;
-  
+
 class C {
 public:
-    static int i;
+    static int si;
 };
-int C::i = 0; 
+int C::si = 0; 
 
-int main()
-{
-  C obj1;
-  C obj2;
-  obj1.i = 2;
-  obj2.i = 3;
-    
-  cout &lt;&lt; obj1.i&lt;&lt;" "&lt;&lt;obj2.i;   // 3 3
+int main() {
+    C c;
+    c.si = 3;
+
+    cout &lt;&lt; c.si&lt;&lt;" "&lt;&lt;C::si;   // 3 3
 }
 ```</pre>
 </div>
