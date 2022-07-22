@@ -37,8 +37,23 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-      Can't find! Create <a data-href="/dictionary/Character_in_c" href="placeholder" id="word_create">Character in c</a>
-</div></main>
+<h1><span class="badge badge-primary">character in C</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">Type | Storage size | Value range
+--- | --- | --- 
+char | implementation-defined, usually 1 byte |  -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1 or 0 to 2&lt;sup&gt;8&lt;/sup&gt;-1 
+unsigned char | implementation-defined, usually 1 byte | 0 to 2&lt;sup&gt;8&lt;/sup&gt;-1
+signed char | implementation-defined, usually 1 byte | -2&lt;sup&gt;7&lt;/sup&gt; to 2&lt;sup&gt;7&lt;/sup&gt;-1
+
+Notes:
+* variable declared as characters (char) shall be large enough to store any member of the implementation basic character set. A char, a signed char, and an unsigned char occupy the same amount of storage.
+* Plain char, signed char, and unsigned char are three distinct types. It is implementation-defined whether a char object can hold negative values. The C standards allows the character type char to be signed or unsigned, depending on the platform and compiler. Most systems, including x86 GNU/Linux and Microsoft Windows, use signed char, but those based on PowerPC and ARM processors typically use unsigned char.
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Character">Character</a>, <a href="/dictionary/Data_type_in_c">Data type in c</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Character_literal_in_c">Character literal in c</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
 <div class="text-center text-primary">
 <a href="/">cgorust.com 2018 - 
@@ -55,7 +70,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://www.google.com/recaptcha/api.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
 <script src="/resource/highlight/highlight.pack.js"></script>
