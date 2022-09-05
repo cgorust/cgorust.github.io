@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+    var host = window.location.hostname;
+		if(host != "localhost")
+		{
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'G-R796EH82K4');
+		}
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/">
+<img height="28" src="/resource/img/logo.png"/>
+      CGORUST
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">diamond problem</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">The diamond problem occurs when two superclasses of a class have a common base class. For example, the TA class gets two copies of all attributes of Person class, this causes ambiguities.
+```
+#include &lt;iostream&gt;
+using namespace std;
+
+class Person { 
+public:
+    Person()  { cout &lt;&lt; "Person::Person()" &lt;&lt; endl;   }
+};
+class Faculty : public Person {
+public:
+    Faculty():Person()  { cout&lt;&lt;"Faculty::Faculty()"&lt;&lt; endl;}
+};
+class Student : public Person {
+public:
+    Student():Person() { cout&lt;&lt;"Student::Student()"&lt;&lt; endl;}
+};
+class TA : public Faculty, public Student  {
+public:
+    TA():Student(), Faculty()   { cout&lt;&lt;"TA::TA()"&lt;&lt; endl;}
+};
+
+int main()  {
+    TA ta;
+    return 0;
+}
+```
+Output is,
+```
+Person::Person()
+Faculty::Faculty()
+Person::Person()
+Student::Student()
+TA::TA()
+```
+In the above program, constructor of ‘Person’ is called two times. Destructor of ‘Person’ will also be called two times when object ‘ta’ is destructed. So object ‘ta’ has two copies of all members of ‘Person’, this causes ambiguities. The solution to this problem is ‘virtual’ keyword. We make the classes ‘Faculty’ and ‘Student’ as virtual base classes to avoid two copies of ‘Person’ in ‘TA’ class. For example, consider the following program.
+```
+#include &lt;iostream&gt;
+using namespace std;
+
+class Person { 
+public:
+    Person()  { cout &lt;&lt; "Person::Person()" &lt;&lt; endl;   }
+};
+class Faculty : virtual public Person {
+public:
+    Faculty():Person()  { cout&lt;&lt;"Faculty::Faculty()"&lt;&lt; endl;}
+};
+class Student : virtual public Person {
+public:
+    Student():Person() { cout&lt;&lt;"Student::Student()"&lt;&lt; endl;}
+};
+class TA : public Faculty, public Student  {
+public:
+    TA():Student(), Faculty()   { cout&lt;&lt;"TA::TA()"&lt;&lt; endl;}
+};
+
+int main()  {
+    TA ta;
+    return 0;
+}
+```
+Output:
+```
+Person::Person()
+Faculty::Faculty()
+Student::Student()
+TA::TA()
+```
+In Python, the diamond problem is not a issue cause constructors are overwrited.
+```
+class A:
+    def __init__(self):
+        print("A")
+ 
+ 
+class B(A):
+    def __init__(self):
+        super().__init__()
+        print("B")
+ 
+ 
+class C(A):
+    def __init__(self):
+        super().__init__()
+        print("C")
+ 
+ 
+class D(B, C):
+    def __init__(self):
+        super().__init__()
+        print("D")
+        
+o = D()
+```
+Output:
+```
+A
+C
+B
+D
+```
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Multiple_inheritance">Multiple inheritance</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

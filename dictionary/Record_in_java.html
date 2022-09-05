@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+    var host = window.location.hostname;
+		if(host != "localhost")
+		{
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'G-R796EH82K4');
+		}
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/">
+<img height="28" src="/resource/img/logo.png"/>
+      CGORUST
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">record in Java</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">Java 16 enhances the programming language with records. Records provide a compact syntax for declaring classes which are plain immutable data carriers.
+* records cannot extend other classes
+* records are final
+* records can implement interfaces
+* records cannot create extra instance fields
+* the components of a record are implicitly final
+* records can have static fields
+* the static methods, static fields, static initializers are allowed
+* we can declare constructors
+* we can add explicit accessors
+* extra instance methods are allowed
+* nested records are allowed. You can declare records inside a class. The nested records are implicitly static.
+* generic records are allowed
+* records can be annotated
+* records cannot be abstract
+```
+record Person(String name, String gender, int age) {}
+
+public class RecordExample {
+  public static void main(String[] args) {
+      Person person = new Person("Jenny", "Female", 35);
+      System.out.println(person.name());
+      System.out.println(person.gender());
+      System.out.println(person.age());
+      System.out.println(person);
+  }
+}
+```
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_structure_in_java">Data structure in java</a>, <a href="/dictionary/Tuple">Tuple</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

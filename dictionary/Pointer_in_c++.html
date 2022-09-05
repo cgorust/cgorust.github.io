@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+    var host = window.location.hostname;
+		if(host != "localhost")
+		{
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'G-R796EH82K4');
+		}
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/">
+<img height="28" src="/resource/img/logo.png"/>
+      CGORUST
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">pointer in C++</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">Raw pointers are used extensively in both C and C++ for three main purposes:
+* to allocate new objects on the heap,
+* to iterate over elements in arrays or other data structures.
+* to pass functions to other functions
+
+Raw pointer features:
+* A raw pointer is a pointer whose lifetime isn't controlled by an encapsulating object, such as a smart pointer. 
+* A raw pointer can be assigned the address of another non-pointer variable, or it can be assigned a value of nullptr. A pointer that hasn't been assigned a value contains random data.
+* A pointer can also be dereferenced to retrieve the value of the object that it points at. 
+* A pointer to void simply points to a raw memory location. Sometimes it's necessary to use void pointers, for example when passing between C++ code and C functions.
+      * Assigning any pointer type to a void pointer without using a cast is allowed in C or C++. But we can not assign a void pointer to a non-void pointer without using a cast to non-void pointer type in C++.
+
+&lt;b&gt;When should use raw pointers&lt;/b&gt;
+Raw pointers are the source of many serious programming errors. Therefore, their use is strongly discouraged. Modern C++ provides smart pointers for allocating objects, iterators for traversing data structures, and lambda expressions for passing functions.
+Use raw pointer when ownership should not be local.
+As an example, a pointer container may not want ownership over the pointers in it to reside in the pointers themselves. If you try to write a linked list with forward unique ptrs, at destruction time you can easily blow the stack.
+A vector-like container of owning pointers may be better suited to storing delete operation at the container or subcontainer level, and not at the element level.
+In those and similar cases, you wrap ownership like a smart pointer does, but you do it at a higher level. Many data structures (graphs, etc) may have similar issues, where ownership properly resides at a higher point than where the pointers are, and they may not map directly to an existing container concept.</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Data_type_in_c++">Data type in c++</a>, <a href="/dictionary/Pointer">Pointer</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/dictionary/Pointer_literal_in_c++">Pointer literal in c++</a>, <a href="/dictionary/Smart_pointer_in_c++">Smart pointer in c++</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

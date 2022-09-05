@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+    var host = window.location.hostname;
+		if(host != "localhost")
+		{
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'G-R796EH82K4');
+		}
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/">
+<img height="28" src="/resource/img/logo.png"/>
+      CGORUST
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">multiple inheritance in C++</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">Multiple inheritance is a feature of C++.
+* In multiple inheritance, constructors of base classes are always called in derivation order from left to right and destructors are called in reverse order. 
+* The very first constructors to be executed are the virtual inherited base classes anywhere in the hierarchy. They are executed in the order they appear in a depth-first left-to-right traversal of the graph of base classes, where left to right refer to the order of appearance of base class names. After all virtual inherited base class constructors are finished, the construction order is generally from base class to derived class. The details are easiest to understand if you imagine that the very first thing the compiler does in the derived class’s ctor is to make a hidden call to the ctors of its non-virtual inherited base classes (hint: that’s the way many compilers actually do it). So if class D inherits from B1 and B2, the constructor for B1 executes first, then the constructor for B2, then the constructor for D. This rule is applied recursively; for example, if B1 inherits from B1a and B1b, and B2 inherits from B2a and B2b, then the final order is B1a, B1b, B1, B2a, B2b, B2, D.
+```
+#include &lt;iostream&gt;
+using namespace std;
+
+class A {
+public:
+  A()  { cout &lt;&lt; "A: constructor" &lt;&lt; endl; }
+};
+class B {
+public:
+  B()  { cout &lt;&lt; "B: constructor" &lt;&lt; endl; }
+};
+class C: public A, public B {
+public:
+  C()  { cout &lt;&lt; "C: constructor" &lt;&lt; endl; }
+};
+
+int main() {
+    C c;
+    return 0;
+}
+```
+Output:
+```
+A: constructor
+B: constructor
+C: constructor
+```</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Inheritance_in_c++">Inheritance in c++</a>, <a href="/dictionary/Multiple_inheritance">Multiple inheritance</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

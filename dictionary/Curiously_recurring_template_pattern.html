@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+    var host = window.location.hostname;
+		if(host != "localhost")
+		{
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'G-R796EH82K4');
+		}
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/">
+<img height="28" src="/resource/img/logo.png"/>
+      CGORUST
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">curiously recurring template pattern</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">The Curiously Recurring Template Pattern (CRTP) is a C++ idiom whose name was coined by James Coplien in 1995, in early C++ template code.
+The “C” in CRTP made it travel the years in the C++ community by being this: a Curiosity. We often find definitions of what CRTP is, and it is indeed an intriguing construct.
+The CRTP consists in:
+* inheriting from a template class,
+* use the derived class itself as a template parameter of the base class.
+This is what it looks like in code:
+```
+template &lt;typename T&gt;
+class Base
+{
+    ...
+};
+class Derived : public Base&lt;Derived&gt;
+{
+    ...
+};
+```
+The purpose of doing this is using the derived class in the base class. From the perspective of the base object, the derived object is itself, but downcasted. Therefore the base class can access the derived class by static_casting itself into the derived class.
+```
+template &lt;typename T&gt;
+class Base
+{
+public:
+    void doSomething()
+    {
+        T&amp; derived = static_cast&lt;T&amp;&gt;(*this);
+        use derived...
+    }
+};
+```
+Note that contrary to typical casts to derived class, we don’t use dynamic_cast here. A dynamic_cast is used when you want to make sure at run-time that the derived class you are casting into is the correct one. But here we don’t need this guarantee: the Base class is designed to be inherited from by its template parameter, and by nothing else. Therefore it takes this as an assumption, and a static_cast is enough.
+&lt;b&gt;What could go wrong&lt;/b&gt;
+If two classes happen to derive from the same CRTP base class we likely get to undefined behaviour when the CRTP will try to use the wrong class:
+```
+class Derived1 : public Base&lt;Derived1&gt;
+{
+    ...
+};
+
+class Derived2 : public Base&lt;Derived1&gt; // bug in this line of code
+{
+    ...
+};
+```
+Another risk with CRTP is that methods in the derived class will hide methods from the base class with the same name. As explained in Effective C++ Item 33, the reason for that is that these methods are not virtual. Therefore you want to be careful not to have identical names in the base and derived classes:
+```
+class Derived : public Base&lt;Derived&gt;
+{
+public:
+    void doSomething(); // oops this hides the doSomething methods from the base class !
+}
+```</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Design_pattern">Design pattern</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Curiously_recurring_template_pattern_in_c++">Curiously recurring template pattern in c++</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

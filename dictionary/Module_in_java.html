@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+    var host = window.location.hostname;
+		if(host != "localhost")
+		{
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'G-R796EH82K4');
+		}
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/">
+<img height="28" src="/resource/img/logo.png"/>
+      CGORUST
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">module in Java</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">Java module is a new feature in Java 9. 
+Java has always had modules. A method is a module, so is a class and so is a package. What's missing in core Java pre-9 is a deployable module. All the above kinds of module are not deployable units that can be copied around. Java does have a deployable artifact called a JAR file, but these are not modules because they have no encapsulation or contract: at runtime JAR files disappear, all merging together into a single "classpath".
+Java 9 addresses the lack of deployable modules.
+Unfortunately Java 9 muddies the waters by naming the new module concept just a "module". This does not mean that methods, classes and packages stop being modules! A Java 9 "module" is just another instantiation of the module concept. Java 9 modules are made out of packages and they are physical artifacts (usually JAR files again) that can be copied around. The runtime system understands and reifies them.
+Java 9 modules and packages are semantically separate notions. Obviously Java has to retain its existing package concept for backwards compatibility. Note that the word "package" is used quite differently in Java than in other languages or in package management systems like RPM. The new Java 9 modules are much more like packages in RPM than Java packages ever were.
+&lt;b&gt;Java module benefits&lt;/b&gt;
+* Smaller application distributables via the modular Java platform. All the Java Platform APIs have been split up into separate modules. The benefit of splitting all the Java APIs up into modules is that you can now specify what modules of the Java platform your application requires. 
+* Encapsulation of internal packages. A Java module must explicitly tell which Java packages inside the module are to be exported (visible).
+* From Java 9, Java applications must be packaged as Java modules. Therefore the Java VM can check the whole module dependency graph when the Java VM starts up. If any required modules are not found at startup, the Java VM reports the missing module and shuts down. 
+
+```
+module com.jenkov.mymodule {
+    exports com.jenkov.mymodule;
+    exports com.jenkov.mymodule.util;
+
+    requires javafx.graphics;
+}
+```
+To compile a Java module.
+```
+javac -d out --module-source-path src/main/java --module com.jenkov.mymodule
+```
+We should remember the following important points about Java 9 Module:
+* We can create our own modules.  Each Module can have any number of Packages and Types. One Module can dependent on any number of modules. Each module has a unique Name.
+* Each module has some description in one and only one source file called “module-info.java”, also known as “Module Descriptor”. A Module Descriptor is a Java file. It is not an XML, Text file or Properties file. Module Descriptor file is placed in the top level directory of a Module. 
+* It is not allowed to have circular dependencies between modules.
+* The same Java package can only be exported by a single Java module at runtime. In other words, you cannot have two (or more) modules that export the same package in use at the same time. The Java VM will complain at startup if you do. 
+* In Java 9 you can still use the -classpath argument to the Java VM when running an application. On the classpath you can include all your older Java classes, just like you have done before Java 9. All classes found on the classpath will be included in what Java calls the unnamed module. Your own named modules cannot use it, because named modules cannot read classes from the unnamed module. 
+
+&lt;b&gt;Types of Modules&lt;/b&gt; 
+* Type 1: Unnamed Module. An unnamed module is a JAR that is built without module-info.java declaration. An unnamed module will require all other modules and will export all its packages as well.
+* Type 2: Named Module. A named module is a module that is created with a module declaration file module-info.java in its root folder. The module has a name and it depends on some other modules. This means that when compiling and running this module, the required modules have to be present, otherwise compilation error or runtime error may occur.
+* Type 3: Automatic Module. An automatic module is a module that can read all other modules and all other modules can read it also the vice-versa. Even the named modules can read an automatic module.  An automatic module will have a module name that is derived from its jar name.</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Package_in_java">Package in java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/dictionary/Unnamed_module_in_java">Unnamed module in java</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

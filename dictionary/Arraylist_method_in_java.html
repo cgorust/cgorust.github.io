@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+    var host = window.location.hostname;
+		if(host != "localhost")
+		{
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'G-R796EH82K4');
+		}
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/">
+<img height="28" src="/resource/img/logo.png"/>
+      CGORUST
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">arrayList method in Java</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">* create
+```
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String args[]) {
+        ArrayList l1 = new ArrayList();
+        ArrayList l2 = new ArrayList(10);
+
+        l2.add(1);
+        ArrayList l3 = new ArrayList(l2);
+        System.out.println(l3);
+    }
+}
+```
+* iterator
+```
+import java.util.*;
+  
+public class Main {
+    public static void main(String args[]){
+        ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;();
+        a.add(10);
+        a.add(5);
+  
+        Iterator&lt;Integer&gt; it = a.iterator();
+        while (it.hasNext()) {
+            System.out.print(it.next() + ",");
+        }
+    }
+}
+```
+* add
+```
+import java.util.*;
+  
+class Main {
+    public static void main(String args[]) {
+        ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;();
+        a.add(10);
+        a.add(0, 2);
+  
+        System.out.println(a);
+    }
+}
+```
+* change
+```
+import java.util.*;
+  
+class Main {
+    public static void main(String args[]) {
+        ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;();
+        a.add(1);
+        a.set(0, 10);
+        System.out.println(a);
+    }
+}
+```
+* query
+```
+import java.util.*;
+  
+class Main {
+    public static void main(String args[]) {
+        ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;();
+        a.add(10);
+        a.add(10);
+        a.add(1);
+
+        for(int i:a)
+            System.out.print(i+",");
+        System.out.println(a.size());
+    }
+}
+```
+* delete
+```
+import java.util.*;
+  
+class Main {
+    public static void main(String args[]) {
+        ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;();
+        a.add(10);
+        a.add(10);
+        a.add(1);
+        a.remove(Integer.valueOf(1));  // remove by value
+        a.remove(1); // remove by index
+        System.out.println(a);
+        a.removeAll(a);
+    }
+}
+```
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/List_method_in_java">List method in java</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Arraylist_in_java">Arraylist in java</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

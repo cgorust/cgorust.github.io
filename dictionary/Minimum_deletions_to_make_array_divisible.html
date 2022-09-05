@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+    var host = window.location.hostname;
+		if(host != "localhost")
+		{
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'G-R796EH82K4');
+		}
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/">
+<img height="28" src="/resource/img/logo.png"/>
+      CGORUST
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">minimum deletions to make array divisible</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">You are given two positive integer arrays nums and numsDivide. You can delete any number of elements from nums.
+Return the minimum number of deletions such that the smallest element in nums divides all the elements of numsDivide. If this is not possible, return -1.
+Note that an integer x divides y if y % x == 0.
+
+* Example 1:
+    * Input: nums = [2,3,2,4,3], numsDivide = [9,6,9,3,15]
+    * Output: 2
+    * Explanation: The smallest element in [2,3,2,4,3] is 2, which does not divide all the elements of numsDivide. We use 2 deletions to delete the elements in nums that are equal to 2 which makes nums = [3,4,3]. The smallest element in [3,4,3] is 3, which divides all the elements of numsDivide. It can be shown that 2 is the minimum number of deletions needed.
+* Example 2:
+    * Input: nums = [4,3,6], numsDivide = [8,2,6,10]
+    * Output: -1
+    * Explanation: We want the smallest element in nums to divide all the elements of numsDivide. There is no way to delete elements from nums to allow this.
+
+```
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;numeric&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+int minOperations(vector&lt;int&gt;&amp; nums, vector&lt;int&gt;&amp; divs) {
+    auto f = [](int a, int b){ return gcd(a, b); };
+    int div = reduce(divs.begin(), divs.end(), divs[0], f);
+    
+    sort(nums.begin(), nums.end());
+    for (int i = 0; i &lt; nums.size(); ++i)
+        if (div % nums[i] == 0)
+            return i;
+    return -1;
+}  
+
+int main() {
+    vector&lt;int&gt; nums{2, 3, 2, 4, 3};
+    vector&lt;int&gt; numsDivide{9, 6, 9, 3, 15};
+    
+    cout&lt;&lt;minOperations(nums, numsDivide)&lt;&lt;endl;
+}
+```
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Greatest_common_divisor">Greatest common divisor</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

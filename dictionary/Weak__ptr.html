@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+    var host = window.location.hostname;
+		if(host != "localhost")
+		{
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'G-R796EH82K4');
+		}
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/">
+<img height="28" src="/resource/img/logo.png"/>
+      CGORUST
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">weak_ptr</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">A weak_ptr is created as a copy of shared_ptr. It provides access to an object that is owned by one or more shared_ptr instances but does not participate in reference counting. The existence or destruction of weak_ptr has no effect on the shared_ptr or its other copies. It is required in some cases to break circular references between shared_ptr instances.
+```
+#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+int main()
+{
+    // OLD, problem with dangling pointer PROBLEM: ref will point to undefined data!
+
+    int* ptr = new int(10);
+    int* ref = ptr;
+    delete ptr;
+
+    // NEW SOLUTION: check expired() or lock() to determine if pointer is valid
+
+    // empty definition
+    std::shared_ptr&lt;int&gt; sptr;
+
+    // takes ownership of pointer
+    sptr.reset(new int);
+    *sptr = 10;
+
+    // get pointer to data without taking ownership
+    std::weak_ptr&lt;int&gt; weak1 = sptr;
+
+    // deletes managed object, acquires new pointer
+    sptr.reset(new int);
+    *sptr = 5;
+
+    // get pointer to new data without taking ownership
+    std::weak_ptr&lt;int&gt; weak2 = sptr;
+
+    // weak1 is expired!
+    if(auto tmp = weak1.lock())
+        std::cout &lt;&lt; "weak1 value is " &lt;&lt; *tmp &lt;&lt; '\n';
+    else
+        std::cout &lt;&lt; "weak1 is expired\n";
+    
+    // weak2 points to new data (5)
+    if(auto tmp = weak2.lock())
+        std::cout &lt;&lt; "weak2 value is " &lt;&lt; *tmp &lt;&lt; '\n';
+    else
+        std::cout &lt;&lt; "weak2 is expired\n";
+}
+
+/*
+weak1 is expired
+weak2 value is 5
+*/
+```
+
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Smart_pointer_in_c++">Smart pointer in c++</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+    var host = window.location.hostname;
+		if(host != "localhost")
+		{
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'G-R796EH82K4');
+		}
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/">
+<img height="28" src="/resource/img/logo.png"/>
+      CGORUST
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">anonymous class in Java</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">Anonymous class in Java is an inner class without a name and for which only a single object is created. An anonymous class is useful when making an instance of an object with certain “extras” such as overriding methods of a class or interface, without having to actually subclass a class.
+Anonymous inner classes are useful in writing implementation classes for listener interfaces in graphics programming. 
+* An anonymous class can implement only an interface at a time.
+* An anonymous class can extend a class or can implement an interface but not both at a time.
+* We can’t write any constructor for anonymous class because the anonymous class does not have any name, and when defining constructor the class name and the constructor name must be same.
+
+Like local classes, anonymous classes can capture variables; they have the same access to local variables of the enclosing scope. The copying happens only for local variables, not for member fields of the enclosing class. The reason is, of course, that an anonymous class holds an implicit reference to the enclosing class, and through that reference it can access any/all member fields &amp; methods of the outer class.
+* An anonymous class has access to the members of its enclosing class. In the case of a member field of the enclosing class, there is no copy. Rather, the anonymous class gets a reference to the enclosing class, and thereby it accesses any/all member fields and methods of the outer class. So even if the value of the field changes, the change is reflected in the anonymous class as well, because it is the same reference.
+* An anonymous class cannot access local variables in its enclosing scope that are not declared as final or effectively final. In the case of a local variable, a copy of the variable is what the anonymous class instance receives. For this reason, the local variable has to be made final before it can be used within the anonymous class, so that its value may not change later.
+* Like a nested class, a declaration of a type (such as a variable) in anonymous class shadows any other declarations in the enclosing scope that have the same name.
+
+Anonymous classes also have the same restrictions as local classes with respect to their members: 
+* We cannot declare static initializers or member functions in an anonymous class. As with instance methods and variables, an inner class is associated with an instance of its enclosing class and has direct access to that object's methods and fields. Also, because an inner class is associated with an instance, it cannot define any static members itself.
+* An anonymous class can have static members provided that they are constant variables.
+
+```
+interface Age {
+    int x = 21;
+    void getAge();
+}
+ 
+class Main {
+    public static void main(String[] args) {
+        Age age = new Age() {
+            @Override public void getAge() {
+                System.out.print("Age is " + x);
+            }
+        };
+        age.getAge();
+    }
+}
+```</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Anonymous_class">Anonymous class</a>, <a href="/dictionary/Class_in_java">Class in java</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>
