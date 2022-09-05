@@ -8,16 +8,6 @@ class Main {
   }
 }
 
-
-
-function decodeHtml(html) {
-    var text = $('<textarea />').html(html).text();
-    return text;
-}
-
-// reserved: ; / ? : @ = &
-// special: # < >
-// " % { } | \ ^ ~ [ ] `
 function encodeSpecial(url) {
     var dictionary = { 
         " ": "_"  
@@ -34,52 +24,20 @@ function url_escape(str) {
     return encodeSpecial(str);
 }
 
-
 $(document).ready(function() {
-  $('#search_text').each(function() {
-    var elem = $(this);
-    elem.data('oldVal', elem.val());
-    elem.bind("propertychange change click keyup input paste", function(event){
-      if (elem.data('oldVal') != elem.val()) {
-        elem.data('oldVal', elem.val());
-        $.post('/action/suggest/'+ url_escape($('#search_text').val()) , 
-            { 
-                word:  elem.val()
-            }, 
-            function(msg){
-                var returnedData = JSON.parse(msg);
-                $( "#search_text" ).autocomplete({
-                    source: returnedData
-                });
-            }
-        );        
-      }
-    });
-  });
-
+  if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+    let pathName = window.location.pathname;
+    if(pathName.includes("/dictionary/")) {
+      let editPath = pathName.replace("/dictionary/", "/edit/");
+      $('#dict_container a:last').parent().append( "<a class=\"btn btn-primary\" \
+          href=\"" + editPath + "\" role=\"button\">Edit</a>" );  
+    }  
+  }
 
   $('#search_form').submit(function(){
     var v = $('#search_text').val();
     v = v.replace("_", "__"); 
     $(this).attr('action', '/dictionary/' + url_escape(v));
-  }); 
-
-  $('#login_div').on('click', '#login_button', function(e) {
-    e.preventDefault();
-    var $a = $(this);
-    
-    $.post('/action/login/' , 
-      { 
-        uname:  $('#uname').val(),
-        password:  $('#password').val(),
-      }, 
-      function(msg){
-        $("#info").html(msg);
-        setTimeout(function() {
-            $("#info").html("");
-        }, 2000);
-      }
-    );    
   }); 
 
   $('main').on('click', function(e) {

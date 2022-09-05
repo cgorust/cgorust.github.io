@@ -1,13 +1,13 @@
 class Util {
 	static async getJSON(file) {
-	  let that;
+	  let val;
 	  await $.getJSON(file, function(data) {
-	    that = data;
+	    val = data;
 	  })
 	  .fail(function() {
 	    console.log( "getJSON error! file:" + file);
 	  })
-	  return that;
+	  return val;
 	}
 }
 
