@@ -3,7 +3,8 @@ from http import server
 class handler(server.SimpleHTTPRequestHandler):
     def translate_path(self, path):
         path = server.SimpleHTTPRequestHandler.translate_path(self, path)
-        if path != "/":
+        print(path)
+        if "dictionary" in path:
             path += ".html"
         return path
 
