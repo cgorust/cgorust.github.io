@@ -11,7 +11,6 @@ class ServerHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if "/dictionary/" in self.path:
             self.path += ".html"
-            print(self.path)
             data = Data()
             data.checkWordPage(self.path)
             return http.server.SimpleHTTPRequestHandler.do_GET(self)

@@ -2,9 +2,7 @@ from singleton import Singleton
 from file import File
 
 from bs4 import BeautifulSoup
-import difflib
 import glob
-import os
 import copy
 
 class Data(object, metaclass=Singleton):
@@ -100,50 +98,39 @@ class Data(object, metaclass=Singleton):
             subCategories.attrs["hidden"]=None  
         return file
 
+    def getRelations(self, file, relationName):
+        relations = file.find("b", text=relationName)
+        if relations!= None:
+            relations=[x.getText() for x in relations.findNextSiblings("a", recursive=False)]
+        else:
+            relations=[]
+        return relations
+
     def getWord(self, path):
         file = File().getHTML(path)
         #print(path)
         header = file.find("div", {"id": "dict_container"}).find("h1").find("span").getText()
         content = file.find("pre", {"id": "word_content"}).getText()
-        superConcepts = file.find("b", text="Superconcept: ")
-        if superConcepts!= None:
-            superConcepts=[x.getText() for x in superConcepts.findNextSiblings("a", recursive=False)]
-        else:
-            superConcepts=[]
-        superCategories = file.find("b", text="Supercategory: ")
-        if superCategories!= None:
-            superCategories=[x.getText() for x in superCategories.findNextSiblings("a", recursive=False)]
-        else:
-            superCategories=[]
-        subConcepts = file.find("b", text="Subconcept: ")
-        if subConcepts!= None:
-            subConcepts=[x.getText() for x in subConcepts.findNextSiblings("a", recursive=False)]
-        else:
-            subConcepts=[]
-        subCategories = file.find("b", text="Subcategory: ")
-        if subCategories!= None:
-            subCategories=[x.getText() for x in subCategories.findNextSiblings("a", recursive=False)]
-        else:
-            subCategories=[]
+        superConcepts = self.getRelations(file, "Superconcept: ")
+        superCategories = self.getRelations(file, "Supercategory: ")
+        subConcepts = self.getRelations(file, "Subconcept: ")
+        subCategories = self.getRelations(file, "Subcategory: ")
         return [file, header, content, superConcepts, superCategories, subConcepts, subCategories]
-
-    def diffWordPageTemplate(self, page):
-        File().diffFile(str(self.wordPageTemplate), str(page)) 
 
     def checkWordPage(self, path):
         if path[0]=='/':
             path = path[1:]
 
-        file, header, content, superConcepts, superCategories, subConcepts, subCategories = self.getWord(path)
-        if not header in self.dictionary:
-            print("page is not in memory!")
+        _, header, content, superConcepts, superCategories, subConcepts, subCategories = self.getWord(path)
+        if header not in self.dictionary:
+            print("page is not in cache")
             return
-        if  self.dictionary[header]["content"]!=content or \
-            self.dictionary[header]["superConcepts"]!=superConcepts  or \
-            self.dictionary[header]["superCategories"]!=superCategories  or \
-            self.dictionary[header]["subConcepts"]!=subConcepts  or \
-            self.dictionary[header]["subCategories"]!=subCategories:
-            print("page content wrong!")
+        if self.dictionary[header]["content"] != content or \
+            self.dictionary[header]["superConcepts"] != superConcepts  or \
+            self.dictionary[header]["superCategories"] != superCategories  or \
+            self.dictionary[header]["subConcepts"] != subConcepts  or \
+            self.dictionary[header]["subCategories"] != subCategories:
+            print("page content is not the same as in cache")
             return 
 
             
