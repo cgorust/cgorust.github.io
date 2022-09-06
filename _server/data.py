@@ -44,16 +44,15 @@ class Data(object, metaclass=Singleton):
 
     def checkDictionary(self):
         for pathHeader in self.dictionary:
+            if self.dictionary[pathHeader]["Superconcept"] == [] and \
+                self.dictionary[pathHeader]["Supercategory"] == []:
+                #print("error pathHeader no superConcept and superCategory: " + pathHeader)
+                #!!! need investigate
+                pass
             for superConcept in self.dictionary[pathHeader]["Superconcept"]:
                  superConceptPath = self.headerToPath(superConcept)   
                  if superConceptPath not in self.dictionary:
                     print("error pathHeader cannot find superConcept: " + pathHeader + ";" + superConcept)
-                    self.dictionary[pathHeader]["Superconcept"].remove(superConcept)
-                    path = "dictionary/" + pathHeader + ".html"
-                    newFile = self.applyNewTemplate(self.dictionary[pathHeader]["Header"])
-                    f = open(path, "w")
-                    f.write(str(newFile))
-                    f.close() 
                  else:   
                     find = False
                     for subConcept in self.dictionary[superConceptPath]["Subconcept"]:
@@ -67,7 +66,7 @@ class Data(object, metaclass=Singleton):
             for superCategory in self.dictionary[pathHeader]["Supercategory"]:
                  superCategoryPath = self.headerToPath(superCategory)   
                  if superCategoryPath not in self.dictionary:
-                    #print("error superCategory: " + superCategory)
+                    print("error pathHeader cannot find superCategory: " + pathHeader + ";" + superCategory)
                     pass
                  else:   
                     find = False
@@ -75,7 +74,15 @@ class Data(object, metaclass=Singleton):
                         if self.headerToPath(subCategory) == pathHeader:
                             find = True
                     if find == False:
-                        #print("error has no related subCategory: "+ subCategory)
+                        print("error path superCategory has no related subcategory: "
+                            + pathHeader + "," + subCategory)
+
+                        self.dictionary[pathHeader]["Supercategory"].remove(superCategory)
+                        path = "dictionary/" + pathHeader + ".html"
+                        newFile = self.applyNewTemplate(self.dictionary[pathHeader]["Header"])
+                        #f = open(path, "w")
+                        #f.write(str(newFile))
+                        #f.close()                             
                         pass
 
     def populateDictionary(self):
