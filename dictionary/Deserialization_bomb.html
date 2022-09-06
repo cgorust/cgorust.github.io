@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<!-- Required meta tags -->
+<!-- meta tags -->
 <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="/resource/img/logo.png" rel="shortcut icon"/>
@@ -15,29 +15,26 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
 <script>
-    var host = window.location.hostname;
-		if(host != "localhost")
-		{
-				  window.dataLayer = window.dataLayer || [];
-				  function gtag(){dataLayer.push(arguments);}
-				  gtag('js', new Date());
-				  gtag('config', 'G-R796EH82K4');
-		}
+      var host = window.location.hostname;
+      if(host != "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R796EH82K4');
+      }
     </script>
 </head>
 <body>
 <header>
 <nav class="navbar bg-light bg-light">
-<a class="navbar-brand" href="/">
-<img height="28" src="/resource/img/logo.png"/>
-      CGORUST
-    </a>
-
-
+<a class="navbar-brand" href="/"><img height="28" src="/resource/img/logo.png"/>CGORUST</a>
 </nav>
 </header>
-<main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">deserialization bomb</span></h1>
+<main>
+<div class="container-fluid" id="dict_container">
+<h1>
+<span class="badge badge-primary">deserialization bomb</span>
+</h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">We can easily mount a denial-of-service attack by causing the deserialization of a short stream that requires a long time to deserialize. Such streams are known as deserialization bombs.
 ```
@@ -76,21 +73,35 @@ public class DeserializationBomb {
 The object graph consists of 201 HashSet instances, each of which contains 3 or fewer object references. The entire stream is 5,744 bytes long, yet the sun would burn out long before you could deserialize it. The problem is that deserializing a HashSet instance requires computing the hash codes of its elements. The 2 elements of the root hash set are themselves hash sets containing 2 hash-set elements, each of which contains 2 hash-set elements, and so on, 100 levels deep. Therefore, deserializing the set causes the hashCode method to be invoked over 2100 times. </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Deserialization">Deserialization</a></button>
-</div><br/>
-<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+<button class="btn btn-light" hidden type="button">
+<b>Superconcept: </b>
+</button>
+<button class="btn btn-light" type="button">
+<b>Supercategory: </b>
+<a href="/dictionary/Deserialization">Deserialization</a></button>
+<button class="btn btn-light" hidden type="button">
+<b>Subconcept: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subcategory: </b>
+</button>
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary" href="/" role="button">Home</a>
+</div>
+</div>
+</main>
 <footer>
 <div class="text-center text-primary">
-<a href="/">cgorust.com 2018 - 
-            <script>
-                var CurrentYear = new Date().getFullYear()
-                document.write(CurrentYear)
-            </script>
+<a href="/">cgorust.com 2020 - 
+          <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+          </script>
 </a>
 </div>
 </footer>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- jQuery first, then Popper, then Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<!-- Required meta tags -->
+<!-- meta tags -->
 <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="/resource/img/logo.png" rel="shortcut icon"/>
@@ -15,29 +15,26 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
 <script>
-    var host = window.location.hostname;
-		if(host != "localhost")
-		{
-				  window.dataLayer = window.dataLayer || [];
-				  function gtag(){dataLayer.push(arguments);}
-				  gtag('js', new Date());
-				  gtag('config', 'G-R796EH82K4');
-		}
+      var host = window.location.hostname;
+      if(host != "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R796EH82K4');
+      }
     </script>
 </head>
 <body>
 <header>
 <nav class="navbar bg-light bg-light">
-<a class="navbar-brand" href="/">
-<img height="28" src="/resource/img/logo.png"/>
-      CGORUST
-    </a>
-
-
+<a class="navbar-brand" href="/"><img height="28" src="/resource/img/logo.png"/>CGORUST</a>
 </nav>
 </header>
-<main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">string literal in C</span></h1>
+<main>
+<div class="container-fluid" id="dict_container">
+<h1>
+<span class="badge badge-primary">string literal in C</span>
+</h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">In C, a string literal is a string of characters enclosed in double quotes, such as "a computer".
 String literals are stored in C as an array of chars, terminted by a null byte. A null byte is a char having a value of exactly zero, noted as '\0'. Do not confuse the null byte, '\0', with the character '0', the integer 0, the double 0.0, or the pointer NULL.
@@ -49,21 +46,35 @@ String literals can be concatenated at compile time: "hello, " "world" is equiva
 </pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Literal_in_c">Literal in c</a>, <a href="/dictionary/String_literal">String literal</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/String_in_c">String in c</a></button>
-</div><br/>
-<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+<button class="btn btn-light" type="button">
+<b>Superconcept: </b>
+<a href="/dictionary/Literal_in_c">Literal in c</a>, <a href="/dictionary/String_literal">String literal</a></button>
+<button class="btn btn-light" type="button">
+<b>Supercategory: </b>
+<a href="/dictionary/String_in_c">String in c</a></button>
+<button class="btn btn-light" hidden type="button">
+<b>Subconcept: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subcategory: </b>
+</button>
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary" href="/" role="button">Home</a>
+</div>
+</div>
+</main>
 <footer>
 <div class="text-center text-primary">
-<a href="/">cgorust.com 2018 - 
-            <script>
-                var CurrentYear = new Date().getFullYear()
-                document.write(CurrentYear)
-            </script>
+<a href="/">cgorust.com 2020 - 
+          <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+          </script>
 </a>
 </div>
 </footer>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- jQuery first, then Popper, then Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

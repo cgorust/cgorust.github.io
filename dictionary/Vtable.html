@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<!-- Required meta tags -->
+<!-- meta tags -->
 <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="/resource/img/logo.png" rel="shortcut icon"/>
@@ -15,50 +15,61 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
 <script>
-    var host = window.location.hostname;
-		if(host != "localhost")
-		{
-				  window.dataLayer = window.dataLayer || [];
-				  function gtag(){dataLayer.push(arguments);}
-				  gtag('js', new Date());
-				  gtag('config', 'G-R796EH82K4');
-		}
+      var host = window.location.hostname;
+      if(host != "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R796EH82K4');
+      }
     </script>
 </head>
 <body>
 <header>
 <nav class="navbar bg-light bg-light">
-<a class="navbar-brand" href="/">
-<img height="28" src="/resource/img/logo.png"/>
-      CGORUST
-    </a>
-
-
+<a class="navbar-brand" href="/"><img height="28" src="/resource/img/logo.png"/>CGORUST</a>
 </nav>
 </header>
-<main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">vtable</span></h1>
+<main>
+<div class="container-fluid" id="dict_container">
+<h1>
+<span class="badge badge-primary">vtable</span>
+</h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">The C++ standards do not mandate exactly how runtime polymorphism must be implemented, but compilers generally use minor variations on the same basic model.
 * vTable: A table of function pointers, maintained per class. Every superclass or subclass that has one or more virtual functions in it has a vTable associated with it. vTable is a static array of function pointers that contains the addresses of all virtual functions of this class. Compiler builds this vTable at compile time.
 * vPointer: A pointer to vtable, maintained per object instance. Every object of a class which has a vTable associated with it, contains a vPointer in first 4 bytes. The constructor of the object sets the vPointer. The vPointer points to the vTable of that class. The vPointer will be used to find the actual function adress at runtime.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Virtual_function_in_c++">Virtual function in c++</a></button>
-</div><br/>
-<div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
+<button class="btn btn-light" hidden type="button">
+<b>Superconcept: </b>
+</button>
+<button class="btn btn-light" type="button">
+<b>Supercategory: </b>
+<a href="/dictionary/Virtual_function_in_c++">Virtual function in c++</a></button>
+<button class="btn btn-light" hidden type="button">
+<b>Subconcept: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subcategory: </b>
+</button>
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary" href="/" role="button">Home</a>
+</div>
+</div>
+</main>
 <footer>
 <div class="text-center text-primary">
-<a href="/">cgorust.com 2018 - 
-            <script>
-                var CurrentYear = new Date().getFullYear()
-                document.write(CurrentYear)
-            </script>
+<a href="/">cgorust.com 2020 - 
+          <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+          </script>
 </a>
 </div>
 </footer>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- jQuery first, then Popper, then Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
