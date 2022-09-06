@@ -1,22 +1,17 @@
-from http import server
-import os
-import subprocess
+from serverHandler import ServerHandler
+from singleton import Singleton
 
-class handler(server.SimpleHTTPRequestHandler):
-    def translate_path(self, path):
-        path = server.SimpleHTTPRequestHandler.translate_path(self, path)
-        print(path)
-        if "fileToedit.html" in path:
-            pass
-        if "/dictionary/" in path:
-            path += ".html"
-        if "/edit/" in path:
-            file = path.split("/edit/")[-1]
-            path = path.split("/edit/")[0]+"/fileToEdit.html"
-            file = "dictionary/" + file
-            subprocess.call('cp ' + file + ".html" + ' ' + "fileToEdit.html", shell=True)
-        return path
+import http.server
 
+PORT = 8000
 
-with server.HTTPServer(('', 8000), handler) as httpServer:
-    httpServer.serve_forever()
+class Server(object, metaclass = Singleton):
+    def __init__(self):
+        self.httpServer = http.server.HTTPServer(('', PORT), ServerHandler)
+
+    def run(self):
+        self.httpServer.serve_forever()
+
+    def __del__(self):
+        self.httpServer.shutdown()
+        self.httpServer.server_close()
