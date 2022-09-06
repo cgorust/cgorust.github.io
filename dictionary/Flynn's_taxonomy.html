@@ -37,32 +37,12 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">if-else  in Go</span></h1>
+<h1><span class="badge badge-primary">Flynn's taxonomy</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">"If" statements specify the conditional execution of two branches according to the value of a boolean expression. If the expression evaluates to true, the "if" branch is executed, otherwise, if present, the "else" branch is executed.
-```
-IfStmt = "if" [ SimpleStmt ";" ] Expression Block [ "else" ( IfStmt | Block ) ] .
-```
-* The expression need not be surrounded by parentheses ( ) but the braces { } are required.
-* The if statement can start with a short statement to execute before the condition.
-```
-package main
-
-import "fmt"
-
-func main() {
-	if num := 3; num &lt; 0 {
-		fmt.Println(num, "is negative")
-	} else if num &lt; 10 {
-		fmt.Println(num, "has 1 digit")
-	} else {
-		fmt.Println(num, "has multiple digits")
-	}
-}
-```</pre>
+<pre id="word_content" style="white-space: pre-wrap;">Flynn's taxonomy is a classification of computer architectures, proposed by Michael J. Flynn in 1966. The classification system has stuck, and it has been used as a tool in design of modern processors and their functionalities. Since the rise of multiprocessing central processing units (CPUs), a multiprogramming context has evolved as an extension of the classification system.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/dictionary/Control_flow_in_go">Control flow in go</a>, <a href="/dictionary/If-else">If-else</a></button>
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/dictionary/Computer_architecture">Computer architecture</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/" role="button">Home</a> </div></div></main>
 <footer>
@@ -81,6 +61,7 @@ func main() {
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
 <script src="/resource/highlight/highlight.pack.js"></script>

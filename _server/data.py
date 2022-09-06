@@ -4,6 +4,7 @@ from file import File
 from bs4 import BeautifulSoup
 import difflib
 import glob
+import os
 
 class Data(object, metaclass=Singleton):
     dictionary = {}
@@ -13,10 +14,16 @@ class Data(object, metaclass=Singleton):
         self.populateDictionary()
         print("data populated")
 
+    def headerToPath(self, header):
+        return header.replace(" ", "_").capitalize()
+
     def populateDictionary(self):
         for path in glob.iglob("dictionary/*.html", recursive=True):
             header, content, superConcepts, superCategories, subConcepts, subCategories = self.getWord(path)
             self.dictionary[header] = {}
+            if self.headerToPath(header) != path.replace("dictionary/", "").replace(".html", ""):
+                print("Path and header not match: " + path + ", " + header)
+                #os.replace(path, "dictionary/"+ self.headerToPath(header) + ".html")
             self.dictionary[header]["content"]=content
             self.dictionary[header]["superConcepts"]=superConcepts
             self.dictionary[header]["superCategories"]=superCategories
