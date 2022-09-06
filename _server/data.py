@@ -4,6 +4,10 @@ from file import File
 from bs4 import BeautifulSoup
 import glob
 import copy
+from urllib.parse import unquote
+import os
+from dateutil import parser
+from datetime import datetime
 
 class Data(object, metaclass=Singleton):
     dictionary = {}
@@ -14,24 +18,85 @@ class Data(object, metaclass=Singleton):
         self.wordPageTemplate.find("main").append(File().getHTML("_server/template/word.html"))
 
         self.populateDictionary()
+        self.checkDictionary()
+        self.getSitemap()
         print("data populated")
 
     def headerToPath(self, header):
         return header.replace(" ", "_").capitalize()
 
+
+    def getSitemap(self):
+        file = File().getHTML("sitemap_index.xml")
+        sitemaps = File().getSitemaps(file)
+        for s in sitemaps:
+            path = s.replace("https://cgorust.com/", "")
+            file = File().getHTML(path)
+            wordTimes = File().getWordTimes(file)
+            for wt in wordTimes:
+                pathHeader = unquote(wt[0].replace("https://cgorust.com/dictionary/", ""))
+                time = wt[1]
+                if pathHeader not in self.dictionary:
+                    print("sitemap path not exist " + pathHeader)
+                else:
+                    self.dictionary[pathHeader]["time"] = parser.parse(time)   
+                    #print(pathHeader + ":" + time) 
+
+    def checkDictionary(self):
+        for pathHeader in self.dictionary:
+            for superConcept in self.dictionary[pathHeader]["Superconcept"]:
+                 superConceptPath = self.headerToPath(superConcept)   
+                 if superConceptPath not in self.dictionary:
+                    print("error pathHeader cannot find superConcept: " + pathHeader + ";" + superConcept)
+                    self.dictionary[pathHeader]["Superconcept"].remove(superConcept)
+                    path = "dictionary/" + pathHeader + ".html"
+                    newFile = self.applyNewTemplate(self.dictionary[pathHeader]["Header"])
+                    f = open(path, "w")
+                    f.write(str(newFile))
+                    f.close() 
+                 else:   
+                    find = False
+                    for subConcept in self.dictionary[superConceptPath]["Subconcept"]:
+                        if self.headerToPath(subConcept) == pathHeader:
+                            find = True
+                    if find == False:
+                        if "<" not in pathHeader:
+                            pass
+                            #print("error path superConcpet has no related subconcept: "
+                            #    + pathHeader + "," + superConcept)
+            for superCategory in self.dictionary[pathHeader]["Supercategory"]:
+                 superCategoryPath = self.headerToPath(superCategory)   
+                 if superCategoryPath not in self.dictionary:
+                    #print("error superCategory: " + superCategory)
+                    pass
+                 else:   
+                    find = False
+                    for subCategory in self.dictionary[superCategoryPath]["Subcategory"]:
+                        if self.headerToPath(subCategory) == pathHeader:
+                            find = True
+                    if find == False:
+                        #print("error has no related subCategory: "+ subCategory)
+                        pass
+
     def populateDictionary(self):
         apply = True
-        for path in glob.iglob("dictionary/*.html", recursive=True):
+        files = glob.iglob("dictionary/**", recursive=True)
+        files = [f for f in files if os.path.isfile(f)]
+        for path in files:
             file, header, content, superConcepts, superCategories, subConcepts, subCategories = self.getWord(path)
-            self.dictionary[header] = {}
-            if self.headerToPath(header) != path.replace("dictionary/", "").replace(".html", ""):
+            pathHeader = self.headerToPath(header)
+            self.dictionary[pathHeader] = {}
+            if pathHeader != path.replace("dictionary/", "").replace(".html", ""):
                 print("Path and header is not match. Path: " + path + "; header: " + header)
                 #os.replace(path, "dictionary/"+ self.headerToPath(header) + ".html")
-            self.dictionary[header]["Content"]=content
-            self.dictionary[header]["Superconcept"]=superConcepts
-            self.dictionary[header]["Supercategory"]=superCategories
-            self.dictionary[header]["Subconcept"]=subConcepts
-            self.dictionary[header]["Subcategory"]=subCategories
+
+            self.dictionary[pathHeader]["Header"]=header
+            self.dictionary[pathHeader]["Content"]=content
+            self.dictionary[pathHeader]["Superconcept"]=superConcepts
+            self.dictionary[pathHeader]["Supercategory"]=superCategories
+            self.dictionary[pathHeader]["Subconcept"]=subConcepts
+            self.dictionary[pathHeader]["Subcategory"]=subCategories
+            self.dictionary[pathHeader]["time"] = datetime.now()
             if apply:
                 newFile = self.applyNewTemplate(header)
                 if str(file) == str(newFile):
@@ -43,27 +108,29 @@ class Data(object, metaclass=Singleton):
                     f.close()        
 
 
-    def getAddr(self, header):
+    def headerToAddr(self, header):
         return BeautifulSoup("<a href=\"/dictionary/" + self.headerToPath(header) + "\">"+ header +"</a>", 'html.parser')
 
     def setRelation(self, file, relationName, header):
         relations = File().getRelationNode(file, relationName+ ": ").parent
         #print(self.dictionary[header])
-        if self.dictionary[header][relationName] != []:
+        pathHeader = self.headerToPath(header)
+        if self.dictionary[pathHeader][relationName] != []:
             first = True
-            for r in self.dictionary[header][relationName]:
+            for r in self.dictionary[pathHeader][relationName]:
                 if first:
                     first = False
                 else:
                     relations.append(", ")    
-                relations.append(self.getAddr(r)) 
+                relations.append(self.headerToAddr(r)) 
         else:
             relations.attrs["hidden"]=None  
 
     def applyNewTemplate(self, header):
         file = copy.deepcopy(self.wordPageTemplate)
         File().getHeaderNode(file).string=header
-        File().getContentNode(file).string=self.dictionary[header]["Content"]
+        pathHeader = self.headerToPath(header)
+        File().getContentNode(file).string=self.dictionary[pathHeader]["Content"]
         self.setRelation(file, "Superconcept", header)
         self.setRelation(file, "Supercategory", header)
         self.setRelation(file, "Subconcept", header)
@@ -84,16 +151,18 @@ class Data(object, metaclass=Singleton):
     def checkWordPage(self, path):
         if path[0]=='/':
             path = path[1:]
+        path = unquote(path)
 
         _, header, content, superConcepts, superCategories, subConcepts, subCategories = self.getWord(path)
-        if header not in self.dictionary:
+        pathHeader = self.headerToPath(header)
+        if pathHeader not in self.dictionary:
             print("page is not in cache")
             return
-        if self.dictionary[header]["Content"] != content or \
-            self.dictionary[header]["Superconcept"] != superConcepts  or \
-            self.dictionary[header]["Supercategory"] != superCategories  or \
-            self.dictionary[header]["Subconcept"] != subConcepts  or \
-            self.dictionary[header]["Subcategory"] != subCategories:
+        if self.dictionary[pathHeader]["Content"] != content or \
+            self.dictionary[pathHeader]["Superconcept"] != superConcepts  or \
+            self.dictionary[pathHeader]["Supercategory"] != superCategories  or \
+            self.dictionary[pathHeader]["Subconcept"] != subConcepts  or \
+            self.dictionary[pathHeader]["Subcategory"] != subCategories:
             print("page content is not the same as in cache")
             return 
 

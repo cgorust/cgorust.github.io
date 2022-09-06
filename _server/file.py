@@ -25,4 +25,16 @@ class File(object, metaclass=Singleton):
             relations=[]
         return relations
 
-      
+    def getSitemaps(self, file):
+        sitemaps = file.find_all("loc")
+        urls = [x.getText() for x in sitemaps]
+        return urls
+
+    def getWordTimes(self, file):
+        urls = file.find_all("url")
+        wordTimes = []
+        for url in urls:
+            loc = url.find("loc").getText()
+            lastmod = url.find("lastmod").getText()
+            wordTimes.append((loc, lastmod))
+        return wordTimes
