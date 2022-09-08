@@ -1,5 +1,5 @@
-from serverHandler import ServerHandler
-from singleton import Singleton
+from server.serverHandler import ServerHandler
+from lib.singleton import Singleton
 
 import http.server
 

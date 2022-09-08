@@ -1,5 +1,5 @@
-from server import Server
-from data import Data
+from server.server import Server
+from data.data import Data
 
 import os
 
