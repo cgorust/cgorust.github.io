@@ -1,4 +1,4 @@
-from data.data import Data
+from data import Data
 
 import http.server
 
@@ -6,7 +6,7 @@ class ServerHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def toLocalPath(self, path):
+    def toLocalPath(self, path: str) -> str:
         if path[0]=='/':
             path = path[1:]
         return path

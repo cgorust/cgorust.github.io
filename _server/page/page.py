@@ -13,13 +13,5 @@ class Page(object):
         f.write(str(self.page))
         f.close()  
 
-    def unescapePath(self, path):
-        path = unquote(path)
-        path = path.replace("%23", "#")
-        return path
-
-    def escapePath(self, path):
-        return path.replace("#", "%23")
-
-    def getRoot(self):
+    def getRoot(self) -> BeautifulSoup:
         return self.page

@@ -1,4 +1,5 @@
 from page.page import Page
+from model.path import Path
 
 SITE = "https://cgorust.com/"
 
@@ -14,14 +15,14 @@ class SitemapPages(Page):
             page = Page(url)
             type(self).pages.append(page)
             
-    def getWordTimes(self):
+    def getWordTimes(self) -> list:
         wordTimes = []
         for page in type(self).pages:
             urls = page.getRoot().find_all("url")
             for url in urls:
                 loc = url.find("loc").getText()
-                loc = self.unescapePath(loc.replace(SITE + "dictionary/", ""))
+                key = Path.pathToKey(loc.replace(SITE + "dictionary/", ""))
                 lastmod = url.find("lastmod").getText()
-                wordTimes.append((loc, lastmod))
+                wordTimes.append((key, lastmod))
         return wordTimes
 

@@ -1,4 +1,6 @@
 from page.page import Page
+from model.word import Word
+from model.path import Path
 
 import copy
 from bs4 import BeautifulSoup
@@ -20,64 +22,62 @@ class WordPage(Page):
     def getContentNode(self):
         return self.page.find("pre", {"id": "word_content"})          
 
-    def getRelationNode(self, relationName):
+    def getRelationNode(self, relationName: str):
         return self.page.find("b", text = relationName)         
 
-    def getRelations(self, relationName):
+    def getRelations(self, relationName: str) -> list:
+        relationName += ": "
         relationNodes = self.getRelationNode(relationName)
         relations = []
         if relationNodes != None:
             relations = [r.getText() for r in relationNodes.findNextSiblings("a", recursive = False)]
         return relations
 
-    def setRelations(self, relationName, relationStr): 
+    def setRelations(self, relationName: str, relationStr: str): 
+        relationName += ": "
         relationNode = self.getRelationNode(relationName).parent
         if relationStr != "":
             relationNode.append(BeautifulSoup(relationStr, 'html.parser')) 
         else:
             relationNode.attrs["hidden"]=None  
 
-    def getWord(self):
-        word = {}
-        word["Header"] = self.getHeaderNode().getText()
-        word["Content"] = self.getContentNode().getText()
-        word["Superconcept"] = self.getRelations("Superconcept: ")
-        word["Supercategory"] = self.getRelations("Supercategory: ")
-        word["Subconcept"] = self.getRelations("Subconcept: ")
-        word["Subcategory"] = self.getRelations("Subcategory: ")
+    def getWord(self) -> Word:
+        word = Word(self.path
+            , self.getHeaderNode().getText()
+            , self.getContentNode().getText()
+            , self.getRelations("Superconcept")
+            , self.getRelations("Supercategory")
+            , self.getRelations("Subconcept")
+            , self.getRelations("Subcategory")
+        )
         return word
 
-    def applyNewTemplate(self, word):
+    def applyNewTemplate(self, word: Word) -> bool:
         oldText = str(self.page)    
 
         self.page = copy.deepcopy(type(self).template.getRoot())
-        self.getHeaderNode().string=word["Header"]
-        self.getContentNode().string=word["Content"]
-        self.setRelation("Superconcept", word["Superconcept"])
-        self.setRelation("Supercategory", word["Supercategory"])
-        self.setRelation("Subconcept", word["Subconcept"])
-        self.setRelation("Subcategory", word["Subcategory"])
+        self.getHeaderNode().string=word.Header
+        self.getContentNode().string=word.Content
+        self.setRelation("Superconcept", word.SuperConcepts)
+        self.setRelation("Supercategory", word.SuperCategories)
+        self.setRelation("Subconcept", word.SubConcepts)
+        self.setRelation("Subcategory", word.SubCategories)
         newText = str(self.page)
         if oldText != newText:
-            # print("Template changed")
+            #print("Template changed")
             return True
         return False    
 
-    def headerToPath(self, header):
-        return header.replace(" ", "_").capitalize()
 
-    def headerToAddr(self, header):
-        addr = BeautifulSoup("<a href=\"/dictionary/" + self.headerToPath(header) + "\">"+ header +"</a>", 'html.parser')
-        return str(addr)
 
-    def setRelation(self, relationName, relations):
+    def setRelation(self, relationName: str, relations: list):
         relationStr = ""
         if relations != []:
             first = True
             for r in relations:
-                if first:
+                if first == True:
                     first = False
                 else:
                     relationStr += ", "
-                relationStr += self.escapePath(self.headerToAddr(r))  
-        self.setRelations(relationName+ ": ", relationStr)        
+                relationStr += Path.getAddr(Path.headerToPath(r), r)
+        self.setRelations(relationName, relationStr)        
