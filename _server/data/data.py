@@ -14,12 +14,10 @@ class Data(object, metaclass=Singleton):
         self.populateDictionary()
         self.checkDictionary()
         self.getSitemap()
+        print("Data loaded")
 
     def headerToPath(self, header):
         return header.replace(" ", "_").capitalize()
-
-    def urlEscape(self, path):
-        return path.replace("#", "%23")
 
     def getSitemap(self):
         file = SitemapPages("sitemap_index.xml")
@@ -50,8 +48,8 @@ class Data(object, metaclass=Singleton):
                         if self.headerToPath(subConcept) == pathHeader:
                             find = True
                     if find == False:
-                        print("error path superConcpet has no related subconcept: "
-                            + pathHeader + "," + superConcept)
+                        #print("error path superConcpet has no related subconcept: "
+                        #    + pathHeader + "," + superConcept)
                         pass
             for superCategory in self.dictionary[pathHeader]["Supercategory"]:
                  superCategoryPath = self.headerToPath(superCategory)   
@@ -64,9 +62,9 @@ class Data(object, metaclass=Singleton):
                         if self.headerToPath(subCategory) == pathHeader:
                             find = True
                     if find == False:
-                        print("error path superCategory has no related subcategory: "
-                            + pathHeader + "," + subCategory)
-                        self.dictionary[pathHeader]["Supercategory"].remove(superCategory)
+                        #print("error path superCategory has no related subcategory: "
+                        #    + pathHeader + "," + subCategory)
+                        #self.dictionary[pathHeader]["Supercategory"].remove(superCategory)
                         #newPage = Page("dictionary/" + pathHeader + ".html")
                         #newPage.applyNewTemplate(self.dictionary[pathHeader])
                         #newPage.save()
@@ -82,11 +80,11 @@ class Data(object, metaclass=Singleton):
         for path in files:
             page = WordPage(path)
             word = page.getWord()
-            pathHeader = self.headerToPath(word["header"])
+            pathHeader = self.headerToPath(word["Header"])
             self.dictionary[pathHeader] = {}
             if pathHeader != self.pathToKey(path):
-                print("Path and header is not match. Path: " + path + "; header: " + word["header"])
-                #os.replace(path, "dictionary/"+ self.headerToPath(header) + ".html")
+                print("Path and header is not match. Path: " + path + "; header: " + word["Header"])
+                #os.replace(path, "dictionary/"+ page.headerToPath(header) + ".html")
             self.dictionary[pathHeader]["Header"]=word["Header"]
             self.dictionary[pathHeader]["Content"]=word["Content"]
             self.dictionary[pathHeader]["Superconcept"]=word["Superconcept"]
@@ -94,22 +92,22 @@ class Data(object, metaclass=Singleton):
             self.dictionary[pathHeader]["Subconcept"]=word["Subconcept"]
             self.dictionary[pathHeader]["Subcategory"]=word["Subcategory"]
             self.dictionary[pathHeader]["Time"] = datetime.now()
-
             if applyTemplate:
-                applyTemplate = page.applyNewTemplate()
+                applyTemplate = page.applyNewTemplate(self.dictionary[pathHeader])
                 page.save()
 
     def checkWordPage(self, path):
-        word = WordPage(path).getWord()
-        pathHeader = self.headerToPath(word["header"])
+        page = WordPage(path)
+        word = page.getWord()
+        pathHeader = self.headerToPath(word["Header"])
         if pathHeader not in self.dictionary:
             print("page is not cached:" + path)
             return
-        if self.dictionary[pathHeader]["Content"] != word["content"] or \
-            self.dictionary[pathHeader]["Superconcept"] != word["superConcepts"]  or \
-            self.dictionary[pathHeader]["Supercategory"] != word["superCategories"]  or \
-            self.dictionary[pathHeader]["Subconcept"] != word["subConcepts"]  or \
-            self.dictionary[pathHeader]["Subcategory"] != word["subCategories"]:
+        if self.dictionary[pathHeader]["Content"] != word["Content"] or \
+            self.dictionary[pathHeader]["Superconcept"] != word["Superconcept"]  or \
+            self.dictionary[pathHeader]["Supercategory"] != word["Supercategory"]  or \
+            self.dictionary[pathHeader]["Subconcept"] != word["Subconcept"]  or \
+            self.dictionary[pathHeader]["Subcategory"] != word["Subcategory"]:
             print("page content is diffrent from cache" + path)
             return 
 

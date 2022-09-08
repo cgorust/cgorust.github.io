@@ -6,10 +6,13 @@ from bs4 import BeautifulSoup
 class WordPage(Page):
     template = {}
 
+    count = 0
+
     def __init__(self, path):
         super().__init__(path)
-        type(self).template = Page("_server/template/page.html")
-        type(self).template.find("main").append(Page("_server/template/word.html").getRoot())
+        if type(self).template == {}:
+            type(self).template = Page("_server/template/page.html")
+            type(self).template.getRoot().find("main").append(Page("_server/template/word.html").getRoot())
 
     def getHeaderNode(self):
         return self.page.find("div", {"id": "dict_container"}).find("h1").find("span")           
@@ -21,16 +24,16 @@ class WordPage(Page):
         return self.page.find("b", text = relationName)         
 
     def getRelations(self, relationName):
-        relationNodes = self.page.getRelationNode(relationName)
+        relationNodes = self.getRelationNode(relationName)
         relations = []
         if relationNodes != None:
             relations = [r.getText() for r in relationNodes.findNextSiblings("a", recursive = False)]
         return relations
 
     def setRelations(self, relationName, relationStr): 
-        relationNode = self.page.getRelationNode(relationName).parent
+        relationNode = self.getRelationNode(relationName).parent
         if relationStr != "":
-            relationNode.append(BeautifulSoup(relationStr)) 
+            relationNode.append(BeautifulSoup(relationStr, 'html.parser')) 
         else:
             relationNode.attrs["hidden"]=None  
 
@@ -45,19 +48,23 @@ class WordPage(Page):
         return word
 
     def applyNewTemplate(self, word):
-        oldText = str(self.file)    
+        oldText = str(self.page)    
 
-        self.file = copy.deepcopy(self.wordPageTemplate)
+        self.page = copy.deepcopy(type(self).template.getRoot())
         self.getHeaderNode().string=word["Header"]
         self.getContentNode().string=word["Content"]
         self.setRelation("Superconcept", word["Superconcept"])
         self.setRelation("Supercategory", word["Supercategory"])
         self.setRelation("Subconcept", word["Subconcept"])
         self.setRelation("Subcategory", word["Subcategory"])
-        newText = str(self.file)
+        newText = str(self.page)
         if oldText != newText:
-            return False
-        return True    
+            # print("Template changed")
+            return True
+        return False    
+
+    def headerToPath(self, header):
+        return header.replace(" ", "_").capitalize()
 
     def headerToAddr(self, header):
         addr = BeautifulSoup("<a href=\"/dictionary/" + self.headerToPath(header) + "\">"+ header +"</a>", 'html.parser')
@@ -71,7 +78,6 @@ class WordPage(Page):
                 if first:
                     first = False
                 else:
-                    relationStr.append(", ")    
-                relationStr.append(self.urlEscape(self.headerToAddr(r))) 
- 
+                    relationStr += ", "
+                relationStr += self.escapePath(self.headerToAddr(r))  
         self.setRelations(relationName+ ": ", relationStr)        

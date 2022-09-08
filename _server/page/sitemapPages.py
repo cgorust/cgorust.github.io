@@ -17,10 +17,10 @@ class SitemapPages(Page):
     def getWordTimes(self):
         wordTimes = []
         for page in type(self).pages:
-            urls = page.find_all("url")
+            urls = page.getRoot().find_all("url")
             for url in urls:
                 loc = url.find("loc").getText()
-                loc = self.unescapePath(loc.replace(SITE + "/dictionary/", ""))
+                loc = self.unescapePath(loc.replace(SITE + "dictionary/", ""))
                 lastmod = url.find("lastmod").getText()
                 wordTimes.append((loc, lastmod))
         return wordTimes

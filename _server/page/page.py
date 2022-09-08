@@ -3,7 +3,7 @@ from urllib.parse import unquote
 
 class Page(object):
     def __init__(self, path):
-        print("Loading " + path)
+        #print("Loading " + path)
         self.path = path
         with open(path) as fp:
             self.page = BeautifulSoup(fp, 'html.parser')
@@ -17,6 +17,9 @@ class Page(object):
         path = unquote(path)
         path = path.replace("%23", "#")
         return path
+
+    def escapePath(self, path):
+        return path.replace("#", "%23")
 
     def getRoot(self):
         return self.page
