@@ -49,10 +49,20 @@ class Data(object, metaclass=Singleton):
                     if find == False:
                         print("error path superConcept has no related subConcept: "
                             + key + "," + superConcept)
-                        #self.dictionary[key].SuperConcepts.remove(superConcept)
-                        #newPage = WordPage("dictionary/" + key + ".html")
-                        #newPage.applyNewTemplate(self.dictionary[key])
-                        #newPage.save()                            
+                        pass
+            for subConcept in self.dictionary[key].SubConcepts:
+                 subConceptKey = Path.headerToKey(subConcept)   
+                 if subConceptKey not in self.dictionary:
+                    print("error key cannot find subConcept: " + key + ";" + subConcept)
+                    pass
+                 else:   
+                    find = False
+                    for superConcept in self.dictionary[subConceptKey].SuperConcepts:
+                        if Path.headerToKey(superConcept) == key:
+                            find = True
+                    if find == False:
+                        print("error path subConcept has no related superConcept: "
+                            + key + "," + subConcept)
                         pass
             for superCategory in self.dictionary[key].SuperCategories:
                  superCategoryKey = Path.headerToKey(superCategory)   
@@ -68,6 +78,24 @@ class Data(object, metaclass=Singleton):
                         print("error path superCategory has no related subcategory: "
                             + key + "," + subCategory)
                         pass
+            for subCategory in self.dictionary[key].SubCategories:
+                 subCategoryKey = Path.headerToKey(subCategory)   
+                 if subCategoryKey not in self.dictionary:
+                    print("error key cannot find subCategory: " + key + ";" + subCategory)
+                    pass
+                 else:   
+                    find = False
+                    for superCategory in self.dictionary[subCategoryKey].SuperCategories:
+                        if Path.headerToKey(superCategory) == key:
+                            find = True
+                    if find == False:
+                        print("error path subCagetory has no related superCategory: "
+                            + key + "," + subCategory)
+                        pass
+                        #self.dictionary[key].SubCategories.remove(subCategory)
+                        #newPage = WordPage("dictionary/" + key + ".html")
+                        #newPage.applyNewTemplate(self.dictionary[key])
+                        #newPage.save()                            
 
 
     def populateDictionary(self):
