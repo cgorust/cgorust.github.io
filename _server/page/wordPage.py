@@ -37,9 +37,12 @@ class WordPage(Page):
         relationName += ": "
         relationNode = self.getRelationNode(relationName).parent
         if relationStr != "":
+            if relationNode.has_attr("hidden"):
+                del relationNode["hidden"]
             relationNode.append(BeautifulSoup(relationStr, 'html.parser')) 
         else:
-            relationNode.attrs["hidden"]=None  
+            if not relationNode.has_attr("hidden"):
+                relationNode.attrs["hidden"]=None  
 
     def getWord(self) -> Word:
         word = Word(self.path
@@ -64,7 +67,6 @@ class WordPage(Page):
         self.setRelation("Subcategory", word.SubCategories)
         newText = str(self.page)
         if oldText != newText:
-            print("Template changed")
             return True
         return False    
 
