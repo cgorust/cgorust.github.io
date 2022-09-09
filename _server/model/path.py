@@ -3,6 +3,29 @@ import urllib.parse
 
 class Path:
     @classmethod
+    def isEscapedPath(cls, path) -> str:
+        newPath = urllib.parse.unquote(path)
+        if newPath == path:
+            return False
+        return True
+
+    @classmethod
+    def escapePath(cls, path) -> str:
+        if cls.isEscapedPath(path):
+            return path
+        path = urllib.parse.quote(path)
+        path = path.replace("#", "%23")
+        return path
+
+    @classmethod
+    def unescapePath(cls, path) -> str:
+        if not cls.isEscapedPath(path):
+            return path
+        path = urllib.parse.unquote(path)
+        path = path.replace("%23", "#")
+        return path
+
+    @classmethod
     def pathToKey(cls, path) -> str:
         path = path.replace(".html", "").replace("dictionary/", "")
         path = urllib.parse.unquote(path)
@@ -14,6 +37,7 @@ class Path:
     @classmethod
     def keyToPath(cls, key) -> str:
         path = key
+        path = urllib.parse.quote(path)
         path = path.replace("#", "%23")
         path = "dictionary/" + path
         return path

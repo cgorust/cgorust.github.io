@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+      var host = window.location.hostname;
+      if(host != "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R796EH82K4');
+      }
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/"><img height="28" src="/resource/img/logo.png"/>CGORUST</a>
+</nav>
+</header>
+<main>
+<div class="container-fluid" id="dict_container">
+<h1>
+<span class="badge badge-primary">builder pattern in C++</span>
+</h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+class Pizza{
+public:
+    void setDough(const std::string&amp; dough){
+        m_dough = dough;
+    }
+    void setSauce(const std::string&amp; sauce){
+        m_sauce = sauce;
+    }
+    void setTopping(const std::string&amp; topping){
+        m_topping = topping;
+    }
+    void open() const {
+        std::cout&lt;&lt;"The Pizza have "&lt;&lt;
+            m_dough&lt;&lt;" dough, "&lt;&lt;
+            m_sauce&lt;&lt;" sauce, "&lt;&lt;
+            m_topping&lt;&lt;" topping."&lt;&lt;
+            std::endl;
+    }
+private:
+    std::string m_dough;
+    std::string m_sauce;
+    std::string m_topping;
+};
+
+class PizzaBuilder{
+public:
+    virtual ~PizzaBuilder() = default;
+    void createNewPizza(){
+        m_pizza = std::make_unique&lt;Pizza&gt;();
+    }
+    Pizza* getPizza() {
+        return m_pizza.release();
+    }
+    virtual void buildDough() = 0;
+    virtual void buildSauce() = 0;
+    virtual void buildTopping() = 0;
+protected:
+    std::unique_ptr&lt;Pizza&gt; m_pizza;
+};
+
+class HawaiianPizzaBuilder:public PizzaBuilder{
+public:
+    ~HawaiianPizzaBuilder() override = default;
+    void buildDough() override {
+        m_pizza-&gt;setDough("Hawaiian");
+    }
+    void buildSauce() override {
+        m_pizza-&gt;setSauce("Hawaiian");
+    }
+    void buildTopping() override {
+        m_pizza-&gt;setTopping("Hawaiian");
+    }
+};
+
+class SpicyPizzaBuilder:public PizzaBuilder{
+public:
+    ~SpicyPizzaBuilder() override = default;
+    void buildDough() override {
+        m_pizza-&gt;setDough("Spicy");
+    }
+    void buildSauce() override {
+        m_pizza-&gt;setSauce("Spicy");
+    }
+    void buildTopping() override {
+        m_pizza-&gt;setTopping("Spicy");
+    }
+};
+
+class Cook{
+public:
+    void openPizza() const {
+        m_pizzaBuilder-&gt;getPizza()-&gt;open();
+    }
+    void createPizza(PizzaBuilder* pizzaBuilder){
+        m_pizzaBuilder = pizzaBuilder;
+        m_pizzaBuilder-&gt;createNewPizza();
+        m_pizzaBuilder-&gt;buildDough();
+        m_pizzaBuilder-&gt;buildSauce();
+        m_pizzaBuilder-&gt;buildTopping();
+    }
+private:
+    PizzaBuilder* m_pizzaBuilder;
+};
+
+int main(){
+    Cook cook{};
+    HawaiianPizzaBuilder hawaiianPizzaBuilder;
+    cook.createPizza(&amp;hawaiianPizzaBuilder);
+    cook.openPizza();
+
+    SpicyPizzaBuilder spicyPizzaBuilder;
+    cook.createPizza(&amp;spicyPizzaBuilder);
+    cook.openPizza();
+}
+
+/* Output
+The Pizza have Hawaiian dough, Hawaiian sauce, Hawaiian topping.
+The Pizza have Spicy dough, Spicy sauce, Spicy topping.
+*/
+
+```</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button">
+<b>Superconcept: </b>
+<a href="/dictionary/Builder_pattern">Builder pattern</a>, <a href="/dictionary/Design_pattern_in_c%2B%2B">Design pattern in c++</a></button>
+<button class="btn btn-light" hidden type="button">
+<b>Supercategory: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subconcept: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subcategory: </b>
+</button>
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary" href="/" role="button">Home</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2020 - 
+          <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+          </script>
+</a>
+</div>
+</footer>
+<!-- jQuery first, then Popper, then Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

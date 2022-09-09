@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+      var host = window.location.hostname;
+      if(host != "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R796EH82K4');
+      }
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/"><img height="28" src="/resource/img/logo.png"/>CGORUST</a>
+</nav>
+</header>
+<main>
+<div class="container-fluid" id="dict_container">
+<h1>
+<span class="badge badge-primary">operator precedence in C++</span>
+</h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">Operator Description | Operator | Alternative
+----- | ----- | -----
+Group 1 precedence, no associativity		
+Scope resolution | ::	
+Group 2 precedence, left to right associativity		
+Member selection (object or pointer) | . or -&gt;	
+Array subscript | []	
+Function call | ()	
+Postfix increment | ++	
+Postfix decrement | --	
+Type name | typeid	
+Constant type conversion | const_cast	
+Dynamic type conversion | dynamic_cast	
+Reinterpreted type conversion | reinterpret_cast	
+Static type conversion | static_cast	
+Group 3 precedence, right to left associativity		
+Size of object or type | sizeof	
+Prefix increment | ++	
+Prefix decrement | --	
+One's complement | ~ | compl
+Logical not | ! | not
+Unary negation | -	
+Unary plus | +	
+Address-of | &amp;	
+Indirection | *	
+Create object | new	
+Destroy object | delete	
+Cast | ()	
+Group 4 precedence, left to right associativity		
+Pointer-to-member (objects or pointers) | .* or -&gt;*	
+Group 5 precedence, left to right associativity		
+Multiplication | *	
+Division | /	
+Modulus | %	
+Group 6 precedence, left to right associativity		
+Addition | +	
+Subtraction | -	
+Group 7 precedence, left to right associativity		
+Left shift | &lt;&lt;	
+Right shift | &gt;&gt;	
+Group 8 precedence, left to right associativity		
+Less than | &lt;	
+Greater than | &gt;	
+Less than or equal to | &lt;=	
+Greater than or equal to | &gt;=	
+Group 9 precedence, left to right associativity		
+Equality | ==	
+Inequality | != | not_eq
+Group 10 precedence left to right associativity		
+Bitwise AND | &amp; | bitand
+Group 11 precedence, left to right associativity		
+Bitwise exclusive OR | ^ | xor
+Group 12 precedence, left to right associativity		
+Bitwise inclusive OR | \| | bitor
+Group 13 precedence, left to right associativity		
+Logical AND | &amp;&amp; | and
+Group 14 precedence, left to right associativity		
+Logical OR | \|\| | or
+Group 15 precedence, right to left associativity		
+Conditional | ? :	
+Assignment | =	
+Multiplication assignment | *=	
+Division assignment | /=	
+Modulus assignment | %=	
+Addition assignment | +=	
+Subtraction assignment | -=	
+Left-shift assignment | &lt;&lt;=	
+Right-shift assignment | &gt;&gt;=	
+Bitwise AND assignment | &amp;= | and_eq
+Bitwise inclusive OR assignment | \|= | or_eq
+Bitwise exclusive OR assignment | ^= | xor_eq
+throw expression | throw	
+Group 16 precedence, left to right associativity		
+Comma</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button">
+<b>Superconcept: </b>
+<a href="/dictionary/Operator_precedence">Operator precedence</a></button>
+<button class="btn btn-light" type="button">
+<b>Supercategory: </b>
+<a href="/dictionary/Operator_in_c%2B%2B">Operator in c++</a></button>
+<button class="btn btn-light" hidden type="button">
+<b>Subconcept: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subcategory: </b>
+</button>
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary" href="/" role="button">Home</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2020 - 
+          <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+          </script>
+</a>
+</div>
+</footer>
+<!-- jQuery first, then Popper, then Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

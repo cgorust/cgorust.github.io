@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+      var host = window.location.hostname;
+      if(host != "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R796EH82K4');
+      }
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/"><img height="28" src="/resource/img/logo.png"/>CGORUST</a>
+</nav>
+</header>
+<main>
+<div class="container-fluid" id="dict_container">
+<h1>
+<span class="badge badge-primary">nested class in C++</span>
+</h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">Nested classes in C++ are essentially static nested class.
+Non-static ones like in Java would be a bit harder to emulate in C++, because there is no compiler magic to automatically provide the context of the outer class. You would have to work around the issue by storing a reference to the outer class in the inner class, initialising it in the constructor of the inner class, and accessing members of the outer class explicitly via the reference.
+```
+#include&lt;iostream&gt;
+using namespace std;
+
+class A {
+public:
+    class B {
+    private:
+      int num;
+    public:
+      void getdata(int n) { num = n; }
+      void putdata() { cout&lt;&lt;"The number is "&lt;&lt;num&lt;&lt;endl; }
+   };
+   
+   void f() {
+        B obj;
+        obj.getdata(9);
+        obj.putdata();
+    }
+};
+
+int main() {
+    A a;
+    a.f();
+   
+    A::B b;
+    b.getdata(9);
+    b.putdata();
+    return 0;
+}
+```
+Output:
+```
+The number is 9
+The number is 9
+```</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button">
+<b>Superconcept: </b>
+<a href="/dictionary/Class_in_c%2B%2B">Class in c++</a>, <a href="/dictionary/Nested_class">Nested class</a></button>
+<button class="btn btn-light" hidden type="button">
+<b>Supercategory: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subconcept: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subcategory: </b>
+</button>
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary" href="/" role="button">Home</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2020 - 
+          <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+          </script>
+</a>
+</div>
+</footer>
+<!-- jQuery first, then Popper, then Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

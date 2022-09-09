@@ -64,7 +64,7 @@ class WordPage(Page):
         self.setRelation("Subcategory", word.SubCategories)
         newText = str(self.page)
         if oldText != newText:
-            #print("Template changed")
+            print("Template changed")
             return True
         return False    
 

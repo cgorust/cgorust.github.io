@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+      var host = window.location.hostname;
+      if(host != "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R796EH82K4');
+      }
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/"><img height="28" src="/resource/img/logo.png"/>CGORUST</a>
+</nav>
+</header>
+<main>
+<div class="container-fluid" id="dict_container">
+<h1>
+<span class="badge badge-primary">const keyword in C++</span>
+</h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">Pointer to constant can be declared in following two ways. We can change the pointer to point to any other integer variable, but cannot change the value of the object (entity) pointed using pointer ptr.
+```
+const int *ptr;
+int const *ptr;
+```
+Constant pointer to an integer variable, means we can change the value of object pointed by pointer, but cannot change the pointer to point another variable. 
+```
+int * const ptr;
+```
+Constant pointer to a constant variable which means we cannot change value pointed by the pointer as well as we cannot point the pointer to other variables. Let us see with an example. 
+```
+int const * const ptr;
+```
+Below is an example, 
+```
+#include &lt;iostream&gt;
+  
+int main(void)
+{
+   int i = 10;
+   int j = 20;
+
+   const int *p1 = &amp;i;   // pointer to const value
+   int const *p2 = &amp;i;   // pointer to const value
+   int *const p3 = &amp;i;   
+  
+   //*p1 = 20; // error, cannot change 
+   //*p2 = 20; // error, cannot change 
+      
+   *p3 = 20; 
+   //p3 = &amp;j;  // error, cannot change
+       
+   return 0;
+}
+```
+A const object cannot call a non-const function. 
+In C++ any variable declared as constant needs to be initialized at the time of declaration. </pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" hidden type="button">
+<b>Superconcept: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Supercategory: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subconcept: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subcategory: </b>
+</button>
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary" href="/" role="button">Home</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2020 - 
+          <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+          </script>
+</a>
+</div>
+</footer>
+<!-- jQuery first, then Popper, then Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

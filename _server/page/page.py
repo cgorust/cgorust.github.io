@@ -1,11 +1,26 @@
+from curses import newpad
+from model.path import Path
+
 from bs4 import BeautifulSoup
 from urllib.parse import unquote
+import os
 
 class Page(object):
     def __init__(self, path):
         #print("Loading " + path)
-        self.path = path
-        with open(path) as fp:
+        newPath = Path.unescapePath(path)
+        if newPath == path:
+            newPath = Path.escapePath(path)
+        
+            if newPath != Path and os.path.exists(path) and not os.path.exists(newPath):
+                dir = os.path.dirname(newPath)
+                if dir != "dictionary":
+                    os.makedirs(dir)
+                os.rename(path, newPath)
+            self.path = newPath
+        else:
+            self.path = path    
+        with open(self.path) as fp:
             self.page = BeautifulSoup(fp, 'html.parser')
 
     def save(self):

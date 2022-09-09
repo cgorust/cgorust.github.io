@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+      var host = window.location.hostname;
+      if(host != "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R796EH82K4');
+      }
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/"><img height="28" src="/resource/img/logo.png"/>CGORUST</a>
+</nav>
+</header>
+<main>
+<div class="container-fluid" id="dict_container">
+<h1>
+<span class="badge badge-primary">class in C++</span>
+</h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">Classes are declared by using the class keyword followed by an identifier.
+* C++ class has no class-level access modifier. 
+* The name of the class follows the class keyword. The name of the class must be a valid identifier. 
+* The remainder is the class body, where the class members are defined, including fields, and methods.
+```
+#include &lt;iostream&gt;
+
+//[class] - [identifier]
+class Program {
+    // Fields and methods go here...
+public:    
+    int v;
+};
+
+int main() {
+    Program p;   
+    std::cout&lt;&lt;p.v;
+}
+```
+In C++, the only difference between a class and a struct are the default accessibility. Struct members are public by default whereas class members are private by default. It is good practice to use classes when you need an object that has methods, and structs when you have a simple data object.
+In C++, the compiler automatically generates the default constructor, copy constructor, copy-assignment operator, and destructor for a type if it does not declare its own. These functions are known as the special member functions, and they are what make simple user-defined types in C++ behave like structures do in C. That is, you can create, copy, and destroy them without any additional coding effort. C++11 brings move semantics to the language and adds the move constructor and move-assignment operator to the list of special member functions that the compiler can automatically generate.
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button">
+<b>Superconcept: </b>
+<a href="/dictionary/Class">Class</a>, <a href="/dictionary/Data_type_in_c%2B%2B">Data type in c++</a></button>
+<button class="btn btn-light" type="button">
+<b>Supercategory: </b>
+<a href="/dictionary/Oop_in_c%2B%2B">Oop in c++</a></button>
+<button class="btn btn-light" type="button">
+<b>Subconcept: </b>
+<a href="/dictionary/Abstract_class_in_c%2B%2B">Abstract class in c++</a>, <a href="/dictionary/Anonymous_class_in_c%2B%2B">Anonymous class in c++</a>, <a href="/dictionary/Final_class_in_c%2B%2B">Final class in c++</a>, <a href="/dictionary/Friend_class_in_c%2B%2B">Friend class in c++</a>, <a href="/dictionary/Local_class_in_c%2B%2B">Local class in c++</a>, <a href="/dictionary/Nested_class_in_c%2B%2B">Nested class in c++</a></button>
+<button class="btn btn-light" type="button">
+<b>Subcategory: </b>
+<a href="/dictionary/Access_modifier_in_c%2B%2B">Access modifier in c++</a>, <a href="/dictionary/Class_variable_in_c%2B%2B">Class variable in c++</a>, <a href="/dictionary/Constructor_in_c%2B%2B">Constructor in c++</a>, <a href="/dictionary/Destructor_in_c%2B%2B">Destructor in c++</a>, <a href="/dictionary/Friend_in_c%2B%2B">Friend in c++</a>, <a href="/dictionary/Instance_variable_in_c%2B%2B">Instance variable in c++</a>, <a href="/dictionary/Member_function_in_c%2B%2B">Member function in c++</a>, <a href="/dictionary/Object_in_c%2B%2B">Object in c++</a>, <a href="/dictionary/Rule_of_five">Rule of five</a></button>
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary" href="/" role="button">Home</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2020 - 
+          <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+          </script>
+</a>
+</div>
+</footer>
+<!-- jQuery first, then Popper, then Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

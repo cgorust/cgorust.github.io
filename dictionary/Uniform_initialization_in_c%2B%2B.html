@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+      var host = window.location.hostname;
+      if(host != "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R796EH82K4');
+      }
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/"><img height="28" src="/resource/img/logo.png"/>CGORUST</a>
+</nav>
+</header>
+<main>
+<div class="container-fluid" id="dict_container">
+<h1>
+<span class="badge badge-primary">uniform initialization in C++</span>
+</h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">Before C++11, C++ has at least four different initialization notations, some of which overlap.
+Parenthesized initialization looks like this:
+```
+std::string s("hello");
+int m=int(); //default initialization
+```
+You can also use the = notation for the same purpose in certain cases:
+```
+std::string s="hello";
+int x=5;
+```
+For POD aggregates, you use braces. POD stands for Plain Old Data - that is, a class (whether defined with the keyword struct or the keyword class) without constructors, destructors and virtual members functions. A Plain Old Data Structure in C++ is an aggregate class that contains only PODS as members, has no user-defined destructor, no user-defined copy assignment operator, and no nonstatic members of pointer-to-member type.
+```
+int arr[4]={0,1,2,3};
+struct tm today={0};
+```
+Finally, constructors use member initializers:
+```
+struct S {
+ int x;
+ S(): x(0) {} };
+```
+This proliferation is a fertile source for confusion, not only among novices. Worse yet, in C++03 you can't initialize POD array members and POD arrays allocated using new[].
+C++11 cleans up this mess with a uniform brace notation:
+```
+class C {
+int a;
+int b;
+public:
+ C(int i, int j);
+};
+C c {0,0}; //C++11 only. Equivalent to: C c(0,0);
+
+int* a = new int[3] { 1, 2, 0 }; /C++11 only
+
+class X {
+  int a[4];
+public:
+  X() : a{1,2,3,4} {} //C++11, member array initializer
+};
+```
+With respect to containers, you can say goodbye to a long list of push_back() calls. In C++11 you can initialize containers intuitively:
+```
+// C++11 container initializer
+vector&lt;string&gt; vs={ "first", "second", "third"};
+map&lt;string, string&gt; singers =  { {"Lady Gaga", "+1 (212) 555-7890"},
+    {"Beyonce Knowles", "+1 (212) 555-0987"}};
+```
+Similarly, C++11 supports in-class initialization of data members:
+```
+class C {
+ int a=7; //C++11 only
+public:
+ C();
+};
+```
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" hidden type="button">
+<b>Superconcept: </b>
+</button>
+<button class="btn btn-light" type="button">
+<b>Supercategory: </b>
+<a href="/dictionary/Data_type_in_c%2B%2B">Data type in c++</a></button>
+<button class="btn btn-light" hidden type="button">
+<b>Subconcept: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subcategory: </b>
+</button>
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary" href="/" role="button">Home</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2020 - 
+          <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+          </script>
+</a>
+</div>
+</footer>
+<!-- jQuery first, then Popper, then Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

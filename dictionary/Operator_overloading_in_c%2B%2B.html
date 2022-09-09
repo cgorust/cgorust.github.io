@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+      var host = window.location.hostname;
+      if(host != "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R796EH82K4');
+      }
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/"><img height="28" src="/resource/img/logo.png"/>CGORUST</a>
+</nav>
+</header>
+<main>
+<div class="container-fluid" id="dict_container">
+<h1>
+<span class="badge badge-primary">operator overloading in c++</span>
+</h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">Operator overloading is a very essential element to perform the operations on user-defined data types. By operator overloading we can modify the default meaning to the operators like +, -, *, /, &lt;=, etc. 
+```
+#include &lt;iostream&gt;
+using namespace std;
+
+class Complex{
+private:
+    float r, i;
+public:
+    Complex(float r, float i) {
+        this-&gt;r = r;
+        this-&gt;i = i;
+    }
+    void say() {
+        cout &lt;&lt; r &lt;&lt; "+" &lt;&lt; i &lt;&lt; "i";
+    }
+    Complex operator+(Complex&amp; c) {
+        return Complex(r + c.r, i + c.i);
+    }
+};
+
+int main() {
+    Complex a(1,1), b(2,2);
+    a = a+b;
+    a.say();
+    return 0;
+}
+```
+Prefix doesn't take any parameter but postfix does. Why? The operator symbol for both prefix(++i) and postfix(i++) are the same. Hence, we need two different function definitions to distinguish between them. This is achieved by passing a dummy int parameter in the postfix version.
+```
+ class Number {
+ public:
+   Number&amp; operator++ ();    // prefix ++
+   Number&amp; operator++ (int); // postfix ++
+ }; 
+```
+C++ operators cannot be overloaded?
+* There is no fundamental reason to disallow overloading of ?:. So far the committee just hasn’t seen the need to introduce the special case of overloading a ternary operator. 
+* sizeof cannot be overloaded because built-in operations, such as incrementing a pointer into an array implicitly depends on it. Thus, sizeof(X) could not be given a new and different meaning by the programmer without violating basic language rules.
+* In N::m neither N nor m are expressions with values; N and m are names known to the compiler and :: performs a (compile time) scope resolution rather than an expression evaluation. One could imagine allowing overloading of x::y where x is an object rather than a namespace or a class, but that would – contrary to first appearances – involve introducing new syntax (to allow expr::expr). It is not obvious what benefits such a complication would bring.
+* operator. (dot) could in principle be overloaded using the same technique as used for -&gt;. However, doing so can lead to questions about whether an operation is meant for the object overloading . or an object referred to by .
+
+
+
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button">
+<b>Superconcept: </b>
+<a href="/dictionary/Operator_overloading">Operator overloading</a></button>
+<button class="btn btn-light" type="button">
+<b>Supercategory: </b>
+<a href="/dictionary/Polymorphism_in_c%2B%2B">Polymorphism in c++</a></button>
+<button class="btn btn-light" hidden type="button">
+<b>Subconcept: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subcategory: </b>
+</button>
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary" href="/" role="button">Home</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2020 - 
+          <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+          </script>
+</a>
+</div>
+</footer>
+<!-- jQuery first, then Popper, then Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

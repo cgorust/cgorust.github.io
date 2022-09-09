@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+      var host = window.location.hostname;
+      if(host != "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R796EH82K4');
+      }
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/"><img height="28" src="/resource/img/logo.png"/>CGORUST</a>
+</nav>
+</header>
+<main>
+<div class="container-fluid" id="dict_container">
+<h1>
+<span class="badge badge-primary">command pattern in C++</span>
+</h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+using namespace std;
+
+class Command {
+public:
+    virtual ~Command() { }
+    virtual void Execute() const = 0;
+};
+
+class SimpleCommand : public Command {
+private:
+    string pay_load_;
+
+public:
+    explicit SimpleCommand(std::string pay_load) : pay_load_(pay_load) { }
+    void Execute() const override {
+        cout &lt;&lt; "SimpleCommand: printing (" &lt;&lt; this-&gt;pay_load_ &lt;&lt; ")\n";
+    }
+};
+
+class Receiver {
+ public:
+  void DoSomething(const std::string &amp;a) {
+    cout &lt;&lt; "Receiver: Working on (" &lt;&lt; a &lt;&lt; ".)\n";
+  }
+  void DoSomethingElse(const std::string &amp;b) {
+    cout &lt;&lt; "Receiver: Also working on (" &lt;&lt; b &lt;&lt; ".)\n";
+  }
+};
+
+class ComplexCommand : public Command {
+private:
+  Receiver *receiver_;
+  std::string a_;
+  std::string b_;
+public:
+  ComplexCommand(Receiver *receiver, std::string a, std::string b) : receiver_(receiver), a_(a), b_(b) {}
+  void Execute() const override {
+    cout &lt;&lt; "ComplexCommand: Complex stuff should be done by a receiver object.\n";
+    this-&gt;receiver_-&gt;DoSomething(this-&gt;a_);
+    this-&gt;receiver_-&gt;DoSomethingElse(this-&gt;b_);
+  }
+};
+
+class Invoker {
+private:
+  Command *on_start_;
+  Command *on_finish_;
+
+public:
+  ~Invoker() {
+    delete on_start_;
+    delete on_finish_;
+  }
+
+  void SetOnStart(Command *command) {
+    this-&gt;on_start_ = command;
+  }
+  void SetOnFinish(Command *command) {
+    this-&gt;on_finish_ = command;
+  }
+  void DoSomethingImportant() {
+    std::cout &lt;&lt; "Invoker: Does anybody want something done before I begin?\n";
+    if (this-&gt;on_start_) {
+      this-&gt;on_start_-&gt;Execute();
+    }
+    cout &lt;&lt; "Invoker: ...doing something really important...\n";
+    cout &lt;&lt; "Invoker: Does anybody want something done after I finish?\n";
+    if (this-&gt;on_finish_) {
+      this-&gt;on_finish_-&gt;Execute();
+    }
+  }
+};
+
+int main() {
+  Invoker *invoker = new Invoker;
+  invoker-&gt;SetOnStart(new SimpleCommand("Say Hi!"));
+
+  Receiver *receiver = new Receiver;
+  invoker-&gt;SetOnFinish(new ComplexCommand(receiver, "Send email", "Save report"));
+  invoker-&gt;DoSomethingImportant();
+
+  delete invoker;
+  delete receiver;
+
+  return 0;
+}
+
+/*
+Invoker: Does anybody want something done before I begin?
+SimpleCommand: printing (Say Hi!)
+Invoker: ...doing something really important...
+Invoker: Does anybody want something done after I finish?
+ComplexCommand: Complex stuff should be done by a receiver object.
+Receiver: Working on (Send email.)
+Receiver: Also working on (Save report.)
+*/
+```</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button">
+<b>Superconcept: </b>
+<a href="/dictionary/Command_pattern">Command pattern</a>, <a href="/dictionary/Design_pattern_in_c%2B%2B">Design pattern in c++</a></button>
+<button class="btn btn-light" hidden type="button">
+<b>Supercategory: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subconcept: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subcategory: </b>
+</button>
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary" href="/" role="button">Home</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2020 - 
+          <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+          </script>
+</a>
+</div>
+</footer>
+<!-- jQuery first, then Popper, then Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

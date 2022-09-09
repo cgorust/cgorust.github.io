@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+      var host = window.location.hostname;
+      if(host != "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R796EH82K4');
+      }
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/"><img height="28" src="/resource/img/logo.png"/>CGORUST</a>
+</nav>
+</header>
+<main>
+<div class="container-fluid" id="dict_container">
+<h1>
+<span class="badge badge-primary">observer pattern in C++</span>
+</h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+class Subject;
+
+class Observer
+{
+public:
+    virtual ~Observer() {}
+
+    virtual int getState() = 0;
+    virtual void update( Subject *subject ) = 0;
+};
+
+class ConcreteObserver : public Observer
+{
+public:
+    ConcreteObserver( const int state ) :
+        observer_state( state ) {}
+
+    ~ConcreteObserver() {}
+
+    int getState()
+    {
+        return observer_state;
+    }
+
+    void update( Subject *subject );
+
+private:
+    int observer_state;
+};
+
+class Subject
+{
+public:
+    virtual ~Subject() {}
+
+    void attach( Observer *observer )
+    {
+        observers.push_back(observer);
+    }
+
+    void detach( const int index )
+    {
+        observers.erase( observers.begin() + index );
+    }
+
+    void notify()
+    {
+        for ( unsigned int i = 0; i &lt; observers.size(); i++ )
+        {
+            observers.at( i )-&gt;update( this );
+        }
+    }
+
+    virtual int getState() = 0;
+    virtual void setState( const int s ) = 0;
+
+private:
+    std::vector&lt;Observer*&gt; observers;
+};
+
+class ConcreteSubject : public Subject
+{
+public:
+    ~ConcreteSubject() {}
+
+    int getState()
+    {
+        return subject_state;
+    }
+
+    void setState( const int s )
+    {
+        subject_state = s;
+    }
+
+private:
+    int subject_state;
+};
+
+void ConcreteObserver::update( Subject *subject )
+{
+    observer_state = subject-&gt;getState();
+    std::cout &lt;&lt; "Observer state updated." &lt;&lt; std::endl;
+}
+
+
+int main()
+{
+    ConcreteObserver observer1( 1 );
+    ConcreteObserver observer2( 2 );
+
+    std::cout &lt;&lt; "Observer 1 state: " &lt;&lt; observer1.getState() &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Observer 2 state: " &lt;&lt; observer2.getState() &lt;&lt; std::endl;
+
+    Subject *subject = new ConcreteSubject();
+    subject-&gt;attach( &amp;observer1 );
+    subject-&gt;attach( &amp;observer2 );
+
+    subject-&gt;setState( 10 );
+    subject-&gt;notify();
+
+    std::cout &lt;&lt; "Observer 1 state: " &lt;&lt; observer1.getState() &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Observer 2 state: " &lt;&lt; observer2.getState() &lt;&lt; std::endl;
+
+    delete subject;
+    return 0;
+}
+
+/*
+Observer 1 state: 1
+Observer 2 state: 2
+Observer state updated.
+Observer state updated.
+Observer 1 state: 10
+Observer 2 state: 10
+*/
+```</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button">
+<b>Superconcept: </b>
+<a href="/dictionary/Design_pattern_in_c%2B%2B">Design pattern in c++</a>, <a href="/dictionary/Observer_pattern">Observer pattern</a></button>
+<button class="btn btn-light" hidden type="button">
+<b>Supercategory: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subconcept: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subcategory: </b>
+</button>
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary" href="/" role="button">Home</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2020 - 
+          <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+          </script>
+</a>
+</div>
+</footer>
+<!-- jQuery first, then Popper, then Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>

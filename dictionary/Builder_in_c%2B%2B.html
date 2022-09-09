@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R796EH82K4"></script>
+<script>
+      var host = window.location.hostname;
+      if(host != "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R796EH82K4');
+      }
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/"><img height="28" src="/resource/img/logo.png"/>CGORUST</a>
+</nav>
+</header>
+<main>
+<div class="container-fluid" id="dict_container">
+<h1>
+<span class="badge badge-primary">builder in C++</span>
+</h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+// Forward declaring the builder
+class EmailBuilder;
+
+class Email
+{
+  public:
+    friend class EmailBuilder;  // the builder can access Email's privates
+    
+    static EmailBuilder make();
+    
+    string to_string() const {
+        stringstream stream;
+        stream &lt;&lt; "from: " &lt;&lt; m_from
+               &lt;&lt; "\nto: " &lt;&lt; m_to
+               &lt;&lt; "\nsubject: " &lt;&lt; m_subject
+               &lt;&lt; "\nbody: " &lt;&lt; m_body;
+        return stream.str();
+    }
+    
+  private:
+    Email() = default; // restrict construction to builder
+    
+    string m_from;
+    string m_to;
+    string m_subject;
+    string m_body;
+};
+
+class EmailBuilder
+{
+  public:
+    EmailBuilder&amp; from(const string &amp;from) {
+        m_email.m_from = from;
+        return *this;
+    }
+    
+    EmailBuilder&amp; to(const string &amp;to) {
+        m_email.m_to = to;
+        return *this;
+    }
+    
+    EmailBuilder&amp; subject(const string &amp;subject) {
+        m_email.m_subject = subject;
+        return *this;
+    }
+    
+    EmailBuilder&amp; body(const string &amp;body) {
+        m_email.m_body = body;
+        return *this;
+    }
+    
+    operator Email&amp;&amp;() {
+        return std::move(m_email); // notice the move
+    }
+    
+  private:
+    Email m_email;
+};
+
+EmailBuilder Email::make()
+{
+    return EmailBuilder();
+}
+
+// Bonus example!
+std::ostream&amp; operator &lt;&lt;(std::ostream&amp; stream, const Email&amp; email)
+{
+    stream &lt;&lt; email.to_string();
+    return stream;
+}
+
+
+int main()
+{
+    Email mail = Email::make().from("me@mail.com")
+                              .to("you@mail.com")
+                              .subject("C++ builders")
+                              .body("I like this API, don't you?");
+                              
+    cout &lt;&lt; mail &lt;&lt; endl;
+}
+
+/* output
+
+from: me@mail.com
+to: you@mail.com
+subject: C++ builders
+body: I like this API, don't you?
+*/
+```</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button">
+<b>Superconcept: </b>
+<a href="/dictionary/Builder">Builder</a></button>
+<button class="btn btn-light" hidden type="button">
+<b>Supercategory: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subconcept: </b>
+</button>
+<button class="btn btn-light" hidden type="button">
+<b>Subcategory: </b>
+</button>
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary" href="/" role="button">Home</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="text-center text-primary">
+<a href="/">cgorust.com 2020 - 
+          <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+          </script>
+</a>
+</div>
+</footer>
+<!-- jQuery first, then Popper, then Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/resource/highlight/highlight.pack.js"></script>
+<script src="/client/src/app/main.js" type="module"></script>
+</body>
+</html>
