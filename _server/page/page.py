@@ -8,18 +8,16 @@ import os
 class Page(object):
     def __init__(self, path):
         #print("Loading " + path)
-        newPath = Path.unescapePath(path)
+        newPath = Path.decodePath(path)
         if newPath == path:
-            newPath = Path.escapePath(path)
-        
-            if newPath != Path and os.path.exists(path) and not os.path.exists(newPath):
+            self.path = newPath
+        else:
+            if os.path.exists(path) and not os.path.exists(newPath):
                 dir = os.path.dirname(newPath)
                 if dir != "dictionary":
                     os.makedirs(dir)
                 os.rename(path, newPath)
-            self.path = newPath
-        else:
-            self.path = path    
+            self.path = newPath    
         with open(self.path) as fp:
             self.page = BeautifulSoup(fp, 'html.parser')
 

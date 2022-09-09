@@ -33,76 +33,38 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">composite pattern in C++</span>
+<span class="badge badge-primary">default argument in C++</span>
 </h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">```
-#include &lt;vector&gt;
-#include &lt;iostream&gt; 
-#include &lt;algorithm&gt; 
-#include &lt;functional&gt; 
+<pre id="word_content" style="white-space: pre-wrap;">* When Function overloading is done along with default values, then we need to make sure it will not be ambiguous.  The compiler will throw an error, if ambiguous. 
+* With default arguments, we cannot skip an argument in the middle. Once an argument is skipped, all the following arguments must be skipped. 
+```
+#include &lt;iostream&gt;
 using namespace std;
  
-class Graphic {
-public:
-  virtual void draw() const = 0;
-  virtual void add(Graphic *g) {}
-};
- 
-class Line : public Graphic {
-public:
-  void draw() const {
-    cout &lt;&lt; "Line draw()\n";
-  }
-};
+int sum(int x, int y, int z = 0, int w = 0)
+{
+    return (x + y + z + w);
+}
+int sum(int x, int y, float z = 0, float w = 0)
+{
+    return (x + y + z + w);
+}
 
-class Rectangle : public Graphic {
-public:
-  void draw() const {
-    cout &lt;&lt; "Rectangle draw() \n";
-  }
-};
-
-// Composite
-class Picture : public Graphic {
-public:
-  void draw() const {
-    for_each(gList.begin(), gList.end(), mem_fn(&amp;Graphic::draw));
-  }
- 
-  void add(Graphic *graphic) {
-    gList.push_back(graphic);
-  }
- 
-private:
-  vector&lt;Graphic*&gt; gList;
-};
- 
 int main()
 {
-  Line line;
-  line.draw();
-  
-  Rectangle rect;
-  rect.draw();
-
-  Picture pic;
-  pic.add(&amp;line);
-  pic.add(&amp;rect);
-  pic.add(&amp;rect);
-  pic.draw();
-
-  return 0;
+    cout &lt;&lt; sum(10, 15) &lt;&lt; endl; //ambiguous
+    return 0;
 }
 ```</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Composite_pattern">Composite pattern</a>, <a href="/dictionary/Design_pattern_in_c%2B%2B">Design pattern in c++</a></button>
-<button class="btn btn-light" hidden type="button">
+<a href="/dictionary/Default_argument">Default argument</a></button>
+<button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-</button>
+<a href="/dictionary/Function_in_c++">Function in c++</a></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subconcept: </b>
 </button>

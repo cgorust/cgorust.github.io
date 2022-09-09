@@ -81,5 +81,5 @@ class WordPage(Page):
                     first = False
                 else:
                     relationStr += ", "
-                relationStr += Path.getAddr(Path.headerToPath(r), r)
+                relationStr += Path.getAddr(r)
         self.setRelations(relationName, relationStr)        
