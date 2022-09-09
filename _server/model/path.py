@@ -41,7 +41,8 @@ class Path:
 
     @classmethod
     def getAddr(cls, header) -> str:
-        addr = BeautifulSoup("<a href=\"/" + cls.headerToPath(header).replace(".html", "") + "\">"+ header +"</a>", 'html.parser')
+        addr = BeautifulSoup("<a href=\"/" + cls.headerToPath(header).replace(".html", "") + "\">"
+            + header +"</a>", 'html.parser')
         return str(addr)
 
     @classmethod

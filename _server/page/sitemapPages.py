@@ -1,7 +1,6 @@
 from page.page import Page
 from model.path import Path
-
-SITE = "https://cgorust.com/"
+from model.config import SITE
 
 class SitemapPages(Page):
     pages = []
@@ -23,6 +22,7 @@ class SitemapPages(Page):
                 loc = url.find("loc").getText()
                 key = Path.pathToKey(loc.replace(SITE + "dictionary/", ""))
                 lastmod = url.find("lastmod").getText()
+                print("key:{},lastmod:{}".format(key, lastmod))
                 wordTimes.append((key, lastmod))
         return wordTimes
 

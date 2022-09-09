@@ -1,4 +1,4 @@
-from data import Data
+from data.data import Data
 
 import http.server
 
