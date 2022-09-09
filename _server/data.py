@@ -124,6 +124,7 @@ class Data(object, metaclass=Singleton):
             key = Path.headerToKey(word.Header)
             
             self.checkRelations(word)
+            self.dictionary[key] = word
             page.applyNewTemplate(self.dictionary[key])
             page.save()
 
