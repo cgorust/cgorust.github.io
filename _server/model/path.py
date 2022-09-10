@@ -1,25 +1,28 @@
+from text import Text
+
 from bs4 import BeautifulSoup
 import urllib.parse
+import html
 
 class Path:
     @classmethod
-    def isEncodedPath(cls, path) -> str:
+    def isUrlEncodedPath(cls, path) -> str:
         newPath = urllib.parse.unquote(path)
         if newPath == path:
             return False
         return True
 
     @classmethod
-    def encodePath(cls, path) -> str:
-        if cls.isEncodedPath(path):
+    def urlEncodePath(cls, path) -> str:
+        if cls.isUrlEncodedPath(path):
             return path
         path = urllib.parse.quote(path)
         path = path.replace("#", "%23")
         return path
 
     @classmethod
-    def decodePath(cls, path) -> str:
-        if not cls.isEncodedPath(path):
+    def urlDecodePath(cls, path) -> str:
+        if not cls.isUrlEncodedPath(path):
             return path
         path = urllib.parse.unquote(path)
         path = path.replace("%23", "#")
@@ -28,7 +31,7 @@ class Path:
     @classmethod
     def pathToKey(cls, path) -> str:
         path = path.replace(".html", "").replace("dictionary/", "")
-        path = cls.decodePath(path)
+        path = cls.urlDecodePath(path)
         if path.lower().capitalize() != path:
             print("Path format error:" + path)
         return path
@@ -36,13 +39,14 @@ class Path:
     @classmethod
     def keyToPath(cls, key) -> str:
         path = key
+        path = Path.urlEncodePath(path)
         path = "dictionary/" + path + ".html"
         return path
 
     @classmethod
     def getAddr(cls, header) -> str:
         addr = BeautifulSoup("<a href=\"/" + cls.headerToPath(header).replace(".html", "") + "\">"
-            + header +"</a>", 'html.parser')
+            + Text.htmlEncodeText(header) +"</a>", 'html.parser')
         return str(addr)
 
     @classmethod

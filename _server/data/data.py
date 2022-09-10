@@ -1,6 +1,7 @@
 from re import I
 from lib.singleton import Singleton
 from page.sitemapPages import SitemapPages
+from page.indexPage import IndexPage
 from page.wordPage import WordPage
 from model.path import Path
 from model.word import Word
@@ -19,7 +20,8 @@ class Data(object, metaclass=Singleton):
         self.checkDictionary()
         self.populateSitemap()
         print("Data loaded")
-        self.generateSitemap()
+        #self.generateSitemap()
+        self.generateIndexPage()
 
     def checkWord(self, word: Word):
         if word.SuperConcepts == [] and word.SuperCategories == []:
@@ -97,44 +99,34 @@ class Data(object, metaclass=Singleton):
         wordTimes = []
         for key in self.dictionary:
             time = self.dictionary[key].Time.strftime("%Y-%m-%d")
-            path = SITE + Path.encodePath(Path.keyToPath(key)).replace(".html", "")
+            path = Path.keyToPath(key).replace(".html", "")
             wordTimes.append((path, time))
         wordTimes = self.sortByTime(wordTimes)
         return wordTimes
 
-    def generateSitemap(self):
-        wordTimes = self.getDictWordTimes()
-        SIZE = 38000
-        PARTS = int(len(wordTimes)/SIZE)+1
+    def getDictHeaderTimes(self) -> list:
+        headerTimes = []
+        for key in self.dictionary:
+            time = self.dictionary[key].Time.strftime("%Y-%m-%d")
+            header = self.dictionary[key].Header
+            headerTimes.append((header, time))
+        headerTimes = self.sortByTime(headerTimes)
+        return headerTimes
 
-        content = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
-        content += "<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n"
-        for part in range(PARTS):
-            content += "  <sitemap>\n"
-            content += "    <loc>" + SITE + "sitemap_" + str(part*SIZE) + ".xml</loc>\n"
-            content += "    <lastmod>" + datetime.now().strftime("%Y-%m-%d") + "</lastmod>\n"
-            content += "  </sitemap>\n"
-        content += "</sitemapindex>"
-        f = open(SITEMAP, "w")
-        f.write(content)
-        f.close()             
-
-        for part in range(PARTS):
-            file =  "sitemap_" + str(part*SIZE) + ".xml"
-            f = open(file, "w")
-            content = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
-            content += "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n"
-            for i in range(SIZE):
-                j = part*SIZE + i
-                if j == len(wordTimes):
-                    break
-                content +=  "  <url>\n"
-                content += "    <loc>" + wordTimes[j][0] + "</loc>\n"
-                content += "    <lastmod>" +  wordTimes[j][1] + "</lastmod>\n"
-                content +=  "  </url>\n"
-            f.write(content)
-            f.close()             
-
+    def generateIndexPage(self):
+        headerTimes = self.getDictHeaderTimes()
+        addrs = ""
+        first = True
+        for ht in headerTimes:
+            h = ht[0]
+            if first:
+                first = False
+            else:
+                addrs+=",    "
+            addrs += Path.getAddr(h)
+        page = IndexPage("index.html")    
+        page.generate(addrs)
+        page.save()
 
     def checkWordPage(self, path):
         page = WordPage(path)

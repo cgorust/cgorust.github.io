@@ -1,6 +1,7 @@
 from page.page import Page
 from model.word import Word
 from model.path import Path
+from model.text import Text
 
 import copy
 from bs4 import BeautifulSoup
@@ -46,7 +47,7 @@ class WordPage(Page):
 
     def getWord(self) -> Word:
         word = Word(self.path
-            , self.getHeaderNode().getText()
+            , Text.htmlEncodeText(self.getHeaderNode().getText())
             , self.getContentNode().getText()
             , self.getRelations("Superconcept")
             , self.getRelations("Supercategory")

@@ -8,7 +8,7 @@ import os
 class Page(object):
     def __init__(self, path):
         #print("Loading " + path)
-        newPath = Path.decodePath(path)
+        newPath = Path.urlDecodePath(path)
         if newPath == path:
             self.path = newPath
         else:
