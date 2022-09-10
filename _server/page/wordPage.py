@@ -31,7 +31,7 @@ class WordPage(Page):
         relationNodes = self.getRelationNode(relationName)
         relations = []
         if relationNodes != None:
-            relations = [r.getText() for r in relationNodes.findNextSiblings("a", recursive = False)]
+            relations = [Text.htmlDecodeText(r.getText()) for r in relationNodes.findNextSiblings("a", recursive = False)]
         return relations
 
     def setRelations(self, relationName: str, relationStr: str): 
@@ -47,7 +47,7 @@ class WordPage(Page):
 
     def getWord(self) -> Word:
         word = Word(self.path
-            , Text.htmlEncodeText(self.getHeaderNode().getText())
+            , Text.htmlDecodeText(self.getHeaderNode().getText())
             , self.getContentNode().getText()
             , self.getRelations("Superconcept")
             , self.getRelations("Supercategory")

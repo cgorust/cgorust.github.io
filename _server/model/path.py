@@ -1,4 +1,4 @@
-from text import Text
+from model.text import Text
 
 from bs4 import BeautifulSoup
 import urllib.parse
