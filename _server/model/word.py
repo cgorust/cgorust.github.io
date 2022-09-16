@@ -18,8 +18,6 @@ class Word(object):
             superConcepts: list, superCategories: list, subConcepts: list, subCategories: list):
         self.Key = Path.pathToKey(path)
         self.Header = header
-        if Path.headerToKey(self.Header) != self.Key:
-            print("Error header path mismatch. header " + self.Header + ", key " + self.Key)
         self.Content = content
         self.SuperConcepts = superConcepts
         self.SuperCategories = superCategories

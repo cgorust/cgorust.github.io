@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">final class in Java</span>
+<span class="badge badge-primary" id="header">final class in Java</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">A final class cannot be subclassed. Many of the Java standard library classes are final, such as java.lang.System and java.lang.String. Make a final class only if you need an absolute guarantee that none of the methods in that class will ever be overridden. If you're deeply dependent on the implementations of certain methods, then using final gives you the security that nobody can change the implementation.
@@ -53,10 +53,10 @@ public class Sub extends Super{
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Class_in_java">class in Java</a>, <a href="/dictionary/Final_class">final class</a></button>
+<span><a href="/dictionary/Class_in_java">class in Java</a></span><span>,  <a href="/dictionary/Final_class">final class</a></span></button>
 <button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-<a href="/dictionary/Final_keyword_in_java">final keyword in Java</a></button>
+<span><a href="/dictionary/Final_keyword_in_java">final keyword in Java</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subconcept: </b>
 </button>
@@ -64,7 +64,7 @@ public class Sub extends Super{
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -79,7 +79,7 @@ public class Sub extends Super{
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

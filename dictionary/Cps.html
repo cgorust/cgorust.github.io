@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">CPS</span>
+<span class="badge badge-primary" id="header">CPS</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">A function written in CPS takes an extra argument: an explicit "continuation", i.e. a function of one argument. When the CPS function has computed its result value, it "returns" it by calling the continuation function with this value as the argument. That means that when invoking a CPS function, the calling function is required to supply a procedure to be invoked with the subroutine's "return" value. 
@@ -42,7 +42,7 @@ Expressing code in this form makes a number of things explicit which are implici
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Function">function</a></button>
+<span><a href="/dictionary/Function">function</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Supercategory: </b>
 </button>
@@ -53,7 +53,7 @@ Expressing code in this form makes a number of things explicit which are implici
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -68,7 +68,7 @@ Expressing code in this form makes a number of things explicit which are implici
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

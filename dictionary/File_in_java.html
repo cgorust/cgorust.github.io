@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">file in Java</span>
+<span class="badge badge-primary" id="header">file in Java</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">The File class is used to read information about existing files and directories, list the contents of a directory, and create/delete files and directories.
@@ -62,18 +62,18 @@ listFiles() | Returns a File[] array denoting the files in the directory.
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/File">file</a></button>
+<span><a href="/dictionary/File">file</a></span></button>
 <button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-<a href="/dictionary/Io_in_java">IO in Java</a></button>
+<span><a href="/dictionary/Io_in_java">IO in Java</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subconcept: </b>
 </button>
 <button class="btn btn-light" type="button">
 <b>Subcategory: </b>
-<a href="/dictionary/File_permission_in_java">file permission in Java</a>, <a href="/dictionary/File_separator_in_java">file separator in Java</a></button>
+<span><a href="/dictionary/File_permission_in_java">file permission in Java</a></span><span>,  <a href="/dictionary/File_separator_in_java">file separator in Java</a></span></button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -88,7 +88,7 @@ listFiles() | Returns a File[] array denoting the files in the directory.
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

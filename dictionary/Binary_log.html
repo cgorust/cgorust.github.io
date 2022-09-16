@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">binary log</span>
+<span class="badge badge-primary" id="header">binary log</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">The master server’s binary log is the basis for communication between the master and its slaves:
@@ -48,7 +48,7 @@ When a slave receives an update from the master, it doesn’t change its own dat
 </button>
 <button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-<a href="/dictionary/Database">database</a></button>
+<span><a href="/dictionary/Database">database</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subconcept: </b>
 </button>
@@ -56,7 +56,7 @@ When a slave receives an update from the master, it doesn’t change its own dat
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -71,7 +71,7 @@ When a slave receives an update from the master, it doesn’t change its own dat
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

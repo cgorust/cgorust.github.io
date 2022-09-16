@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">JDBC URL</span>
+<span class="badge badge-primary" id="header">JDBC URL</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">a JDBC URL has a variety of formats. They have three parts in common. 
@@ -52,7 +52,7 @@ jdbc:postgres://localhost:5432/zoo
 </button>
 <button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-<a href="/dictionary/Jdbc_connection">JDBC connection</a></button>
+<span><a href="/dictionary/Jdbc_connection">JDBC connection</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subconcept: </b>
 </button>
@@ -60,7 +60,7 @@ jdbc:postgres://localhost:5432/zoo
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -75,7 +75,7 @@ jdbc:postgres://localhost:5432/zoo
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

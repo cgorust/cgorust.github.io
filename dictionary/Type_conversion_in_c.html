@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">type conversion in C</span>
+<span class="badge badge-primary" id="header">type conversion in C</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">When an operator has operands of different types, they are converted to a common type according to a small number of rules. In general, the only automatic conversions are those that convert a ''narrower'' operand into a ''wider'' one without losing information, such as converting an integer into floating point in an expression like f + i. Expressions that don't make sense, like using a float as a subscript, are disallowed. Expressions that might lose information, like assigning a longer integer type to a shorter, or a floating-point type to an integer, may draw a warning, but they are not illegal.
@@ -43,18 +43,18 @@ There is one subtle point about the conversion of characters to integers. The la
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Type_conversion">type conversion</a></button>
+<span><a href="/dictionary/Type_conversion">type conversion</a></span></button>
 <button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-<a href="/dictionary/Data_type_in_c">data type in C</a></button>
+<span><a href="/dictionary/Data_type_in_c">data type in C</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subconcept: </b>
 </button>
 <button class="btn btn-light" type="button">
 <b>Subcategory: </b>
-<a href="/dictionary/Usual_arithmetic_conversion_in_c">usual arithmetic conversion in C</a></button>
+<span><a href="/dictionary/Usual_arithmetic_conversion_in_c">usual arithmetic conversion in C</a></span></button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -69,7 +69,7 @@ There is one subtle point about the conversion of characters to integers. The la
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

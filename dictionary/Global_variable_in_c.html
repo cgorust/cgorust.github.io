@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">global variable in C</span>
+<span class="badge badge-primary" id="header">global variable in C</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">In C, a global variable is also called an external variable. The keyword extern means "the storage for this variable is allocated elsewhere". It tells the compiler "I'm referencing myGlobalvar here, and you haven't seen it before, but that's OK; the linker will know what you are talking about." You normally use extern when you want to refer to something that is not in the current translation unit, such as a variable that's defined in a library you will be linking to.
@@ -52,7 +52,7 @@ int main() {
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Global_variable">global variable</a>, <a href="/dictionary/Variable_in_c">variable in C</a></button>
+<span><a href="/dictionary/Global_variable">global variable</a></span><span>,  <a href="/dictionary/Variable_in_c">variable in C</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Supercategory: </b>
 </button>
@@ -63,7 +63,7 @@ int main() {
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -78,7 +78,7 @@ int main() {
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

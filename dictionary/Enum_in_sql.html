@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">enum in SQL</span>
+<span class="badge badge-primary" id="header">enum in SQL</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">The ENUM data type in MySQL is a string object. It limits the value chosen from a list of permitted values in the column specification at the time of table creation. 
@@ -47,7 +47,7 @@ CREATE TABLE Student_grade(
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Data_type_in_sql">data type in SQL</a>, <a href="/dictionary/Enum">enum</a></button>
+<span><a href="/dictionary/Data_type_in_sql">data type in SQL</a></span><span>,  <a href="/dictionary/Enum">enum</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Supercategory: </b>
 </button>
@@ -58,7 +58,7 @@ CREATE TABLE Student_grade(
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -73,7 +73,7 @@ CREATE TABLE Student_grade(
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

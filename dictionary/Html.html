@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">HTML</span>
+<span class="badge badge-primary" id="header">HTML</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">HTML(Hyper Text Markup Language) is the standard markup language for creating Web pages. It uses of a set of elements to describe the structure of a Web page. HTML elements label pieces of content such as "this is a heading", "this is a paragraph", "this is a link",
@@ -54,7 +54,7 @@ Below is a HTML example,
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Programming_language">programming language</a></button>
+<span><a href="/dictionary/Programming_language">programming language</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Supercategory: </b>
 </button>
@@ -63,9 +63,9 @@ Below is a HTML example,
 </button>
 <button class="btn btn-light" type="button">
 <b>Subcategory: </b>
-<a href="/dictionary/Document_object_model">document object model</a>, <a href="/dictionary/Html_element">HTML element</a>, <a href="/dictionary/Html_escape_character">HTML escape character</a>, <a href="/dictionary/Web_color">web color</a>, <a href="/dictionary/Whitespace_in_html_">whitespace in HTML </a></button>
+<span><a href="/dictionary/Document_object_model">document object model</a></span><span>,  <a href="/dictionary/Html_element">HTML element</a></span><span>,  <a href="/dictionary/Html_escape_character">HTML escape character</a></span><span>,  <a href="/dictionary/Web_color">web color</a></span><span>,  <a href="/dictionary/Whitespace_in_html_">whitespace in HTML </a></span></button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -80,7 +80,7 @@ Below is a HTML example,
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

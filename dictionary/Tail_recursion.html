@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">tail recursion</span>
+<span class="badge badge-primary" id="header">tail recursion</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Some subroutines/functions end by calling another function. For example, the last statement in a function named “foo” may be to invoke/call a function named “bar.” When the called function (bar) returns, the original function (foo) immediately completes and returns. Any value returned by the called function (bar) will be used as the return value from the caller (foo). This pattern often occurs in functional programs, where recursion is used to implement repetitive looping behaviour. Without special attention, some functional programs that use recursion in this way can create very deep stacks by pushing thousands of return addresses onto the stack. 
@@ -45,7 +45,7 @@ A common optimization is called the “tail recursion optimization”. Here is h
 </button>
 <button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-<a href="/dictionary/Function">function</a></button>
+<span><a href="/dictionary/Function">function</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subconcept: </b>
 </button>
@@ -53,7 +53,7 @@ A common optimization is called the “tail recursion optimization”. Here is h
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -68,7 +68,7 @@ A common optimization is called the “tail recursion optimization”. Here is h
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

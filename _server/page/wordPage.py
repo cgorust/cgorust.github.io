@@ -11,11 +11,13 @@ class WordPage(Page):
 
     count = 0
 
-    def __init__(self, path):
+    def __init__(self, path, main =None):
         super().__init__(path)
         if type(self).template == {}:
             type(self).template = Page("_server/template/page.html")
             type(self).template.getRoot().find("main").append(Page("_server/template/word.html").getRoot())
+        if main != None:
+            self.getRoot().find("main").replaceWith(BeautifulSoup(main, 'html.parser'))
 
     def getHeaderNode(self):
         return self.page.find("div", {"id": "dict_container"}).find("h1").find("span")           
@@ -31,7 +33,7 @@ class WordPage(Page):
         relationNodes = self.getRelationNode(relationName)
         relations = []
         if relationNodes != None:
-            relations = [Text.htmlDecodeText(r.getText()) for r in relationNodes.findNextSiblings("a", recursive = False)]
+            relations = [Text.htmlDecodeText(r.findChildren("a")[0].getText()) for r in relationNodes.findNextSiblings("span", recursive = False)]
         return relations
 
     def setRelations(self, relationName: str, relationStr: str): 
@@ -78,9 +80,11 @@ class WordPage(Page):
         if relations != []:
             first = True
             for r in relations:
+                relationStr +="<span>"
                 if first == True:
                     first = False
                 else:
-                    relationStr += ", "
+                    relationStr += ",  "
                 relationStr += Path.getAddr(r)
+                relationStr +="</span>"
         self.setRelations(relationName, relationStr)        

@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">class template</span>
+<span class="badge badge-primary" id="header">class template</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Member functions can be defined inside or outside of a class template.
@@ -43,18 +43,18 @@ Member functions can themselves be function templates and specify extra paramete
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Template">template</a></button>
+<span><a href="/dictionary/Template">template</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Supercategory: </b>
 </button>
 <button class="btn btn-light" type="button">
 <b>Subconcept: </b>
-<a href="/dictionary/Nested_class_template">nested class template</a></button>
+<span><a href="/dictionary/Nested_class_template">nested class template</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -69,7 +69,7 @@ Member functions can themselves be function templates and specify extra paramete
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

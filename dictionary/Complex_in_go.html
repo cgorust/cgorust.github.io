@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">complex in Go</span>
+<span class="badge badge-primary" id="header">complex in Go</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Go defines two numeric types for complex numbers, complex64 and complex128 . Most programming languages define complex numbers as the combination of a real and complex part, rather than including a specific primitive for the purpose. (Even in group theory complex numbers are formally constructed as pairs of reals.)
@@ -48,7 +48,7 @@ fmt.Println(imag(x*y))           // "10"
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Complex">complex</a></button>
+<span><a href="/dictionary/Complex">complex</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Supercategory: </b>
 </button>
@@ -59,7 +59,7 @@ fmt.Println(imag(x*y))           // "10"
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -74,7 +74,7 @@ fmt.Println(imag(x*y))           // "10"
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

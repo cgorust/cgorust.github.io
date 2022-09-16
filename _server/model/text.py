@@ -21,3 +21,4 @@ class Text:
             return text
         text = html.unescape(text)
         return text
+

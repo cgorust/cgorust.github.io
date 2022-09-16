@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">application</span>
+<span class="badge badge-primary" id="header">application</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;"></pre>
@@ -47,12 +47,12 @@
 </button>
 <button class="btn btn-light" type="button">
 <b>Subconcept: </b>
-<a href="/dictionary/Applet">applet</a>, <a href="/dictionary/Git">Git</a>, <a href="/dictionary/Repl">REPL</a>, <a href="/dictionary/Text_editor">text editor</a>, <a href="/dictionary/Web_browser">web browser</a>, <a href="/dictionary/Www">www</a></button>
+<span><a href="/dictionary/Applet">applet</a></span><span>,  <a href="/dictionary/Git">Git</a></span><span>,  <a href="/dictionary/Repl">REPL</a></span><span>,  <a href="/dictionary/Text_editor">text editor</a></span><span>,  <a href="/dictionary/Web_browser">web browser</a></span><span>,  <a href="/dictionary/Www">www</a></span></button>
 <button class="btn btn-light" type="button">
 <b>Subcategory: </b>
-<a href="/dictionary/Compute-intensive">compute-intensive</a>, <a href="/dictionary/Data-intensive">data-intensive</a>, <a href="/dictionary/Rdbms">RDBMS</a></button>
+<span><a href="/dictionary/Compute-intensive">compute-intensive</a></span><span>,  <a href="/dictionary/Data-intensive">data-intensive</a></span><span>,  <a href="/dictionary/Rdbms">RDBMS</a></span></button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -67,7 +67,7 @@
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

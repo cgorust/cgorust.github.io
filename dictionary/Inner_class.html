@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">inner class</span>
+<span class="badge badge-primary" id="header">inner class</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">A inner class is a non-static nested class defined in a outer class. A static nested class does not have access to the outer class instance.  A inner class carry a reference to an outer class, and can access outer class members.
@@ -42,18 +42,18 @@ C++/C#/Python do not support inner class; they only support static nested class.
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Nested_class">nested class</a></button>
+<span><a href="/dictionary/Nested_class">nested class</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Supercategory: </b>
 </button>
 <button class="btn btn-light" type="button">
 <b>Subconcept: </b>
-<a href="/dictionary/Inner_class_in_java">inner class in Java</a>, <a href="/dictionary/Inner_class_in_kotlin">inner class in Kotlin</a></button>
+<span><a href="/dictionary/Inner_class_in_java">inner class in Java</a></span><span>,  <a href="/dictionary/Inner_class_in_kotlin">inner class in Kotlin</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -68,7 +68,7 @@ C++/C#/Python do not support inner class; they only support static nested class.
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

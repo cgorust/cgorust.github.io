@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">PHP</span>
+<span class="badge badge-primary" id="header">PHP</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">PHP is a general-purpose scripting language especially suited to web development. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1994. 
@@ -42,7 +42,7 @@ PHP code is usually processed on a web server by a PHP interpreter implemented a
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Programming_language">programming language</a></button>
+<span><a href="/dictionary/Programming_language">programming language</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Supercategory: </b>
 </button>
@@ -51,9 +51,9 @@ PHP code is usually processed on a web server by a PHP interpreter implemented a
 </button>
 <button class="btn btn-light" type="button">
 <b>Subcategory: </b>
-<a href="/dictionary/Data_structure_in_php">data structure in PHP</a>, <a href="/dictionary/Data_type_in_php">data type in PHP</a>, <a href="/dictionary/Oop_in_php">OOP in PHP</a></button>
+<span><a href="/dictionary/Data_structure_in_php">data structure in PHP</a></span><span>,  <a href="/dictionary/Data_type_in_php">data type in PHP</a></span><span>,  <a href="/dictionary/Oop_in_php">OOP in PHP</a></span></button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -68,7 +68,7 @@ PHP code is usually processed on a web server by a PHP interpreter implemented a
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

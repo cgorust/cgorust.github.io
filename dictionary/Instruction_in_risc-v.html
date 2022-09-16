@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">instruction in RISC-V</span>
+<span class="badge badge-primary" id="header">instruction in RISC-V</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Instructions are 32 bits (4 bytes, 1 word) in length and must be stored at word-aligned memory locations. Instructions for the RV64 and RV128 variants are still 32 bits long. 
@@ -72,18 +72,18 @@ XXXXX = Op-code / function code </pre>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Instruction">instruction</a></button>
+<span><a href="/dictionary/Instruction">instruction</a></span></button>
 <button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-<a href="/dictionary/Risc-v">RISC-V</a></button>
+<span><a href="/dictionary/Risc-v">RISC-V</a></span></button>
 <button class="btn btn-light" type="button">
 <b>Subconcept: </b>
-<a href="/dictionary/User-level_instruction_in_risc-v">user-level instruction in RISC-V</a></button>
+<span><a href="/dictionary/User-level_instruction_in_risc-v">user-level instruction in RISC-V</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -98,7 +98,7 @@ XXXXX = Op-code / function code </pre>
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

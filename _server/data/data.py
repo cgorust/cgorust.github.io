@@ -11,6 +11,8 @@ import glob
 import os
 from dateutil import parser
 from datetime import datetime
+import difflib
+import heapq
 
 class Data(object, metaclass=Singleton):
     dictionary = {}
@@ -18,9 +20,8 @@ class Data(object, metaclass=Singleton):
     def __init__(self):
         self.populateDictionary()
         self.checkDictionary()
-        self.populateSitemap()
         print("Data loaded")
-        #self.generateSitemap()
+        self.populateSitemap()
         self.generateIndexPage()
 
     def checkWord(self, word: Word):
@@ -87,7 +88,9 @@ class Data(object, metaclass=Singleton):
             if key not in self.dictionary:
                 print("sitemap path not exist: " + key)
             else:
-                self.dictionary[key].Time = parser.parse(time)   
+                self.dictionary[key].Time = parser.parse(time)  
+        wordTimes = self.getDictWordTimes()        
+        file.generateSitemap(wordTimes)         
 
     def sortByTime(self, li):  
         # key is set to sort using second element of 
@@ -118,12 +121,14 @@ class Data(object, metaclass=Singleton):
         addrs = ""
         first = True
         for ht in headerTimes:
+            addrs+="<span>"
             h = ht[0]
             if first:
                 first = False
             else:
-                addrs+=",    "
+                addrs+=",&ensp;"
             addrs += Path.getAddr(h)
+            addrs+="</span>"
         page = IndexPage("index.html")    
         page.generate(addrs)
         page.save()
@@ -132,15 +137,89 @@ class Data(object, metaclass=Singleton):
         page = WordPage(path)
         word = page.getWord()
         key = Path.headerToKey(word.Header)
+        if Path.headerToKey(word.Header) != key:
+            print("Error header path mismatch. header " + word.Header + ", key " + key)
         if key not in self.dictionary:
             print("page %s is not cached", path)
             return
         if self.dictionary[key].Content != word.Content or \
             self.dictionary[key].SubConcepts != word.SubConcepts or \
             self.dictionary[key].SubCategories != word.SubCategories or \
-            self.dictionary[key].SubConcepts != word.SubConcepts or \
-            self.dictionary[key].SubCategories != word.SubCategories:
+            self.dictionary[key].SuperConcepts != word.SuperConcepts or \
+            self.dictionary[key].SuperCategories != word.SuperCategories:
             print("page %s content is diffrent from cache", path)
             return 
 
             
+    def getDictWords(self, lookup:str) -> str:
+        words = []
+        for key in self.dictionary:
+            words.append(self.dictionary[key].Header)
+        
+        words = difflib.get_close_matches(lookup, words, n=10)
+        if(len(words)>0):
+            if(words[0] == lookup):
+                words[0]="<b>" + words[0] + "</b>"
+        return "<br>".join(words)
+
+
+    def checkMainEdit(self, path, main):
+        errorMsg = ""
+        error = False
+        page = WordPage(path, main)
+        word = page.getWord()
+        key = Path.headerToKey(word.Header)
+        if key not in self.dictionary:
+            errorMsg += "header {} is not in dictionary.<br>".format(word.Header)
+        for key in  word.SubConcepts:
+            if Path.headerToKey(key) not in self.dictionary:
+                errorMsg += "SubConcept {} is not in dictionary.<br>".format(key)
+                error = True
+        for key in  word.SubCategories:
+            if Path.headerToKey(key) not in self.dictionary:
+                errorMsg += "SubCategory {} is not in dictionary.<br>".format(key)
+                error = True
+        for key in  word.SuperConcepts:
+            if Path.headerToKey(key) not in self.dictionary:
+                errorMsg += "SuperConcept {} is not in dictionary.<br>".format(key)
+                error = True
+        for key in  word.SuperCategories:
+            if Path.headerToKey(key) not in self.dictionary:
+                errorMsg += "SuperCategory {} is not in dictionary.<br>".format(key)
+                error = True
+        return (error, errorMsg)
+
+    def saveMainEdit(self, path, main):
+        
+        """
+        if header changed 
+           delete old page
+        delete every link for old   
+        if header changed
+            save new page
+        add every linkd for new
+        """
+        errorMsg = ""
+        error = False
+        page = WordPage(path, main)
+        word = page.getWord()
+        key = Path.headerToKey(word.Header)
+        if key not in self.dictionary:
+            errorMsg += "header {} is not in dictionary.<br>".format(word.Header)
+        for key in  word.SubConcepts:
+            if Path.headerToKey(key) not in self.dictionary:
+                errorMsg += "SubConcept {} is not in dictionary.<br>".format(key)
+                error = True
+        for key in  word.SubCategories:
+            if Path.headerToKey(key) not in self.dictionary:
+                errorMsg += "SubCategory {} is not in dictionary.<br>".format(key)
+                error = True
+        for key in  word.SuperConcepts:
+            if Path.headerToKey(key) not in self.dictionary:
+                errorMsg += "SuperConcept {} is not in dictionary.<br>".format(key)
+                error = True
+        for key in  word.SuperCategories:
+            if Path.headerToKey(key) not in self.dictionary:
+                errorMsg += "SuperCategory {} is not in dictionary.<br>".format(key)
+                error = True
+        return (error, errorMsg)        

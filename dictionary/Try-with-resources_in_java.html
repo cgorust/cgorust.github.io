@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">try-with-resources in Java</span>
+<span class="badge badge-primary" id="header">try-with-resources in Java</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Try-with-resources allows us to declare resources to be used in a try block with the assurance that the resources will be closed when after the execution of that block. Up until Java 8, the try-with-resources statement could only close resources declared inside the statement itself. As of Java 9, this statement can also close predefine resource, provided those resources are reference with parentheses immediately after the try keyword.
@@ -75,15 +75,15 @@ If an exception is thrown from the try block and one or more exceptions are thro
 </button>
 <button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-<a href="/dictionary/Exception_handling_in_java">exception handling in Java</a></button>
+<span><a href="/dictionary/Exception_handling_in_java">exception handling in Java</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subconcept: </b>
 </button>
 <button class="btn btn-light" type="button">
 <b>Subcategory: </b>
-<a href="/dictionary/Autoclosable_in_java">AutoClosable in Java</a></button>
+<span><a href="/dictionary/Autoclosable_in_java">AutoClosable in Java</a></span></button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -98,7 +98,7 @@ If an exception is thrown from the try block and one or more exceptions are thro
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

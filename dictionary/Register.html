@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">register</span>
+<span class="badge badge-primary" id="header">register</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">A processor register is a quickly accessible location available to a computer's processor. Registers usually consist of a small amount of fast storage, although some registers have specific hardware functions, and may be read-only or write-only. In computer architecture, registers are typically addressed by mechanisms other than main memory, but may in some cases be assigned a memory address e.g. DEC PDP-10, ICT 1900.</pre>
@@ -44,15 +44,15 @@
 </button>
 <button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-<a href="/dictionary/Cpu">CPU</a></button>
+<span><a href="/dictionary/Cpu">CPU</a></span></button>
 <button class="btn btn-light" type="button">
 <b>Subconcept: </b>
-<a href="/dictionary/Register_in_risc-v">register in RISC-V</a></button>
+<span><a href="/dictionary/Register_in_risc-v">register in RISC-V</a></span></button>
 <button class="btn btn-light" type="button">
 <b>Subcategory: </b>
-<a href="/dictionary/Application_binary_interface">Application Binary Interface</a>, <a href="/dictionary/Register_variable">Register variable</a></button>
+<span><a href="/dictionary/Application_binary_interface">Application Binary Interface</a></span><span>,  <a href="/dictionary/Register_variable">Register variable</a></span></button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -67,7 +67,7 @@
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

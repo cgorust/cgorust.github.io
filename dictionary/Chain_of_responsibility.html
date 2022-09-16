@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">chain of responsibility</span>
+<span class="badge badge-primary" id="header">chain of responsibility</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Chain of responsibility is used to achieve loose coupling where a request from the sender is passed to a chain of receivers to process them. Later, the receivers in the chain will decide by themselves who will be processing the request and whether the request is required to be sent to the next receiver in the chain or not.
@@ -49,18 +49,18 @@ This pattern is recommended when multiple receivers can handle a request and the
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Design_pattern">design pattern</a></button>
+<span><a href="/dictionary/Design_pattern">design pattern</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Supercategory: </b>
 </button>
 <button class="btn btn-light" type="button">
 <b>Subconcept: </b>
-<a href="/dictionary/Chain_of_responsibility_in_c++">chain of responsibility in C++</a></button>
+<span><a href="/dictionary/Chain_of_responsibility_in_c%2B%2B">chain of responsibility in C++</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -75,7 +75,7 @@ This pattern is recommended when multiple receivers can handle a request and the
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">alias in SQL</span>
+<span class="badge badge-primary" id="header">alias in SQL</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;"> SQL aliases are used to give a table, or a column in a table, a temporary name.
@@ -45,10 +45,10 @@ SELECT CustomerID AS ID, CustomerName AS Customer FROM Customers;
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Alias">alias</a></button>
+<span><a href="/dictionary/Alias">alias</a></span></button>
 <button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-<a href="/dictionary/Data_type_in_sql">data type in SQL</a></button>
+<span><a href="/dictionary/Data_type_in_sql">data type in SQL</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subconcept: </b>
 </button>
@@ -56,7 +56,7 @@ SELECT CustomerID AS ID, CustomerName AS Customer FROM Customers;
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -71,7 +71,7 @@ SELECT CustomerID AS ID, CustomerName AS Customer FROM Customers;
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

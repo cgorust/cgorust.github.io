@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">redoc</span>
+<span class="badge badge-primary" id="header">redoc</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Redoc is an open-source tool that generates API documentation from OpenAPI specifications. It’s one of the most powerful free docs tools in the industry, producing clean, customizable documentation with an attractive three-panel design. With support for Markdown, it allows you to write and style descriptions with ease.
@@ -45,7 +45,7 @@ In practice, Redoc generates documentation by consuming an OpenAPI specification
 </button>
 <button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-<a href="/dictionary/Openapi">OpenAPI</a></button>
+<span><a href="/dictionary/Openapi">OpenAPI</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subconcept: </b>
 </button>
@@ -53,7 +53,7 @@ In practice, Redoc generates documentation by consuming an OpenAPI specification
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -68,7 +68,7 @@ In practice, Redoc generates documentation by consuming an OpenAPI specification
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

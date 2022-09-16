@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">comment</span>
+<span class="badge badge-primary" id="header">comment</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">A comment is an annotation in the source code of a program. They are added with the purpose of making the source code easier for programmers to understand, and are generally ignored by compilers and interpreters.</pre>
@@ -41,18 +41,18 @@
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Token">token</a></button>
+<span><a href="/dictionary/Token">token</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Supercategory: </b>
 </button>
 <button class="btn btn-light" type="button">
 <b>Subconcept: </b>
-<a href="/dictionary/Comment_in_c">comment in C</a>, <a href="/dictionary/Comment_in_c++">comment in C++</a>, <a href="/dictionary/Comment_in_go">comment in Go</a>, <a href="/dictionary/Comment_in_html">comment in HTML</a>, <a href="/dictionary/Comment_in_java">comment in Java</a>, <a href="/dictionary/Comment_in_javascript">comment in JavaScript</a>, <a href="/dictionary/Comment_in_kotlin">comment in Kotlin</a>, <a href="/dictionary/Comment_in_python">comment in Python</a>, <a href="/dictionary/Comment_in_rust">comment in Rust</a>, <a href="/dictionary/Doc_comment">doc comment</a></button>
+<span><a href="/dictionary/Comment_in_c">comment in C</a></span><span>,  <a href="/dictionary/Comment_in_c%2B%2B">comment in C++</a></span><span>,  <a href="/dictionary/Comment_in_go">comment in Go</a></span><span>,  <a href="/dictionary/Comment_in_html">comment in HTML</a></span><span>,  <a href="/dictionary/Comment_in_java">comment in Java</a></span><span>,  <a href="/dictionary/Comment_in_javascript">comment in JavaScript</a></span><span>,  <a href="/dictionary/Comment_in_kotlin">comment in Kotlin</a></span><span>,  <a href="/dictionary/Comment_in_python">comment in Python</a></span><span>,  <a href="/dictionary/Comment_in_rust">comment in Rust</a></span><span>,  <a href="/dictionary/Doc_comment">doc comment</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -67,7 +67,7 @@
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

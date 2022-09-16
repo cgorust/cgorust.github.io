@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">process</span>
+<span class="badge badge-primary" id="header">process</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Process is an abstraction of a running program. Each running program, called a process, has memory containing instructions, data, and a stack. The instructions implement the program’s computation. The data are the variables on which the computation acts. The stack organizes the program’s procedure calls.
@@ -49,15 +49,15 @@ A process has a group of associated threads that execute in the same, shared env
 </button>
 <button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-<a href="/dictionary/Os">OS</a></button>
+<span><a href="/dictionary/Os">OS</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subconcept: </b>
 </button>
 <button class="btn btn-light" type="button">
 <b>Subcategory: </b>
-<a href="/dictionary/Critical_region">critical region</a>, <a href="/dictionary/Deadlock">deadlock</a>, <a href="/dictionary/Livelock">livelock</a>, <a href="/dictionary/Mutual_exclusion">mutual exclusion</a>, <a href="/dictionary/Race_condition">race condition</a>, <a href="/dictionary/Semaphore">semaphore</a>, <a href="/dictionary/Starvation">starvation</a>, <a href="/dictionary/Thread">thread</a></button>
+<span><a href="/dictionary/Critical_region">critical region</a></span><span>,  <a href="/dictionary/Deadlock">deadlock</a></span><span>,  <a href="/dictionary/Livelock">livelock</a></span><span>,  <a href="/dictionary/Mutual_exclusion">mutual exclusion</a></span><span>,  <a href="/dictionary/Race_condition">race condition</a></span><span>,  <a href="/dictionary/Semaphore">semaphore</a></span><span>,  <a href="/dictionary/Starvation">starvation</a></span><span>,  <a href="/dictionary/Thread">thread</a></span></button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -72,7 +72,7 @@ A process has a group of associated threads that execute in the same, shared env
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

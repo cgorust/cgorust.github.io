@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">Z algorithm</span>
+<span class="badge badge-primary" id="header">Z algorithm</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">Given a string s of length n. The Z-array for this string is an array of length n where the i-th element is the size of longest string starting from the position that is also a substring starting from s[0]. The first element of Z-array, is set to 0.
@@ -83,7 +83,7 @@ vector&lt;int&gt; z_function(string s) {
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/String_algorithm">string algorithm</a></button>
+<span><a href="/dictionary/String_algorithm">string algorithm</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Supercategory: </b>
 </button>
@@ -94,7 +94,7 @@ vector&lt;int&gt; z_function(string s) {
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -109,7 +109,7 @@ vector&lt;int&gt; z_function(string s) {
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

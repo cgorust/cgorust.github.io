@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">rvalue reference</span>
+<span class="badge badge-primary" id="header">rvalue reference</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">An rvalue reference is a reference that will bind only to a temporary object. The primary reason for adding rvalue references is move semantics. Unlike traditional copying, moving means that a target object pilfers the resources of the source object, leaving the source in an "empty" state. In certain cases where making a copy of an object is both expensive and unnecessary, a move operation can be used instead. The C++11 Standard Library uses move semantics extensively. Many algorithms and containers are now move-optimized.
@@ -78,18 +78,18 @@ You should almost never return an r-value reference, for the same reason you sho
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Reference_in_c++">reference in C++</a></button>
+<span><a href="/dictionary/Reference_in_c%2B%2B">reference in C++</a></span></button>
 <button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-<a href="/dictionary/R-value">r-value</a></button>
+<span><a href="/dictionary/R-value">r-value</a></span></button>
 <button class="btn btn-light" type="button">
 <b>Subconcept: </b>
-<a href="/dictionary/Forwarding_reference">forwarding reference</a></button>
+<span><a href="/dictionary/Forwarding_reference">forwarding reference</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -104,7 +104,7 @@ You should almost never return an r-value reference, for the same reason you sho
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

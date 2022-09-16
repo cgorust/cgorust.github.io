@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">unnamed module in Java</span>
+<span class="badge badge-primary" id="header">unnamed module in Java</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">An unnamed module is a jar construct without a module-info.java declaration. Since an unnamed module can render all other modules, this doesn’t require a current application to be modularized before using Java 9. One thing to note is an unnamed module that exports whole its packages doesn’t mean a named module can access unnamed module packages. This is because there is no way in module-info.java to declare requires unnamed module. An unnamed module will require all other modules and will export whole its packages as well. This gives a vast privilege to new applications to use Java 9 and Java 9 doesn’t allow named modules to read unnamed modules. This only ensures other unnamed modules can access its packages.
@@ -47,7 +47,7 @@
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
 <b>Superconcept: </b>
-<a href="/dictionary/Module_in_java">module in Java</a></button>
+<span><a href="/dictionary/Module_in_java">module in Java</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Supercategory: </b>
 </button>
@@ -58,7 +58,7 @@
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -73,7 +73,7 @@
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

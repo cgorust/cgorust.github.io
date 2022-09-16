@@ -33,7 +33,7 @@
 <main>
 <div class="container-fluid" id="dict_container">
 <h1>
-<span class="badge badge-primary">path</span>
+<span class="badge badge-primary" id="header">path</span>
 </h1>
 <div class="container-fluid">
 <pre id="word_content" style="white-space: pre-wrap;">A path is a string representation of a file or directory within a file system. Each file system defines its own path separator character that is used between directory entries. In most file systems, the value to the left of a separator is the parent of the value to the right of the separator. For example, the path value /user/home/zoo.txt means that the file zoo.txt is inside the home directory, with the home directory inside the user directory. </pre>
@@ -44,15 +44,15 @@
 </button>
 <button class="btn btn-light" type="button">
 <b>Supercategory: </b>
-<a href="/dictionary/File_system">file system</a></button>
+<span><a href="/dictionary/File_system">file system</a></span></button>
 <button class="btn btn-light" type="button">
 <b>Subconcept: </b>
-<a href="/dictionary/Absolute_path">absolute path</a>, <a href="/dictionary/Path_in_java">path in Java</a>, <a href="/dictionary/Path_in_rust">path in Rust</a>, <a href="/dictionary/Relative_path">relative path</a></button>
+<span><a href="/dictionary/Absolute_path">absolute path</a></span><span>,  <a href="/dictionary/Path_in_java">path in Java</a></span><span>,  <a href="/dictionary/Path_in_rust">path in Rust</a></span><span>,  <a href="/dictionary/Relative_path">relative path</a></span></button>
 <button class="btn btn-light" hidden type="button">
 <b>Subcategory: </b>
 </button>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="buttons">
 <a class="btn btn-primary" href="/" role="button">Home</a>
 </div>
 </div>
@@ -67,7 +67,7 @@
 </a>
 </div>
 </footer>
-<!-- jQuery first, then Popper, then Bootstrap -->
+<!-- jQuery first, then Popper, then Bootstrap JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
