@@ -29,10 +29,8 @@ class ServerHandler(http.server.SimpleHTTPRequestHandler):
 
             err = False
             errMsg = ""
-            if message['action'][0] == "save edit":
-                [err, errMsg] = Data().checkMainEdit(path, message['content'][0])
-            elif message['action'][0] == "save create":
-                [err, errMsg] = Data().checkMainEdit(path, message['content'][0])
+            if message['action'][0] == "save":
+                [err, errMsg] = Data().checkSaveWord(path, message['content'][0])
 
             self.send_response(200)
             self.send_header('Content-type','text/html')

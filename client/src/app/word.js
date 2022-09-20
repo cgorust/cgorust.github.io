@@ -1,24 +1,59 @@
 class Word {
   add_button(id, text) {
-    $('#buttons').append("<a \
+    $('#buttons').append("<span><a \
         class = \"btn btn-success\" \
         role = \"button\" \
         id = \"" + id + "\" \
         >"  
         + text + 
-        "</a>&nbsp;");  
+        "</a>&nbsp;</span>");  
   }
-  add_word_edit_button()        { this.add_button("word_edit", "Edit"); }
-  add_word_create_button()      { this.add_button("word_create", "Add"); }
-  add_word_save_button()        { this.add_button("edit_save", "Save"); }
+
+  add_word_edit_button()        { 
+    this.add_button("word_edit", "Edit"); 
+    var self = this
+    $('main').on('click', '#word_edit', function(e) {
+      e.preventDefault();
+      self.create_edit_page();
+    });
+  }
+
+  add_word_create_button()      { 
+    this.add_button("word_create", "Add"); 
+    var self = this
+    $('main').on('click', '#word_create', function(e) {
+      e.preventDefault();
+      self.create_create_page();
+    });    
+  }
+  
+  add_word_save_button()        { 
+    this.add_button("edit_save", "Save"); 
+    var self = this
+    $('main').on('click', '#edit_save', function(e) {
+      e.preventDefault();
+      $.ajax({
+        type: "POST",
+        url: window.location.href, 
+        data: $.param({ 
+          action: "save", 
+          content : $('main').html()
+        }),
+        success: function(message) {
+          console.log(message);
+          $('#message').html(message);
+        }
+      });
+    });
+  }
 
   add_done_button()             {
     $('#buttons').append( "<a class=\"btn btn-success\" \
         role=\"button\" href=\"" + window.location.pathname + "\">Done</a> ");  
   }
   
-  remove_word_edit_button()     { $('#word_edit').remove(""); }
-  remove_word_create_button()   { $('#word_create').remove(""); }
+  remove_word_edit_button()     { $('#word_edit').parent().remove(""); }
+  remove_word_create_button()   { $('#word_create').parent().remove(""); }
   
   add_message_box() {
     $('#buttons').append( "<div class=\"alert alert-warning\" \
@@ -36,7 +71,8 @@ class Word {
   make_page_editable() {
     $('#header').attr("contentEditable", "true");
     $('#word_content').attr("contentEditable", "true");
-  
+    $('#word_content').text(this.content);
+
     this.make_relations_editable("Superconcept");
     this.make_relations_editable("Subconcept");
     this.make_relations_editable("Supercategory");
@@ -51,7 +87,6 @@ class Word {
       $this.data('before', $this.html());
     }).on('blur keyup paste input', '[contenteditable]', function() {
       const $this = $(this);
-      console.log("#"+$this.attr('id')+"#");
       if($this.attr('id') == 'word_content') 
         return;
       if ($this.text() == "") {
@@ -73,38 +108,39 @@ class Word {
   }
   
   add_buttons_of_relation(tag) {
-    $("<button class=\"btn btn-success\" id=\"remove_relation"+ tag  + "\" role=\"button\">-</button>\
-            <button class=\"btn btn-success\" id=\"add_relation"+ tag  + "\" role=\"button\">+</button> ")
-            .insertAfter("b:contains('" + tag + "')");   
-    let relations = $("b:contains('" + tag + "')").parent().children("a");
+    $("b:contains('" + tag + "')").parent().append(
+        " <button class=\"btn btn-success\" id=\"remove_relation"+ tag  + "\" role=\"button\">-</button>\
+        <button class=\"btn btn-success\" id=\"add_relation"+ tag  + "\" role=\"button\">+</button>");
+    let relations = $("b:contains('" + tag + "')").parent().children("span");
     if(relations.length == 0) {
-      $("#remove_relation").prop('disabled', true);
+      $("#remove_relation" + tag).prop('disabled', true);
     }  
     $("#remove_relation" + tag).click(function () {
-        let relations = $("b:contains('" + tag + "')").parent().children("a");
+        let relations = $("b:contains('" + tag + "')").parent().children("span");
         if(relations.length == 0) return;
-        relations.last().remove();
-        if(relations.length == 0) {
-          $("#remove_relation").prop('disabled', true);
+        if(relations.length == 1) { // remove cannot change length
+          $("#remove_relation" + tag).prop('disabled', true);
         }
+        relations.last().remove();
     });    
     $("#add_relation" + tag).click(function () {
-      $("b:contains('" + tag + "')").parent().append( "<a contenteditable=\"true\">&emsp;</a> "); 
+      let relations = $("b:contains('" + tag + "')").parent().children("span");
+      let space = "";
+      if(relations.length != 0) space = ", ";
+      $( "<span>" + space + "<a contenteditable=\"true\">&emsp;</a></span>").insertBefore("#remove_relation" + tag);
+      $("#remove_relation" + tag).prop('disabled', false);
     });    
   }
   
   make_page_addable() {
+    $('#header').html(" ");
+    $('#word_content').html("");
+    $("b:contains('Superconcept')").parent().contents('span').remove();
+    $("b:contains('Subconcept')").parent().contents('span').remove();
+    $("b:contains('Supercategory')").parent().contents('span').remove();
+    $("b:contains('Subcategory')").parent().contents('span').remove();
     this.make_page_editable()
-    $('#header').html("&nbsp;&nbsp;&nbsp;");
-    $('#word_content').html("&nbsp;&nbsp;&nbsp;");
-    $("b:contains('Superconcept')").parent().contents('a').remove();
-    $("b:contains('Superconcept')").parent().contents().filter(function() { return this.nodeType == 3; }).remove();
-    $("b:contains('Subconcept')").parent().contents('a').remove();
-    $("b:contains('Subconcept')").parent().contents().filter(function() { return this.nodeType == 3; }).remove();
-    $("b:contains('Supercategory')").parent().contents('a').remove();
-    $("b:contains('Supercategory')").parent().contents().filter(function() { return this.nodeType == 3; }).remove();
-    $("b:contains('Subcategory')").parent().contents('a').remove();
-    $("b:contains('Subcategory')").parent().contents().filter(function() { return this.nodeType == 3; }).remove();
+    $('#word_content').html("");
     this.enable_suggestion();
   }
   
@@ -137,36 +173,9 @@ class Word {
   constructor() {
     if(!this.is_local_word_page())
       return;
-
+    this.content = $('#word_content').text()
     this.add_word_edit_button();
     this.add_word_create_button();
-  
-    var self = this
-    $('main').on('click', '#word_edit', function(e) {
-      e.preventDefault();
-      self.create_edit_page();
-    });
-  
-    $('main').on('click', '#word_create', function(e) {
-      e.preventDefault();
-      self.create_create_page();
-    });
-  
-    $('main').on('click', '#edit_save', function(e) {
-      e.preventDefault();
-      $.ajax({
-        type: "POST",
-        url: window.location.href, 
-        data: $.param({ 
-          action: "save edit", 
-          content : $('main').html()
-        }),
-        success: function(message) {
-          console.log(message);
-          $('#message').html(message);
-        }
-      });
-    });
   }
 }	
 

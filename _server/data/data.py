@@ -12,7 +12,7 @@ import os
 from dateutil import parser
 from datetime import datetime
 import difflib
-import heapq
+import shutil
 
 class Data(object, metaclass=Singleton):
     dictionary = {}
@@ -150,76 +150,132 @@ class Data(object, metaclass=Singleton):
             print("page %s content is diffrent from cache", path)
             return 
 
+    def get_close_matches_icase(self, word, possibilities, *args, **kwargs):
+        """ Case-insensitive version of difflib.get_close_matches """
+        lword = word.lower()
+        lpos = {p.lower(): p for p in possibilities}
+        lmatches = difflib.get_close_matches(lword, lpos.keys(), *args, **kwargs)
+        return [lpos[m] for m in lmatches]
             
     def getDictWords(self, lookup:str) -> str:
         words = []
         for key in self.dictionary:
             words.append(self.dictionary[key].Header)
         
-        words = difflib.get_close_matches(lookup, words, n=10)
+        words = self.get_close_matches_icase(lookup, words, n=10, cutoff=0.4)
         if(len(words)>0):
             if(words[0] == lookup):
                 words[0]="<b>" + words[0] + "</b>"
         return "<br>".join(words)
 
 
-    def checkMainEdit(self, path, main):
+    def checkSaveWord(self, path, main):
         errorMsg = ""
         error = False
         page = WordPage(path, main)
         word = page.getWord()
+        word = page.stripWord(word)
         key = Path.headerToKey(word.Header)
-        if key not in self.dictionary:
-            errorMsg += "header {} is not in dictionary.<br>".format(word.Header)
-        for key in  word.SubConcepts:
-            if Path.headerToKey(key) not in self.dictionary:
-                errorMsg += "SubConcept {} is not in dictionary.<br>".format(key)
-                error = True
-        for key in  word.SubCategories:
-            if Path.headerToKey(key) not in self.dictionary:
-                errorMsg += "SubCategory {} is not in dictionary.<br>".format(key)
-                error = True
-        for key in  word.SuperConcepts:
-            if Path.headerToKey(key) not in self.dictionary:
-                errorMsg += "SuperConcept {} is not in dictionary.<br>".format(key)
-                error = True
-        for key in  word.SuperCategories:
-            if Path.headerToKey(key) not in self.dictionary:
-                errorMsg += "SuperCategory {} is not in dictionary.<br>".format(key)
-                error = True
-        return (error, errorMsg)
+        key = key.strip()
+        if key == "":
+            errorMsg += "Header is empty.<br>"
+            error = True
+        if word.Content.strip() == "":
+            errorMsg += "Content is empty.<br>"
+            error = True
 
-    def saveMainEdit(self, path, main):
-        
-        """
-        if header changed 
-           delete old page
-        delete every link for old   
-        if header changed
-            save new page
-        add every linkd for new
-        """
+
+        for header in  word.SuperConcepts:
+            if Path.headerToKey(header) not in self.dictionary:
+                errorMsg += "SuperConcept {} is not in dictionary.<br>".format(header)
+                error = True
+        for header in  word.SuperCategories:
+            if Path.headerToKey(header) not in self.dictionary:
+                errorMsg += "SuperCategory {} is not in dictionary.<br>".format(header)
+                error = True
+        for header in  word.SubConcepts:
+            if Path.headerToKey(header) not in self.dictionary:
+                errorMsg += "SubConcept {} is not in dictionary.<br>".format(header)
+                error = True
+        for header in  word.SubCategories:
+            if Path.headerToKey(header) not in self.dictionary:
+                errorMsg += "SubCategory {} is not in dictionary.<br>".format(header)
+                error = True
+
+        if error == True:
+            if key not in self.dictionary:
+                errorMsg += "header {} is not in dictionary.<br>".format(word.Header)
+            return (error, errorMsg)
+
+        return self.saveWord(word)
+
+
+    def saveWord(self, word):
         errorMsg = ""
         error = False
-        page = WordPage(path, main)
-        word = page.getWord()
         key = Path.headerToKey(word.Header)
         if key not in self.dictionary:
-            errorMsg += "header {} is not in dictionary.<br>".format(word.Header)
-        for key in  word.SubConcepts:
-            if Path.headerToKey(key) not in self.dictionary:
-                errorMsg += "SubConcept {} is not in dictionary.<br>".format(key)
-                error = True
-        for key in  word.SubCategories:
-            if Path.headerToKey(key) not in self.dictionary:
-                errorMsg += "SubCategory {} is not in dictionary.<br>".format(key)
-                error = True
-        for key in  word.SuperConcepts:
-            if Path.headerToKey(key) not in self.dictionary:
-                errorMsg += "SuperConcept {} is not in dictionary.<br>".format(key)
-                error = True
-        for key in  word.SuperCategories:
-            if Path.headerToKey(key) not in self.dictionary:
-                errorMsg += "SuperCategory {} is not in dictionary.<br>".format(key)
-                error = True
+            [error, errorMsg] = self.createWord(word)
+        else:
+            [error, errorMsg] = self.updateWord(word)
+
         return (error, errorMsg)        
+
+    def createWord(self, word):
+        errorMsg = ""
+        error = False
+
+        key = Path.headerToKey(word.Header)
+        if key in self.dictionary:
+            errorMsg += "Cannot create new word. Header {} is in dictionary.<br>".format(word.Header)
+            error = True
+            return (error, errorMsg)
+
+        for header in  word.SuperConcepts:
+            relatedKey = Path.headerToKey(header)
+            if self.dictionary[relatedKey].SubConcepts.count(key) == 0: 
+                self.dictionary[relatedKey].SubConcepts.append(key)
+                page = WordPage("dictionary/" + relatedKey + ".html")
+                page.applyNewTemplate(self.dictionary[relatedKey])
+                page.save()
+
+        for header in  word.SuperCategories:
+            relatedKey = Path.headerToKey(header)
+            if self.dictionary[relatedKey].SubConcepts.count(key) == 0: 
+                self.dictionary[relatedKey].SubCategories.append(key)
+                page = WordPage("dictionary/" + relatedKey + ".html")
+                page.applyNewTemplate(self.dictionary[relatedKey])
+                page.save()
+
+        for header in  word.SubConcepts:
+            relatedKey = Path.headerToKey(header)
+            if self.dictionary[relatedKey].SubConcepts.count(key) == 0: 
+                self.dictionary[relatedKey].SuperConcepts.append(key)
+                page = WordPage("dictionary/" + relatedKey + ".html")
+                page.applyNewTemplate(self.dictionary[relatedKey])
+                page.save()
+
+        for header in  word.SubCategories:
+            relatedKey = Path.headerToKey(header)
+            if self.dictionary[relatedKey].SubConcepts.count(key) == 0: 
+                self.dictionary[relatedKey].SuperCategories.append(key)
+                page = WordPage("dictionary/" + relatedKey + ".html")
+                page.applyNewTemplate(self.dictionary[relatedKey])
+                page.save()
+
+
+        self.dictionary[key] = word
+        path = "dictionary/" + key + ".html"
+        shutil.copyfile("_server/template/page.html", path)
+        page = WordPage(path)
+        page.applyNewTemplate(self.dictionary[key])
+        page.save()
+        
+        return (error, errorMsg)        
+
+    def updateWord(self, word):
+        errorMsg = ""
+        error = False
+
+        return (error, errorMsg)        
+        

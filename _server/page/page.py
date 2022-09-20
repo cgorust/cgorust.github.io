@@ -18,6 +18,10 @@ class Page(object):
                     os.makedirs(dir)
                 os.rename(path, newPath)
             self.path = newPath    
+        if not os.path.exists(path):
+            dir = os.path.dirname(path)
+            if dir != "dictionary":
+                os.makedirs(dir)
         with open(self.path) as fp:
             self.page = BeautifulSoup(fp, 'html.parser')
 

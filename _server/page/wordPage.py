@@ -58,6 +58,17 @@ class WordPage(Page):
         )
         return word
 
+
+    def stripWord(self, word: Word) -> Word:
+        word.Header = word.Header.strip()
+        word.Key = Path.headerToKey(word.Header)
+        word.Content = word.Content
+        word.SubCategories[:]=[ i.strip() for i in word.SubCategories]
+        word.SuperCategories[:]=[ i.strip() for i in word.SuperCategories]
+        word.SubConcepts[:]=[ i.strip() for i in word.SubConcepts]
+        word.SuperConcepts[:]=[ i.strip() for i in word.SuperConcepts]
+        return word    
+
     def applyNewTemplate(self, word: Word) -> bool:
         oldText = str(self.page)    
 
