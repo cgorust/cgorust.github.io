@@ -233,32 +233,32 @@ class Data(object, metaclass=Singleton):
 
         for header in  word.SuperConcepts:
             relatedKey = Path.headerToKey(header)
-            if self.dictionary[relatedKey].SubConcepts.count(key) == 0: 
-                self.dictionary[relatedKey].SubConcepts.append(key)
+            if self.dictionary[relatedKey].SubConcepts.count(word.Header) == 0: 
+                self.dictionary[relatedKey].SubConcepts.append(word.Header)
                 page = WordPage("dictionary/" + relatedKey + ".html")
                 page.applyNewTemplate(self.dictionary[relatedKey])
                 page.save()
 
         for header in  word.SuperCategories:
             relatedKey = Path.headerToKey(header)
-            if self.dictionary[relatedKey].SubConcepts.count(key) == 0: 
-                self.dictionary[relatedKey].SubCategories.append(key)
+            if self.dictionary[relatedKey].SubCategories.count(word.Header) == 0: 
+                self.dictionary[relatedKey].SubCategories.append(word.Header)
                 page = WordPage("dictionary/" + relatedKey + ".html")
                 page.applyNewTemplate(self.dictionary[relatedKey])
                 page.save()
 
         for header in  word.SubConcepts:
             relatedKey = Path.headerToKey(header)
-            if self.dictionary[relatedKey].SubConcepts.count(key) == 0: 
-                self.dictionary[relatedKey].SuperConcepts.append(key)
+            if self.dictionary[relatedKey].SuperConcepts.count(word.Header) == 0: 
+                self.dictionary[relatedKey].SuperConcepts.append(word.Header)
                 page = WordPage("dictionary/" + relatedKey + ".html")
                 page.applyNewTemplate(self.dictionary[relatedKey])
                 page.save()
 
         for header in  word.SubCategories:
             relatedKey = Path.headerToKey(header)
-            if self.dictionary[relatedKey].SubConcepts.count(key) == 0: 
-                self.dictionary[relatedKey].SuperCategories.append(key)
+            if self.dictionary[relatedKey].SuperCategories.count(word.Header) == 0: 
+                self.dictionary[relatedKey].SuperCategories.append(word.Header)
                 page = WordPage("dictionary/" + relatedKey + ".html")
                 page.applyNewTemplate(self.dictionary[relatedKey])
                 page.save()
@@ -276,6 +276,90 @@ class Data(object, metaclass=Singleton):
     def updateWord(self, word):
         errorMsg = ""
         error = False
+
+        key = Path.headerToKey(word.Header)
+        if key not in self.dictionary:
+            errorMsg += "Cannot update word. Header {} is not in dictionary.<br>".format(word.Header)
+            error = True
+            return (error, errorMsg)
+
+        allSuperConcepts = list(set(word.SuperConcepts + self.dictionary[key].SuperConcepts))
+        for header in  allSuperConcepts:
+            if self.dictionary[key].SuperConcepts.count(header) == 0: 
+                print(header)
+                relatedKey = Path.headerToKey(header)
+                if self.dictionary[relatedKey].SubConcepts.count(word.Header) == 0: 
+                    self.dictionary[relatedKey].SubConcepts.append(word.Header)
+                    page = WordPage("dictionary/" + relatedKey + ".html")
+                    page.applyNewTemplate(self.dictionary[relatedKey])
+                    page.save()
+            if word.SuperConcepts.count(header) == 0: 
+                print(header)
+                relatedKey = Path.headerToKey(header)
+                if self.dictionary[relatedKey].SubConcepts.count(word.Header) > 0: 
+                    self.dictionary[relatedKey].SubConcepts.remove(word.Header)
+                    page = WordPage("dictionary/" + relatedKey + ".html")
+                    page.applyNewTemplate(self.dictionary[relatedKey])
+                    page.save()
+
+        allSuperCategories = list(set(word.SuperCategories + self.dictionary[key].SuperCategories))
+        for header in  allSuperCategories:
+            if self.dictionary[key].SuperCategories.count(header) == 0: 
+                relatedKey = Path.headerToKey(header)
+                if self.dictionary[relatedKey].SubCategories.count(word.Header) == 0: 
+                    self.dictionary[relatedKey].SubCategories.append(word.Header)
+                    page = WordPage("dictionary/" + relatedKey + ".html")
+                    page.applyNewTemplate(self.dictionary[relatedKey])
+                    page.save()
+            if word.SuperCategories.count(header) == 0: 
+                relatedKey = Path.headerToKey(header)
+                if self.dictionary[relatedKey].SubCategories.count(word.Header) > 0: 
+                    self.dictionary[relatedKey].SubCategories.remove(word.Header)
+                    page = WordPage("dictionary/" + relatedKey + ".html")
+                    page.applyNewTemplate(self.dictionary[relatedKey])
+                    page.save()
+
+
+        allSubConcepts = list(set(word.SubConcepts + self.dictionary[key].SubConcepts))
+        for header in  allSubConcepts:
+            if self.dictionary[key].SubConcepts.count(header) == 0: 
+                relatedKey = Path.headerToKey(header)
+                if self.dictionary[relatedKey].SuperConcepts.count(word.Header) == 0: 
+                    self.dictionary[relatedKey].SuperConcepts.append(word.Header)
+                    page = WordPage("dictionary/" + relatedKey + ".html")
+                    page.applyNewTemplate(self.dictionary[relatedKey])
+                    page.save()
+            if word.SubConcepts.count(header) == 0: 
+                relatedKey = Path.headerToKey(header)
+                if self.dictionary[relatedKey].SuperConcepts.count(word.Header) > 0: 
+                    self.dictionary[relatedKey].SuperConcepts.remove(word.Header)
+                    page = WordPage("dictionary/" + relatedKey + ".html")
+                    page.applyNewTemplate(self.dictionary[relatedKey])
+                    page.save()
+
+        allSubCategories = list(set(word.SubCategories + self.dictionary[key].SubCategories))
+        for header in  allSubCategories:
+            if self.dictionary[key].SubCategories.count(header) == 0: 
+                relatedKey = Path.headerToKey(header)
+                if self.dictionary[relatedKey].SuperCategories.count(word.Header) == 0: 
+                    self.dictionary[relatedKey].SuperCategories.append(word.Header)
+                    page = WordPage("dictionary/" + relatedKey + ".html")
+                    page.applyNewTemplate(self.dictionary[relatedKey])
+                    page.save()
+            if word.SubCategories.count(header) == 0: 
+                relatedKey = Path.headerToKey(header)
+                if self.dictionary[relatedKey].SuperCategories.count(word.Header) > 0: 
+                    self.dictionary[relatedKey].SuperCategories.remove(word.Header)
+                    page = WordPage("dictionary/" + relatedKey + ".html")
+                    page.applyNewTemplate(self.dictionary[relatedKey])
+                    page.save()
+        
+        self.dictionary[key] = word
+        path = "dictionary/" + key + ".html"
+        shutil.copyfile("_server/template/page.html", path)
+        page = WordPage(path)
+        page.applyNewTemplate(self.dictionary[key])
+        page.save()
 
         return (error, errorMsg)        
         

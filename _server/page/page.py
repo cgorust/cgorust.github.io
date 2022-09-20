@@ -26,6 +26,7 @@ class Page(object):
             self.page = BeautifulSoup(fp, 'html.parser')
 
     def save(self):
+        print(self.path)
         f = open(self.path, "w")
         f.write(str(self.page))
         f.close()  

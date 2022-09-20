@@ -62,7 +62,7 @@ class Word {
   
   make_relations_editable(relation) {
     $( "b:contains('" + relation + "')").siblings().each(function(index) {
-      $(this).attr("contentEditable", "true");
+      $(this).children().first().attr("contentEditable", "true");
     });
     $("b:contains('" + relation + "')").parent().removeAttr("hidden");
     this.add_buttons_of_relation(relation);

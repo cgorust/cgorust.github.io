@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://cgorust.com/dictionary/C</loc>
+    <lastmod>2022-09-20</lastmod>
+  </url>
+  <url>
     <loc>https://cgorust.com/dictionary/Rune_constant</loc>
     <lastmod>2022-09-09</lastmod>
   </url>
@@ -1890,10 +1894,6 @@
   </url>
   <url>
     <loc>https://cgorust.com/dictionary/Global_variable_in_c</loc>
-    <lastmod>2022-07-22</lastmod>
-  </url>
-  <url>
-    <loc>https://cgorust.com/dictionary/C</loc>
     <lastmod>2022-07-22</lastmod>
   </url>
   <url>
