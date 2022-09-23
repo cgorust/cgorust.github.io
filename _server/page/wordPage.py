@@ -48,9 +48,19 @@ class WordPage(Page):
                 relationNode.attrs["hidden"]=None  
 
     def getWord(self) -> Word:
+        content = ""
+        texts = self.getContentNode().findAll(text=True, recursive=False)
+        if len(texts) > 0:
+            content = str(texts[0])
+        contentNode = self.getContentNode()
+        children = contentNode.findChildren("div" , recursive=False)
+        for child in children:
+            content = content + "\n" + str(child.contents[0])
+        #content = "<p>" + content + "</p>"
+
         word = Word(self.path
             , Text.htmlDecodeText(self.getHeaderNode().getText())
-            , self.getContentNode().getText()
+            , content
             , self.getRelations("Superconcept")
             , self.getRelations("Supercategory")
             , self.getRelations("Subconcept")

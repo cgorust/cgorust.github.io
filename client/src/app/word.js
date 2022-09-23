@@ -9,6 +9,16 @@ class Word {
         "</a>&nbsp;</span>");  
   }
 
+  add_input(id) {
+    $('#buttons').append("<span><a \
+        class = \"btn btn-success\" \
+        role = \"input\" \
+        contenteditable=\"true\" \
+        class=\"form-control input-normal\" \
+        id = \"" + id + "\" \
+        ></a>&nbsp;</span>");  
+  }
+
   add_word_edit_button()        { 
     this.add_button("word_edit", "Edit"); 
     var self = this
@@ -27,6 +37,19 @@ class Word {
     });    
   }
   
+  add_search() {
+    this.add_input("search_word");
+    this.add_button("goto_search", "Go"); 
+    var self = this
+    $('main').on('click', '#goto_search', function(e) {
+      e.preventDefault();
+      let url = $('#search_word').text();
+      url = url.replaceAll(" ", "_");
+      url = url.charAt(0).toUpperCase() + url.slice(1).toLowerCase();
+      window.location.href= url;
+    });    
+  }
+
   add_word_save_button()        { 
     this.add_button("edit_save", "Save"); 
     var self = this
@@ -77,8 +100,6 @@ class Word {
     this.make_relations_editable("Subconcept");
     this.make_relations_editable("Supercategory");
     this.make_relations_editable("Subcategory");
-
-    this.enable_suggestion();
   }
   
   enable_suggestion() {
@@ -141,7 +162,6 @@ class Word {
     $("b:contains('Subcategory')").parent().contents('span').remove();
     this.make_page_editable()
     $('#word_content').html("");
-    this.enable_suggestion();
   }
   
   create_edit_page() {
@@ -149,7 +169,6 @@ class Word {
     this.remove_word_create_button();
     this.add_word_save_button();
     this.add_done_button();
-    this.add_message_box();
     this.make_page_editable();
   }
   
@@ -158,7 +177,6 @@ class Word {
     this.remove_word_create_button();
     this.add_word_save_button();
     this.add_done_button();
-    this.add_message_box();
     this.make_page_addable();
   }
   
@@ -176,6 +194,9 @@ class Word {
     this.content = $('#word_content').text()
     this.add_word_edit_button();
     this.add_word_create_button();
+    this.add_search();
+    this.add_message_box();    
+    this.enable_suggestion();    
   }
 }	
 

@@ -36,7 +36,11 @@
 <span class="badge badge-primary" id="header">defer</span>
 </h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;"></pre>
+<pre id="word_content" style="white-space: pre-wrap;">It's common for a function to ensure that some value is related in some way. The most obvious cases are unlocking a mutex and closing a file. 
+In C++ and other languages, these cases are normally dealt with via RAII. However, for various reasons, Go does not have destructors. In languages without destructors, there are two common approaches. You can not do anything special, as in C. People have to remember to release objects at each point where the function returns. This is often done by having each return point use a goto statement to a common location. Or, you can use a try/finally construct, as in Java or C#. 
+These approaches work fine, but from Go's perspective they have two (minor) problems: they move the release code far from the acquisition code: the lock or file open is near the start of the function, and the unlock or file close is near the end. Also, they are syntactic facilities, which makes it harder to use them in cases where the lock is only acquired conditionally (a case that is also somewhat awkward for RAII).
+Go's defer statement addresses the need without either problem. The defer statement is placed next to the acquisition statement, and it can be executed conditionally. Another minor benefit is that it also avoids adding complex syntax like try/finally to the language -- the defer statement is syntax, but syntactically speaking it's exactly like the go statement, and only differs in when the function is invoked.
+Ken Thompson came up with the defer statement one day, and it seemed so natural and useful that it was adopted without much debate. Ken invented the defer statement. It appears that Swift has picked up the defer statement too, in a slightly different form. </pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button">
